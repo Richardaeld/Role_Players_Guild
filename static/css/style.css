@@ -39,11 +39,31 @@
 .header-title {
     color: #fff;
     position: relative;
+    text-align: center;
     top: 40vh;
-    left: 45%;
     font-family: "Lobster", sans-serif;
 }
 
-.role-guild {
-    text-align: center
+/*selectable images for different guilds*/
+.choose-guild {
+    text-align: center;
+    height: 40rem;
+}
+
+.steve-img {
+    background-image: url("../img/steve/church.jpg");
+    background-position: center, center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    
+}
+
+.war-img {
+    background-image: url("../img/axiom/abyss.jpg");
+    background-position: center, center;
+}
+
+.tomb-img {
+    background-image: url("../img/ToA/ToA_header.jpg");
+
 }
