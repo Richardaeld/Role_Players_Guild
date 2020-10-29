@@ -49,6 +49,35 @@ body {
     top: 40vh;
     font-family: "Lobster", sans-serif;
 }
+/*3d cards*/
+#steve {
+    position: relative;
+    text-align: center;
+}
+.card-spin {
+    transform-style: preserve-3d;
+    transition-duration: 5s;
+    left: 0;
+    right: 0;
+}
+.guild-card {
+    position: absolute;
+    backface-visibility: hidden;
+    height: 100%;
+    width: 100%;
+}
+
+.face {
+
+}
+
+.back {
+    transform: rotateY(180deg);
+}
+
+.flip {
+    transform: rotateY(180deg);
+}
 
 /*selectable images for different guilds*/
 .choose-guild {
@@ -59,12 +88,13 @@ body {
 }
 
 .choose-guild div {
-    padding: 2rem;
+   /* padding: 2rem;*/ /* throws card around*/
 }
 
 .war-img,
 .steve-img,
-.tomb-img {
+.steve-img2,
+.tomb-img{
     background-position: center, center;
     height: 20rem;
     padding-left: 5rem;
@@ -81,8 +111,16 @@ body {
     background-image: url("../img/steve/church.jpg");
 }
 
+.steve-img2 {
+    background-image: url("../img/axiom/hidden.jpg")
+}
+
 .tomb-img {
     background-image: url("../img/ToA/ToA_header.jpg");
+}
+
+.bottom-img-text {
+    top: 20rem;
 }
 
 /*footer*/
