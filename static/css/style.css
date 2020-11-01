@@ -6,6 +6,7 @@
 
 body {
     background-color: #474747;
+    background-color: #010203;
 }
 
 /* Nav bar*/
@@ -101,6 +102,10 @@ body {
     padding-right: 5rem;
     background-repeat: no-repeat;
     background-size: cover;
+}
+
+.steve-img2 {
+    background-size: contain;
 }
 
 .war-img {
