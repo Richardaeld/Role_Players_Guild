@@ -2,6 +2,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
 
 body {
@@ -24,6 +25,7 @@ body {
 
 /*Header title and image*/
 .header-img {
+    z-index: -2;
     position: relative;
     background-repeat: no-repeat;
     background-position: center;
@@ -47,36 +49,10 @@ body {
     top: 40vh;
     font-family: "Lobster", sans-serif;
 }
-/*modal*/
-.parch {
-    text-align: center;
-    height:100vh;
-    width: 100%;
-    display: none;
-    background-image: url("../img/parchment.png");
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-    position: fixed;
-
-    z-index: 1;
-}
-
-.parch p {
-    color: black;
-    z-index: 2;
-    position:relative;
-    top: 5rem;
-    font-size: 4.5rem;
-    padding-left: 4rem;
-    padding-right:4rem;
-}
-
-.parchdis {
-    display: block;
-}
 
 /* border for bottom of header*/
 .dice-border {
+    z-index: -2;
     height: 40px;
     background-image: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06);
     background-color: rgba(0, 0, 0, 0.25);
@@ -88,6 +64,55 @@ body {
     height: 40px;
     background-color: rgba(0,0,0,.5);
 }
+
+/*modal*/
+.modal-cover {
+    position: fixed;
+    z-index: -2;
+    height:100vh;
+    width: 100vw;
+    background-color: rgba(0,0,0,.5);
+    opacity: 0;
+    transition: 3s;
+}
+
+.parch {
+    text-align: center;
+    height:100vh;
+    width: 100%;
+    background-image: url("../img/parchment.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
+    opacity: 0;
+    z-index: -1;
+    transition-duration: 3s;
+    font-family: "Dancing Script", sans-serif;
+}
+
+.parch p, 
+.parch button {
+    color: black;
+    z-index: 2;
+    position:relative;
+    top: 5rem;
+    font-size: 3rem;
+    padding-left: 4rem;
+    padding-right:4rem;
+}
+
+.parch button {
+    border: none;
+    background-image: none;
+    background-color: none;
+}
+
+.parchdis {
+    z-index: 2;
+    opacity:1;
+}
+
+
 
 /*3d cards*/
 /*outer layer*/
