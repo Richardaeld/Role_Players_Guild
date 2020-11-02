@@ -6,7 +6,6 @@
 
 body {
     background-color: #474747;
-    background-color: #010203;
 }
 
 /* Nav bar*/
@@ -51,26 +50,62 @@ body {
     font-family: "Lobster", sans-serif;
 }
 /*3d cards*/
+/*outer layer*/
 #steve {
-    position: relative;
     text-align: center;
-}
-.card-spin {
-    transform-style: preserve-3d;
-    transition-duration: 5s;
-    left: 0;
-    right: 0;
-}
-.guild-card {
-    position: absolute;
-    backface-visibility: hidden;
     height: 100%;
     width: 100%;
 }
 
-.face {
+.outer {
+    background-color: transparent;
+    width: 320px;
+    height: 36rem;
+    perspective: 1000px;
+}
+
+.outer:hover .card-spin {
+    transform: rotateY(180deg);
+}
+
+/*middle layer*/
+.card-spin {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition-duration: 3s;
+    border: solid 5px #838283;
+    border-radius: 5%;
+    background-color: rgb(255, 255, 255);
+    color: #010203;
+    box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25)
+}
+
+.card-spin div p {
 
 }
+
+/*inner layer*/
+.guild-card {
+
+    position: absolute;
+    backface-visibility: hidden;
+    z-index: -1;
+    height: 100%;
+    width: 100%;
+}
+
+.guild-card p {
+    padding-left: .25rem;
+    padding-right: .25rem;
+}
+/*
+.guild-card p {
+
+    position: relative;
+    top: 20rem;
+} */
 
 .back {
     transform: rotateY(180deg);
@@ -81,15 +116,19 @@ body {
 }
 
 /*selectable images for different guilds*/
+
 .choose-guild {
     text-align: center;
     color: #fff;
     font-family: "Amatic SC", sans-serif;
     font-size: 2.5rem;
+    font-weight: 700;
 }
 
-.choose-guild div {
-   /* padding: 2rem;*/ /* throws card around*/
+
+.guild-space {
+    padding: 2rem;
+    z-index: 2;
 }
 
 .war-img,
@@ -97,15 +136,11 @@ body {
 .steve-img2,
 .tomb-img{
     background-position: center, center;
-    height: 20rem;
-    padding-left: 5rem;
-    padding-right: 5rem;
+   /* height: 35.5rem;*/
+    height: 100%;
     background-repeat: no-repeat;
     background-size: cover;
-}
-
-.steve-img2 {
-    background-size: contain;
+    border-radius: 5%;
 }
 
 .war-img {
@@ -114,10 +149,6 @@ body {
 
 .steve-img {
     background-image: url("../img/steve/church.jpg");
-}
-
-.steve-img2 {
-    background-image: url("../img/steve/lawful.jpg")
 }
 
 .tomb-img {
