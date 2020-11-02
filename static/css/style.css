@@ -69,7 +69,7 @@ body {
 .modal-cover {
     position: fixed;
     z-index: -2;
-    height:95vh;
+    height:100vh;
     width: 100vw;
     background-color: rgba(0,0,0,.5);
     opacity: 0;
@@ -78,7 +78,7 @@ body {
 
 .parch {
     text-align: center;
-    height:100vh;
+    height:95vh;
     width: 100%;
     background-image: url("../img/parchment.png");
     background-repeat: no-repeat;
@@ -95,10 +95,10 @@ body {
     color: black;
     z-index: 2;
     position:relative;
-    top: 5rem;
+    top: 2.5rem;
     font-size: 2.5rem;
-    padding-left: 4rem;
-    padding-right:4rem;
+    padding-left: 3rem;
+    padding-right:3rem;
 }
 
 .parch button {
