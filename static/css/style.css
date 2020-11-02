@@ -47,7 +47,35 @@ body {
     top: 40vh;
     font-family: "Lobster", sans-serif;
 }
+/*modal*/
+.parch {
+    text-align: center;
+    height:100vh;
+    width: 100%;
+    display: none;
+    background-image: url("../img/parchment.png");
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    position: fixed;
 
+    z-index: 1;
+}
+
+.parch p {
+    color: black;
+    z-index: 2;
+    position:relative;
+    top: 5rem;
+    font-size: 4.5rem;
+    padding-left: 4rem;
+    padding-right:4rem;
+}
+
+.parchdis {
+    display: block;
+}
+
+/* border for bottom of header*/
 .dice-border {
     height: 40px;
     background-image: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06);
@@ -89,7 +117,7 @@ body {
     transition-duration: 3s;
     border: solid 5px #838283;
     border-radius: 5%;
-    background-color: rgb(255, 255, 255);
+    background-color: #dad8c8;
     color: #010203;
     box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25);
 }
@@ -134,7 +162,7 @@ body {
 
 .choose-guild {
     text-align: center;
-    color: #fff;
+    color: #d6d1a6;
     font-family: "Amatic SC", sans-serif;
     font-size: 2.25rem;
     font-weight: 600;
