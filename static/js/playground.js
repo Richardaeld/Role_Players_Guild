@@ -1,19 +1,36 @@
-document.getElementById("ste").onclick = function () {
-    document.getElementById("parch").classList.add("parchdis");
-    document.getElementById("parch").classList.add("box");
-    document.getElementById("modal-cover").classList.add("parchdis");
-    document.getElementById("modal-cover").classList.add("box1");
+document.querySelector("#ste").addEventListener("click", steveCard, false);
+
+function steveCard() {
+//  document.querySelector("#parch").className = "col-11 col-md-6 parch";
+//  window.requestAnimationFrame(function() {
+//      document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis box";
+//    });
+
+    setTimeout(function() {
+        document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
+    },3000);
+
+    document.querySelector("#modal-cover").className = "col-12 modal-cover";
+    window.requestAnimationFrame(function() {
+        document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBack";
+    });
+
     setTimeout(function() {
         writeMe();
     }, 6000);
-
 }
 
+
 document.getElementById("modal-cover").onclick = function() {
-    document.getElementById("parch").classList.remove("parchdis");
-    document.getElementById("parch").classList.remove("box");
-    document.getElementById("modal-cover").classList.remove("parchdis");
-    document.getElementById("modal-cover").classList.remove("box");
+    document.getElementById("parch").classList.add("boxRev");
+    document.querySelector("#parch").className = "col-11 col-md-6 parch"
+    setTimeout(function() {
+        window.requestAnimationFrame(function() {
+            document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBackRev";
+            });
+     },3000);
+//    document.getElementById("modal-cover").classList.remove("parchdis");
+//    document.getElementById("modal-cover").classList.remove("box");
 }
 
 // Hand writting effect 
@@ -37,10 +54,7 @@ function writeMe() {
         steveIndex++;
         setTimeout(function() {
             writeMe();
-        },100);
+        },75);
     }
 
 };
-
-
-

@@ -2,6 +2,11 @@
     text-align: left;
 }
 
+.cardOpen {
+    transform: scale(1);
+
+}
+
 .box {
  animation-name: bounce;
  animation-delay: 3s;
@@ -11,24 +16,45 @@
  animation-fill-mode: forwards; /* or: backwards, both, none */
 }
 
+.boxRev {
+transition-delay: 0;
+}
+
 @keyframes bounce {
-0% {transform:scale(.0);}
+0% {transform:scale(0);}
 100%{transform: scale(1);}
 }
 
-.box1 {
+
+
+.modalBack {
     /*animation: bounce1 3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;*/
-    animation-name: bounce1;
+    animation-name: modalBackground;
     animation-duration: 3s;
     animation-timing-function: ease-out;
     animation-direction: forwards;
     animation-fill-mode: forwards;
 }
 
-@keyframes bounce1 {
+.modalBackRev {
+    /*animation: bounce1 3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;*/
+    animation-name: modalBackgroundRev;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes modalBackground {
 0% {transform:scaleY(0) scaleX(0);}
 25% {transform:scaleY(.01) scaleX(0);}
 50% {transform:scaleY(.01) scaleX(1);}
 100% {transform:scaleY(1) scaleX(1);}
 }
 
+@keyframes modalBackgroundRev {
+0% {transform:scaleY(1) scaleX(1);}
+50% {transform:scaleY(.01) scaleX(1);}
+75% {transform:scaleY(.01) scaleX(0);}
+100% {transform:scaleY(0) scaleX(0);}
+}
