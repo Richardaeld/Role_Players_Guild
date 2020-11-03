@@ -1,0 +1,42 @@
+.box {
+ animation-name: bounce;
+ animation-delay: 3s;
+ animation-duration: 2s; /* or: Xms */
+ animation-direction: alternate; /* or: normal */
+ animation-timing-function: ease-out; /* or: ease, ease-in, ease-in-out, linear, cubic-bezier(x1, y1, x2, y2) */
+ animation-fill-mode: forwards; /* or: backwards, both, none */
+}
+
+@keyframes bounce {
+0% {transform:scale(.0);}
+100%{transform: scale(1);}
+}
+
+.box1 {
+    /*animation: bounce1 3s cubic-bezier(0.165, 0.840, 0.440, 1.000) forwards;*/
+    animation-name: bounce1;
+    animation-duration: 3s;
+    animation-timing-function: ease-out;
+    animation-direction: forwards;
+    animation-fill-mode: forwards;
+}
+
+@keyframes bounce1 {
+0% {transform:scaleY(0) scaleX(0);}
+25% {transform:scaleY(.01) scaleX(0);}
+50% {transform:scaleY(.01) scaleX(1);}
+100% {transform:scaleY(1) scaleX(1);}
+}
+
+.box2 p{
+    overflow: hidden;
+    animation-name: bounce2;
+    animation-duration: 10s;
+    animation-delay: 6s;
+    animation-timing-function: steps(100)
+}
+
+@keyframes bounce2 {
+0% {width:0ch}
+100% {width:100ch}
+}
