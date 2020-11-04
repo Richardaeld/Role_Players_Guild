@@ -54,7 +54,9 @@ document.getElementById("modal-cover").onclick = function() {
 
      clearTimeout(document.getElementById("startHere").textContent);
 
-    document.getElementById("startHere").textContent = "";
+    setTimeout(function() {
+        document.getElementById("startHere").textContent = "";
+    },3000);
     textArray = [];
     modalIndex = 0;
 }
