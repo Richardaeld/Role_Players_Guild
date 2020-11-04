@@ -108,6 +108,22 @@ body {
 }
 
 /*----------------3d cards----------------*/
+.card-background {
+    background-color: #2c2c2c;
+}
+
+.coverCards {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    z-index: -3;
+}
+
+.coverCardsAct {
+    z-index: 2;
+}
+
 /*outer layer*/
 
 
@@ -226,3 +242,5 @@ footer {
 .icons a img {
     max-height: 100px;
 }
+
+

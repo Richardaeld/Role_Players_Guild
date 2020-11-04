@@ -24,9 +24,19 @@ function hallowCard(){
 function tombCard(){
     modalCard(tombText);
 }
+
+function disableMouse() {
+    document.getElementsByClassName("coverCards")[0].classList.add("coverCardsAct");
+    setTimeout(function() {
+        document.getElementsByClassName("coverCards")[0].classList.remove("coverCardsAct");
+    },6000);
+}
+
 //-----------------prints out text for modal and applies animation
 function modalCard(text) {
     
+    disableMouse();
+
     setTimeout(function() {
         document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
     },3000);
@@ -43,6 +53,9 @@ function modalCard(text) {
 
 //---------------------Reverses animations for disappearing modal 
 document.getElementById("modal-cover").onclick = function() {
+
+    disableMouse();
+
     document.getElementById("parch").classList.add("boxRev");
     document.querySelector("#parch").className = "col-11 col-md-6 parch"
 
