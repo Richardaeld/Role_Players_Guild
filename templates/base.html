@@ -4,9 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- required style 3rd party for page -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
-    <link rel="stylesheet" href="static/css/style.css" type="text/css">    
-    <link rel="stylesheet" href="static/css/animation.css" type="text/css">
+    <!-- custom style for page -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 
     <title>Role Players Guild</title>
 
@@ -61,7 +63,6 @@
 
 
         {% block guild_cards %}        
-
         {% endblock %}
 
     <!--footer-->
@@ -73,7 +74,7 @@
                 Built and maintained by Richard Eldridge
             </p>        
             <a href="https://github.com/Richardaeld?tab=repositories">
-                <img src="static/img/icons/G-Pro.jpg" alt="Image of Ricahrd Eldridge">
+                <img src="{{ url_for('static', filename='img/icons/G-Pro.jpg') }}" alt="Image of Ricahrd Eldridge">
             </a>
 
         </div>
@@ -84,7 +85,7 @@
                 View my other projects at github!
             </p>
             <a href="https://github.com/Richardaeld?tab=repositories">
-                <img src="static/img/icons/github-small.png" alt="roll-20">
+                <img src="{{ url_for('static', filename='img/icons/github-small.png') }}" alt="roll-20">
             </a>
 
         </div>
@@ -95,17 +96,18 @@
                 Send some love to these sites for the wonderful representation of the community 
             </p>
             <a href="https://roll20.net/welcome">
-                <img src="static/img/icons/roll-20.png" alt="roll-20">
+                <img src="{{ url_for('static', filename='img/icons/roll-20.png') }}" alt="roll-20">
             </a>
             <a href="https://www.dmsguild.com/">
-                <img src="static/img/icons/DMsGuild-Logo.png" alt="DM's Guild">
+                <img src="{{ url_for('static', filename='img/icons/DMsGuild-Logo.png') }}" alt="DM's Guild">
             </a>
 
         </div>
 
 
     </footer>
-    <script src="static/js/playground.js"></script>    
+    <!-- custom js for page -->
+    <script src="{{ url_for('static', filename='js/playground.js') }}"></script>    
 
 </body>
 </html>
