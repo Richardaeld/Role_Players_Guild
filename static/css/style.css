@@ -109,11 +109,7 @@ body {
 
 /*----------------3d cards----------------*/
 /*outer layer*/
-#steve {
-    text-align: center;
-    height: 100%;
-    width: 100%;
-}
+
 
 .outer {
     background-color: transparent;
