@@ -30,14 +30,14 @@
                 <li class="nav-item">
                     <a href="{{ url_for('index') }}">Home</a>
                 </li>
-                <li class="nav-item">Temple of Steve
-                    <a href="{{ url_for('temple') }}"></a>
+                <li class="nav-item">
+                    <a href="{{ url_for('temple') }}">Temple of Steve</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('hallow') }}">War of the Hallow Herd</a>
                 </li>
-                <li class="nav-item">Tomb of Annihilation
-                    <a href="{{ url_for('tomb') }}"></a>
+                <li class="nav-item">
+                    <a href="{{ url_for('tomb') }}">Tomb of Annihilation</a>
                 </li>
             </ul>
         </nav>
@@ -52,9 +52,6 @@
             </div>
         </div>
 
-        {% block content %}        
-
-        {% endblock %}
         <!--gradient border for header bar-->
         <div class="col-12 dice-border">
             <span></span>
@@ -63,128 +60,9 @@
     </header>
 
 
-    <!--Guilds-->
-    <section>
-        <div class="row no-gutters">
-            <div class="col-12 card-background">
-                <div class="col-12 coverCards"></div>
+        {% block guild_cards %}        
 
-                <div class="row no-gutters justify-content-between choose-guild">
-                
-                    <!--Hallow Herd-->
-                    <div class="col-11 col-md-4 col-lg-3 guild-space">
-
-                        <div class="row no-gutters">
-                            <!--card Title-->
-                            <div class="col-12">
-                                <p>
-                                    War of the Hallow Herd
-                                </p>
-                            </div>
-
-                            <!--Card Spin body-->
-                            <div class="col-12 outer" id="hallow">
-                                <div class="row no-gutters card-spin">
-                                    <div class="col-12 guild-card face war-img">
-                                        <p></p>
-                                    </div>
-                                    <div class="col-12 guild-card back">
-                                        <p>The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self!</p>
-                                        <hr>
-                                        <p>Will our party survive the wilderness?</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--card sub header-->
-                            <div class="col-12 card-sub-text">
-                                <p>Jouney into the wilds from an isolated kingdom.</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <!--steve-->
-                    <div class="col-11 col-md-4 col-lg-3 guild-space">
-                        <div class="row no-gutters">
-                            
-                            <!--card Title-->
-                            <div class="col-12">
-                                <p>
-                                    Temple of Steve
-                                </p>
-                            </div>
-                            
-                            <!--Card Spin body-->                            
-                            <div class="col-12 outer" id="steve">
-                                <div class="row no-gutters card-spin">
-                                    <div class="col-12 guild-card face steve-img">
-                                        <p></p>
-                                    </div>
-                                    <div class="col-12 guild-card back">
-                                        <p>Have you heard of our diety?</p>
-                                        <p>
-                                            Oh you havent!? Cledus junior, JR is the savior of all of our meat bag sentience.
-                                            You dont care? You still have to listen while I heal you....
-                                            Here, hold onto our pamphlet with your han...stump, yes with your stump
-                                            The pamphlet hurts your stump?  Its the pain of salvation.
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--card sub header-->                            
-                            <div class="col-12 card-sub-text">
-                                <p>We are the nice guys that always heal you!</p>
-                            </div>
-
-                        </div>
-                    </div>
-
-
-                    <!--ToA-->
-                    <div class="col-11 col-md-4 col-lg-3 guild-space">
-                        <div class="row no-gutters">
-                            
-                            <!--card Title-->
-                            <div class="col-12">
-                                <p>
-                                    Tomb of Annihilation
-                                </p>
-                            </div>
-                            
-                            <!--Card Spin body-->
-                            <div class="col-12 outer" id="tomb">
-                                <div class="row no-gutters card-spin">
-                                    <div class="col-12 guild-card face tomb-img">
-                                        <p></p>
-                                    </div>
-                                    <div class="col-12 guild-card back">
-                                        <p>
-                                            We pay our adventurers in pure unadulterated treasure!
-                                            Our expeditions are full of intrigue!
-                                        </p>
-                                        <p>
-                                            Also posion, disease, and heaping handfuls of death!
-                                            Fill our expeditions with willing hands! Please?
-                                            We are literally dying out there...for you to join us!
-                                        </p>
-                                    
-                                    </div>
-                                </div>                          
-                            </div>
-                            
-                            <!--card sub header-->                            
-                            <div class="col-12 card-sub-text">
-                                <p>Journey to the foriegn city of Chult and explore a primal forest full of treasure, and exotic dangers!  </p>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+        {% endblock %}
 
     <!--footer-->
     <footer class="row no-gutters">
