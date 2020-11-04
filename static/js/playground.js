@@ -1,22 +1,43 @@
+// Hand writting effect variables
+var steveText = ["Have you heard of our diety? Oh you havent!? Cledus junior, JR is the savior of all of our meat bag sentience. You dont care? You still have to listen while I heal you.... Here, hold onto our pamphlet with your han...stump, yes with your stump. The pamphlet hurts your stump?  Its the pain of salvation, my child.  --Resident Advisor, Matt the 3rdish"];
+var hallowText = ["The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self!"];
+var tombText = ["We pay our adventurers in pure unadulterated treasure! Our expeditions are full of intrigue! Also posion, disease, and heaping handfuls of death! Fill our expeditions with willing hands! Please? We are literally dying out there...for you to join us!"];
+var textArray = [];
+var injectModal = document.getElementById("startHere");
+var modalIndex = 0;
+
 //listener for guild card clicks
 document.querySelector("#steve").addEventListener("click", steveCard, false);
-//document.querySelector("#hallow").addEventListener("click", hallowCard, false);
-//document.querySelector("#tomb").addEventListener("click", tombCard, false);
-var stoppable;
-//prints out text for modal and applies animation
-function steveCard() {
+document.querySelector("#hallow").addEventListener("click", hallowCard, false);
+document.querySelector("#tomb").addEventListener("click", tombCard, false);
 
+
+//call specific card
+function steveCard(){
+    modalCard(steveText);
+}
+
+function hallowCard(){
+    modalCard(hallowText);
+}
+
+function tombCard(){
+    modalCard(tombText);
+}
+//prints out text for modal and applies animation
+function modalCard(text) {
+    //generic
     setTimeout(function() {
         document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
     },3000);
-
+    //generic
     document.querySelector("#modal-cover").className = "col-12 modal-cover";
     window.requestAnimationFrame(function() {
         document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBack";
     });
-
+    //generic
     setTimeout(function() {
-        writeMe();
+        writeMe(text);
     }, 6000);
 }
 
@@ -34,39 +55,33 @@ document.getElementById("modal-cover").onclick = function() {
      clearTimeout(document.getElementById("startHere").textContent);
 
     document.getElementById("startHere").textContent = "";
-    steveArray = [];
-    steveIndex = 0;
+    textArray = [];
+    modalIndex = 0;
 }
 
-// Hand writting effect 
-var steveArray = [];
-var steveText = ["Have you heard of our diety? Oh you havent!? Cledus junior, JR is the savior of all of our meat bag sentience. You dont care? You still have to listen while I heal you.... Here, hold onto our pamphlet with your han...stump, yes with your stump. The pamphlet hurts your stump?  Its the pain of salvation, my child.  --Resident Advisor, Matt the 3rdish"];
-var steveInject = document.getElementById("startHere");
-var steveIndex = 0;
+
 
 //add variable text and location
-function writeMe() {
+function writeMe(text) {
     
     //make array for calling
-    if (steveArray.length == 0 ){
-        for(i=0; i<steveText[0].length; i++) {
-            steveArray += steveText[0][i];
+    if (textArray.length == 0 ){
+        for(i=0; i<text[0].length; i++) {
+            textArray += text[0][i];
         };
     };
 
-    //sets printing variable
+    //sets printing variable so its stoppablemodalIndex
     var p = setTimeout(function() {writeMe();},50);
     
     //prints to screen
-    if(steveIndex != steveArray.length && steveIndex < steveArray.length){
-        steveInject.textContent += steveArray[steveIndex]; 
-        steveIndex++;
+    if(modalIndex != textArray.length && modalIndex < textArray.length){
+        injectModal.textContent += textArray[modalIndex]; 
+        modalIndex++;
         p;
-        //        setTimeout(function() {
-//            writeMe();
-//        },50);
     }
-   // var pp = clearTimeout(p);
+   
+    // stops writting if user off clicks
     document.getElementById("modal-cover").addEventListener("click", function(){
         clearTimeout(p);
     });
