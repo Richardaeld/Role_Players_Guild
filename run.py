@@ -7,7 +7,24 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-        return "Hello, World"
+    return render_template("index.html")
+
+
+@app.route("/temple")
+def temple():
+    return render_template("temple.html")
+
+
+@app.route("/hallow")
+def hallow():
+    return render_template("hallow.html")
+
+
+
+@app.route("/tomb")
+def tomb():
+    return render_template("tomb.html")
+
 
 
 if __name__ == "__main__":
