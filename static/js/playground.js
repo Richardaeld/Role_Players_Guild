@@ -1,6 +1,6 @@
 //------------------Hand writting effect variables
 var steveText = ["Have you heard of our diety? Oh you havent!? Cledus junior, JR is the savior of all of our meat bag sentience. You dont care? You still have to listen while I heal you.... Here, hold onto our pamphlet with your han...stump, yes with your stump. The pamphlet hurts your stump?  Its the pain of salvation, my child.  --Resident Advisor, Matt the 3rdish"];
-var hallowText = ["The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self!"];
+var hallowText = ["The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self! Will our party survive the wilderness?"];
 var tombText = ["We pay our adventurers in pure unadulterated treasure! Our expeditions are full of intrigue! Also posion, disease, and heaping handfuls of death! Fill our expeditions with willing hands! Please? We are literally dying out there...for you to join us!"];
 var textArray = [];
 var injectModal = document.getElementById("startHere");
