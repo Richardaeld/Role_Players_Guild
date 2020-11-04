@@ -1,10 +1,8 @@
+//listener for guild card clicks
 document.querySelector("#ste").addEventListener("click", steveCard, false);
 
+//prints out text for modal and applies animation
 function steveCard() {
-//  document.querySelector("#parch").className = "col-11 col-md-6 parch";
-//  window.requestAnimationFrame(function() {
-//      document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis box";
-//    });
 
     setTimeout(function() {
         document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
@@ -20,7 +18,7 @@ function steveCard() {
     }, 6000);
 }
 
-
+//Reverses animations for disappearing modal 
 document.getElementById("modal-cover").onclick = function() {
     document.getElementById("parch").classList.add("boxRev");
     document.querySelector("#parch").className = "col-11 col-md-6 parch"
@@ -29,8 +27,6 @@ document.getElementById("modal-cover").onclick = function() {
             document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBackRev";
             });
      },3000);
-//    document.getElementById("modal-cover").classList.remove("parchdis");
-//    document.getElementById("modal-cover").classList.remove("box");
 }
 
 // Hand writting effect 
@@ -56,5 +52,4 @@ function writeMe() {
             writeMe();
         },75);
     }
-
 };
