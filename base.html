@@ -26,13 +26,17 @@
         <nav class="custom-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="index.html">Home</a>
+                    <a href="{{ url_for('index') }}">Home</a>
                 </li>
-                <li class="nav-item">Temple of Steve</li>
+                <li class="nav-item">Temple of Steve
+                    <a href="{{ url_for('temple') }}"></a>
+                </li>
                 <li class="nav-item">
-                    <a href="hallow.html">War of the Hallow Herd</a>
+                    <a href="{{ url_for('hallow') }}">War of the Hallow Herd</a>
                 </li>
-                <li class="nav-item">Tomb of Annihilation</li>
+                <li class="nav-item">Tomb of Annihilation
+                    <a href="{{ url_for('tomb') }}"></a>
+                </li>
             </ul>
         </nav>
         <!--Header Bar-->
