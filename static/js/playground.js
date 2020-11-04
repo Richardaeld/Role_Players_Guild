@@ -50,6 +50,6 @@ function writeMe() {
         steveIndex++;
         setTimeout(function() {
             writeMe();
-        },75);
+        },50);
     }
 };
