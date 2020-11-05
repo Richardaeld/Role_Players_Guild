@@ -32,7 +32,13 @@ body {
 }
 
 /*------------Header title and image--------------*/
-.header-img {
+.index-header-img {
+    background-image: url("../img/header.jpg");
+}
+.index-header-img,
+.hallow-header-img,
+.steve-header-img,
+.tomb-header-img {
     z-index: -2;
     position: relative;
     background-repeat: no-repeat;
@@ -40,8 +46,21 @@ body {
     background-size: cover;
     width: 100%;
     height: 35rem;
-    background-image: url("../img/header.jpg");
 }
+
+
+.hallow-header-img {
+    background-image: url("../img/hallow_herd/hallow_banner.jpg");
+}
+
+.steve-header-img {
+    background-image: url("../img/steve/temple_card.jpg");
+}
+
+.tomb-header-img {
+    background-image: url("../img/tomb/toa_card.jpg");
+}
+
 /*header overlay*/
 .header-img span {
     position: absolute;
@@ -211,7 +230,7 @@ body {
 }
 
 .war-img {
-    background-image: url("../img/hallow_herd/hallow_card.jpg");
+    background-image: url("../img/hallow_herd/hallow_banner.jpg");
     background-position: top, center;
 }
 
