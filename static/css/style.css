@@ -211,15 +211,16 @@ body {
 }
 
 .war-img {
-    background-image: url("../img/axiom/hallow_herd.jpg");
+    background-image: url("../img/hallow_herd/hallow_card.jpg");
+    background-position: top, center;
 }
 
 .steve-img {
-    background-image: url("../img/steve/church.jpg");
+    background-image: url("../img/steve/temple_card.jpg");
 }
 
 .tomb-img {
-    background-image: url("../img/ToA/ToA_header.jpg");
+    background-image: url("../img/tomb/toa_card.jpg");
 }
 
 .bottom-img-text {
