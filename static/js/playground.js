@@ -12,9 +12,10 @@ document.querySelector("#hallow").addEventListener("click", hallowCard, false);
 document.querySelector("#tomb").addEventListener("click", tombCard, false);
 
 
-//--------------call specific card
+//--------------call specific index page modal card
 function steveCard(){
     modalCard(steveText);
+        console.log(document.getElementById("templeBody").offsetHeight);
 }
 
 function hallowCard(){
@@ -25,6 +26,7 @@ function tombCard(){
     modalCard(tombText);
 }
 
+//adds an invisible layer to 'disable' user mouse clicks
 function disableMouse() {
     document.getElementsByClassName("coverCards")[0].classList.add("coverCardsAct");
     setTimeout(function() {
@@ -34,18 +36,20 @@ function disableMouse() {
 
 //-----------------prints out text for modal and applies animation
 function modalCard(text) {
-    
+    //disables off clicks during modal animation time
     disableMouse();
-
+    //scales parchment modal to full size at appropiate time
     setTimeout(function() {
         document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
     },3000);
     
-    document.querySelector("#modal-cover").className = "col-12 modal-cover";
+    //catches animation so it can be replayed and playes background cover layer expansion 
+   // document.querySelector("#modal-cover").className = "col-12 modal-cover";
     window.requestAnimationFrame(function() {
         document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBack";
     });
-    
+
+    //timer delay for text to fill on parchment modal
     setTimeout(function() {
         writeMe(text);
     }, 6000);
@@ -53,23 +57,28 @@ function modalCard(text) {
 
 //---------------------Reverses animations for disappearing modal 
 document.getElementById("modal-cover").onclick = function() {
-
+    //disables mouse during modal animation time
     disableMouse();
 
+    //reverses animation for modal to disappear
     document.getElementById("parch").classList.add("boxRev");
     document.querySelector("#parch").className = "col-11 col-md-6 parch"
 
+    //catches animation so it can be replayed
     setTimeout(function() {
         window.requestAnimationFrame(function() {
             document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBackRev";
             });
      },3000);
 
+     //stops settimeout function for playing
      clearTimeout(document.getElementById("startHere").textContent);
-
+    
+     //clears out modal text content for reuse
     setTimeout(function() {
         document.getElementById("startHere").textContent = "";
     },3000);
+    //clears variable content for modal reuse
     textArray = [];
     modalIndex = 0;
 }
@@ -100,3 +109,4 @@ function writeMe(text) {
     });
 
 };
+//------------------------------------------------------------------------
