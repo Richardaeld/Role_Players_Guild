@@ -109,4 +109,33 @@ function writeMe(text) {
     });
 
 };
-//------------------------------------------------------------------------
+// Hover transitional backgrounds and text for main header and header text
+
+function HeaderBarTrans(headerImg, HeaderText) {
+    document.getElementById("header_main").style.backgroundImage = headerImg;
+    document.getElementById("title-header").textContent = HeaderText;
+}
+
+document.getElementById("temple-of-steve").onmouseover = function() {
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Temple of Steve");
+}
+
+document.getElementById("war-of-the-hallow-herd").onmouseover = function() {
+    HeaderBarTrans("url(static/img/hallow_herd/hallow_banner.jpg)", "War of the Hallow Herd");
+}
+    
+document.getElementById("tomb-of-annihilation").onmouseover = function() {
+    HeaderBarTrans("url(static/img/tomb/toa_card.jpg)", "Tomb of Anihilation");
+}
+
+document.getElementById("war-of-the-hallow-herd").onmouseout = function() {
+    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
+}
+
+document.getElementById("temple-of-steve").onmouseout = function() {
+    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
+}
+
+document.getElementById("tomb-of-annihilation").onmouseout = function() {
+    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
+}
