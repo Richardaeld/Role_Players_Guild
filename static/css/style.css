@@ -4,24 +4,29 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 
-
 body {
     background-color: #010203;
 }
 
 /*--------------------- Nav bar---------------------*/
 .custom-nav {
+    font-family: "Libre Baskerville", sans-serif;
     width: 100%;
+    color: #fff;
     background-color: rgba(0,0,0,.25);
     position:fixed;
     z-index: 3;
 }
 
 .custom-nav li {
-    position: relative;
-    color: #fff;
-    font-family: "Libre Baskerville", sans-serif;
     padding: 1.5rem;
+    padding-right: 3%;
+    transition-duration: 1s;
+}
+
+.custom-nav li:hover {
+    transform: scale(1.1);
+
 }
 
 .custom-nav a:hover {
@@ -33,22 +38,20 @@ body {
 }
 
 /*------------Header title and image--------------*/
-.index-header-img {
-    background-image: url("../img/header.jpg");
-}
-.index-header-img,
-.hallow-header-img,
-.steve-header-img,
-.tomb-header-img {
-    z-index: -2;
+.header-img {
+    transition: all .25s;
     position: relative;
-    background-repeat: no-repeat;
+    background: center/cover no-repeat;
+    /*background-repeat: no-repeat;
     background-position: center;
-    background-size: cover;
+    background-size: cover;*/
     width: 100%;
     height: 35rem;
 }
 
+.index-header-img {
+    background-image: url("../img/header.jpg");
+}
 
 .hallow-header-img {
     background-image: url("../img/hallow_herd/hallow_banner.jpg");
@@ -63,7 +66,8 @@ body {
 }
 
 /*header overlay*/
-.header-img span {
+.header-img span,
+.dice-border span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -81,17 +85,14 @@ body {
 
 /*bottom border for header*/
 .dice-border {
-    z-index: -2;
-    height: 40px;
-    background-image: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06);
-    background-color: rgba(0, 0, 0, 0.25);
+    height: 2.5rem;
+    background: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06) rgba(0, 0, 0, 0.25);
+    /*background-image: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06);
+    background-color: rgba(0, 0, 0, 0.25);*/
 }
 /*bottom border overlay for header*/
 .dice-border span {
-    position: absolute;
-    width: 100%;
-    height: 40px;
-    background-color: rgba(0,0,0,.5);
+    height: 2.5rem;
 }
 
 /*-----------------modal------------------*/
@@ -112,9 +113,10 @@ body {
 .parch {
     text-align: center center;
     height:90vh;
-    background-image: url("../img/parchment.png");
+    background: url("../img/parchment.png") center/100% 100% no-repeat;
+    /*background-image: url("../img/parchment.png");
     background-repeat: no-repeat;
-    background-size: 100% 100%;
+    background-size: 100% 100%;*/
     transition-duration: 3s;
     font-family: "Dancing Script", sans-serif;
     margin: 1rem;
@@ -127,8 +129,10 @@ body {
     position:relative;
     top: 2.5rem;
     font-size: 2.5rem;
-    padding-left: 3rem;
-    padding-right:3rem;
+    padding: 2rem 3rem 2rem 3.5rem;
+    /*padding: 2rem 3.5rem;*/
+    /*padding-left: 3rem;
+    padding-right:3rem;*/
 }
 
 .parch button {
@@ -155,8 +159,6 @@ body {
 }
 
 /*outer layer*/
-
-
 .outer {
     background-color: transparent;
     width: 320px;
@@ -175,11 +177,9 @@ body {
     height: 100%;
     transform-style: preserve-3d;
     transition-duration: 3s;
-    /*border: solid 5px #838283;*/
     border:solid 5px #dad8c8;
     border-radius: 5%;
     background-color: #dad8c8;
-    /*background-color: #dad8c8;*/
     color: #010203;
     box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25);
 }
@@ -193,14 +193,14 @@ body {
 }
 
 .guild-card p {
-    padding-left: .25rem;
-    padding-right: .25rem;
+    padding: .25rem;
+   /* padding-left: .25rem;
+    padding-right: .25rem;*/
 }
 
 .card-sub-text p {
     z-index: -3;
     text-shadow: .15rem .15rem .1rem #8A8A84;
-
 }
 
 .back {
@@ -211,23 +211,22 @@ body {
 .choose-guild {
     text-align: center;
     color: #d6d1a6;
-    font-family: "Amatic SC", sans-serif;
+   /* font-family: "Amatic SC", sans-serif;
     font-size: 2.25rem;
-    font-weight: 600;
+    font-weight: 600;*/
+    font: 600 2.25rem "Amatic SC", sans-serif;
 }
-
 
 .guild-space {
     margin: 2rem;
 }
 
 /*image presets*/
-.war-img,
-.steve-img,
-.tomb-img{
-    background-position: center, center;
+.face {
+    background: center center/cover no-repeat;
+    /*background-position: center, center;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: cover;*/
     border-radius: 5%;
 }
 
@@ -275,6 +274,33 @@ footer {
     max-height: 100px;
 }
 
-
 /*--------------------------------------temple of steve------------------------------*/
+.temple-cats {
+    height:10rem;
+    width: 100%;
+    margin: 1rem;
+    color: #2b65d1;
+    background-color: #e1edfb;
+    text-align: center;
+    border:solid 2px #010203;
+    border-radius: 10%;
+    word-wrap: break-word;
+}
+
+.temple-cats h1 {
+    position: relative;
+    top: 3rem;
+}
+
+.guild-cover-top {
+    position: absolute;
+    background-color: purple;
+    z-index: 3d;
+    transition-duration: 1.5s;
+    width: 100%;
+}
+
+#temple-tenets {
+    display: none;
+}
 
