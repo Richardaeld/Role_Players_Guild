@@ -1,38 +1,79 @@
 {% extends "base.html" %}
 {% block main_content %}
 
-<section>
+<section id="templeBody">
     <div class="row no-gutters">
         <div class="col-12">
+        <div class="col-12 guild-cover-top"></div>
+        <div class="col-12 guild-cover-bottom"></div>
             <div class="row no-gutters">
-            
-                <div class="col-4">
-                    <h1>Tenets</h1>
+
+                <div class="col-12" id="temple-main">
+                    <div class="row no-gutters justify-content-between" id="templeMain">
+                        <div class="col-3 temple-cats" id="temple1">
+                            <h1>Tenets</h1>
+                        </div>
+
+                        <div class="col-3 temple-cats" id="temple2">
+                            <h1>Alignment</h1>
+                        </div>
+
+                        <div class="col-3 temple-cats">
+                            <h1>Insults</h1>
+                        </div>
+
+                        <div class="col-3 temple-cats">
+                            <h1>Propaganda</h1>
+                        </div>
+
+                        <div class="col-3 temple-cats">
+                            <h1>Members</h1>
+                        </div>
+
+                        <div class="col-3 temple-cats">
+                            <h1>Accomplishments</h1>
+                        </div>
+                    </div>
                 </div>
 
-                <div class="col-4">
-                    <h1>Alignment leeway</h1>
+                <div class="col-12" id="temple-tenets">
+                    <div class="row no-gutters justify-content-between">
+
+                        <ul>
+                            <li>Say mean things in a nice way</li>
+                        </ul>
+
+                        <ul>
+                            <li>Always heal the wounded and immediately try to convert them</li>
+                        </ul>
+                        
+                        <ul>
+                            <li>Be abrasively friendly</li>
+                        </ul>                    
+                        
+                        <ul>
+                            <li>Insist on talking about steve</li>
+                        </ul>                    
+                        
+                        <ul>
+                            <li>All disciples need a number in their name</li>
+                        </ul>                    
+                        
+                        <ul>
+                            <li>Tell uninteresting tales of healing and everyone lives</li>
+                        </ul>                 
+
+                    </div>
                 </div>
 
-                <div class="col-4">
-                    <h1>Insults</h1>
-                </div>
-
-                <div class="col-4">
-                    <h1>Propaganda</h1>
-                </div>
-
-                <div class="col-4">
-                    <h1>Members</h1>
-                </div>
-
-                <div class="col-4">
-                    <h1>Accomplishments</h1>
-                </div>
 
             </div>
         </div>
     </div>
+
 </section>
 
+{% endblock %}
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/guildGeneral.js')}}"></script>
 {% endblock %}
