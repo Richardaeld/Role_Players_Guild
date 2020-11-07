@@ -129,3 +129,8 @@
 
 
 {% endblock %}
+
+
+{% block custom_script %}
+    <script src="{{ url_for('static', filename='js/playground.js') }}"></script>    
+{% endblock %}
