@@ -26,7 +26,6 @@ body {
 
 .custom-nav li:hover {
     transform: scale(1.1);
-
 }
 
 .custom-nav a:hover {
@@ -90,6 +89,7 @@ body {
     /*background-image: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06);
     background-color: rgba(0, 0, 0, 0.25);*/
 }
+
 /*bottom border overlay for header*/
 .dice-border span {
     height: 2.5rem;
@@ -111,7 +111,7 @@ body {
 }
 
 .parch {
-    text-align: center center;
+    text-align: left;
     height:90vh;
     background: url("../img/parchment.png") center/100% 100% no-repeat;
     /*background-image: url("../img/parchment.png");
@@ -129,7 +129,7 @@ body {
     position:relative;
     top: 2.5rem;
     font-size: 2.5rem;
-    padding: 2rem 3rem 2rem 3.5rem;
+    padding: 2rem 4rem 2rem 4.5rem;
     /*padding: 2rem 3.5rem;*/
     /*padding-left: 3rem;
     padding-right:3rem;*/
@@ -138,6 +138,37 @@ body {
 .parch button {
     border: none;
     background-color: transparent;
+}
+
+/*----------------------modal animations-----------------------*/
+/*#startHere {
+    text-align: left;
+}*/
+
+.cardOpen {
+    transform: scale(1);
+}
+
+.modalBack {
+    animation: modalBackground 3s ease-out 0s 1 forwards;
+}
+
+.modalBackRev {
+    animation: modalBackgroundRev 3s ease-out 0s 1 forwards;
+}
+
+@keyframes modalBackground {
+0% {transform:scaleY(0) scaleX(0);}
+25% {transform:scaleY(.01) scaleX(0);}
+50% {transform:scaleY(.01) scaleX(1);}
+100% {transform:scaleY(1) scaleX(1);}
+}
+
+@keyframes modalBackgroundRev {
+0% {transform:scaleY(1) scaleX(1);}
+50% {transform:scaleY(.01) scaleX(1);}
+75% {transform:scaleY(.01) scaleX(0);}
+100% {transform:scaleY(0) scaleX(0);}
 }
 
 /*----------------3d cards----------------*/
