@@ -66,5 +66,42 @@ transition-delay: 0;
     100%{height:0;}
 }
 
+.stest {
+    width: 240px;
+    height: 240px;
+}
+
+.actBorder{
+   /* animation: test1 3s ease-in 0s 5 forwards;*/
+  /*  animation-name: test1;*/
+  
+  stroke: #C440F0;
+  stroke-width: .75rem;
+  stroke-dasharray: 1800;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation-name: generalBorders;
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode: forwards;
+}
+
+@keyframes generalBorders {
+    0%{stroke-dashoffset: 1800}
+    100%{stroke-dashoffset: 0}
+ 
+ /* to {
+    stroke-dashoffset: -1000;
+  }*/
 
 
+/*@keyframes test1 {
+    0%{stroke-dashoffset: 0;}
+    100%{stroke-dashoffset: 800;}*/
+    
+    /*0%{border-top: solid 20px purple;}
+    50%{border-top: solid 20px purple; border-right:solid 20px purple;}
+    100%{border-top: solid 20px purple; border-right:solid 20px purple; border-bottom: solid 20px purple;}*/
+}
