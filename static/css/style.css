@@ -301,48 +301,93 @@ footer {
     top: 3rem;
 }*/
 
+/*
 .guild-cover-top {
     position: absolute;
     background-color: purple;
     z-index: 3d;
     transition-duration: 1.5s;
     width: 100%;
-}
+}*/
 
 #temple-tenets {
     display: none;
 }
 
-/*------------------------------new--------------------------------*/
-.temple-cats svg,
-.temple-cats rect {
-    width: 20rem;
-    height: 10rem;
-    fill: none;
+/*------------------------------temple general box hover effect--------------------------------*/
+
+#templeBody { /*  used to replace card-background background color*/
+    background-color: #474747;
+}
+
+.temple-span {
+    background-color: transparent;
+    position: absolute;
+    z-index: 3;
+    width: 15rem;
+    height: 7rem;
+    border-radius: 25%;
+    box-shadow: .1rem .1rem .1rem .1rem rgba(0, 0, 0, 0.25);
+
 }
 
 .temple-cats {
-    width: 20rem;
-    height: 10rem;
+    position: relative;
+    width: 15rem;
+    height: 7rem;
+    fill: none;
+    border-radius: 25%;
+    z-index: 0;
+    background-color:#878787;
 }
+
+.temple-cats rect,
+.temple-cats svg {
+    width:100%;
+    height:100%;
+    position: relative;
+    transition-duration: 0;
+} 
+
 
 .temple-cats {
     text-align: center;
     position: static;
     margin: 3rem;
     /*border-radius: 50%;*/
-    background-color: #40c4f0;
-    color: #F06C40;
-    transition-duration: 2s;
-    font-size: 2.5rem;
+    /*background-color: #40c4f0;*/
+    color: #D25F38;
+    /*transition-duration: 5s;*/
+    font-size: 1.5rem;
+    /*border: gray 1rem solid;*/
+    transition-duration: 3s;
+
 }
 
 .temple-cats p {
     position: relative;
-    bottom: 7.5rem;
+    bottom: 5rem;
+    text-shadow: .1rem .1rem .01rem #010203;
 }
 
 .temple-cats:hover {
+    color: #6CF040;
     background-color: #237591;
-    text-shadow: .5rem .5rem .25rem #010203;
+    box-shadow: .75rem .75rem .75rem .5rem rgba(0,0,0,.5);
+    transition-duration: 3s;
+
 }
+
+.temple-cats:hover > p{
+    text-shadow: .2rem .2rem .02rem #010203;
+    transition-duration: 3s;
+    color: #6CF040;
+}
+
+.temple-cats:hover > .temple-span {
+    border:  solid 0px #010203;
+    box-shadow: 0rem 0rem 0rem 0rem #010203;
+}
+
+/*-------------------------------------temple box hover effects end --------------*/
+/*-----------------------------------new--------------------------------------*/

@@ -33,11 +33,12 @@ document.getElementById("temple-of-steve").onmouseout = function() {
 
 
 //---------------------------end STD-------------------------------
+//-----------------------------transition between general sections
 function hw() {
     console.log(document.getElementById("templeBody").offsetHeight);
     
-    var hei = document.getElementById("templeBody").offsetHeight;
-    
+    var generalHeight = document.getElementById("templeBody").offsetHeight;
+    var generalWidth = document.getElementById("templeBody").offsetWidth;
 //    document.getElementsByClassName("guild-cover-top")[0].classList.add("guild-cover-top-act");
 //    document.getElementsByClassName("guild-cover-top")[0].style.cssText = "height:" + hei + "px";
 //    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");
@@ -70,17 +71,27 @@ function removethis() {
         document.querySelector(".col-12 .guild-cover-top .templehide").className = "col-12 guild-cover-top";
     }); 
 }
-
+//-----------------------------transition between general sections end
 //---------------------------------------------------------------------
 //temple of steve general tab mouse over and mouse out
 var countGeneralTabs = document.querySelectorAll(".temple-cats");
 countGeneralTabs.forEach(generalTabHoverEffect);
 
+
 function generalTabHoverEffect(item, index) {   
-    document.getElementsByClassName("temple-cats")[index].addEventListener('mouseover', function() {
-        item.classList.add("actBorder");
+    document.getElementsByClassName("temple-span")[index].addEventListener('mouseover', function() {
+    item.childNodes[3].classList.add("actBorder");
     });
-    document.getElementsByClassName("temple-cats")[index].addEventListener('mouseout', function() {
-        item.classList.remove("actBorder");
+
+    document.getElementsByClassName("temple-span")[index].addEventListener('mouseout', function() {
+        item.childNodes[3].classList.remove("actBorder");
+        item.childNodes[3].classList.add("actBorderRev");
+        setTimeout(function() {
+            item.childNodes[3].classList.remove("actBorderRev");
+        },3000)
     });
+
 }
+
+
+

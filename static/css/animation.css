@@ -75,33 +75,43 @@ transition-delay: 0;
    /* animation: test1 3s ease-in 0s 5 forwards;*/
   /*  animation-name: test1;*/
   
-  stroke: #C440F0;
-  stroke-width: .75rem;
+  /*stroke: #9330B4;*/
+  stroke: rgb(48, 180, 77);
+  stroke-width: 1rem;
   stroke-dasharray: 1800;
   fill: none;
   stroke-linecap: round;
   stroke-linejoin: round;
   animation-name: generalBorders;
-  animation-duration: 2s;
+  animation-duration: 1s;
   animation-iteration-count: 1;
   animation-timing-function: linear;
   animation-fill-mode: forwards;
+  animation-delay: 0s;
 }
 
 @keyframes generalBorders {
-    0%{stroke-dashoffset: 1800}
-    100%{stroke-dashoffset: 0}
- 
- /* to {
-    stroke-dashoffset: -1000;
-  }*/
+    0%{stroke-dashoffset: 1800; }
+    100%{stroke-dashoffset: 0;}
+}
 
+.actBorderRev {
+  stroke: rgb(48, 180, 77);
+  stroke-width: 1rem;
+  stroke-dasharray: 1800;
+  fill: none;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  animation-name: generalBordersRev;
+  animation-duration: 1s;
+  animation-iteration-count: 1;
+  animation-timing-function: linear;
+  animation-fill-mode:  forwards;
+  animation-direction: reverse;
+  animation-delay: 0s;
+}
 
-/*@keyframes test1 {
-    0%{stroke-dashoffset: 0;}
-    100%{stroke-dashoffset: 800;}*/
-    
-    /*0%{border-top: solid 20px purple;}
-    50%{border-top: solid 20px purple; border-right:solid 20px purple;}
-    100%{border-top: solid 20px purple; border-right:solid 20px purple; border-bottom: solid 20px purple;}*/
+@keyframes generalBordersRev {
+    0%{stroke-dashoffset: 1800; }
+    100%{stroke-dashoffset: 0;}
 }
