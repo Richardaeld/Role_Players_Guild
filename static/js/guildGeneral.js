@@ -34,18 +34,52 @@ document.getElementById("temple-of-steve").onmouseout = function() {
 
 //---------------------------end STD-------------------------------
 //-----------------------------transition between general sections
-function hw() {
-    console.log(document.getElementById("templeBody").offsetHeight);
-    
+
+var generalTabClick = document.querySelectorAll(".temple-span");
+generalTabClick.forEach(generalTransition);
+
+function generalTransition(item, index) {
+    document.getElementsByClassName("temple-span")[index].addEventListener("click", function() {
+        var generalHeight = document.getElementById("templeBody").offsetHeight;
+        var generalWidth = document.getElementById("templeBody").offsetWidth;
+        console.log(index);
+        document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
+        setTimeout(function() {
+            document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
+//            document.getElementById("templeMain").classList.add("invisible");
+//            document.getElementById("temple-tenets").classList.remove("invisible");            
+            document.getElementById("templeMain").classList.add("general-display-none");
+            document.getElementById("temple-tenets").classList.remove("general-display-none");
+        },1500);
+    });
+}
+
+document.getElementsByClassName("back-button")[0].addEventListener("click", function() {
     var generalHeight = document.getElementById("templeBody").offsetHeight;
     var generalWidth = document.getElementById("templeBody").offsetWidth;
+    document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
+    setTimeout(function() {
+        document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
+//        document.getElementById("templeMain").classList.remove("invisible")
+//        document.getElementById("temple-tenets").classList.add("invisible");            
+        document.getElementById("templeMain").classList.remove("general-display-none");
+        document.getElementById("temple-tenets").classList.add("general-display-none");
+    },1500);
+})
+
+//function hw() {
+//    console.log(document.getElementById("templeBody").offsetHeight);
+//    var generalHeight = document.getElementById("templeBody").offsetHeight;
+//    var generalWidth = document.getElementById("templeBody").offsetWidth;
+
 //    document.getElementsByClassName("guild-cover-top")[0].classList.add("guild-cover-top-act");
 //    document.getElementsByClassName("guild-cover-top")[0].style.cssText = "height:" + hei + "px";
-//    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");
+//    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");    
+//    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");
 //    document.getElementsByClassName("guild-cover-top")[0].classList.add("templehide");
 //    document.getElementsByClassName("guild-cover-bottom")[0].style.cssText = "height:" + hei + "px";
 
-}
+//}
 
 //document.getElementById("temple1").addEventListener("click", function(){
 //    hw();
@@ -80,7 +114,7 @@ countGeneralTabs.forEach(generalTabHoverEffect);
 
 function generalTabHoverEffect(item, index) {   
     document.getElementsByClassName("temple-span")[index].addEventListener('mouseover', function() {
-    item.childNodes[3].classList.add("actBorder");
+        item.childNodes[3].classList.add("actBorder");
     });
 
     document.getElementsByClassName("temple-span")[index].addEventListener('mouseout', function() {
