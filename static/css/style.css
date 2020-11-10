@@ -82,7 +82,12 @@ body {
 /*bottom border for header*/
 .dice-border {
     height: 2.5rem;
-    background: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06) rgba(0, 0, 0, 0.25);
+    /*background: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06) rgba(0, 0, 0, 0.25);*/
+    background-image: url("../img/wood-grain-1.jpg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    box-shadow: -1rem -1rem 1rem .75rem rgba(0,0,0,.5);
+    z-index: 1;
 }
 
 /*bottom border overlay for header*/
@@ -118,7 +123,7 @@ body {
 .parch button {
     color: black;
     z-index: 2;
-    position:relative;
+    position: relative;
     top: 2.5rem;
     font-size: 2.5rem;
     padding: 2rem 4rem 2rem 4.5rem;
@@ -261,12 +266,14 @@ footer {
     text-align: center;
     color: #fff;
     background-color: #010203;
+    background: linear-gradient( 45deg, #010203, #831d1d );
     font-family: "Comfortaa", sans-serif;
     padding-bottom: 3rem;
 }
 
 .icons p {
     padding: 1rem;
+    text-shadow: .1rem .1rem .01rem #010203;
 }
 
 .icon-creator img {
@@ -331,6 +338,11 @@ footer {
 
 #templeBody { /*  used to replace card-background background color*/
     background-color: #474747;
+    background-color:transparent;
+    position: absolute;
+    z-index: 2;
+    vertical-align: baseline;
+    top: 20rem;
 }
 
 .temple-span {
@@ -352,6 +364,7 @@ footer {
     border-radius: 25%;
     z-index: 0;
     background-color:#878787;
+    background-color: rgba(0, 0, 0, 0.25);
 }
 
 .temple-cats rect,
@@ -449,3 +462,46 @@ footer {
     border: solid 2px #6cf040;
 }
 
+/* --------------------------------submission form-----------------------------------*/
+
+.form-box h1 {
+    color:#6CF040;
+}
+
+.form-image {
+    background-image: url("../img/steve/confession.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.form-box {
+    text-align: center;
+    color:#6CF040;
+    background-color: rgba(0,0,0,.5);
+    border: solid 3px #010203;
+    border-radius: 5%;
+    box-shadow: .25rem .25rem .25rem .01rem rgba(0, 0, 0, 0.25);
+    text-shadow: .2rem .2rem .02rem #010203;
+    font-size: 1.5rem;
+    font-family: "Libre Baskerville", sans-serif;
+    margin-bottom: 2rem;
+}
+
+.input-line {
+    padding-top:.75rem;
+    padding-bottom: 0.75rem;
+
+}
+
+.input-line label {
+    width:30%;
+    vertical-align: top;
+}
+
+.inputline input {
+    width: 60%;
+}
+
+.submit-button {
+    margin-bottom: 1rem;
+}
