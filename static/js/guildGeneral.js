@@ -1,45 +1,29 @@
 //------------------------------start STD
 //----------------- Hover transitional backgrounds and text for main header and header text
+//changes header image and text
 function HeaderBarTrans(headerImg, HeaderText) {
     document.getElementById("header_main").style.backgroundImage = headerImg
     document.getElementById("title-header").textContent = HeaderText;
 }
-
-//---------------------Mouse over effect for header image and text
-document.getElementById("home").onmouseover = function() {
-    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-};
-
-document.getElementById("war-of-the-hallow-herd").onmouseover = function() {
-    HeaderBarTrans("url(static/img/hallow_herd/hallow_banner.jpg)", "War of the Hallow Herd");
-};
-
-document.getElementById("tomb-of-annihilation").onmouseover = function() {
-    HeaderBarTrans("url(static/img/tomb/toa_card.jpg)", "Tomb of Anihilation");
-};
-    
-document.getElementById("temple-of-steve").onmouseover = function () {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
-};
-
-//------------------mouse out effect for header image and text
-document.getElementById("home").onmouseout = function() {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
-};
-
-document.getElementById("war-of-the-hallow-herd").onmouseout = function() {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
-};
-
-document.getElementById("tomb-of-annihilation").onmouseout = function() {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
-};
-
-document.getElementById("temple-of-steve").onmouseout = function() {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
-};
-
-
+//sets "hover" effect to change header image and text
+function installHeader(title, imgLoc, idLoc, outImgLoc, outTitleLoc){
+        document.getElementById(idLoc).onmouseover = function(){
+        HeaderBarTrans(imgLoc, title);
+        }
+        document.getElementById(idLoc).onmouseout = function(){
+        HeaderBarTrans(outImgLoc, outTitleLoc);
+        }
+}
+//pulls from an object to change all "hover" effects for Main Nav to change header image and text 
+function allocateHeader() {
+    var index = 0;
+    for(i=0; i<headerInfo.length-1; i++){
+        installHeader(headerInfo[index].title, headerInfo[index].imgLoc, headerInfo[index].idLoc, headerInfo[1].imgLoc, headerInfo[1].title)
+        index++;
+    }
+}
+// changes header according to which link mouse if hovering over
+allocateHeader();
 //---------------------------end STD-------------------------------
 //-----------------------------transition between general sections
 
