@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+/*--------------------- default color  ---------------------*/
 
 body {
     background-color: #010203;
@@ -37,7 +38,7 @@ body {
     color: #fff;
 }
 
-/*------------Header title and image--------------*/
+/*------------Header title and images--------------*/
 .header-img {
     transition: all .25s;
     position: relative;
@@ -63,25 +64,16 @@ body {
 }
 
 /*header overlay*/
-.header-img span,
+.header-span,
 .dice-border span {
     position: absolute;
     width: 100%;
     height: 100%;
-}
-
-.dice-border span {
     background-color: rgba(0,0,0,.5);
-
 }
 
-.header-span {
-    background-color: rgba(0,0,0,.5);
-
-}
-
-/*header title*/
-.header-title {
+/*header title */
+.header-title {  /*---------------------  bad target  refactor to  header-title-div  this is a text item!!---------------------*/
     color: #fff;
     position: relative;
     text-align: center;
@@ -92,12 +84,12 @@ body {
 /*bottom border for header*/
 .dice-border {
     height: 2.5rem;
-    /*background: linear-gradient(#b07917, #8e5e09, #805f25, #5d3d06) rgba(0, 0, 0, 0.25);*/
-    background-image: url("../img/wood-grain-1.jpg");
+    /*background-image: url("../img/wood-grain-1.jpg");
     background-size: cover;
-    background-repeat: no-repeat;
+    background-repeat: no-repeat;*/
+    background: url("../img/wood-grain-1.jpg") top left/cover no-repeat;
     box-shadow: -1rem -1rem 1rem .75rem rgba(0,0,0,.5);
-    z-index: 3;
+    z-index: 0;
 }
 
 /*bottom border overlay for header*/
@@ -124,36 +116,33 @@ body {
     text-align: left;
     height:90vh;
     background: url("../img/parchment.png") center/100% 100% no-repeat;
-  /*  transition-duration: 3s;*//*---------------------------------------------------------------reenable*/
-    font-family: "Dancing Script", sans-serif;
+    transition-duration: 3s;
+    /*font-family: "Dancing Script", sans-serif;*/
+    font: 2.5rem "Dancing Script", sans-serif;
     margin: 1rem;
-    animation-name: "test";
+    top: 2rem;
 }
-.parch p, 
-.parch button {
+
+.parch p {
     color: black;
     z-index: 2;
     position: relative;
     top: 2.5rem;
-    font-size: 2.5rem;
+    /*font-size: 2.5rem;*/
     padding: 2rem 4rem 2rem 4.5rem;
 }
 
-.parch button {
-    border: none;
-    background-color: transparent;
-}
+/*----------------------modal animations implemented from JS-----------------------*/
 
-/*----------------------modal animations-----------------------*/
-.cardOpen {
+.cardOpen {/*----- used in js -----*/
     transform: scale(1);
 }
 
-.modalBack {
+.modalBack {/*----- used in js -----*/
     animation: modalBackground 3s ease-out 0s 1 forwards;
 }
 
-.modalBackRev {
+.modalBackRev {/*----- used in js -----*/
     animation: modalBackgroundRev 3s ease-out 0s 1 forwards;
 }
 
@@ -175,7 +164,6 @@ body {
 .card-background {
     /*background-color: #2c2c2c;*/
     background:#474747;
-    z-index: -3;
 }
 
 .coverCards {
@@ -186,8 +174,15 @@ body {
     z-index: -3;
 }
 
-.coverCardsAct {
+.coverCardsAct {/*----- used in js to over write .coverCards-----*/
     z-index: 2;
+}
+
+.guild-space {
+    margin: 2rem;
+    text-align: center;
+    color: #d6d1a6;
+    font: 600 2.25rem "Amatic SC", sans-serif;
 }
 
 /*outer layer*/
@@ -221,7 +216,6 @@ body {
     position: absolute;
     backface-visibility: hidden;
     height: 100%;
-    width: 100%;
 }
 
 .guild-card p {
@@ -237,18 +231,7 @@ body {
     transform: rotateY(180deg);
 }
 
-/*selectable images for different guilds*/
-.choose-guild {
-    text-align: center;
-    color: #d6d1a6;
-    font: 600 2.25rem "Amatic SC", sans-serif;
-}
-
-.guild-space {
-    margin: 2rem;
-}
-
-/*image presets*/
+/*images and presets*/
 .face {
     background: center center/cover no-repeat;
     border-radius: 5%;
@@ -267,10 +250,6 @@ body {
     background-image: url("../img/tomb/toa_card.jpg");
 }
 
-.bottom-img-text {
-    top: 20rem;
-}
-
 /*footer*/
 footer {
     text-align: center;
@@ -279,19 +258,20 @@ footer {
     background: linear-gradient( 45deg, #010203, #831d1d );
     font-family: "Comfortaa", sans-serif;
     padding-bottom: 3rem;
+       /* font-size: 2.5rem;*/
+    font: 1rem "Comfortaa", sans-serif;
 }
 
 .icons p {
     padding: 1rem;
-    text-shadow: .1rem .1rem .01rem #010203;
+    text-shadow: .2rem .2rem .1rem #010203;
 }
 
 .icon-creator img {
-    border-radius: 50%
+    border-radius: 50%;
 }
 
 .icons a {
-    font-size: 2.5rem;
     text-decoration: none;
     padding: 1rem;
 }
