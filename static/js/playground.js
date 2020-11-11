@@ -115,13 +115,12 @@ function writeMe(text) {
 };
 
 //----------------- Hover transitional backgrounds and text for main header and header text
-
-
+//changes header image and text
 function HeaderBarTrans(headerImg, HeaderText) {
     document.getElementById("header_main").style.backgroundImage = headerImg
     document.getElementById("title-header").textContent = HeaderText;
 }
-
+//sets "hover" effect to change header image and text
 function installHeader(title, imgLoc, idLoc, outImgLoc, outTitleLoc){
         document.getElementById(idLoc).onmouseover = function(){
         HeaderBarTrans(imgLoc, title);
@@ -130,7 +129,7 @@ function installHeader(title, imgLoc, idLoc, outImgLoc, outTitleLoc){
         HeaderBarTrans(outImgLoc, outTitleLoc);
         }
 }
-
+//pulls from an object to change all "hover" effects for Main Nav to change header image and text 
 function allocateHeader() {
     var index = 0;
     for(i=0; i<headerInfo.length-1; i++){
