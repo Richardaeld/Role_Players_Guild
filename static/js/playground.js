@@ -3,10 +3,12 @@ var steveText = ["Have you heard of our diety? Oh you havent!? Cledus junior, JR
 var hallowText = ["The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self! Will our party survive the wilderness?"];
 var tombText = ["We pay our adventurers in pure unadulterated treasure! Our expeditions are full of intrigue! Also posion, disease, and heaping handfuls of death! Fill our expeditions with willing hands! Please? We are literally dying out there...for you to join us!"];
 var textArray = [];
-var injectModal = document.getElementById("startHere");
+var injectModalText = document.getElementById("modal-text");
 var modalIndex = 0;
+var modalLoc = document.querySelector("#parch");
+var modalFilterLoc = document.querySelector("#modal-cover");
 
-//-----------------listener for guild card clicks
+//-----------------listener for guild card clicks for modal calls
 document.querySelector("#steve").addEventListener("click", steveCard, false);
 document.querySelector("#hallow").addEventListener("click", hallowCard, false);
 document.querySelector("#tomb").addEventListener("click", tombCard, false);
@@ -25,9 +27,9 @@ function tombCard(){
     modalCard(tombText);
 }
 
-//adds an invisible layer to 'disable' user mouse clicks
+//------------------adds an invisible layer to 'disable' user mouse clicks
 function disableMouse() {
-    document.getElementsByClassName("coverCards")[0].classList.add("coverCardsAct");
+    document.getElementsByClassName("coverCards")[0].classList.add("coverCardsAct"); 
     setTimeout(function() {
         document.getElementsByClassName("coverCards")[0].classList.remove("coverCardsAct");
     },6000);
@@ -41,13 +43,13 @@ function modalCard(text) {
     
     //scales parchment modal to full size at appropiate time
     setTimeout(function() {
-        document.querySelector("#parch").className = "col-11 col-md-6 parch parchdis cardOpen";
+        document.querySelector("#parch").className = "col-11 col-md-6 parch cardOpen"; // Opens modal with cardopen class add
     },3000);
     
     //catches animation so it can be replayed and playes background cover layer expansion 
    // document.querySelector("#modal-cover").className = "col-12 modal-cover";
     window.requestAnimationFrame(function() {
-        document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBack";
+        modalFilterLoc.className = "col-12 modal-cover modalBack"; //add modalback starts modal filer forward animation
     });
 
     //timer delay for text to fill on parchment modal
@@ -63,22 +65,22 @@ document.getElementById("modal-cover").onclick = function() {
     disableMouse();
 
     //reverses animation for modal to disappear
-    document.getElementById("parch").classList.add("boxRev");
-    document.querySelector("#parch").className = "col-11 col-md-6 parch"
+    //document.getElementById("parch").classList.add("boxRev");
+    document.querySelector("#parch").className = "col-11 col-md-6 parch boxRev" //removes cardOpen and adds boxRev
 
     //catches animation so it can be replayed
     setTimeout(function() {
         window.requestAnimationFrame(function() {
-            document.querySelector("#modal-cover").className = "col-12 modal-cover parchdis modalBackRev";
+            modalFilterLoc.className = "col-12 modal-cover modalBackRev"; //reverses modal filter
             });
      },3000);
 
      //stops settimeout function for playing
-     clearTimeout(document.getElementById("startHere").textContent);
+     clearTimeout(injectModalText.textContent);
     
      //clears out modal text content for reuse
     setTimeout(function() {
-        document.getElementById("startHere").textContent = "";
+        injectModalText.textContent = "";
     },3000);
 
     //clears variable content for modal reuse
@@ -101,7 +103,7 @@ function writeMe(text) {
     
     //prints to screen
     if(modalIndex != textArray.length && modalIndex < textArray.length){
-        injectModal.textContent += textArray[modalIndex]; 
+        injectModalText.textContent += textArray[modalIndex]; 
         modalIndex++;
         p;
     }
