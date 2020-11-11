@@ -88,7 +88,6 @@ document.getElementById("modal-cover").onclick = function() {
 
 //-------------takes a string and converts it to an array and applies it in a writting fashion to modals
 function writeMe(text) {
-    console.log(text);
     //make array for calling
     if (textArray.length == 0 ){
         for(i=0; i<text[0].length; i++) {
@@ -99,18 +98,18 @@ function writeMe(text) {
     };
 
     //sets printing variable so its stoppablemodalIndex
-    var p = setTimeout(function() {writeMe();},50);
+    var stopModalOnOffClick = setTimeout(function() {writeMe();},50);
     
     //prints to screen
     if(modalIndex != textArray.length && modalIndex < textArray.length){
         injectModalText.textContent += textArray[modalIndex]; 
         modalIndex++;
-        p;
+        stopModalOnOffClick;
     }
    
     // stops writting if user off clicks
     document.getElementById("modal-cover").addEventListener("click", function(){
-        clearTimeout(p);
+        clearTimeout(stopModalOnOffClick);
     });
 
 };
@@ -136,44 +135,9 @@ function allocateHeader() {
     var index = 0;
     for(i=0; i<headerInfo.length-1; i++){
         installHeader(headerInfo[index].title, headerInfo[index].imgLoc, headerInfo[index].idLoc, headerInfo[3].imgLoc, headerInfo[3].title)
-      //  console.log(index);
         index++;
     }
 }
 
-
-
+// changes header according to which link mouse if hovering over
 allocateHeader();
-
-createIndexModal();
-
-//---------------------Mouse over effect for header image and text
-//document.getElementById("war-of-the-hallow-herd").onmouseover = function() {
-//    HeaderBarTrans("url(static/img/hallow_herd/hallow_banner.jpg)", "War of the Hallow Herd");
-//}
-
-//document.getElementById("tomb-of-annihilation").onmouseover = function() {
-//    HeaderBarTrans("url(static/img/tomb/toa_card.jpg)", "Tomb of Anihilation");
-//}
-    
-//document.getElementById("temple-of-steve").onmouseover = function () {
-//    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Temple of Steve");
-//};
-
-//------------------mouse out effect for header image and text
-//document.getElementById("war-of-the-hallow-herd").onmouseout = function() {
-//    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-//}
-
-//document.getElementById("tomb-of-annihilation").onmouseout = function() {
-//    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-//}
-
-//document.getElementById("temple-of-steve").onmouseout = function() {
-//    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-//};
-
-//var headerImgLoc = ["war-of-the-hallow-herd", "temple-of-steve"]
-//var headerImgUrl = ["url(static/img/header.jpg)", "url(static/img/steve/temple_card.jpg)"]
-//var HeaderPageText = ["War of the Hallow Herd", "Temple of Steve"]
-

@@ -21,18 +21,6 @@ var headerInfo = [
 //demoed but failed to inject name into querySelector and text into function modalCard
 //not an object error but a for loop error combined with .length
 //didnt use for i (index) for index calls but an outside index(index) held within for loop
-
-//function createIndexModal() {
-//    var index = 0;  
-//    for (i=0; i<guildCardText.length-1; i++){
-//        console.log(index);
-//        document.querySelector(guildCardText[index].name).addEventListener("click", function() {
-//            modalCard(guildCardText[index].text);
-//        });
-//        index++
-//    };
-//}
-
 var guildCardText = [
     {
         name: "#hallow",
