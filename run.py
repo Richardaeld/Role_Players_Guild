@@ -12,7 +12,7 @@ def index():
 
 @app.route("/temple")
 def temple():
-    return render_template("temple.html", title_header="Temple of Steve", header_img="steve-header-img")
+    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img")
 
 
 @app.route("/hallow")

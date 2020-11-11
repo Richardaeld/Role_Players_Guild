@@ -8,7 +8,8 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" type="text/css">
     <!-- custom style for page -->
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">    
-    <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
+    {% block custom_link %}
+    {% endblock %}
 
     <title>Role Players Guild</title>
 
@@ -30,7 +31,7 @@
         <nav class="custom-nav">
             <ul class="nav">
                 <li class="nav-item">
-                    <a href="{{ url_for('index') }}">Home</a>
+                    <a href="{{ url_for('index') }}" id="home">Home</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('temple') }}" id="temple-of-steve">Temple of Steve</a>
@@ -44,26 +45,36 @@
             </ul>
         </nav>
         <!--Header Bar-->
-        <div class="col-12 header-img {{ header_img }}" id="header_main">
-            <div class="row no-gutters">
-                <span>
-                    <div class="header-title">
-                        <h1 id="title-header">{{ title_header }}</h1>
+        <div class="col-12 header-img {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-6 header-title-div">                <!--Header title Filter-->
+                                <h1 id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
                     </div>
                 </span>
             </div>
         </div>
 
+
         <!--gradient border for header bar-->
-        <div class="col-12 dice-border">
+        <div class="col-12 dice-border" id="header-border">
             <span></span>
         </div>
+    
+    {% block main_content %}        
+    {% endblock %}
+
+    {% block temple_test %}
+    {% endblock %}
 
     </header>
 
 
-        {% block main_content %}        
-        {% endblock %}
+ 
 
     <!--footer-->
     <footer class="row no-gutters">

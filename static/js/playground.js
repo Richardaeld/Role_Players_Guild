@@ -144,3 +144,4 @@ document.getElementById("tomb-of-annihilation").onmouseout = function() {
 document.getElementById("temple-of-steve").onmouseout = function() {
     HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
 };
+

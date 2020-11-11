@@ -6,29 +6,37 @@ function HeaderBarTrans(headerImg, HeaderText) {
 }
 
 //---------------------Mouse over effect for header image and text
+document.getElementById("home").onmouseover = function() {
+    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
+};
+
 document.getElementById("war-of-the-hallow-herd").onmouseover = function() {
     HeaderBarTrans("url(static/img/hallow_herd/hallow_banner.jpg)", "War of the Hallow Herd");
-}
+};
 
 document.getElementById("tomb-of-annihilation").onmouseover = function() {
     HeaderBarTrans("url(static/img/tomb/toa_card.jpg)", "Tomb of Anihilation");
-}
+};
     
 document.getElementById("temple-of-steve").onmouseover = function () {
-    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Temple of Steve");
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
 };
 
 //------------------mouse out effect for header image and text
+document.getElementById("home").onmouseout = function() {
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
+};
+
 document.getElementById("war-of-the-hallow-herd").onmouseout = function() {
-    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-}
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
+};
 
 document.getElementById("tomb-of-annihilation").onmouseout = function() {
-    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
-}
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
+};
 
 document.getElementById("temple-of-steve").onmouseout = function() {
-    HeaderBarTrans("url(static/img/header.jpg)", "Role Players Guild")
+    HeaderBarTrans("url(static/img/steve/temple_card.jpg)", "Welcome to the Temple of Steve");
 };
 
 
@@ -36,36 +44,61 @@ document.getElementById("temple-of-steve").onmouseout = function() {
 //-----------------------------transition between general sections
 
 var generalTabClick = document.querySelectorAll(".temple-span");
+var generalTab = document.querySelectorAll(".general-tab");
+
 generalTabClick.forEach(generalTransition);
+generalTab.forEach(generalBack)
 
 function generalTransition(item, index) {
     document.getElementsByClassName("temple-span")[index].addEventListener("click", function() {
-        var generalHeight = document.getElementById("templeBody").offsetHeight;
+        var generalHeight = document.getElementById("header-span").offsetHeight;
         var generalWidth = document.getElementById("templeBody").offsetWidth;
         console.log(index);
         document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
+        document.getElementById("header-span").classList.add("header-title-div-fade")
+
         setTimeout(function() {
+            //closes already open general windows
+//            if(document.querySelector(".general-display-none-open") !== null){
+//                document.querySelector(".general-display-none-open").classList.add("general-display-none")
+//                document.querySelector(".general-display-none-open").classList.remove("general-display-none-open")
+//            };
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
-//            document.getElementById("templeMain").classList.add("invisible");
-//            document.getElementById("temple-tenets").classList.remove("invisible");            
-            document.getElementById("templeMain").classList.add("general-display-none");
-            document.getElementById("temple-tenets").classList.remove("general-display-none");
+            document.getElementsByClassName("general-tab")[index].classList.remove("general-display-none");
+            document.getElementsByClassName("general-tab")[index].classList.add("general-display-none-open");
+            document.getElementById("temple-main").classList.add("general-display-none")
+
         },1500);
+//        setTimeout(function() {
+//            var viewMe = document.getElementsByClassName("general-tab")[index]
+//            viewMe.scrollIntoView();            
+//        }, 2000);
+
     });
 }
 
-document.getElementsByClassName("back-button")[0].addEventListener("click", function() {
-    var generalHeight = document.getElementById("templeBody").offsetHeight;
-    var generalWidth = document.getElementById("templeBody").offsetWidth;
-    document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
-    setTimeout(function() {
-        document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
-//        document.getElementById("templeMain").classList.remove("invisible")
-//        document.getElementById("temple-tenets").classList.add("invisible");            
-        document.getElementById("templeMain").classList.remove("general-display-none");
-        document.getElementById("temple-tenets").classList.add("general-display-none");
-    },1500);
+function generalBack(item, index) {
+    document.getElementsByClassName("back-button")[index].addEventListener("click", function() {
+        var generalHeight = document.getElementById("header-span").offsetHeight;
+//        var generalWidth = document.getElementById("templeBody").offsetWidth;
+//        console.log(index);
+        document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
+        document.getElementsByClassName("general-tab")[index].classList.add("header-title-div-fade")
+
+        setTimeout(function() {
+            document.getElementById("header-span").classList.remove("header-title-div-fade")
+
+            document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"          
+        //    document.getElementById("templeMain").classList.remove("general-display-none");
+            document.getElementsByClassName("general-tab")[index].classList.add("general-display-none");
+            document.getElementById("temple-main").classList.remove("general-display-none")
+
+        },1500);
 })
+}
+
+
+
 
 //function hw() {
 //    console.log(document.getElementById("templeBody").offsetHeight);
@@ -126,6 +159,6 @@ function generalTabHoverEffect(item, index) {
     });
 
 }
-
+//-------------------------------------------------submission form----------------------------------
 
 
