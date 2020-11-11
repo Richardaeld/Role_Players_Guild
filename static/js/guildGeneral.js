@@ -37,75 +37,33 @@ function generalTransition(item, index) {
     document.getElementsByClassName("temple-span")[index].addEventListener("click", function() {
         var generalHeight = document.getElementById("header-span").offsetHeight;
         var generalWidth = document.getElementById("templeBody").offsetWidth;
-        console.log(index);
         document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
         document.getElementById("header-span").classList.add("header-title-div-fade")
 
         setTimeout(function() {
-            //closes already open general windows
-//            if(document.querySelector(".general-display-none-open") !== null){
-//                document.querySelector(".general-display-none-open").classList.add("general-display-none")
-//                document.querySelector(".general-display-none-open").classList.remove("general-display-none-open")
-//            };
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
             document.getElementsByClassName("general-tab")[index].classList.remove("general-display-none");
             document.getElementsByClassName("general-tab")[index].classList.add("general-display-none-open");
             document.getElementById("temple-main").classList.add("general-display-none")
-
         },1500);
-//        setTimeout(function() {
-//            var viewMe = document.getElementsByClassName("general-tab")[index]
-//            viewMe.scrollIntoView();            
-//        }, 2000);
-
     });
 }
 
 function generalBack(item, index) {
     document.getElementsByClassName("back-button")[index].addEventListener("click", function() {
         var generalHeight = document.getElementById("header-span").offsetHeight;
-//        var generalWidth = document.getElementById("templeBody").offsetWidth;
-//        console.log(index);
         document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
         document.getElementsByClassName("general-tab")[index].classList.add("header-title-div-fade")
 
         setTimeout(function() {
             document.getElementById("header-span").classList.remove("header-title-div-fade")
-
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"          
-        //    document.getElementById("templeMain").classList.remove("general-display-none");
             document.getElementsByClassName("general-tab")[index].classList.add("general-display-none");
             document.getElementById("temple-main").classList.remove("general-display-none")
-
         },1500);
-})
+    });
 }
 
-
-
-
-//function hw() {
-//    console.log(document.getElementById("templeBody").offsetHeight);
-//    var generalHeight = document.getElementById("templeBody").offsetHeight;
-//    var generalWidth = document.getElementById("templeBody").offsetWidth;
-
-//    document.getElementsByClassName("guild-cover-top")[0].classList.add("guild-cover-top-act");
-//    document.getElementsByClassName("guild-cover-top")[0].style.cssText = "height:" + hei + "px";
-//    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");    
-//    document.getElementsByClassName("guild-cover-bottom")[0].classList.add("guild-cover-bottom-act");
-//    document.getElementsByClassName("guild-cover-top")[0].classList.add("templehide");
-//    document.getElementsByClassName("guild-cover-bottom")[0].style.cssText = "height:" + hei + "px";
-
-//}
-
-//document.getElementById("temple1").addEventListener("click", function(){
-//    hw();
-//});
-
-
-//document.getElementById("temple1").addEventListener("click", function() {
-//applythis();
-//});
 
 function applythis() {
     window.requestAnimationFrame(function() {
@@ -128,7 +86,6 @@ function removethis() {
 var countGeneralTabs = document.querySelectorAll(".temple-cats");
 countGeneralTabs.forEach(generalTabHoverEffect);
 
-
 function generalTabHoverEffect(item, index) {   
     document.getElementsByClassName("temple-span")[index].addEventListener('mouseover', function() {
         item.childNodes[3].classList.add("actBorder");
@@ -141,7 +98,6 @@ function generalTabHoverEffect(item, index) {
             item.childNodes[3].classList.remove("actBorderRev");
         },3000)
     });
-
 }
 //-------------------------------------------------submission form----------------------------------
 
