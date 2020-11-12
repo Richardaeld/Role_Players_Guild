@@ -64,23 +64,6 @@ function generalBack(item, index) {
     });
 }
 
-
-//function applythis() {
-//    window.requestAnimationFrame(function() {
-//       document.querySelector(".col-12 .guild-cover-top").className = "col-12 guild-cover-top templehide";
-//    });
-
-//    setTimeout(function() {
-//        document.getElementById("temple-main").style.cssText = "display:none";
-//        document.getElementById("temple-tenets").style.cssText = "display:block";
-//    },1500);
-//}
-
-//function removethis() {
-//    window.requestAnimationFrame(function() {
-//        document.querySelector(".col-12 .guild-cover-top .templehide").className = "col-12 guild-cover-top";
-//    }); 
-//}
 //-----------------------------transition between general sections end
 //-----------------------------transition effects between general sections----------------------------------------
 //temple of steve general tab mouse over and mouse out
