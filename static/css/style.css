@@ -4,11 +4,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
 /*--------------------- default color  ---------------------*/
-
 body {
     background-color: #010203;
 }
-
 /*--------------------- Nav bar---------------------*/
 .custom-nav {
     font-family: "Libre Baskerville", sans-serif;
@@ -62,7 +60,6 @@ body {
 .tomb-header-img {
     background-image: url("../img/tomb/toa_card.jpg");
 }
-
 /*header overlay*/
 .header-span,
 .dice-border span {
@@ -71,7 +68,6 @@ body {
     height: 100%;
     background-color: rgba(0,0,0,.5);
 }
-
 /*header title */
 .header-title {  /*---------------------  bad target  refactor to  header-title-div  this is a text item!!---------------------*/
     color: #fff;
@@ -80,23 +76,17 @@ body {
     top: 17.5rem;
     font-family: "Lobster", sans-serif;
 }
-
 /*bottom border for header*/
 .dice-border {
     height: 2.5rem;
-    /*background-image: url("../img/wood-grain-1.jpg");
-    background-size: cover;
-    background-repeat: no-repeat;*/
     background: url("../img/wood-grain-1.jpg") top left/cover no-repeat;
     box-shadow: -1rem -1rem 1rem .75rem rgba(0,0,0,.5);
     z-index: 0;
 }
-
 /*bottom border overlay for header*/
 .dice-border span {
     height: 2.5rem;
 }
-
 /*-----------------modal------------------*/
 /*modal overlay*/
 .modal-cover,
@@ -117,7 +107,6 @@ body {
     height:90vh;
     background: url("../img/parchment.png") center/100% 100% no-repeat;
     transition-duration: 3s;
-    /*font-family: "Dancing Script", sans-serif;*/
     font: 2.5rem "Dancing Script", sans-serif;
     margin: 1rem;
     top: 2rem;
@@ -128,12 +117,9 @@ body {
     z-index: 2;
     position: relative;
     top: 2.5rem;
-    /*font-size: 2.5rem;*/
     padding: 2rem 4rem 2rem 4.5rem;
 }
-
 /*----------------------modal animations implemented from JS-----------------------*/
-
 .cardOpen {/*----- used in js -----*/
     transform: scale(1);
 }
@@ -159,7 +145,6 @@ body {
 75% {transform:scaleY(.01) scaleX(0);}
 100% {transform:scaleY(0) scaleX(0);}
 }
-
 /*----------------3d cards----------------*/
 .card-background {
     /*background-color: #2c2c2c;*/
@@ -184,7 +169,6 @@ body {
     color: #d6d1a6;
     font: 600 2.25rem "Amatic SC", sans-serif;
 }
-
 /*outer layer*/
 .outer {
     background-color: transparent;
@@ -197,7 +181,6 @@ body {
 .outer:hover .card-spin {
     transform: rotateY(180deg);
 }
-
 /*middle layer*/
 .card-spin {
     position: relative;
@@ -210,7 +193,6 @@ body {
     color: #010203;
     box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25);
 }
-
 /*inner layer*/
 .guild-card {
     position: absolute;
@@ -230,7 +212,6 @@ body {
 .back {
     transform: rotateY(180deg);
 }
-
 /*images and presets*/
 .face {
     background: center center/cover no-repeat;
@@ -279,12 +260,7 @@ footer {
 .icons a img {
     max-height: 100px;
 }
-
 /*--------------------------------------temple of steve general tab------------------------------*/
-#temple-main {
-    position: relative;
-}
-
 .general-cover {
     width: 100%;
     height: 0px;
@@ -294,155 +270,77 @@ footer {
     transition-duration: 1.5s;
 }
 
-/*.temple-cats {
-    height:10rem;
-    width: 100%;
-    margin: 1rem;
-    color: #2b65d1;
-    background-color: #e1edfb;
-    text-align: center;
-    border:solid 2px #010203;
-    border-radius: 10%;
-    word-wrap: break-word;
-}
-
-.temple-cats h1 {
-    position: relative;
-    top: 3rem;
-}*/
-
-/*
-.guild-cover-top {
-    position: absolute;
-    background-color: purple;
-    z-index: 3d;
-    transition-duration: 1.5s;
-    width: 100%;
-}*/
-
 .general-display-none {
     display: none;
 }
-
-.general-tab {
-    font-family: "Amatic SC", sans-serif;
-    position: absolute;
-    z-index: 2;
-    font-size: 2rem;
-}
 /*------------------------------temple general box hover effect--------------------------------*/
-
-#templeBody { /*  used to replace card-background background color*/
-    background-color: #474747;
-    background-color:transparent;
-    position: absolute;
-    z-index: 2;
-    vertical-align: baseline;
-    top: 20rem;
+#temple-main {
+    position: relative;
 }
 
+#temple-body { /*  used to replace card-background background color*/
+    top: 20rem;         /*---------positions general tabs----------*/
+}
+
+#temple-body,
 .temple-span {
     background-color: transparent;
     position: absolute;
-    z-index: 3;
+    z-index: 2;
+}
+
+.temple-span,
+.temple-cats {
     width: 15rem;
     height: 5rem;
     border-radius: 25%;
-    box-shadow: .1rem .1rem .1rem .1rem rgba(0, 0, 0, 0.25);
+    transition-duration: 1.5s;
 }
 
 .temple-cats {
-    position: relative;
-    width: 15rem;
-    height: 5rem;
     fill: none;
-    border-radius: 25%;
     z-index: 0;
-    background-color:#878787;
     background-color: rgba(0, 0, 0, 0.5);
+    text-align: center;
+    position: static;
+    margin: 3rem;
+    /*color: #D25F38;*/
+    color: #fff;
+    font: 1.5rem "comfortaa", sans-serif;
 }
 
 .temple-cats rect,
 .temple-cats svg {
     width:100%;
     height:100%;
-    position: relative;
-    transition-duration: 0;
 } 
-
-
-.temple-cats {
-    text-align: center;
-    position: static;
-    margin: 3rem;
-    /*border-radius: 50%;*/
-    /*background-color: #40c4f0;*/
-    color: #D25F38;
-    color: #fff;
-    /*transition-duration: 5s;*/
-    font-size: 1.5rem;
-    font-family: "comfortaa", sans-serif;
-    /*border: gray 1rem solid;*/
-    transition-duration: 3s;
-}
 
 .temple-cats p {
     position: relative;
-    bottom: 4rem;
+    bottom: 3.5rem;
     text-shadow: .1rem .1rem .01rem #010203;
     font-weight: 700;
 }
 
 .temple-cats:hover {
-    color: #6CF040;
-    background-color: #237591;
     background-color: rgba(0,0,0,.75);
-    /*box-shadow: .75rem .75rem .75rem .5rem rgba(0,0,0,.5);*/
-    transition-duration: 3s;
+    color: #87BA76;
 }
-
-.temple-cats:hover > p{
-    text-shadow: .2rem .2rem .02rem #010203;
-    transition-duration: 3s;
-    color: #6CF040;
-}
-
-.temple-cats:hover > .temple-span {
-    border:  solid 0px #010203;
-/*    box-shadow: 0rem 0rem 0rem 0rem #010203;*/
-}
-
 /*-------------------------------------temple box hover effects end --------------*/
-/*-----------------------------------new--------------------------------------*/
-
 .general-tab {
-    color: #6CF040;
-    font-size: 1.5rem;
+    font: 2rem "Amatic SC", sans-serif;
+    position: absolute;
+    z-index: 2;
     text-shadow: .2rem .2rem .02rem #010203;
     height: 60rem;
+    text-align: center;
 }
 
 .general-tab h1 {
-    font-family: "Dancing Script", sans-serif;
-    color: #FE8202;
-    color: rgba(254, 130, 2, .85);
-    color:#CDD0E3;
-    color: #fff;
-    color: #027EFE;
-    color: #40c4f0;
-    color: #6CF040;
+    font: 5rem "Dancing Script", sans-serif;
     color: #fff;
     margin-top: 3rem;
-    font-size: 5rem;
-    text-align: center;
-    text-shadow: .25rem .25rem .15rem #027EFE;
-    text-shadow: .25rem .25rem .15rem rgba(254, 130, 2, .85), 0 0 .25rem #fff;
-    text-shadow: .25rem .25rem .1rem #010203;
-    text-shadow: .25rem .25rem .1rem #40c4f0;
     text-shadow: .25rem .25rem .15rem #717067;
-
-
-    /*text-decoration: underline;*/
 }
 
 .general-tab ul {
@@ -452,16 +350,9 @@ footer {
 
 .form-filter,
 .general-tab li {
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    color: #e3e0cd;
-    color: #027efe;
     color: #fff;
-    /*text-shadow: .15rem .15rem #027EFE;
-    text-shadow: .15rem .15rem #717067;*/
-    /*text-shadow: .1rem .1rem rgba(254, 130, 2, .85);*/
+    background-color: rgba(0, 0, 0, 0.5);
     text-shadow: .1rem .1rem #010203;
-    font-size: 2rem;
     font-weight:700;
 }
 
@@ -470,15 +361,13 @@ footer {
     height: 100%;
 }
 
-
-
 .back-button {
     position: absolute;
     background-color: rgba(0,0,0,.5);
     left:1rem;
     height: 3.75rem;
     color: #fff;
-    width:5%!important;
+    width:5%;
     border: solid 2px #fff;
 }
 
@@ -503,16 +392,11 @@ footer {
     border: solid 2px rgba(254, 130, 2, .85);
     transform: scale(1.1);
 }
-
 /* --------------------------------submission form-----------------------------------*/
-
 .general-tab {
-    background-image: url("../img/steve/confession.png");
-    background-size: cover;
-    background-repeat: no-repeat;
+    background: url("../img/steve/confession.png") top center/cover no-repeat;
     min-height: 45rem;
     max-height:55rem;  /*----------------------------does conflict with wood grain border without this------------*/
-    background-position: top center;
     transition-duration: 1.5s;
 }
 
@@ -530,7 +414,7 @@ footer {
     width:30%;
     vertical-align: top;
     left: -15rem;
-    text-align: right
+    text-align: right;
 }
 
 .input-line textarea,
@@ -541,21 +425,5 @@ footer {
 
 .submit-button {
     margin-bottom: 1rem;
-    transition-duration: 1.5s
+    transition-duration: 1.5s;
 }
-
-
-/*
-.form-box {
-    text-align: center;
-    color:#6CF040;
-    background-color: rgba(0,0,0,.5);
-    border: solid 3px #010203;
-    border-radius: 5%;
-    box-shadow: .25rem .25rem .25rem .01rem rgba(0, 0, 0, 0.25);
-    text-shadow: .2rem .2rem .02rem #010203;
-    font-size: 1.5rem;
-    font-family: "Libre Baskerville", sans-serif;
-    margin-bottom: 2rem;
-}
-

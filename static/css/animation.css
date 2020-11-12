@@ -1,5 +1,5 @@
 .actBorder{
-    stroke: rgb(48, 180, 77);
+    stroke: #006090;
     stroke-dasharray: 1800;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -14,7 +14,7 @@
 }
 
 .actBorderRev {
-    stroke: rgb(48, 180, 77);
+    stroke: #006090;
     stroke-dasharray: 1800;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -42,7 +42,7 @@
 }
 
 #title-header{
-    text-shadow: .35rem .35rem .15rem #c04000;
+    text-shadow: .35rem .35rem .15rem #903000;
     font-weight: 700;
     font-size: 3.5rem;
     color: #fff;
