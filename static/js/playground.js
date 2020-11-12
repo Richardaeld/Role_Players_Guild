@@ -90,10 +90,10 @@ document.getElementById("modal-cover").onclick = function() {
 function writeMe(text) {
     //make array for calling
     if (textArray.length == 0 ){
-        for(i=0; i<text[0].length; i++) {
-        //for(i=0; i<text.length; i++) { //iterates over string
-            textArray += text[0][i];
-        //    textArray += text[i];  //iterates over string
+        //for(i=0; i<text[0].length; i++) {
+        for(i=0; i<text.length; i++) { //iterates over string
+        //    textArray += text[0][i];
+            textArray += text[i];  //iterates over string
         };
     };
 

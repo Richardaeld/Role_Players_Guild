@@ -25,80 +25,80 @@ function allocateHeader() {
 // changes header according to which link mouse if hovering over
 allocateHeader();
 //---------------------------end STD-------------------------------
-//-----------------------------transition between general sections
-
+//-----------------------------transition between general section and tabs
+var generalHeight = document.getElementById("header-span").offsetHeight;
 var generalTabClick = document.querySelectorAll(".temple-span");
 var generalTab = document.querySelectorAll(".general-tab");
 
 generalTabClick.forEach(generalTransition);
 generalTab.forEach(generalBack)
 
+//---------------adds transition from general page to tab page
 function generalTransition(item, index) {
+    //adds listener to drop cover over screen and fade screen
     document.getElementsByClassName("temple-span")[index].addEventListener("click", function() {
-        var generalHeight = document.getElementById("header-span").offsetHeight;
-        var generalWidth = document.getElementById("templeBody").offsetWidth;
         document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
         document.getElementById("header-span").classList.add("header-title-div-fade")
-
+        //sets new background once cover(filter) is fully dropped
         setTimeout(function() {
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
             document.getElementsByClassName("general-tab")[index].classList.remove("general-display-none");
-            document.getElementsByClassName("general-tab")[index].classList.add("general-display-none-open");
             document.getElementById("temple-main").classList.add("general-display-none")
         },1500);
     });
 }
 
+//-----------------adds transition from tab page to general page
 function generalBack(item, index) {
+    //adds listener to drop cover over screen and fade screen
     document.getElementsByClassName("back-button")[index].addEventListener("click", function() {
-        var generalHeight = document.getElementById("header-span").offsetHeight;
         document.getElementsByClassName("general-cover")[0].style.cssText = "height:" + generalHeight + "px";
         document.getElementsByClassName("general-tab")[index].classList.add("header-title-div-fade")
-
+        //sets new background once cover(filter) is fully dropped
         setTimeout(function() {
-            document.getElementById("header-span").classList.remove("header-title-div-fade")
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"          
             document.getElementsByClassName("general-tab")[index].classList.add("general-display-none");
+            document.getElementById("header-span").classList.remove("header-title-div-fade")
             document.getElementById("temple-main").classList.remove("general-display-none")
         },1500);
     });
 }
 
 
-function applythis() {
-    window.requestAnimationFrame(function() {
-        document.querySelector(".col-12 .guild-cover-top").className = "col-12 guild-cover-top templehide";
-    });
-    setTimeout(function() {
-        document.getElementById("temple-main").style.cssText = "display:none";
-        document.getElementById("temple-tenets").style.cssText = "display:block";
-    },1500);
-}
+//function applythis() {
+//    window.requestAnimationFrame(function() {
+//       document.querySelector(".col-12 .guild-cover-top").className = "col-12 guild-cover-top templehide";
+//    });
 
-function removethis() {
-    window.requestAnimationFrame(function() {
-        document.querySelector(".col-12 .guild-cover-top .templehide").className = "col-12 guild-cover-top";
-    }); 
-}
+//    setTimeout(function() {
+//        document.getElementById("temple-main").style.cssText = "display:none";
+//        document.getElementById("temple-tenets").style.cssText = "display:block";
+//    },1500);
+//}
+
+//function removethis() {
+//    window.requestAnimationFrame(function() {
+//        document.querySelector(".col-12 .guild-cover-top .templehide").className = "col-12 guild-cover-top";
+//    }); 
+//}
 //-----------------------------transition between general sections end
-//---------------------------------------------------------------------
+//-----------------------------transition effects between general sections----------------------------------------
 //temple of steve general tab mouse over and mouse out
 var countGeneralTabs = document.querySelectorAll(".temple-cats");
 countGeneralTabs.forEach(generalTabHoverEffect);
 
+//starts forward wrapping border animation for the general tabs
 function generalTabHoverEffect(item, index) {   
     document.getElementsByClassName("temple-span")[index].addEventListener('mouseover', function() {
         item.childNodes[3].classList.add("actBorder");
     });
-
+    //starts reverse wrapping (unwrapping) border animation for the general tabs
     document.getElementsByClassName("temple-span")[index].addEventListener('mouseout', function() {
         item.childNodes[3].classList.remove("actBorder");
         item.childNodes[3].classList.add("actBorderRev");
         setTimeout(function() {
             item.childNodes[3].classList.remove("actBorderRev");
-        },3000)
+        },1500)
     });
 }
 //-------------------------------------------------submission form----------------------------------
-
-

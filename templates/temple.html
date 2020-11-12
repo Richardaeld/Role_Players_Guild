@@ -9,17 +9,15 @@
 <section class="card-background" id="templeBody">
     <div class="row no-gutters">
         <div class="col-12">
-        <div class="col-12 guild-cover-top"></div>
-        <div class="col-12 guild-cover-bottom"></div>
             <div class="row no-gutters">
-            <!--<span class="general-cover"></span>-->
+            <!--<span class="general-cover"></span>---------------         REMOVE ME          -->
 
                 <div class="col-12" id="temple-main">
                     <div class="row no-gutters justify-content-between" id="templeMain">
 
                         <div class="temple-cats">
                             <div class="temple-span"></div>
-                            <svg rx="10" ry="10">
+                            <svg>
                                 <rect rx="50" ry="50"/>
                             </svg>
                             <p>Tenets</p>
@@ -79,7 +77,7 @@
 {% endblock %}
 {% block main_content %} 
 
-            <span class="general-cover"></span>
+            <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
 
                 <div class="col-12 general-display-none general-tab">
                     <div class="row no-gutters justify-content-center">
@@ -302,6 +300,6 @@
 </section>
 {% endblock %}
 {% block custom_script %}
-<script src="{{ url_for('static', filename='js.globalObjects.js')}}"></script>
+<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>
 <script src="{{ url_for('static', filename='js/guildGeneral.js' )}}"></script>
 {% endblock %}

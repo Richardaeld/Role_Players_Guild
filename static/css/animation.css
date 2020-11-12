@@ -52,7 +52,7 @@ transition-delay: 0;
 75% {transform:scaleY(.01) scaleX(0);}
 100% {transform:scaleY(0) scaleX(0);}
 }
-*/
+*//*
 .templehide {
     animation-name: templeClear;
     animation-duration: 3s;
@@ -69,7 +69,7 @@ transition-delay: 0;
 .stest {
     width: 240px;
     height: 240px;
-}
+}*/
 
 .actBorder{
    /* animation: test1 3s ease-in 0s 5 forwards;*/
@@ -108,7 +108,7 @@ transition-delay: 0;
   animation-timing-function: linear;
   animation-fill-mode:  forwards;
   animation-direction: reverse;
-  animation-delay: 0s;
+  animation-delay: .001s;
 }
 
 @keyframes generalBordersRev {

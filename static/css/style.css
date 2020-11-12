@@ -409,7 +409,7 @@ footer {
 
 .temple-cats:hover > .temple-span {
     border:  solid 0px #010203;
-    box-shadow: 0rem 0rem 0rem 0rem #010203;
+/*    box-shadow: 0rem 0rem 0rem 0rem #010203;*/
 }
 
 /*-------------------------------------temple box hover effects end --------------*/
