@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-if os.path.exist("env.py"):
+if os.path.exists("env.py"):
     import env
 
 
