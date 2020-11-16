@@ -1,5 +1,7 @@
 import os
 from flask import Flask, render_template
+if os.path.exist("env.py"):
+    import env
 
 
 app = Flask(__name__)
