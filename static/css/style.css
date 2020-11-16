@@ -54,7 +54,10 @@ body {
 }
 
 .steve-header-img {
-    background-image: url("../img/steve/temple_card.jpg");
+    /*background-image: url("../img/steve/temple_card.jpg");*/
+    background-image: url("../img/steve/enter.jpg");
+    background-position: top center;
+    background-size: cover;
 }
 
 .tomb-header-img {
@@ -148,7 +151,7 @@ body {
 /*----------------3d cards----------------*/
 .card-background {
     /*background-color: #2c2c2c;*/
-    background:#474747;
+    background-color:#474747;
 }
 
 .coverCards {
@@ -224,7 +227,8 @@ body {
 }
 
 .steve-img {
-    background-image: url("../img/steve/temple_card.jpg");
+    background-image: url("../img/steve/enter.jpg");
+    background-position: center;
 }
 
 .tomb-img {
@@ -398,6 +402,34 @@ footer {
     min-height: 45rem;
     max-height:55rem;  /*----------------------------does conflict with wood grain border without this------------*/
     transition-duration: 1.5s;
+}
+
+
+.general-tab-background-1 {/*tenets*/
+background-image: url("../img/steve/tenets.jpg"); 
+}
+.general-tab-background-2 {/*alignment*/
+    background-image: url("../img/steve/alignment.jpg"); 
+    background-position: center center;   
+}
+.general-tab-background-3 {/*insults*/
+    background-image: url("../img/steve/burn.jpg");   
+    background-position: center center
+}
+.general-tab-background-4 {/*propaganda*/
+    background-image: url("../img/steve/propaganda.jpg"); 
+    background-size: 100% 100%;
+}
+.general-tab-background-5 {/*members*/
+    background-image: url("../img/steve/members.jpg");    
+    background-position: center center;
+}
+.general-tab-background-6 {/*accomplishments*/
+    background-image: url("../img/steve/organ.jpg");
+    background-position: top center;
+}
+.general-tab-background-7 {/*submission form*/
+        background: url("../img/steve/confession.png") top center/cover no-repeat;
 }
 
 .form-filter {

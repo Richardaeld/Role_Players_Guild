@@ -5,7 +5,7 @@ var headerInfo = [
         idLoc: "war-of-the-hallow-herd"
     },{
         title: "Temple of Steve",
-        imgLoc:"url(static/img/steve/temple_card.jpg)",
+        imgLoc:"url(static/img/steve/enter.jpg)",
         idLoc: "temple-of-steve"
     },{
         title: "Tomb of Anihilation",
