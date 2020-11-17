@@ -17,6 +17,11 @@ body {
     z-index: 3;
 }
 
+.custom-nav a:visited,
+.custom-nav a:link {
+    color: #fff;
+}
+
 .custom-nav li {
     padding: 1rem;
     padding-right: 3%;
@@ -31,11 +36,6 @@ body {
 .custom-nav a:hover {
     text-decoration: none;
 }
-
-.custom-nav a:visited {
-    color: #fff;
-}
-
 /*------------Header title and images--------------*/
 .header-img {
     transition: all .25s;
@@ -95,7 +95,7 @@ body {
 .modal-cover,
 .parch {
     position:fixed;
-    z-index: 2;
+    z-index: 0;  /*        -----------------altered-----------------*/
     transform: scale(0);
 }
 
@@ -109,7 +109,7 @@ body {
     text-align: left;
     height:90vh;
     background: url("../img/parchment.png") center/100% 100% no-repeat;
-    transition-duration: 3s;
+   /* transition-duration: 3s;---------------------------------------------------enable me*/
     font: 2.5rem "Dancing Script", sans-serif;
     margin: 1rem;
     top: 2rem;
@@ -125,14 +125,17 @@ body {
 /*----------------------modal animations implemented from JS-----------------------*/
 .cardOpen {/*----- used in js -----*/
     transform: scale(1);
+    z-index: 2; /*        -----------------altered-----------------*/
 }
 
 .modalBack {/*----- used in js -----*/
     animation: modalBackground 3s ease-out 0s 1 forwards;
+    z-index: 2; /*        -----------------altered-----------------*/
 }
 
 .modalBackRev {/*----- used in js -----*/
     animation: modalBackgroundRev 3s ease-out 0s 1 forwards;
+    z-index: 2; /*        -----------------altered-----------------*/
 }
 
 @keyframes modalBackground {
@@ -233,6 +236,11 @@ body {
 
 .tomb-img {
     background-image: url("../img/tomb/toa_card.jpg");
+}
+
+.log-img{
+    background-image: url("../img/com-notbook.jpg");
+    background-size: 100% 100%;
 }
 
 /*footer*/
@@ -443,7 +451,7 @@ background-image: url("../img/steve/tenets.jpg");
 
 .input-line label {
     position: right;
-    width:30%;
+   /* width:30%;*/
     vertical-align: top;
     left: -15rem;
     text-align: right;
@@ -458,4 +466,38 @@ background-image: url("../img/steve/tenets.jpg");
 .submit-button {
     margin-bottom: 1rem;
     transition-duration: 1.5s;
+}
+
+/*--------------------------------------new sign in boxes----------------------------------*/
+.form-tab {
+    background-image: none;
+}
+
+.form-tab label,
+.form-tab h1 {
+    color: #010203;
+    text-shadow: 3px 3px rgba(0, 0, 0, 0.5);
+    font-family: "Libre Baskerville", sans-serif;
+}
+
+.form-tab label {
+    text-align: left;
+    text-shadow: 0px 0px rgba(0, 0, 0, 0.0);
+}
+
+.form-tab select,
+.form-tab textarea,
+.form-tab input {
+    background: transparent;
+    font-weight: 700;
+    border: solid 3px #010203;
+}
+
+.form-filter {
+    background-color: rgba(0, 0, 0, 0.0);
+}
+
+.submit-button:hover {
+    color: #fff;
+    border: solid 2px #010203;
 }

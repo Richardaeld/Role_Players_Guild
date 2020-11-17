@@ -4,6 +4,7 @@ from flask import (
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
+from werkzeug.security import generate_password_hash, check_password_hash
 if os.path.exists("env.py"):
     import env
 
@@ -20,19 +21,14 @@ mongo = PyMongo(app)
 
 
 @app.route("/")
-@app.route("/get_tasks")
-def get_tasks():
-    tasks = mongo.db.templeOfSteve.find()
-    return render_template("tasks.html", templeOfSteve=tasks)
-
-@app.route("/home")
-def home():
+def index():
     return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img")
 
 
 @app.route("/temple")
 def temple():
-    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img")
+    tasks = mongo.db.templeOfSteve.find()
+    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img", templeOfSteve=tasks)
 
 
 @app.route("/hallow")
@@ -43,6 +39,21 @@ def hallow():
 @app.route("/tomb")
 def tomb():
     return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img")
+
+
+@app.route("/signIn")
+def signIn():
+    return render_template("signIn.html", header_img="log-img")
+
+
+@app.route("/signOut")
+def signOut():
+    return render_template("signOut.html", title_header="Sign Out", header_img="log-img")
+
+
+@app.route("/register", methods=["get", "post"])
+def register():
+    return render_template("register.html", title_header="Register", header_img="log-img")
 
 
 if __name__ == "__main__":

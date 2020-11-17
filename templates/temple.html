@@ -183,12 +183,9 @@
                             <h1>Members</h1>
 
                             <ul class="list-group">
-                                <li class="list-group-item">Head Priest</li>
-                                <li class="list-group-item">Council</li>
-                                <li class="list-group-item">Cleric</li>
-                                <li class="list-group-item">Priest</li>
-                                <li class="list-group-item">Acolyte</li>
-                                <li class="list-group-item">Worshipper</li>
+                            {% for task in templeOfSteve %}
+                                <li class="list-group-item">{{ task.idea }}</li>
+                            {% endfor %}
                             </ul>    
                         </div>
 

@@ -43,6 +43,13 @@
                 <li class="nav-item">
                     <a href="{{ url_for('tomb') }}" id="tomb-of-annihilation">Tomb of Annihilation</a>
                 </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('signIn') }}">Sign In</a>
+                </li>
+                <li class="nav-item">
+                    <a href="{{ url_for('signOut') }}">Sign Out</a>
+                </li>
+                                
             </ul>
         </nav>
         <!--Header Bar-->
@@ -74,8 +81,8 @@
 
     </header>
 
-
- 
+    {% block section_content %}
+    {% endblock %}
 
     <!--footer-->
     <footer class="row no-gutters">

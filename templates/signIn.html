@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block custom_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
+{% endblock %}
+
+{% block temple_test %}
+<div class="col-12 general-tab form-tab">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-10">
+
+            <fieldset class="form-box">
+                <h1>Sign In</h1>
+                <form class="form-filter" method="POST" action="{{ url_for('signIn') }}">
+                    <div class="row no-gutters justify-content-between">
+
+                        <div class="col-6 input-line">
+                            <label for="username">User Name:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="username" name="username">
+                        </div>
+
+                        <div class="col-6 input-line">
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="password" name="password">
+                        </div>
+
+                        <div class="col-6 input-line">
+                            <label for="tabAddingTo">Select a tab:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <select>
+                                <option>tenets</option>
+                                <option>Alignment</option>
+                                <option>Insults</option>
+                                <option>Propaganda</option>
+                                <option>Members</option>
+                                <option>Accomplishments</option>
+                            </select>                                        
+                        </div>
+
+                        <div class="col-6 input-line">
+                            <label for="content">Content to add:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <textarea rows="4" id="content" name="content">What is the addition you wish to make?</textarea>
+                        </div>
+                                    
+                    </div>
+                    
+                    <div class="row no-gutters justify-content-end">
+                        <div class="col-6">
+                        <input class="submit-button"  type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
