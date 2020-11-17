@@ -4,49 +4,41 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
-{% block section_content %}
+{% block temple_test %}
+<div class="col-12 general-tab form-tab">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-10">
 
-<div class="row no-gutters">
-                <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
+            <fieldset class="form-box">
+                <h1>Register</h1>
+                <form class="form-filter" method="POST" action="{{ url_for('signIn') }}">
+                    <div class="row no-gutters justify-content-between">
 
-                <div class="row no-gutters justify-content-between">
-                
-                    <!--Hallow Herd-->
-                    <div class="col-11 col-md-4 col-lg-3 guild-space">
+                        <div class="col-6 input-line">
+                            <label for="username">User Name:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="username" name="username">
+                        </div>
 
-                        <div class="row no-gutters">
-                            <!--card Title-->
-                            <div class="col-12">
-                                <p>
-                                    War of the Hallow Herd
-                                </p>
-                            </div>
-
-                            <!--Card Spin body-->
-                            <div class="col-12 outer" id="hallow">
-                                <div class="row no-gutters card-spin">
-                                    <div class="col-12 guild-card face war-img">
-                                        <p></p>
-                                    </div>
-                                    <div class="col-12 guild-card back">
-                                        <p>The world's wilds have begun to turn and twist into horrific abominations! All is a shadow of its former self!</p>
-                                        <p>
-                                            Will the newest initiates of the Hallow Heards army be able to step 
-                                            outside of the shadows of their superiors and distinguish themselves? 
-                                            More importantly, Will our party survive the wilderness? 
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--card sub header-->
-                            <div class="col-12 card-sub-text">
-                                <p>Jouney into the wilds from an isolated kingdom.</p>
-                            </div>
-
+                        <div class="col-6 input-line">
+                            <label for="password">Password:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="password" name="password">
+                        </div>
+                                    
+                    </div>
+                    
+                    <div class="row no-gutters justify-content-end">
+                        <div class="col-6">
+                        <input class="submit-button"  type="submit" value="Submit">
                         </div>
                     </div>
-
+                </form>
+            </fieldset>
+        </div>
+    </div>
 </div>
 
 {% endblock %}

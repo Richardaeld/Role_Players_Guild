@@ -48,12 +48,12 @@ def signIn():
 
 @app.route("/signOut")
 def signOut():
-    return render_template("signOut.html", title_header="Sign Out", header_img="log-img")
+    return render_template("signOut.html", header_img="log-img")
 
 
 @app.route("/register", methods=["get", "post"])
 def register():
-    return render_template("register.html", title_header="Register", header_img="log-img")
+    return render_template("register.html", header_img="log-img")
 
 
 if __name__ == "__main__":
