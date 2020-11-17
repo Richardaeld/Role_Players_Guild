@@ -75,7 +75,21 @@
         <div class="col-12 dice-border" id="header-border">
             <span></span>
         </div>
-    
+
+        <!-- section for flash messages -->
+
+        {% with messages = get_flashed_messages() %}
+            {% if messages %}
+                {% for message in messages %}
+                    <div class="row no-gutters flash justify-contnet-center">
+                        <div class="col-12">
+                            <h1>{{ message }}</h1>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
     {% block main_content %}        
     {% endblock %}
 
