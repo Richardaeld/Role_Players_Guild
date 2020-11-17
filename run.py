@@ -41,8 +41,29 @@ def tomb():
     return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img")
 
 
-@app.route("/signIn")
+@app.route("/signIn", methods=["GET", "POST"])
 def signIn():
+    if request.method == "POST":
+        # check if user name exists
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
+
+        if existing_user:
+            # check hashed password matches user
+            if check_password_hash(
+                existing_user["password"], request.form.get("password")):
+                    session["user"] = request.form.get("username").lower()
+                    flash("Welcome {}".format(request.form.get("username")))
+            else:
+                # invalid password
+                flash("Incorrect username and/or password")
+                return redirect(url_for("signIn"))
+
+        else:
+            # username doesnt exist
+            flash("Incorrect username and/or password")
+            return redirect(url_for("signIn"))
+
     return render_template("signIn.html", header_img="log-img")
 
 

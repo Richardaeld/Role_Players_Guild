@@ -18,35 +18,16 @@
                             <label for="username">User Name:</label>
                         </div>
                         <div class="col-6 input-line">
-                            <input type="text" id="username" name="username">
+                            <input type="text" id="username" name="username" 
+                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
 
                         <div class="col-6 input-line">
                             <label for="password">Password:</label>
                         </div>
                         <div class="col-6 input-line">
-                            <input type="text" id="password" name="password">
-                        </div>
-
-                        <div class="col-6 input-line">
-                            <label for="tabAddingTo">Select a tab:</label>
-                        </div>
-                        <div class="col-6 input-line">
-                            <select>
-                                <option>tenets</option>
-                                <option>Alignment</option>
-                                <option>Insults</option>
-                                <option>Propaganda</option>
-                                <option>Members</option>
-                                <option>Accomplishments</option>
-                            </select>                                        
-                        </div>
-
-                        <div class="col-6 input-line">
-                            <label for="content">Content to add:</label>
-                        </div>
-                        <div class="col-6 input-line">
-                            <textarea rows="4" id="content" name="content">What is the addition you wish to make?</textarea>
+                            <input type="password" id="password" name="password" 
+                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
                                     
                     </div>
