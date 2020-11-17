@@ -1,3 +1,4 @@
+# Import Libraries/Dependencies
 import os
 from flask import (
     Flask, flash, render_template, 
@@ -9,9 +10,11 @@ if os.path.exists("env.py"):
     import env
 
 
+#Name of the app so Flask can see it
 app = Flask(__name__)
 
 
+#how mongoDB can see and function with flask app
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -43,6 +46,14 @@ def tomb():
 
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
+    #try and except a test is a pass and redirects use to profile page if already logged in
+    try:
+        if session["user"]:
+            flash("Already Signed In")
+            return redirect(url_for("profile", username=session["user"]))
+    except:
+        print("")
+    
     if request.method == "POST":
         # check if user name exists
         existing_user = mongo.db.users.find_one(
@@ -71,7 +82,10 @@ def signIn():
 
 @app.route("/signOut")
 def signOut():
-    return render_template("signOut.html", header_img="log-img")
+    # remove session signin session
+    flash("You have been logged out")
+    session.pop("user")
+    return redirect(url_for("signIn"))
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -103,7 +117,11 @@ def profile(username):
     # grab sessions user name from DB
     username = mongo.db.users.find_one(
         {"username": session["user"]})["username"]
-    return render_template("profile.html", header_img="log-img", username=username)
+
+    if session["user"]:        
+        return render_template("profile.html", header_img="log-img", username=username)
+
+    return redirect(url_for("login"))
 
 
 if __name__ == "__main__":

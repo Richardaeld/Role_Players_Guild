@@ -502,6 +502,9 @@ background-image: url("../img/steve/tenets.jpg");
     border: solid 2px #010203;
 }
 
+.form-height {
+    margin-top: 5rem;
+}
 
 /*----------------------------------for flashed messages-------------------------*/
 
@@ -511,7 +514,7 @@ background-image: url("../img/steve/tenets.jpg");
     text-align: center;
     background-color: rgba(0,0,0,.75);
     width: 100%;
-    top: 5rem;
+    top: 10rem;
     z-index: 3;
 }
 
