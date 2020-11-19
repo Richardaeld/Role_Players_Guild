@@ -34,25 +34,32 @@
                 <li class="nav-item">
                     <a href="{{ url_for('index') }}" id="home">Home</a>
                 </li>
+                {% if session.user %}
+                <li class="nav-item">
+                    <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+                </li>
                 <li class="nav-item">
                     <a href="{{ url_for('temple') }}" id="temple-of-steve">Temple of Steve</a>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{ url_for('hallow') }}" id="war-of-the-hallow-herd">War of the Hallow Herd</a>
                 </li>
+
                 <li class="nav-item">
                     <a href="{{ url_for('tomb') }}" id="tomb-of-annihilation">Tomb of Annihilation</a>
                 </li>
                 <li class="nav-item">
-                    <a href="{{ url_for('signIn') }}">Sign In</a>
-                </li>
-                <li class="nav-item">
                     <a href="{{ url_for('signOut') }}">Sign Out</a>
+                </li>
+                {% else %}
+                <li class="nav-item">
+                    <a href="{{ url_for('signIn') }}">Sign In</a>
                 </li>
                 <li class="nav-item">
                     <a href="{{ url_for('register') }}">Register</a>
                 </li>
-                                
+                {% endif %}
             </ul>
         </nav>
         <!--Header Bar-->

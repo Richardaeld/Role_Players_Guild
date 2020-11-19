@@ -53,7 +53,7 @@ def signIn():
             return redirect(url_for("profile", username=session["user"]))
     except:
         print("")
-    
+
     if request.method == "POST":
         # check if user name exists
         existing_user = mongo.db.users.find_one(
@@ -61,8 +61,7 @@ def signIn():
 
         if existing_user:
             # check hashed password matches user
-            if check_password_hash(
-                existing_user["password"], request.form.get("password")):
+            if check_password_hash(existing_user["password"], request.form.get("password")):
                 session["user"] = request.form.get("username").lower()
                 flash("Welcome {}".format(request.form.get("username")))
                 return redirect(url_for("profile", username=session["user"]))
@@ -112,15 +111,26 @@ def register():
     return render_template("register.html", header_img="log-img")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
+@app.route("/profile<username>", methods=["GET", "POST"])
 def profile(username):
     # grab sessions user name from DB
-    username = mongo.db.users.find_one(
-        {"username": session["user"]})["username"]
+    badname = mongo.db.users.find_one({"username": session["user"]})["username"]
+
+    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    # for getting true/false of guild
+    truths = mongo.db.users.find_one({"username": session["user"]})
+    ## truths = truths.get("tomb")
+
+    # for getting guild name
+    guilds = mongo.db.allGuilds.find_one({"hallow": "1"})
+
+    #populates cards in section of page
+    guildInfo = mongo.db.guildDetails.find()
+
+    mainCats = ["Homebrew Campaign", "Official Campaign", "Homebrew Religion"]
 
     if session["user"]:        
-        return render_template("profile.html", header_img="log-img", username=username)
-
+        return render_template("profile.html", mainCats=mainCats, username=username, header_img="log-img", truths=truths, guildInfo=guildInfo, guilds=guilds)
     return redirect(url_for("login"))
 
 

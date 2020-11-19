@@ -7,10 +7,171 @@
 {% block temple_test %}
 <div class="col-12 general-tab form-tab">
     <div class="row no-gutters justify-content-center">
-        <div class="col-10">
+        <div class="col-10 flash-test">
             <h1>{{ username }}'s Profile</h1>
+        </div>
+        <div class="col-10">
+
         </div>
     </div>
 </div>
+<section class="card-background" id="temple-body">
+    <div class="row no-gutters">
+        <div class="col-12">
+            <div class="row no-gutters">
+            <!--<span class="general-cover"></span>---------------         REMOVE ME          -->
 
+                <div class="col-6" id="temple-main">
+                    <div class="row no-gutters justify-content-between">
+
+                        {% for champain in mainCats %}
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>{{champain}}</p>
+                        </div>
+                        {% endfor %}
+  
+
+                    </div>
+                </div>
+
+                <div class="col-6" id="temple-sub">
+                    <div class="row no-gutters justify-content-between">
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg id="test123">
+                            </svg>
+                            <p>HomeBrew</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg >
+                                <rect rx="50" ry="50" />
+                            </svg>
+                            <p>Campaign</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Religion</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Propaganda</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Members</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Accomplishments</p>
+                        </div>
+
+                        <div class="temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Submission Form</p>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}
+
+{% block section_content %}
+{% for t in guilds %}
+    <h1 class="flash">{{t}} </h1>
+
+{% endfor %}
+    <section class="card-background">
+        <div class="row no-gutters">
+            <div class="col-12 ">
+                <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
+
+                <div class="row no-gutters justify-content-between">
+                    {% for cardInfo in guildInfo %}
+                        <!--Hallow Herd-->
+                    <div class="col-11 col-md-4 col-lg-3 guild-space">
+
+                        <div class="row no-gutters">
+                            <!--card Title-->
+                            <div class="col-12">
+                                <p>
+                                    {{ cardInfo.header }}
+                                </p>
+                            </div>
+
+                            <!--Card Spin body-->
+                            <div class="col-12 outer" id="hallow">
+                                <div class="row no-gutters card-spin">
+                                    <div class="col-12 guild-card face {{ cardInfo.img }}">
+                                        <p></p>
+                                    </div>
+                                    <div class="col-12 guild-card back">
+                                        <p>{{ cardInfo.bodyTitle }}</p>
+                                        <p>
+                                            {{ cardInfo.body }}
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!--card sub header-->
+                            <div class="col-12 card-sub-text">
+                                <p>{{ cardInfo.sub }}</p>
+                            </div>
+
+                        </div>
+                    </div>
+{% endfor %}
+              
+              
+                                           </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {% if guilds.temple == True %}
+    {% endif %}
+
+    {% if guilds.tomb == True %}
+    {% endif %}
+{% endblock %}
+
+{% block custom_script %}
+    <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script> 
 {% endblock %}

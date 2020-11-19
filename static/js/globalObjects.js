@@ -18,6 +18,16 @@ var headerInfo = [
     }
 ]
 
+var profileMainCategory = [
+    {
+        title: "Homebrew Campaign"
+    },{
+        title: "Official Campaign"
+    },{
+        title: "Religion"
+    },
+]
+
 //demoed but failed to inject name into querySelector and text into function modalCard
 //not an object error but a for loop error combined with .length
 //didnt use for i (index) for index calls but an outside index(index) held within for loop

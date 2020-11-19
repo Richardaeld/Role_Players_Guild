@@ -519,3 +519,26 @@ background-image: url("../img/steve/tenets.jpg");
 }
 
 /*----------------------------------for flashed messages-------------------------*/
+/*----------------------------------for reworked indexpage-------------------------*/
+.landing-tab {
+    font: 2rem "Comfortaa", sans-serif;
+    /*text-shadow: .2rem .2rem .02rem #010203;*/
+    text-align: center;
+    min-height: 45rem;
+    color: #fff;
+}
+
+.landing-tab h1 {
+    font-size: 4rem;
+}
+
+/*--------------------------------profile page----------------------------------*/
+
+.temple-cats {
+    height: 1rem;
+    color: #87BA76;
+}
+
+.temple-cats p {
+    text-shadow: 3px 3px #010203;
+}
