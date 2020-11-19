@@ -20,13 +20,28 @@ var headerInfo = [
 
 var profileMainCategory = [
     {
-        title: "Homebrew Campaign"
+        title: "Home Brew",
+        subIndex: 0
     },{
-        title: "Official Campaign"
+        title: "Official",
+        subIndex: 1
     },{
-        title: "Religion"
-    },
+        title: "World Building",
+        subIndex:2
+    },{
+        title: "World Building",
+        subIndex:2
+    }
 ]
+
+var profileSubCategory = [
+    ["Hallow Herd"],
+    ["Tomb of Annihilation"],
+    ["Temple of Steve"],
+    ["Temple of Steve"]
+
+]
+
 
 //demoed but failed to inject name into querySelector and text into function modalCard
 //not an object error but a for loop error combined with .length

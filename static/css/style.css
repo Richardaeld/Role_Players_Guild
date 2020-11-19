@@ -534,11 +534,28 @@ background-image: url("../img/steve/tenets.jpg");
 
 /*--------------------------------profile page----------------------------------*/
 
-.temple-cats {
-    height: 1rem;
-    color: #87BA76;
+.profile-sub-categories,
+.profile-categories {
+    fill: none;
+    z-index: 0;
+    text-align: center;
+    position: static;
+    margin: 3rem;
+    /*color: #D25F38;*/
+    color: #010203;
+    font: 3rem "Dancing Script", sans-serif;
+    width: 100%;
 }
 
-.temple-cats p {
-    text-shadow: 3px 3px #010203;
+.profile-categories p {
+    text-shadow: 3px 3px #87BA76;
+
+}
+
+.profile-background {
+    width: 100%;
+}
+
+.profile-sub-categories {
+    
 }
