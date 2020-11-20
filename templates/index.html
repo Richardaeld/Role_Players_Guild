@@ -1,4 +1,15 @@
 {% extends "base.html" %}
+
+{% block modal %}
+<!--modal-->
+<div class="row no-gutters justify-content-center">
+    <div class="col-12 modal-cover" id="modal-cover"></div>     <!--Modal Filter-->
+    <div class="col-11 col-md-6 parch" id="parch">              <!--Modal Body-->
+        <p id="modal-text"></p>                                  <!--Modal Text-->
+    </div>
+</div>
+{% endblock %}
+
 {% block section_content %}
 
     <!--Guild intro text-->
