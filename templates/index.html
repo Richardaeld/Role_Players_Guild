@@ -21,20 +21,18 @@
     
 <section class="card-background">
     <div class="row no-gutters">
-        <div class="col-12 ">
-            <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
+        <div class="col-12">
 
-            <div class="row no-gutters justify-content-between">
+            <div class="row no-gutters justify-content-around">
+            <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
                 {% for cardInfo in guildInfo %}
-                <!--Hallow Herd-->
-                <div class="col-11 col-md-4 col-lg-3 guild-space">
+                <!-- Card Body -->
+                <div class="col-11 col-mg-6 col-lg-5 col-xl-3 guild-space">
 
                     <div class="row no-gutters">
                         <!--card Title-->
                         <div class="col-12">
-                            <p>
-                                {{ cardInfo.header }}
-                            </p>
+                            <p>{{ cardInfo.header }}</p>
                         </div>
 
                         <!--Card Spin body-->
@@ -42,10 +40,8 @@
                             <div class="row no-gutters card-spin">
                                 <div class="col-12 guild-card face {{ cardInfo.img }}"></div>
                                 <div class="col-12 guild-card back">
-                                    <p>{{ cardInfo.bodyTitle }}</p>
-                                    <p>
-                                        {{ cardInfo.body }}
-                                    </p>
+                                    <h1>{{ cardInfo.bodyTitle }}</h1>
+                                    <p>{{ cardInfo.body }}</p>
                                 </div>
                             </div>
                         </div>
@@ -68,5 +64,5 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
-    <script src="{{ url_for('static', filename='js/playground.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/cardFlip.js') }}"></script> 
 {% endblock %}
