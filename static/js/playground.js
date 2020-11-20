@@ -9,11 +9,11 @@ var modalLoc = document.querySelector("#parch");
 var modalFilterLoc = document.querySelector("#modal-cover");
 
 //-----------------listener for guild card clicks for modal calls
-document.querySelector("#steve").addEventListener("click", steveCard, false);
-document.querySelector("#hallow").addEventListener("click", hallowCard, false);
-document.querySelector("#tomb").addEventListener("click", tombCard, false);
-
-
+setTimeout(function() { 
+    document.getElementById("#steve").addEventListener("click", steveCard, false);
+    document.getElementById("#hallow").addEventListener("click", hallowCard, false);
+    document.getElementById("#tomb").addEventListener("click", tombCard, false);
+},500);
 //--------------call specific index page modal card
 function steveCard(){
     modalCard(steveText);
