@@ -114,7 +114,7 @@ body {
     text-align: left;
     height:90vh;
     background: url("../img/parchment.png") center/100% 100% no-repeat;
-   /* transition-duration: 3s;---------------------------------------------------enable me*/
+    transition-duration: 3s;
     font: 2.5rem "Dancing Script", sans-serif;
     margin: 1rem;
     top: 2rem;
