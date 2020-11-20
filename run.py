@@ -25,7 +25,10 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img")
+    # gets info for guild cards
+    guildInfo = mongo.db.guildDetails.find()
+
+    return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img", guildInfo=guildInfo)
 
 
 @app.route("/temple")

@@ -198,11 +198,11 @@ body {
     background-color: #dad8c8;
     color: #010203;
     box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25);
+
 }
 /*inner layer*/
 .guild-card {
     position: absolute;
-    backface-visibility: hidden;
     height: 100%;
 }
 
@@ -217,11 +217,14 @@ body {
 
 .back {
     transform: rotateY(180deg);
+
 }
 /*images and presets*/
 .face {
     background: center center/cover no-repeat;
     border-radius: 5%;
+    backface-visibility: hidden;
+
 }
 
 .war-img {
@@ -416,6 +419,7 @@ footer {
 .general-tab-background-1 {/*tenets*/
 background-image: url("../img/steve/tenets.jpg"); 
 }
+
 .general-tab-background-2 {/*alignment*/
     background-image: url("../img/steve/alignment.jpg"); 
     background-position: center center;   

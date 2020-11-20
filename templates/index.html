@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block section_content %}
 
-    <!--Guilds-->
+    <!--Guild intro text-->
 <section class="landing-tab">
     <div class="row no-gutters">
         <div class="col-12">
@@ -9,11 +9,57 @@
                 Welcome new and returning friends and family! 
             </h1>
             <p>
-                This guild hall is being built for all those that enjoy the act of role play. We all have to start somewhere so please start here with us. We hope to improve not only 
-                everyone that joins us, but ourselves as well. Please join us on our journey to aspire to a greater level of immersion and skill through developing a caring and helpful 
-                community of like minded individuals. We will share our tricks and thoughts and hope you will do the same through our interactive forms. We are constructing a number of 
-                different guild rooms that are devoted to various champaigns, settings, and ideas. 
+                This guild hall is being built for all those that enjoy acting out role play. We are no professionals here but, we all have to start somewhere so please start here with us. 
+                We hope to have a good time and improve not only everyone that joins us, but ourselves as well. So, please join us on our journey to aspire to a greater level of immersion 
+                and skill through developing a caring and helpful community of like minded individuals. We will share our tricks and thoughts and hope you will do the same through our 
+                interactive forms. We are constructing a number of different guild rooms that are devoted to various champaigns, settings, and ideas. Please look at our three original room 
+                cards before signing in.
             </p>
+        </div>
+    </div>
+</section>
+    
+<section class="card-background">
+    <div class="row no-gutters">
+        <div class="col-12 ">
+            <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
+
+            <div class="row no-gutters justify-content-between">
+                {% for cardInfo in guildInfo %}
+                <!--Hallow Herd-->
+                <div class="col-11 col-md-4 col-lg-3 guild-space">
+
+                    <div class="row no-gutters">
+                        <!--card Title-->
+                        <div class="col-12">
+                            <p>
+                                {{ cardInfo.header }}
+                            </p>
+                        </div>
+
+                        <!--Card Spin body-->
+                        <div class="col-12 outer" id="hallow">
+                            <div class="row no-gutters card-spin">
+                                <div class="col-12 guild-card face {{ cardInfo.img }}"></div>
+                                <div class="col-12 guild-card back">
+                                    <p>{{ cardInfo.bodyTitle }}</p>
+                                    <p>
+                                        {{ cardInfo.body }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                            
+                        <!--card sub header-->
+                        <div class="col-12 card-sub-text">
+                            <p>{{ cardInfo.sub }}</p>
+                        </div>
+
+                    </div>
+                </div>
+                {% endfor %}
+                
+            </div>
         </div>
     </div>
 </section>
