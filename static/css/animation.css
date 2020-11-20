@@ -27,31 +27,3 @@
     0%{stroke-dashoffset: 1800; }
     100%{stroke-dashoffset: 0;}
 }
-
-.header-img{
-    background-size: 100% 100%;
-    height: 55rem;
-}
-
-#header-span {
-    transition-duration: 1.5s;
-}
-
-.header-span {
-    background-color: rgba(0,0,0,0);
-}
-
-#title-header{
-    text-shadow: .35rem .35rem .15rem #903000;
-    font-weight: 700;
-    font-size: 3.5rem;
-    color: #fff;
-}   
-
-.header-title-div {
-    text-align: center;
-}
-
-.header-title-div-fade {
-    background-color: rgba(0, 0, 0, 1);
-}
