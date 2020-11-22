@@ -140,3 +140,6 @@ function allocateHeader() {
 
 // changes header according to which link mouse if hovering over
 allocateHeader();
+
+//change header title image height
+document.getElementById("header_main").classList.add("header-img-book")

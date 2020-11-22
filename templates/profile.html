@@ -22,7 +22,24 @@
 
                 <div class="col-6" id="temple-main">
                     <div class="row no-gutters justify-content-between" id="profile-main-cats">
+                        
+                        <!--test-->
+                        
+                        <form action="{{ url_for('search', username=session['user']) }}" method="POST" class="col-6">
+
+                            <input type="text" name="query" id="query">
+                            <label for="query"></label>
+
+                            <input type="submit" value="Submit">
+
+                        </form>
+                        
+                        
+                        
                         <!-- dynamically generated content for main categories -->
+                        {% for task in tasks %}
+                            <p class="profile-categories"> {{task.title}}</p>
+                        {% endfor %}
                     </div>
                 </div>
 
@@ -37,69 +54,11 @@
     </div>
 </section>
 
-
-
 {% endblock %}
 
-{% block section_content %}
-{% for t in guilds %}
-    <h1 class="flash"> </h1><!--   used to test logic    -->
-
-{% endfor %}
-    <section class="card-background">
-        <div class="row no-gutters">
-            <div class="col-12 ">
-                <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
-
-                <div class="row no-gutters justify-content-between">
-                    {% for cardInfo in guildInfo %}
-                        <!--Hallow Herd-->
-                    <div class="col-11 col-md-4 col-lg-3 guild-space">
-
-                        <div class="row no-gutters">
-                            <!--card Title-->
-                            <div class="col-12">
-                                <p>{{ cardInfo.header }}</p>
-                            </div>
-
-                            <!--Card Spin body-->
-                            <div class="col-12 outer" id="hallow">
-                                <div class="row no-gutters card-spin">
-                                    <div class="col-12 guild-card face {{ cardInfo.img }}">
-                                        <p></p>
-                                    </div>
-                                    <div class="col-12 guild-card back">
-                                        <p>{{ cardInfo.bodyTitle }}</p>
-                                        <p>{{ cardInfo.body }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                            
-                            <!--card sub header-->
-                            <div class="col-12 card-sub-text">
-                                <p>{{ cardInfo.sub }}</p>
-                            </div>
-
-                        </div>
-                    </div>
-{% endfor %}
-              
-              
-                                           </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    {% if guilds.temple == True %}
-    {% endif %}
-
-    {% if guilds.tomb == True %}
-    {% endif %}
-{% endblock %}
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
-    <script src="{{ url_for('static', filename='js/profile.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/headerExtend.js') }}"></script> 
 {% endblock %}

@@ -114,26 +114,29 @@ def register():
     return render_template("register.html", header_img="log-img")
 
 
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("query")
+    tasks = list(mongo.db.guilds.find({"$text": {"$search": query}}))
+    
+    return render_template("profile.html", tasks=tasks)
+
+
 @app.route("/profile<username>", methods=["GET", "POST"])
 def profile(username):
     # grab sessions user name from DB
-    badname = mongo.db.users.find_one({"username": session["user"]})["username"]
-
-    username = mongo.db.users.find_one({"username": session["user"]})["username"]
+    mainCats = list(mongo.db.profileMainCategory.find({"cat": "main"}))
+    
+    ####fuck this line
+    #username = mongo.db.users.find_one({"username": session["user"]})["username"]
     # for getting true/false of guild
-    truths = mongo.db.users.find_one({"username": session["user"]})
-    ## truths = truths.get("tomb")
 
-    # for getting guild name
-    guilds = mongo.db.allGuilds.find_one({"hallow": "1"})
+    #test
+    tasks = list(mongo.db.guilds.find())
 
-    #populates cards in section of page
-    guildInfo = mongo.db.guildDetails.find()
 
-    mainCats = ["Homebrew Campaign", "Official Campaign", "Homebrew Religion"]
-
-    if session["user"]:        
-        return render_template("profile.html", mainCats=mainCats, username=username, header_img="log-img", truths=truths, guildInfo=guildInfo, guilds=guilds)
+    if session["user"]:
+        return render_template("profile.html", tasks=tasks, mainCats=mainCats, username=session["user"], header_img="log-img")
     return redirect(url_for("login"))
 
 

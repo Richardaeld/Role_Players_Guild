@@ -6,14 +6,20 @@
 /*--------------------- default color  ---------------------*/
 body {
     /*background-color: #010203;*/
-    background-color: #474747;
+    /*background-color: #474747;*/
+    background-color: #010203;
 }
 /*--------------------- Nav bar---------------------*/
+.nav-bump {
+    height:3.5rem;
+    background-color: #010203;
+}
+
 .custom-nav {
     font-family: "Libre Baskerville", sans-serif;
     width: 100%;
     color: #fff;
-    background-color: rgba(0,0,0,.25);
+    background-color: rgba(0,0,0,.75);
     position:fixed;
     z-index: 3;
 }
@@ -43,7 +49,7 @@ body {
     position: relative;
     background: center/cover no-repeat;
     width: 100%;
-    height: 35rem;
+    height: 55rem;
 }
 
 .index-header-img {
@@ -76,7 +82,7 @@ body {
 .header-title {  /*---------------------  bad target  refactor to  header-title-div  this is a text item!!---------------------*/
     position: relative;
     text-align: center;
-    top: 17.5rem;
+    top: 23.5rem;
     font-family: "Lobster", sans-serif;
 }
 .header-title h1 {
@@ -589,10 +595,9 @@ background-image: url("../img/steve/tenets.jpg");
 /*----------------------found on animation css page ---------------------*/
 
 
-/*.header-img{
-    background-size: 100% 100%;  working on Index page
-    height: 55rem;
-}*/
+.header-img-book{
+    height: 35rem;
+}
 
 #header-span {
     transition-duration: 1.5s;
@@ -616,3 +621,4 @@ background-image: url("../img/steve/tenets.jpg");
 .header-title-div-fade {
     background-color: rgba(0, 0, 0, 1);
 }
+

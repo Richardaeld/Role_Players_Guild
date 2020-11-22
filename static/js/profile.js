@@ -22,7 +22,7 @@ function createMainCategories(){
     }
 }
 
-createMainCategories();
+//createMainCategories();   ----------------------   loading through pymongo
 
 // creates and dynamically recreates
 
@@ -43,13 +43,14 @@ function createSubCategories(index) {
     }
 
 }
-//   console.log(list.hasChildNodes())
 
+
+// adds function to main category selection
 var profileCatClick = document.querySelectorAll(".profile-categories");
 profileCatClick.forEach(popSubCats)
 
+//populate sub categories
 function popSubCats (item, index) {
-    
     
     //adds listener
     document.getElementsByClassName("profile-categories")[index].addEventListener("click", function() {
