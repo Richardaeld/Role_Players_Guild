@@ -7,8 +7,10 @@
 body {
     /*background-color: #010203;*/
     /*background-color: #474747;*/
+    /*background-color: #a5a5a5;*/
     background-color: #474747;
 }
+
 /*--------------------- Nav bar---------------------*/
 .nav-bump {
     height:3.5rem;
@@ -200,6 +202,7 @@ nav {
     /*background-color: #2c2c2c;*/
     /*background-color:#474747; */
     text-shadow: 3px 3px rgba(0,0,0,.75);
+    background-color: #a5a5a5;
 }
 
 .coverCards {
@@ -721,4 +724,12 @@ hr {
 .header-title-div-fade {
     background-color: rgba(0, 0, 0, 1);
 }
-
+/*
+.index-img {
+    position:absolute;
+    background-image: url("../img/index1.jpg");
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+}

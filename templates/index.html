@@ -13,28 +13,28 @@
 {% block section_content %}
 
     <!--Guild intro text-->
-<section>
-    <div class="row no-gutters">
-        <div class="col-12 landing-tab">
-            <h1>Welcome!</h1>
-            <p>
+<section >
+    <div class="row no-gutters justify-content-center">
+        <div class="index-img"></div>
+        <div class="col-10 landing-tab">
+            <h1>Sign up and join one of our many tables!</h1>
+            <h4>These were our first three tables</h4>
+            <!--<p>
+                
+
                 We are a growing guild that offers multiple rooms for posting thoughts and ideas about role play.  
                 Check out our three original room cards and our about us page! If you like our humor, sign up and 
                 join the guild. We will be happy to have you!
-            <p>
+            </p>-->
         </div>
-    </div>
-</section>
-    
-<section class="card-background">
-    <div class="row no-gutters">
-        <div class="col-12">
+
+        <div class="col-10">
 
             <div class="row no-gutters justify-content-around">
             <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic-->
                 {% for cardInfo in guildInfo %}
                 <!-- Card Body -->
-                <div class="col-11 col-mg-6 col-lg-5 col-xl-3 guild-space">
+                <div class="col-11 col-mg-5 col-lg-5 col-xl-5 guild-space">
 
                     <div class="row no-gutters">
                         <!--card Title-->
