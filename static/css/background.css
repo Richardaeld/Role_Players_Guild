@@ -1,0 +1,86 @@
+/*------------Header title and images--------------*/
+.header-img {
+    background: top center/cover no-repeat;
+}
+
+.index-header-img {
+    background-image: url("../img/header.jpg");
+}
+
+.hallow-header-img {
+    background-image: url("../img/hallow_herd/hallow_banner.jpg");
+}
+
+.steve-header-img {
+    /*background-image: url("../img/steve/temple_card.jpg");*/
+    background-image: url("../img/steve/enter.jpg");
+    background-position: top center;
+    background-size: cover;
+}
+
+.tomb-header-img {
+    background-image: url("../img/tomb/toa_card.jpg");
+}
+/*---------------------card images------------------------*/
+/*images and presets*/
+.war-img {
+    background-image: url("../img/hallow_herd/hallow_banner.jpg");
+    background-position: top, center;
+}
+
+.steve-img {
+    background-image: url("../img/steve/enter.jpg");
+    background-position: center;
+}
+
+.tomb-img {
+    background-image: url("../img/tomb/toa_card.jpg");
+}
+
+.log-img{
+    background-image: url("../img/com-notbook.jpg");
+    background-size: 100% 100%;
+}
+
+/*---------------------temple of steve images------------------------*/
+
+.general-tab-background-1 {/*tenets*/
+background-image: url("../img/steve/tenets.jpg"); 
+}
+
+.general-tab-background-2 {/*alignment*/
+    background-image: url("../img/steve/alignment.jpg"); 
+    background-position: center center;   
+}
+.general-tab-background-3 {/*insults*/
+    background-image: url("../img/steve/burn.jpg");   
+    background-position: center center
+}
+.general-tab-background-4 {/*propaganda*/
+    background-image: url("../img/steve/propaganda.jpg"); 
+    background-size: 100% 100%;
+}
+.general-tab-background-5 {/*members*/
+    background-image: url("../img/steve/members.jpg");    
+    background-position: center center;
+}
+.general-tab-background-6 {/*accomplishments*/
+    background-image: url("../img/steve/organ.jpg");
+    background-position: top center;
+}
+.general-tab-background-7 {/*submission form*/
+        background: url("../img/steve/confession.png") top center/cover no-repeat;
+}
+
+/*---------------------about us images------------------------*/
+.about-world-img {
+    background-image: url("../img/paw.png");
+}
+.about-campaign-img {
+    background-image: url("../img/about_campaign.jpg");
+
+}
+.about-wotc-img {
+    background-image: url("../img/about_wotc.jpg");
+
+}

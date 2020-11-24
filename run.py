@@ -139,9 +139,10 @@ def profile(username):
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
 
     listz = ""
+    entries = list(mongo.db.guilds.find({"search": "true"}))
 
     if session["user"]:
-        return render_template("profile.html",listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
+        return render_template("profile.html", entries=entries, listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
     return redirect(url_for("login"))
 
 
