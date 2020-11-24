@@ -1,26 +1,26 @@
-for(i=0; i<profileMainCategory.length; i++){
-    console.log(profileMainCategory[i].title)
-}
+//for(i=0; i<profileMainCategory.length; i++){
+//    console.log(profileMainCategory[i].title)
+//}
 
 //creates main categories
 
-function createMainCategories(){
+//function createMainCategories(){
 
-    for(i=0; i<profileMainCategory.length; i++){
-        var profileMainCat = document.getElementById("profile-main-cats")
-        var makeclass = document.createAttribute("class")
-        makeclass.value = "col-4 profile-categories"
-        var injectText = profileMainCategory[i].title; 
+//    for(i=0; i<profileMainCategory.length; i++){
+//        var profileMainCat = document.getElementById("profile-main-cats")
+//        var makeclass = document.createAttribute("class")
+//        makeclass.value = "col-4 profile-categories"
+//        var injectText = profileMainCategory[i].title; 
 
 
         //creates the external div node
-        profileMainCat.appendChild(document.createElement("div")).setAttributeNode(makeclass);
+//        profileMainCat.appendChild(document.createElement("div")).setAttributeNode(makeclass);
 
         //creates an internal p
-        var profileMainCatText = document.getElementsByClassName("profile-categories")[i]
-        profileMainCatText.appendChild(document.createElement("p")).textContent = injectText;
-    }
-}
+//        var profileMainCatText = document.getElementsByClassName("profile-categories")[i]
+//        profileMainCatText.appendChild(document.createElement("p")).textContent = injectText;
+//    }
+//}
 
 //createMainCategories();   ----------------------   loading through pymongo
 
@@ -54,9 +54,10 @@ function popSubCats (item, index) {
     
     //adds listener
     document.getElementsByClassName("profile-categories")[index].addEventListener("click", function() {
-        removeText()
-        createSubCategories(index);
-        
+        if(document.getElementById("profile-sub-cats").hasChildNodes()){
+            removeText()
+            createSubCategories(index);
+        }
     })
     
 }
@@ -69,8 +70,8 @@ function removeText() {
 
     //checks if child nodes can exist
     if(list1 != undefined ){
-        console.log(list1.hasChildNodes())
-        console.log(list2.length)
+//        console.log(list1.hasChildNodes())
+//        console.log(list2.length)
         //loops through all child nodes and removes them
         for (i=0; i<list2.length; i++){
             list1.remove()
@@ -78,3 +79,19 @@ function removeText() {
 
     }
 }
+
+//mongodb test
+
+var MongoClient = require('mongodb').MongoClient;
+var url = "mongodb://localhost:27017/";
+
+MongoClient.connect(url, function(err, db) {
+  if (err) throw err;
+  var dbo = db.db("mydb");
+  var query = { address: "Park Lane 38" };
+  dbo.collection("customers").find(query).toArray(function(err, result) {
+    if (err) throw err;
+    console.log(result);
+    db.close();
+  });
+});

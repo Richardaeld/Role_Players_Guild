@@ -30,6 +30,12 @@ def index():
 
     return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img", guildInfo=guildInfo)
 
+@app.route("/about_us")
+def about_us():
+    # gets info for guild cards
+    guildInfo = mongo.db.guildDetails.find()
+
+    return render_template("about_us.html", title_header="About Our Guild", header_img="index-header-img", guildInfo=guildInfo)
 
 @app.route("/temple")
 def temple():
@@ -117,26 +123,25 @@ def register():
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
-    tasks = list(mongo.db.guilds.find({"$text": {"$search": query}}))
-    
-    return render_template("profile.html", tasks=tasks)
+    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
+    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
+    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img")
 
 
 @app.route("/profile<username>", methods=["GET", "POST"])
 def profile(username):
     # grab sessions user name from DB
-    mainCats = list(mongo.db.profileMainCategory.find({"cat": "main"}))
-    
-    ####fuck this line
-    #username = mongo.db.users.find_one({"username": session["user"]})["username"]
-    # for getting true/false of guild
+    #mainCats = list(mongo.db.profileMainCategory.find({"cat": "main"}))
 
     #test
-    tasks = list(mongo.db.guilds.find())
+    #tasks = list(mongo.db.guilds.find())
+    #new test
+    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
 
+    listz = ""
 
     if session["user"]:
-        return render_template("profile.html", tasks=tasks, mainCats=mainCats, username=session["user"], header_img="log-img")
+        return render_template("profile.html",listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
     return redirect(url_for("login"))
 
 

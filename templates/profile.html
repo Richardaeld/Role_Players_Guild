@@ -17,35 +17,33 @@
 </div>
 <section class="profile-background" id="temple-body"> <!-- temple body houses absolute-->
     <div class="row no-gutters">
-        <div class="col-12">
+        <div class="col-12 profile-choices">
             <div class="row no-gutters">
 
                 <div class="col-6" id="temple-main">
                     <div class="row no-gutters justify-content-between" id="profile-main-cats">
-                        
+                        <div class="col-12">
                         <!--test-->
-                        
-                        <form action="{{ url_for('search', username=session['user']) }}" method="POST" class="col-6">
-
-                            <input type="text" name="query" id="query">
-                            <label for="query"></label>
-
-                            <input type="submit" value="Submit">
-
-                        </form>
-                        
-                        
-                        
+                        </div>
+                        <div class="col-12">
+                            <h4>Select a Guild Hall or search for a room</h4>
                         <!-- dynamically generated content for main categories -->
                         {% for task in tasks %}
-                            <p class="profile-categories"> {{task.title}}</p>
+                            <p class="profile-categories">{{task.category}}</p>
                         {% endfor %}
+                        </div>
                     </div>
                 </div>
 
                 <div class="col-6" id="temple-sub">
-                    <div class="row no-gutters justify-content-between" id="profile-sub-cats">
                         <!-- dynamically generated content for sub categories -->
+                    <div class="row no-gutters justify-content-between" id="profile-sub-cats">
+                    <div class="col-12">
+                        <h4>guild Rooms meeting your criteria</h4>
+                        {% for item in listz %}
+                            <p class="profile-categories">{{item.title}}  {{item.catIndex}} {{item.cardNumber}}</p>
+                        {% endfor %}
+                        </div>
                     </div>
                 </div>
 
@@ -60,5 +58,4 @@
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
     <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/headerExtend.js') }}"></script> 
 {% endblock %}

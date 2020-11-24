@@ -7,12 +7,19 @@
 body {
     /*background-color: #010203;*/
     /*background-color: #474747;*/
-    background-color: #010203;
+    background-color: #474747;
 }
 /*--------------------- Nav bar---------------------*/
 .nav-bump {
     height:3.5rem;
     background-color: #010203;
+}
+
+.custom-nav-logo {
+    font-weight: 700;
+    background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
 }
 
 .custom-nav {
@@ -22,6 +29,11 @@ body {
     background-color: rgba(0,0,0,.75);
     position:fixed;
     z-index: 3;
+    border-bottom: #48FF96 2px solid;
+}
+
+nav {
+    text-align: center;    
 }
 
 .custom-nav a:visited,
@@ -29,6 +41,7 @@ body {
     color: #fff;
 }
 
+.custom-nav form,
 .custom-nav li {
     padding: 1rem;
     padding-right: 3%;
@@ -43,11 +56,29 @@ body {
 .custom-nav a:hover {
     text-decoration: none;
 }
+
+.search-size,
+.search-button i {
+    bottom:.25rem;
+    position: relative;
+}
+
+.search-button,
+.search-button input {
+    background:transparent;
+    border: none;
+    padding: 0;
+}
+.search-button i {
+    color: #fff;
+    font-size: 1rem;
+}
+
 /*------------Header title and images--------------*/
 .header-img {
     transition: all .25s;
     position: relative;
-    background: center/cover no-repeat;
+    background: top center/cover no-repeat;
     width: 100%;
     height: 55rem;
 }
@@ -82,12 +113,12 @@ body {
 .header-title {  /*---------------------  bad target  refactor to  header-title-div  this is a text item!!---------------------*/
     position: relative;
     text-align: center;
-    top: 23.5rem;
+    top: 14rem;
     font-family: "Lobster", sans-serif;
 }
 .header-title h1 {
     font-size: 5rem;
-    background: linear-gradient( #9FCFE7, #40c4f0, #E7F8FD, #40c4f0, #9FCFE7);
+    background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );
    -webkit-text-fill-color: transparent;
    -webkit-background-clip: text;
 }
@@ -278,6 +309,7 @@ footer {
 }
 
 .icons p {
+    margin-top: 1rem;
     padding: 1rem;
     text-shadow: .2rem .2rem .1rem #010203;
 }
@@ -373,6 +405,8 @@ footer {
 .general-tab h1 {
     font: 5rem "Dancing Script", sans-serif;
     color: #fff;
+    top:1rem;
+    position:relative;
     margin-top: 3rem;
     text-shadow: .25rem .25rem .15rem #717067;
 }
@@ -537,8 +571,8 @@ background-image: url("../img/steve/tenets.jpg");
     text-align: center;
     background-color: rgba(0,0,0,.75);
     width: 100%;
-    top: 10rem;
     z-index: 3;
+    top:11rem;
 }
 
 /*----------------------------------for flashed messages-------------------------*/
@@ -548,20 +582,85 @@ background-image: url("../img/steve/tenets.jpg");
     /*text-shadow: .2rem .2rem .02rem #010203;*/
     text-align: center;
     color: #d6d1a6;
+    text-shadow: 3px 3px rgba(0,0,0,.75);
+    position: relative;
 }
 
 .landing-tab h1 {
     font-size: 4rem;
-    margin: 2rem;
-    text-shadow: 3px 3px rgba(0,0,0,.75);
+}
 
+
+.landing-tab h1,
+.landing-tab h2 {
+    margin: 1rem;
+}
+
+.landing-tab-bump h1 {
+    margin-top: 3rem;
 }
 
 .landing-tab p {
-    padding: 0rem 2rem;
+    padding: 0rem 2rem 2rem 2rem;
     color:  #87BA76;
-    font-weight: 700;
-    text-shadow: 3px 3px rgba(0,0,0,.75);
+    font-size: 1.5rem;
+}
+
+.landing-tab-bumb {
+    margin-top: 2rem;
+}
+
+.test-img {
+    background-image: url("../img/hallow_herd/hallow_world.jpg");
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+}
+
+.test-img p {
+    color: #48FF96;
+    text-shadow: 3px 3px #010203;
+    z-index: 3;
+}
+
+.test-img h2,
+.test-img h1 {
+    color: #FF9648;
+}
+
+.test-img-fil {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: absolute;
+    height: 100%;
+    width: 100%;
+}
+
+.about-world-img,
+.about-campaign-img,
+.about-wotc-img {
+    margin-top: 3rem;
+    height: 10rem;
+    z-index: 0;
+    background-size: 100% 100%;
+    border-radius: 25%;
+    box-shadow: 3px 3px 2px rgba(0,0,0,.75);
+
+}
+
+.about-world-img {
+    background-image: url("../img/paw.png");
+}
+.about-campaign-img {
+    background-image: url("../img/about_campaign.jpg");
+
+}
+.about-wotc-img {
+    background-image: url("../img/about_wotc.jpg");
+
+}
+
+hr {
+    width: 50%;
+    border: #9648FF 1px solid;
 }
 
 /*--------------------------------profile page----------------------------------*/
@@ -586,10 +685,11 @@ background-image: url("../img/steve/tenets.jpg");
 
 .profile-background {
     width: 100%;
+    text-align: center;
 }
 
-.profile-sub-categories {
-    
+.profile-choices {
+    bottom: 4rem;
 }
 
 /*----------------------found on animation css page ---------------------*/
