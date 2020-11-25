@@ -46,8 +46,8 @@ function createSubCategories(index) {
 
 
 // adds function to main category selection
-var profileCatClick = document.querySelectorAll(".profile-categories");
-profileCatClick.forEach(popSubCats)
+//var profileCatClick = document.querySelectorAll(".profile-categories");
+//profileCatClick.forEach(popSubCats)
 
 //populate sub categories
 function popSubCats (item, index) {

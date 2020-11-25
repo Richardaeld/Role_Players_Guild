@@ -20,17 +20,35 @@
         <div class="col-12 profile-choices">
             <div class="row no-gutters">
 
-                <div class="col-10 general-tab">
-                    <ul class=>
-                    {% for entry in entries %}
-                        <li>
-                        <a href="">{{entry.title}}</a>
+                <div class="col-6">
+                    <ul>
+                    {% for task in tasks %}
+                        <li> 
+                            <form action="{{ url_for('searchSub', username=session['user']) }}" method="POST">
+                                <input type="submit" name="query" id="query" value="{{task.category}}">
+                            </form>
                         </li>
                     {% endfor %}
                     </ul>
                 
                 </div>
+
+                <div class="col-6">
+                    <ul>
+                    {% for entry in listz %}
+                                <h1>{{entry.title}}</h1>
+                        <li> 
+                            <form action="{{ url_for('searchPage', username=session['user']) }}" method="POST">
+                                <input name="query2" id="query2" value="{{entry.image}}">
+                                <input name="query1" id="query1" value="{{entry.headerText}}">
+                                <input type="submit" name="query" id="query" value="{{entry.url}}">
+
+                            </form>
+                        </li>
+                    {% endfor %}
+                    </ul>
                 
+                </div>
 
             </div>
         </div>

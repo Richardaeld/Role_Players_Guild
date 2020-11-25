@@ -53,6 +53,8 @@ def tomb():
     return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img")
 
 
+
+
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
     #try and except a test is a pass and redirects use to profile page if already logged in
@@ -119,7 +121,7 @@ def register():
         return redirect(url_for("profile", username=session["user"]))
     return render_template("register.html", header_img="log-img")
 
-
+# main search for users
 @app.route("/search", methods=["GET", "POST"])
 def search():
     query = request.form.get("query")
@@ -127,22 +129,37 @@ def search():
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
     return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img")
 
+# searchs for the sub categories on the profile page and passes a variable to populate them
+@app.route("/searchSub", methods=["GET", "POST"])
+def searchSub():
+    query = request.form.get("query")
+    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
+    # a successful test for combining template location into a callable variable
+    #query = query + ".html"
+    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
+    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img")
+
+# sends user to page selected from sub category search
+@app.route("/searchPage", methods=["GET", "POST"])
+def searchPage():
+    query = request.form.get("query")
+    headerImg = request.form.get("query2")
+    headerText = request.form.get("query1")
+    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
+    # a successful test for combining template location into a callable variable
+    query = query + ".html"
+    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
+    return render_template(query, title_header=headerText, tasks=tasks, listz=listz, username=session["user"], header_img=headerImg)
+
 
 @app.route("/profile<username>", methods=["GET", "POST"])
 def profile(username):
-    # grab sessions user name from DB
-    #mainCats = list(mongo.db.profileMainCategory.find({"cat": "main"}))
-
-    #test
-    #tasks = list(mongo.db.guilds.find())
-    #new test
-    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-
+    # populates the main categories: home brew, wotc, campaign
+    tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
+    # empty until passed information from search
     listz = ""
-    entries = list(mongo.db.guilds.find({"search": "true"}))
-
     if session["user"]:
-        return render_template("profile.html", entries=entries, listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
+        return render_template("profile.html", listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
     return redirect(url_for("login"))
 
 
