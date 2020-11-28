@@ -6,6 +6,7 @@
 /*--------------------- default color  ---------------------*/
 body {
     background-color: #474747;
+    background-color: #010203;
 }
 /*--------------------- Nav bar---------------------*/
 .nav-bump {
@@ -97,10 +98,24 @@ nav {
     font-family: "Lobster", sans-serif;
 }
 .header-title h1 {
-    font-size: 5rem;
-    background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );
-   -webkit-text-fill-color: transparent;
-   -webkit-background-clip: text;
+    font-size: 7rem;
+    /* rest of class is a test */
+    /*background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );*/
+    /*background: linear-gradient(45deg, rgba(0,0,0,.85),rgba(0,0,0,1),rgba(0,0,0,.25),rgba(0,0,0,.5),rgba(0,0,0,.95) );*/
+    
+   /* -------------origingal
+    text-shadow: -2px -4px rgba(0, 0, 0, 0.75);
+   color:rgba(112, 71, 10, 0.644);*/
+   
+  /* color:rgba(243, 160, 35, 0.247);*/
+  background: rgba(0,0,0,.75);
+   text-shadow: -2px -4px 10px rgba(112, 71, 10, .9);
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+
+
+   /*-webkit-text-fill-color: transparent;
+   -webkit-background-clip: text;*/
 }
 /*bottom border for header*/
 .dice-border {
@@ -592,7 +607,15 @@ hr {
     bottom: 4rem;
 }
 
+.profile-choices-sub {
+}
+
+.make-invis {
+    display: none;
+}
+
 /*----------------------found on animation css page ---------------------*/
+/*----------------------entering testing area---------------------*/
 
 
 .header-img-book{
@@ -629,4 +652,34 @@ hr {
     width: 100%;
     background-repeat: no-repeat;
     background-size: 100% 100%;
+}*/
+
+.test-img{
+    background-image: url("../img/test-full.jpg");
+    background-size: 100% 100%;
+}
+
+.card-spin-test {
+    background-color: transparent;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+}
+
+.guild-space-test {
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+.side-test {
+    transform: rotateY(-90deg) translateX(-50%) translateZ(1.25rem);
+    background-color: brown;
+    backface-visibility: hidden;
+    width: 2rem;
+}
+
+.guild-space-test:hover .card-spin {
+    transform: rotateY(85deg) scale(1.1);
+}
+.guild-space-test:hover .outer {
+    transform: translatex(15rem);
 }

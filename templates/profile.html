@@ -33,15 +33,15 @@
                 
                 </div>
 
-                <div class="col-6">
+                <div class="col-6 profile-choices-sub">
                     <ul>
                     {% for entry in listz %}
                                 <h1>{{entry.title}}</h1>
                         <li> 
                             <form action="{{ url_for('searchPage', username=session['user']) }}" method="POST">
-                                <input name="query2" id="query2" value="{{entry.image}}">
-                                <input name="query1" id="query1" value="{{entry.headerText}}">
-                                <input type="submit" name="query" id="query" value="{{entry.url}}">
+                                <input class="make-invis" name="query2" id="query2" value="{{entry.image}}">
+                                <input class="make-invis" name="query1" id="query1" value="{{entry.headerText}}">
+                                <input class="profile-choices-sub" type="submit" name="query" id="query" value="{{entry.url}}">
 
                             </form>
                         </li>
