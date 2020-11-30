@@ -170,7 +170,7 @@ nav {
 
 /*-------------------door move animation*/
 .doors:hover .door-open-left{
-    transform: rotateY(90deg) scale(1.1);
+    transform: rotateY(120deg) scale(1.1);
 }
 
 .doors:hover .outer-left {
@@ -178,7 +178,7 @@ nav {
 }
 
 .doors:hover .door-open-right {
-    transform: rotateY(-90deg) scale(1.1);
+    transform: rotateY(-120deg) scale(1.1);
 }
 
 .doors:hover .outer-right {
@@ -216,7 +216,6 @@ nav {
 .side-right,
 .side-left {/*rgb(129, 88, 22)*/
     background-image: url("../img/plank.jpg");
-
     width: 2rem;
 }
 
