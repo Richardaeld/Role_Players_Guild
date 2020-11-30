@@ -1,0 +1,153 @@
+/* original card flip animation*/
+/*----------------3d cards----------------*/
+.card-background {
+    /*background-color: #2c2c2c;*/
+    /*background-color:#474747; */
+    text-shadow: 3px 3px rgba(0,0,0,.75);
+    background-color: #a5a5a5;
+}
+
+.coverCards {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    background-color: transparent;
+    z-index: -3;
+}
+
+.coverCardsAct {/*----- used in js to over write .coverCards-----*/
+    z-index: 2;
+}
+
+.guild-space {
+    margin: 1rem;
+    text-align: center;
+    color: #d6d1a6;
+    font: 600 2.5rem "Amatic SC", sans-serif;
+}
+/*outer layer*/
+.outer {
+    background-color: transparent;
+    width: 320px;
+    height: 36rem;
+    perspective: 1000px;
+    z-index: 1;
+}
+
+.outer:hover .card-spin {
+    transform: rotateY(180deg);
+}
+/*middle layer*/
+.card-spin {
+    position: relative;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition-duration: 3s;
+    border:solid 5px #dad8c8;
+    border-radius: 5%;
+    background-color: #dad8c8;
+    color: #dad8c8;
+    box-shadow: .5rem .5rem .25rem .5rem rgba(0, 0, 0, 0.25);
+    
+}
+/*inner layer*/
+.guild-card {
+    position: absolute;
+    height: 100%;
+}
+
+.guild-card h1,
+.guild-card p {
+    padding: 1rem .5rem 0 .5rem;
+    color: #010203;
+    font-weight: 700;
+}
+
+.card-sub-text p {
+    z-index: -3;
+   /* text-shadow: .15rem .15rem .1rem #8A8A84;*/
+   font-weight: 700;
+}
+
+.back {
+    transform: rotateY(180deg);
+    text-shadow: 0 0 rgba(0, 0, 0, 0.0);
+
+}
+/*images and presets*/
+.face {
+    background: center center/cover no-repeat;
+    border-radius: 5%;
+    backface-visibility: hidden;
+
+}
+
+/*  original door animation */
+
+
+.test-img{
+    background-image: url("../img/door-left.jpg");
+    background-size: 100% 100%;
+}
+
+.card-spin {
+    border: none;
+    border-radius: 0%;
+}
+
+.card-spin-test {
+    background-color: transparent;
+    transition-timing-function: linear;
+    transition-duration: 1s;
+}
+
+.guild-space-test {
+    transition-duration: 1s;
+    transition-timing-function: linear;
+}
+
+.side-test {
+    transform: rotateY(-90deg) translateX(-50%) translateZ(1.25rem);
+    /*background-color: #64490f;*/
+    background-image: linear-gradient(90deg, #7a4316, #755314, #976b32, #694310, #72420b);
+    backface-visibility: hidden;
+    width: 2rem;
+}
+
+.side-test-right {
+    transform: rotateY(90deg) translateX(50%) translateZ(1.25rem);
+    background-color: #7e420a;
+    backface-visibility: hidden;
+    width: 2rem;
+}
+
+/*--------------original!!!-----------
+.guild-space-test:hover .card-spin {
+    transform: rotateY(85deg) scale(1.1);
+}
+.guild-space-test:hover .outer {
+    transform: translateX(15rem);
+}
+.guild-space-test-right:hover .card-spin-test-right {
+    transform: rotateY(-85deg) scale(1.1);
+}
+.guild-space-test-right:hover .outer-right {
+    /*transform: translateX(-15rem);*//*
+}*/
+
+.card-spin-test {
+    transition-duration: 1s!important;
+}
+
+.doors-test:hover .card-spin-left{
+    transform: rotateY(85deg) scale(1.1);
+}
+.doors-test:hover .outer-left {
+    transform: translateX(15rem);
+}
+.doors-test:hover .card-spin-test-right {
+    transform: rotateY(-80deg) scale(1.1);
+}
+.doors-test:hover .outer-right {
+    transform: translateX(-15rem);
+}
