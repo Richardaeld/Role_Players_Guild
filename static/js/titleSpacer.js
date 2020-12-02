@@ -6,7 +6,7 @@ document.getElementById("header-spacer").style.width = spacerWidth + "px"
 
 titleSpace();
 
-//-------------------------set height for title and body and stops height at footer
+//-------------------------set height for title and body background (brickwall) and stops height at footer
 function backgroundHeight() {
     var heightOne = document.getElementById("header_main").scrollHeight
     var heightTwo = document.getElementById("header-spacer").scrollHeight
@@ -32,6 +32,8 @@ document.getElementById("background-img").style.height = heightBase + heightThre
 
 backgroundHeight();
 
+
+// places text shadow behind title text by adding height and width
 function backgroundHeightCheck() {
     var heightOne = document.getElementById("header-text").offsetHeight
     var widthOne = document.getElementById("header-text").offsetWidth
@@ -47,5 +49,20 @@ document.getElementById("header-text-box").style.width = widthOne + "px"
 
 } 
 
-backgroundHeightCheck();
+//backgroundHeightCheck();
 
+//mouse over (hover) animation
+document.getElementsByClassName("portal")[0].addEventListener('mouseover', function() {
+    document.getElementsByClassName("door-open-right")[0].classList.add("door-right-open");
+    document.getElementsByClassName("door-open-left")[0].classList.add("door-left-open");
+});
+
+document.getElementsByClassName("portal")[0].addEventListener('mouseout', function() {
+    document.getElementsByClassName("door-open-right")[0].classList.remove("door-right-open");
+    document.getElementsByClassName("door-open-left")[0].classList.remove("door-left-open")
+})
+
+//click function to about us page
+document.getElementsByClassName("portal")[0].addEventListener('click', function() {
+    
+})
