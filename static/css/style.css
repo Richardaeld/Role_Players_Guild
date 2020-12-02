@@ -99,7 +99,7 @@ nav {
     z-index: 1;
 }
 
-.header-title span {
+/*.header-title span {
     background:  url("../img/plank-90.jpg");
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -107,13 +107,13 @@ nav {
     position: absolute;
     right: 0;
     bottom: 15px;
-}
+}*/
 
 
 
 .header-title h1 {
     font-size: 5rem;
-    background:  url("../img/plank-90.jpg");
+    background:  url("../img/index/plank-grain.jpg");
     /* rest of class is a test */
     /*background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );*/
     /*background: linear-gradient(45deg, rgba(0,0,0,.85),rgba(0,0,0,1),rgba(0,0,0,.25),rgba(0,0,0,.5),rgba(0,0,0,.95) );*/
@@ -153,7 +153,7 @@ nav {
 /*bottom border for header*/
 .dice-border {
     height: 2.5rem;
-    background: url("../img/wood-grain-1.jpg") top left/cover no-repeat;
+    background: url("../img/index/wood-grain-1.jpg") top left/cover no-repeat;
     box-shadow: -1rem -1rem 1rem .75rem rgba(0,0,0,.5);
     z-index: 0;
 }
@@ -200,7 +200,7 @@ nav {
 
 .test-portal{
     position: absolute;
-    background-image: url("../img/tavern-full-1.jpg");
+    background-image: url("../img/index/tavern.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     top: 1%;
@@ -299,7 +299,7 @@ nav {
 }
 
 .door-img{
-    background-image: url("../img/door-left-1.jpg");
+    background-image: url("../img/index/door-face.jpg");
     background-size: 100% 100%;
 }
 
@@ -319,7 +319,7 @@ nav {
 
 .side-right,
 .side-left {/*rgb(129, 88, 22)*/
-    background-image: url("../img/plank.jpg");
+    background-image: url("../img/index/door-side.jpg");
     width: 2rem;
 }
 
@@ -348,6 +348,7 @@ nav {
 
 /*footer*/
 footer {
+    border-top: #48FF96 2px solid;
     text-align: center;
     color: #fff;
     background-color: #010203;
@@ -756,7 +757,7 @@ hr {
 
 .test-background {
     position: absolute;
-    background-image: url("../img/brick-fil.jpg");
+    background-image: url("../img/index/brick-background.jpg");
     width: 100%;
     z-index: -2;
 }
