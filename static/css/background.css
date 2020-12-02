@@ -1,18 +1,23 @@
 /*------------Header title and images--------------*/
 .header-img {
     background: top center/cover no-repeat;
+    transform: skewY(4deg) skewX(-4deg) rotate(-2deg);
 }
 
 .index-header-img {
     background-image: url("../img/header.jpg");
     /* rest of class is a test*/
     background-image: url("../img/wood-grain-1.jpg");
-    border-radius: 20%;
-    border: solid 10px rgba(0,0,0,.60);
-    background-size: cover;
+    background-image: url("../img/sign-1-full.png");
+    /*border-radius: 20%;*/
+    /*border: solid 10px rgba(0,0,0,.60);*/
+    background-size: contain;
     padding-left: 2rem;
-    width: 80%!important;
+    width: 80%;
+    /*box-shadow: 4px 4px 2px rgba(0,0,0,.60);*/
     /*border-image: url("../img/wood-grain-1.jpg") 1% round;*/
+    -webkit-filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, .75));
+
 }
 
 .hallow-header-img {

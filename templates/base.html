@@ -25,8 +25,8 @@
 
 
     <!--header and nav-->
-    <header class="row no-gutters justify-content-center">
-    <div class="col-12 nav-bump">
+    <header class="row no-gutters justify-content-center" id="baseHeader">
+    <div class="col-12 nav-bump" id="navBump">
     <div class="row no-gutters">
         <!--Nav Bar-->
         <nav class="custom-nav" id="custom-nav">
@@ -69,13 +69,14 @@
         </nav>
         </div></div>
         <!--Header Bar-->
-        <div class="col-12 header-img {{ header_img }}" id="header_main">       <!--Header Image-->
+        <div class="col-8 header-img {{ header_img }}" id="header_main">       <!--Header Image-->
             <div class="row no-gutters">                                    
                 <span class="header-span" id="header-span">                     <!--Header Image Filter-->
                     <div class="header-title">                                  <!-- -->
                         <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div">                <!--Header title Filter-->
-                                <h1 id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
                             </div>
                         </div>
                     </div>
@@ -84,9 +85,12 @@
         </div>
 
         <!--gradient border for header bar-->
-        <div class="col-12 dice-border" id="header-border">
+        <div class="row no-gutters">
+        <div class="col-12 spacer" id="header-spacer">
+        </div></div>
+      <!--  <div class="col-12 dice-border" id="header-border">
             <span></span>
-        </div>
+        </div> -->
 
         <!-- section for flash messages -->
 
@@ -157,6 +161,5 @@
     <!-- custom js for page -->
     {% block custom_script %}
     {% endblock %}
-    <script src="{{ url_for('static', filename='js/essential.js') }}"></script> 
 </body>
 </html>

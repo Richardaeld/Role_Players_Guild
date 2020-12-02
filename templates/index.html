@@ -1,6 +1,12 @@
 {% extends "base.html" %}
 
 {% block modal %}
+
+<!--background test-->
+<div class="row no-gutters">
+<div class="col-12 test-background" id="background-img">
+
+</div></div>
 <!--modal-->
 <div class="row no-gutters justify-content-center">
     <div class="col-12 modal-cover" id="modal-cover"></div>     <!--Modal Filter-->
@@ -13,12 +19,12 @@
 {% block section_content %}
 
     <!--Guild intro text-->
-<section >
+<section id="index-section">
     <div class="row no-gutters justify-content-center">
         <div class="index-img"></div>
         <div class="col-10 landing-tab">
-            <h1>Sign up and join one of our many tables!</h1>
-            <h4>Open the doors and come in!</h4>
+            <!--<h1>Sign up and join one of our many tables!</h1>
+            <h4>Open the doors and come in!</h4> -->
             <!--<p>
                 
 
@@ -29,23 +35,28 @@
         </div>
 
         <div class="col-10 doors">
-        
 
             <div class="row no-gutters justify-content-center">
             <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic--> <!--not used with doors-->
+           <!--<div class="col-6 portal"></div>-->
+            <div class="test-portal"></div>
+
 
                 
 
 
                 <!-- Im right door  LIES AND BACKWARDS -->
                 <!-- Card Body -->
-                <div class="col-mg-6 col-lg-6 col-xl-5 ">
+                
+                <div class="col-mg-6 col-lg-6 col-xl-5">
 
+                
                     <div class="row no-gutters">
+
                         <!--card Title-->
-                        <div class="col-12">
+                       <!---- <div class="col-12">
                             <p>Im a name</p>
-                        </div>
+                        </div> -->
 
                         <!--Card Spin body-->
                         <div class="col-12 outer-door-box outer-right ">
@@ -57,9 +68,9 @@
                         </div>
                         
                         <!--card sub header-->
-                        <div class="col-12 card-sub-text">
+                    <!----    <div class="col-12 card-sub-text">
                             <p>Im sub content</p>
-                        </div>
+                        </div> -->
 
                     </div>
                 </div> 
@@ -70,9 +81,9 @@
 
                     <div class="row no-gutters">
                         <!--card Title-->
-                        <div class="col-12">
+                        <!--<div class="col-12">
                             <p>Im a name</p>
-                        </div>
+                        </div>-->
 
                         <!--Card Spin body-->
                         <div class="col-12 outer-door-box outer-left ">
@@ -84,13 +95,13 @@
                         </div>
                             
                         <!--card sub header-->
-                        <div class="col-12 card-sub-text">
+                        <!--<div class="col-12 card-sub-text">
                             <p>Im sub content</p>
-                        </div>
+                        </div>-->
 
                     </div>
                 </div>
- 
+
 
 
 
@@ -109,7 +120,6 @@
 
 
 {% block custom_script %}
-    <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
-    <script src="{{ url_for('static', filename='js/cardFlip.js') }}"></script> 
-    <script src="{{ url_for('static', filename='js/headerExtend.js') }}"></script> 
+    <script src="{{ url_for('static', filename='js/titleSpacer.js') }}"></script> 
+
 {% endblock %}

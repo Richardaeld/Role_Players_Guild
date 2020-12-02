@@ -28,29 +28,29 @@ def index():
     # gets info for guild cards
     guildInfo = mongo.db.guildDetails.find()
 
-    return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img", guildInfo=guildInfo)
+    return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img", guildInfo=guildInfo, title_data="Role Players Guild")
 
 @app.route("/about_us")
 def about_us():
     # gets info for guild cards
     guildInfo = mongo.db.guildDetails.find()
 
-    return render_template("about_us.html", title_header="About Our Guild", header_img="index-header-img", guildInfo=guildInfo)
+    return render_template("about_us.html", title_header="About Our Guild", header_img="index-header-img", guildInfo=guildInfo, title_data="")
 
 @app.route("/temple")
 def temple():
     tasks = mongo.db.templeOfSteve.find()
-    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img", templeOfSteve=tasks)
+    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img", templeOfSteve=tasks, title_data="")
 
 
 @app.route("/hallow")
 def hallow():
-    return render_template("hallow.html", title_header="In the Shadow of the Hallow Herd", header_img="hallow-header-img")
+    return render_template("hallow.html", title_header="In the Shadow of the Hallow Herd", header_img="hallow-header-img", title_data="")
 
 
 @app.route("/tomb")
 def tomb():
-    return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img")
+    return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img", title_data="")
 
 
 
@@ -87,7 +87,7 @@ def signIn():
             flash("Incorrect username and/or password")
             return redirect(url_for("signIn"))
 
-    return render_template("signIn.html", header_img="log-img")
+    return render_template("signIn.html", header_img="log-img", title_data="")
 
 
 @app.route("/signOut")
@@ -119,7 +119,7 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Resistration successful")
         return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html", header_img="log-img")
+    return render_template("register.html", header_img="log-img", title_data="")
 
 # main search for users
 @app.route("/search", methods=["GET", "POST"])
@@ -159,7 +159,7 @@ def profile(username):
     # empty until passed information from search
     listz = ""
     if session["user"]:
-        return render_template("profile.html", listz=listz, tasks=tasks, username=session["user"], header_img="log-img")
+        return render_template("profile.html", listz=listz, tasks=tasks, username=session["user"], header_img="log-img", title_data="")
     return redirect(url_for("login"))
 
 
