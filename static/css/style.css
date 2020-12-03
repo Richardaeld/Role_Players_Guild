@@ -1,11 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Lobster&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;500;600;700&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Amatic+SC:wght@400;700&family=Comfortaa:wght@300;400;500;600;700&family=Dancing+Script:wght@400;500;600;700&family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Lobster&display=swap');
 /*--------------------- default color  ---------------------*/
 body {
-    background-color: #474747;
+    /*background-color: #474747;*/
     background-color: #010203;
 }
 /*--------------------- Nav bar---------------------*/
@@ -49,7 +45,6 @@ nav {
 
 .custom-nav li:hover {
     transform: scale(1.1);
-                    /*----------------------------------------add text shadow!!*/
 }
 
 .custom-nav a:hover {
@@ -99,44 +94,33 @@ nav {
     z-index: 1;
 }
 
-/*.header-title span {
-    background:  url("../img/plank-90.jpg");
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    font-size: 7rem;
-    position: absolute;
-    right: 0;
-    bottom: 15px;
-}*/
-
-
-
 .header-title h1 {
-    font-size: 5rem;
+    font-size: 3rem;
     background:  url("../img/index/plank-grain.jpg");
-    /* rest of class is a test */
-    /*background: linear-gradient( #E7F8FD, #48FF96 30%, #E7F8FD 55%, #48FF96 75%, #E7F8FD );*/
-    /*background: linear-gradient(45deg, rgba(0,0,0,.85),rgba(0,0,0,1),rgba(0,0,0,.25),rgba(0,0,0,.5),rgba(0,0,0,.95) );*/
-    
-   /* -------------origingal
-    text-shadow: -2px -4px rgba(0, 0, 0, 0.75);
-   color:rgba(112, 71, 10, 0.644);*/
-  /* color:rgba(243, 160, 35, 0.247);*/
-  /*background: rgba(0,0,0,.75);*/
-   /*text-shadow: -2px -4px 10px rgba(112, 71, 10, .9), 2px 4px 10px #fff;*/
-  /* text-shadow: 0px 0px rgba(112, 69, 13, 0.267), 4px 4px rgba(19, 93, 189, 0.349), -2px -4px rgb(199, 24, 176);*/
-    /*box-shadow: 2px 2px #010203;*/
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
     text-shadow: 0px 0px rgba(0, 0, 0, 0.25);
-
-    
-   /*-webkit-text-fill-color: transparent;
-   -webkit-background-clip: text;*/
-
 }
 
-.header-title h1:after {
+@media (min-width: 576px) {  
+    .header-title h1 {
+        font-size: 3rem;
+    }
+}
+
+@media (min-width: 992px) { 
+    .header-title h1 {
+        font-size: 4.75rem;
+    }
+}
+
+@media (min-width: 1200px) { 
+    .header-title h1 {
+        font-size: 5rem;
+    }
+}
+
+.header-title h1:after { /* centers and creates depth shadow*/
     background: none;
     content: attr(data-text);
     left: 0;
@@ -146,59 +130,27 @@ nav {
         0px -2px  rgba(0,0,0,.75),
         -1px 0px rgba(0, 0, 0, 0.5),
         0px 1px rgba(155, 106, 16, 0.568);
-    top:0;
     z-index:-1;
 }
 
-/*bottom border for header*/
-.dice-border {
-    height: 2.5rem;
-    background: url("../img/index/wood-grain-1.jpg") top left/cover no-repeat;
-    box-shadow: -1rem -1rem 1rem .75rem rgba(0,0,0,.5);
-    z-index: 0;
-}
-/*bottom border overlay for header*/
-.dice-border span {
-    height: 2.5rem;
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*----------------3d doors----------------*/
-/*.door-hover {
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}*/
+.door-left-frame-remove {
+    display:none;
+}
+@media (max-width: 767.98px) {  /* allows doors to switch from double to single*/
+    .door-left-remove {
+        display: none;
+    }
+    .single-door-move {
+        right:12%;
+    }
+}
 
 .doors {
     z-index: 1;
 }
 
-.grass-layer {
-    position: absolute;
-    background-image: url("../img/grass-full.png");
-    height: 4rem;
-    background-position: 50% 70%;
-    bottom: 0;
-}
-
-.test-portal{
+.hall-image{
     position: absolute;
     background-image: url("../img/index/tavern.jpg");
     background-repeat: no-repeat;
@@ -206,27 +158,37 @@ nav {
     top: 1%;
     height: 35rem;
     width: 40%;
-    box-shadow: -10px -10px 4px rgba(0,0,0,.75),  10px 10px 4px rgba(0,0,0,.75);
-    
-   /* border: 20px solid;
-    border-image: url("../img/brick-fil.jpg") 2%;*/
+    box-shadow: 
+        -10px -10px 4px rgba(0,0,0,.75),  
+        10px 10px 4px rgba(0,0,0,.75);
+
 }
 
-.portal {
+@media (max-width: 991.98px) {
+    .hall-image {
+        background-size: cover;
+        box-shadow: 
+        -10px -10px 4px #012003,  
+        10px -10px 4px #010203,
+        10px 10px 4px #010203;
+    }
+}
+
+.hall-image img {
+    width:100%;
+    height:100%;
+}
+
+.hall-image-hover {
     position: absolute;
     height: 35rem;
     width: 40%;
     z-index: 3;
-
-    /*border: 10px solid;
-    border-image: linear-gradient( red, blue, green, orange) 1;*/
-    
 }
 
 .door-box {
     width: 50%!important;
 }
-
 
 /*----------------outer layer*/
 .outer-door-box {
@@ -256,25 +218,7 @@ nav {
 
 /*-------------------door move animation*/
 
-/*----------------------------------previously used but targeting area couldnt be refined becasue appropiate target was NOT a child element of target
-.doors:hover ~ .door-open-left{
-    transform: rotateY(120deg) scale(1);
-    transition-delay: 0s;
-}
-
-.doors:hover ~ .outer-left {
-    transform: translateX(0rem);/* used to be 13*//*
-}
-
-.doors:hover ~ .door-open-right {
-    transform: rotateY(-120deg) scale(1);
-    transition-delay: .25s;
-}
-
-.doors:hover ~ .outer-right {
-    transform: translateX(0rem);*//* used to be -13
-}*/
-
+/*----------------------------------previously used but targeting area couldnt be refined becasue appropiate target was NOT a child element of target*/
 .door-right-open {/* js linked*/
     transform: rotateY(-120deg) scale(1);
     transition-delay: .25s;
@@ -326,6 +270,9 @@ nav {
 .side-left {
     transform: rotateY(-90deg) translateX(-50%) translateZ(.8rem);
 }
+
+
+
 .side-right {
     transform: rotateY(90deg) translateX(50%) translateZ(.8rem);
 }
@@ -755,7 +702,7 @@ hr {
     background-size: 100% 100%;
 }*/
 
-.test-background {
+.index-background {
     position: absolute;
     background-image: url("../img/index/brick-background.jpg");
     width: 100%;

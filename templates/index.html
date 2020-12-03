@@ -4,7 +4,7 @@
 
 <!--background test-->
 <div class="row no-gutters">
-<div class="col-12 test-background" id="background-img">
+<div class="col-12 index-background" id="background-img">
 
 </div></div>
 <!--modal-->
@@ -22,72 +22,32 @@
 <section id="index-section">
     <div class="row no-gutters justify-content-center">
         <div class="index-img"></div>
-        <div class="col-10 landing-tab">
-            <!--<h1>Sign up and join one of our many tables!</h1>
-            <h4>Open the doors and come in!</h4> -->
-            <!--<p>
-                
+        <div class="col-10 landing-tab"></div> <!-- old-->
 
-                We are a growing guild that offers multiple rooms for posting thoughts and ideas about role play.  
-                Check out our three original room cards and our about us page! If you like our humor, sign up and 
-                join the guild. We will be happy to have you!
-            </p>-->
-        </div>
-
-        <div class="col-10 doors">
-
+        <div class="col-12 doors">
             <div class="row no-gutters justify-content-center">
-            <div class="col-12 coverCards"></div>  <!-- cover cards used as JS target loc with css logic--> <!--not used with doors-->
-            <div class="test-portal">
-            </div>
-            <div class="col-6 portal" >
-                <a class="about-link" ></a>  <!--left off here-->
-            </div>
-
-
-                
-
+            <div class="hall-image" id="enterHall"></div> <!--js target for link-->
+            <div class=" col-lg-6 hall-image-hover"></div> <!-- transparent filter for js animation-->
 
                 <!-- Im right door  LIES AND BACKWARDS -->
-                <!-- Card Body -->
-                
-                <div class="col-mg-6 col-lg-6 col-xl-5">
-
-                
+                <!-- Card Body -->                
+                <div class="col-12 col-sm-10 col-md-5 col-lg-5 col-xl-5 single-door-move">
                     <div class="row no-gutters">
-
-                        <!--card Title-->
-                       <!---- <div class="col-12">
-                            <p>Im a name</p>
-                        </div> -->
-
                         <!--Card Spin body-->
-                        <div class="col-12 outer-door-box outer-right ">
+                        <div class="col-12 outer-door-box outer-right single-door-move">
                             <div class="row no-gutters justify-content-end door-open door-open-right">
                                 <div class="col-6 door door-img"></div><!--face side-->
                                 <div class="col-6 door side-right "></div><!--depth side-->
-                                <div class="col-6 door door-img back"></div><!--back side-->
+                                <div class="col-6 door door-img back"></div><!--back side-->                                                                                            
                             </div>
                         </div>
-                        
-                        <!--card sub header-->
-                    <!----    <div class="col-12 card-sub-text">
-                            <p>Im sub content</p>
-                        </div> -->
-
                     </div>
                 </div> 
 
                 <!-- Im left door -->
                 <!-- Card Body -->
-                <div class="col-mg-6 col-lg-6 col-xl-5 ">
-
+                <div class="col-12 col-sm-10 col-md-5 col-lg-5 col-xl-5 door-left-remove">
                     <div class="row no-gutters">
-                        <!--card Title-->
-                        <!--<div class="col-12">
-                            <p>Im a name</p>
-                        </div>-->
-
                         <!--Card Spin body-->
                         <div class="col-12 outer-door-box outer-left ">
                             <div class="row no-gutters door-open door-open-left ">
@@ -96,22 +56,8 @@
                                 <div class="col-6 door door-img back-left"></div><!--back side-->
                             </div>
                         </div>
-                            
-                        <!--card sub header-->
-                        <!--<div class="col-12 card-sub-text">
-                            <p>Im sub content</p>
-                        </div>-->
-
                     </div>
                 </div>
-
-
-
-
-
-
-
-
 
 
 
@@ -124,5 +70,20 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/titleSpacer.js') }}"></script> 
-
+    <!--<script> // allows href to work for index door image
+    var getLocation = document.getElementById("enterHall");
+    var setHref = getLocation.href;
+    
+        document.getElementsByClassName("hall-image-hover")[0].addEventListener('click', function() {
+            var findWidth = document.body.offsetWidth
+            console.log(findWidth);
+            if( findWidth < 984){
+                setTimeout(function() {
+                    window.location.assign(setHref);
+                },3000)
+            }else{
+                window.location.assign(setHref);
+            }    
+        })
+    </script>-->
 {% endblock %}

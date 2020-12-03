@@ -6,3 +6,4 @@ __pycache__/
 *.py[cod]
 temp.txt
 temp
+oldStyle.css

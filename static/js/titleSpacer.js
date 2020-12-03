@@ -52,17 +52,17 @@ document.getElementById("header-text-box").style.width = widthOne + "px"
 //backgroundHeightCheck();
 
 //mouse over (hover) animation
-document.getElementsByClassName("portal")[0].addEventListener('mouseover', function() {
+document.getElementsByClassName("hall-image-hover")[0].addEventListener('mouseover', function() {
     document.getElementsByClassName("door-open-right")[0].classList.add("door-right-open");
     document.getElementsByClassName("door-open-left")[0].classList.add("door-left-open");
 });
 
-document.getElementsByClassName("portal")[0].addEventListener('mouseout', function() {
+document.getElementsByClassName("hall-image-hover")[0].addEventListener('mouseout', function() {
     document.getElementsByClassName("door-open-right")[0].classList.remove("door-right-open");
     document.getElementsByClassName("door-open-left")[0].classList.remove("door-left-open")
 })
 
 //click function to about us page
-document.getElementsByClassName("portal")[0].addEventListener('click', function() {
+//document.getElementsByClassName("portal")[0].addEventListener('click', function() {
     
-})
+//})
