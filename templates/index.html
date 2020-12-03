@@ -26,8 +26,10 @@
 
         <div class="col-12 doors">
             <div class="row no-gutters justify-content-center">
-            <div class="hall-image" id="enterHall"></div> <!--js target for link-->
-            <div class=" col-lg-6 hall-image-hover"></div> <!-- transparent filter for js animation-->
+            <div class="hall-image" ></div> 
+            <div class=" col-lg-6 hall-image-hover">
+                <a href="{{ url_for('about_us') }}" id="enterHall"></a>   <!--js target for link--> 
+            </div> <!-- transparent filter for js animation-->
 
                 <!-- Im right door  LIES AND BACKWARDS -->
                 <!-- Card Body -->                
@@ -70,7 +72,7 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/titleSpacer.js') }}"></script> 
-    <!--<script> // allows href to work for index door image
+    <script> // allows href to work for index door image
     var getLocation = document.getElementById("enterHall");
     var setHref = getLocation.href;
     
@@ -80,10 +82,12 @@
             if( findWidth < 984){
                 setTimeout(function() {
                     window.location.assign(setHref);
-                },3000)
+                },3000);
             }else{
-                window.location.assign(setHref);
+                setTimeout(function() {
+                    window.location.assign(setHref);
+                },1500);
             }    
         })
-    </script>-->
+    </script>
 {% endblock %}
