@@ -26,68 +26,61 @@
 
     <!--header and nav-->
     <header class="row no-gutters justify-content-center" id="baseHeader">
-    <div class="col-12 nav-bump" id="navBump">
-    <div class="row no-gutters">
-        <!--Nav Bar-->
-        <nav class="custom-nav" id="custom-nav">
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a href="{{ url_for('index') }}" id="home" class="custom-nav-logo">RPG</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('about_us') }}" id="about">About Us</a>
-                </li>
-                {% if session.user %}
-                <li class="nav-item">
-                    <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('index') }}" id="">Guild Halls</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('signOut') }}">Sign Out</a>
-                </li>
-                <form action="{{ url_for('search', username=session['user']) }}" method="POST">
-                    <input class="search-size" type="text" name="query" id="query">
-                    <label type= "submit" for="query"></label>
-                    <button class="search-button">
-                    <input type="submit" value="">
-                    <i class="fas fa-search"></i>
-                    </button>
-                </form>
+        <div class="col-12 nav-bump" id="navBump">
+            <div class="row no-gutters">
+                <!--Nav Bar-->
+                <nav class="custom-nav" id="custom-nav">
+                    <ul class="nav justify-content-center">
+                        <li class="nav-item">
+                            <a href="{{ url_for('index') }}" id="home" >RPG</a>
 
-                {% else %}
-                <li class="nav-item">
-                    <a href="{{ url_for('signIn') }}">Sign In</a>
-                </li>
-                <li class="nav-item">
-                    <a href="{{ url_for('register') }}">Register</a>
-                </li>
-                {% endif %}
-            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('about_us') }}" id="about">About Us</a>
+                        </li>
 
-        </nav>
-        </div></div>
-        <!--Header Bar-->
-        <div class="col-8 header-img {{ header_img }}" id="header_main">       <!--Header Image-->
-            <div class="row no-gutters">                                    
-                <span class="header-span" id="header-span">                     <!--Header Image Filter-->
-                    <div class="header-title">                                  <!-- -->
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
-                                <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
-                            </div>
-                        </div>
-                    </div>
-                </span>
+                        {% if session.user %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('index') }}" id="">Guild Halls</a>
+
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('signOut') }}">Sign Out</a>
+
+                        </li>
+                        <form action="{{ url_for('search', username=session['user']) }}" method="POST">
+                            <input class="search-size" type="text" name="query" id="query">
+                            <label type= "submit" for="query"></label>
+                            <button class="search-button">
+                                <input type="submit" value="">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </form>
+
+                        {% else %}
+                        <li class="nav-item">
+                            <a href="{{ url_for('signIn') }}">Sign In</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ url_for('register') }}">Register</a>
+                        </li>
+                        {% endif %}
+                    </ul>
+
+                </nav>
             </div>
         </div>
+        {% block title_bar %}
 
+        {% endblock %}
         <!--gradient border for header bar-->
-        <div class="row no-gutters">
+<!--        <div class="row no-gutters">
         <div class="col-12 spacer" id="header-spacer">
-        </div></div>
+        </div></div>  -->
       <!--  <div class="col-12 dice-border" id="header-border">
             <span></span>
         </div> -->

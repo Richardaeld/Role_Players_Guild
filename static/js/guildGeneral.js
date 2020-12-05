@@ -23,7 +23,9 @@ function allocateHeader() {
     }
 }
 // changes header according to which link mouse if hovering over
-allocateHeader();
+
+//----------function call--------  allocateHeader();
+
 //---------------------------end STD-------------------------------
 //-----------------------------transition between general section and tabs
 var generalHeight = document.getElementById("header-span").offsetHeight;

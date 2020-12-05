@@ -16,6 +16,26 @@
 </div>
 {% endblock %}
 
+{% block title_bar %}
+
+        <!--Header Bar-->
+        <div class="col-8 header-img {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+{% endblock %}
+
 {% block section_content %}
 
     <!--Guild intro text-->
@@ -24,6 +44,7 @@
         <div class="index-img"></div>
         <div class="col-10 landing-tab"></div> <!-- old-->
 
+        <div class="col-12 spacer"></div>
         <div class="col-12 doors">
             <div class="row no-gutters justify-content-center">
             <div class="hall-image" ></div> 
@@ -72,7 +93,9 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/titleSpacer.js') }}"></script> 
-    <script> // allows href to work for index door image
+    
+    <!--allows href to work for index door image-->
+    <script> //script MUST stay inline
     var getLocation = document.getElementById("enterHall");
     var setHref = getLocation.href;
     
@@ -90,4 +113,11 @@
             }    
         })
     </script>
+
+    <!--updates nav bar-->
+    <script>
+    document.getElementsByClassName("nav-item")[0].classList.add("active");
+    document.getElementsByClassName("nav-item")[0].firstElementChild.classList.add("custom-nav-logo");
+    </script>
+
 {% endblock %}

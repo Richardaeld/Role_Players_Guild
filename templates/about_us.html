@@ -5,7 +5,7 @@
     <!--Guild intro text-->
 <section>
     <div class="row no-gutters">
-        <div class="col-12 test-img">
+        <div class="col-12 about-us-img">
             <div class="row no-gutters justify-content-center landing-tab">
                 <span class="test-img-fil"></span>
 
@@ -88,4 +88,10 @@
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
     <script src="{{ url_for('static', filename='js/cardFlip.js') }}"></script> 
     <script src="{{ url_for('static', filename='js/headerExtend.js') }}"></script> 
+
+    <script>// updates nav bar 
+    document.getElementsByClassName("nav-item")[1].classList.add("active");
+    document.getElementsByClassName("nav-item")[1].firstElementChild.classList.add("custom-nav-logo");
+    </script>
+
 {% endblock %}

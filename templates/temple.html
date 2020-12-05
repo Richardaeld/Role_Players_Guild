@@ -3,6 +3,40 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
+{% block modal %}
+
+    <div class="row no-gutters justify-content-center">
+        <div class="col-12 modal-cover" id="modal-cover"></div>
+        <div class="col-10 parch" id="parch">
+            <form action="" method="post">
+                <input name="queryadd" id="queryadd" type="text">
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block title_bar %}
+        <!--Header Bar-->
+        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+
+{% endblock %}
 
 {% block temple_test %}
 
@@ -77,7 +111,7 @@
 {% endblock %}
 {% block main_content %} 
 
-            <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
+                <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
 
                 <div class="col-12 general-display-none general-tab general-tab-background-1">
                     <div class="row no-gutters justify-content-center">
@@ -86,18 +120,41 @@
                         </div>
                         <div class="col-10">
 
-                            <h1>Tenets</h1>
+                            <h1>Tenets--</h1>
 
                             <ul class="list-group">
-                                <li class="list-group-item">Say mean things in a nice way</li>
+                                {% for list in pageList %}
+                                    <li class="list-group-item">
+                                        {{ list.idea }}
+                                        
+                                    </li>
+                                {% endfor %}
+                                <!--<li class="list-group-item">Say mean things in a nice way</li>
                                 <li class="list-group-item">Always heal the wounded and immediately try to convert them</li>
                                 <li class="list-group-item">Be abrasively friendly</li>
                                 <li class="list-group-item">Insist on talking about steve</li>
                                 <li class="list-group-item">All disciples need a number in their name</li>
                                 <li class="list-group-item">Tell uninteresting tales of healing and everyone lives</li>
-                                <li class="list-group-item">Always be the top tier healer</li>
+                                <li class="list-group-item">Always be the top tier healer</li>-->
                             </ul>    
                         </div>
+
+
+                        {% if true %}
+                            <div>
+                                <ul class="col-1 edit-button">
+                                    <li id="add">
+                                        <a href="{{ url_for('addtask')}}"><p>addtask</p></a>
+                                    </li>
+                                    <li>
+                                        <p>Remove</p>
+                                    </li>
+                                    <li>
+                                        <p>Edit</p>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endif %}
 
                     </div>
                 </div>
@@ -297,6 +354,7 @@
 </section>
 {% endblock %}
 {% block custom_script %}
-<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>
+<script src="{{ url_for('static', filename='js/dbMod.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/guildGeneral.js' )}}"></script>
 {% endblock %}

@@ -6,7 +6,7 @@ body {
 }
 /*--------------------- Nav bar---------------------*/
 .nav-bump {
-    height:3.5rem;
+    height:4rem;
     background-color: #010203;
 }
 
@@ -23,12 +23,12 @@ body {
     color: #fff;
     background-color: rgba(0,0,0,.75);
     position:fixed;
-    z-index: 3;
+    z-index: 4;
     border-bottom: #48FF96 2px solid;
 }
 
 nav {
-    text-align: center;    
+    text-align: center;
 }
 
 .custom-nav a:visited,
@@ -51,6 +51,7 @@ nav {
     text-decoration: none;
 }
 
+/* nav search bar */
 .search-size,
 .search-button i {
     bottom:.25rem;
@@ -68,16 +69,15 @@ nav {
     font-size: 1rem;
 }
 
-/*------------Header title and images--------------*/
+/*------------Header title and images for index--------------*/
 .header-img {
-    transition: all .25s;
+   /* transition: all .25s;*/
     position: relative;
     width: 100%;
     height: 20rem;
 }
 
-
-/*header overlay*/
+/*header overlay*/ /* used with burn shadow */
 .header-span,
 .dice-border span {
     position: absolute;
@@ -132,11 +132,21 @@ nav {
         0px 1px rgba(155, 106, 16, 0.568);
     z-index:-1;
 }
+/*------------index background and spacer*/
+.index-background {
+    position: absolute;
+    background-image: url("../img/index/brick-background.jpg");
+    width: 100%;
+    z-index: -2;
+}
+
+.spacer {
+    height: 5rem;
+    width: 100%;
+    position: relative;
+}
 
 /*----------------3d doors----------------*/
-.door-left-frame-remove {
-    display:none;
-}
 @media (max-width: 767.98px) {  /* allows doors to switch from double to single*/
     .door-left-remove {
         display: none;
@@ -146,7 +156,7 @@ nav {
     }
 }
 
-.doors {
+.doors { /* float doors over footer text  */
     z-index: 1;
 }
 
@@ -161,7 +171,6 @@ nav {
     box-shadow: 
         -10px -10px 4px rgba(0,0,0,.75),  
         10px 10px 4px rgba(0,0,0,.75);
-
 }
 
 @media (max-width: 991.98px) {
@@ -172,11 +181,6 @@ nav {
         10px -10px 4px #010203,
         10px 10px 4px #010203;
     }
-}
-
-.hall-image img {
-    width:100%;
-    height:100%;
 }
 
 .hall-image-hover {
@@ -209,7 +213,6 @@ nav {
 
 .door-open-left {
     transition-delay: .35s;
-
 }
 
 .door-open-right {
@@ -229,13 +232,7 @@ nav {
     transition-delay: 0s;
 }
 
-.about-link{
-    width: 100%;
-    height: 36rem;
-}
-
 /*-----------------------inner layer*/
-
 .door {
     position: absolute;
     height: 100%;
@@ -271,31 +268,13 @@ nav {
     transform: rotateY(-90deg) translateX(-50%) translateZ(.8rem);
 }
 
-
-
 .side-right {
     transform: rotateY(90deg) translateX(50%) translateZ(.8rem);
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*footer*/
 footer {
-    border-top: #48FF96 2px solid;
+    border-top: solid 2px #48FF96;
     text-align: center;
     color: #fff;
     background-color: #010203;
@@ -333,6 +312,7 @@ footer {
     background-color: rgba(0,0,0,1);
     z-index: 3;
     transition-duration: 1.5s;
+    top: 4rem;
 }
 
 .general-display-none {
@@ -397,8 +377,9 @@ footer {
     position: absolute;
     z-index: 2;
     text-shadow: .2rem .2rem .02rem #010203;
-    height: 60rem;
+    height: 55rem; /* tab HEIGHT!! NEEDS TO BE STANDARD   */
     text-align: center;
+    top: 4rem;
 }
 
 .general-tab h1 {
@@ -431,27 +412,44 @@ footer {
 .back-button {
     position: absolute;
     background-color: rgba(0,0,0,.5);
-    left:1rem;
     height: 3.75rem;
     color: #fff;
     width:5%;
     border: solid 2px #fff;
-}
-
-.back-button {
     margin: 5.5rem .25rem .25rem .25rem;
     transition-duration: .5s;
 }
 
-.back-button {
-    border-radius: 25%;
+.edit-button {
+    margin:0!important; /*  margin in general tab ul problem*/
+    position: absolute;
+    color: #fff;
+    width:5%;
+    transition-duration: .5s;
+    list-style-type: none;
+
 }
 
+.edit-button li {
+    background-color: rgba(0,0,0,.5);
+    border: solid 2px #fff;
+    transition-duration: .5s;
+    border-radius: 25%;
+    height: 3.75rem;
+
+
+}
+
+.back-button {
+    left: 1rem;
+    border-radius: 25%;
+}
+.edit-button p,
 .back-button p {
     padding-top: .375rem;
     margin: 0;
 }
-
+.edit-button li:hover,
 .submit-button:hover,
 .back-button:hover {
     color: rgba(254, 130, 2, .85);
@@ -459,43 +457,9 @@ footer {
     border: solid 2px rgba(254, 130, 2, .85);
     transform: scale(1.1);
 }
-/* --------------------------------submission form-----------------------------------*/
-.general-tab {
-    /*background: url("../img/steve/confession.png") top center/cover no-repeat;*/
-    min-height: 45rem;
-    max-height:55rem;  /*----------------------------does conflict with wood grain border without this------------*/
-    transition-duration: 1.5s;
-}
 
-
-
-
-.form-filter {
-    margin-top: 1.5rem;
-}
-
-.input-line {
-    padding-top:.75rem;
-    padding-bottom: 0.75rem;
-}
-
-.input-line label {
-    position: right;
-   /* width:30%;*/
-    vertical-align: top;
-    left: -15rem;
-    text-align: right;
-}
-
-.input-line textarea,
-.input-line select,
-.input-line input {
-    width: 60%;
-}
-
-.submit-button {
-    margin-bottom: 1rem;
-    transition-duration: 1.5s;
+.edit-button {
+    left:90%;
 }
 
 /*--------------------------------------new sign in boxes----------------------------------*/
@@ -549,7 +513,7 @@ footer {
 }
 
 /*----------------------------------for flashed messages-------------------------*/
-/*----------------------------------for reworked indexpage-------------------------*/
+/*----------------------------------for reworked about us page-------------------------*/
 .landing-tab {
     font: 2rem "Comfortaa", sans-serif;
     /*text-shadow: .2rem .2rem .02rem #010203;*/
@@ -562,7 +526,6 @@ footer {
 .landing-tab h1 {
     font-size: 4rem;
 }
-
 
 .landing-tab h1,
 .landing-tab h2 {
@@ -583,24 +546,24 @@ footer {
     margin-top: 2rem;
 }
 
-.test-img {
+.about-us-img {
     background-image: url("../img/hallow_herd/hallow_world.jpg");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
-.test-img p {
+.about-us-img p {
     color: #48FF96;
     text-shadow: 3px 3px #010203;
     z-index: 3;
 }
 
-.test-img h2,
-.test-img h1 {
+.about-us-img h2,
+.about-us-img h1 {
     color: #FF9648;
 }
 
-.test-img-fil {
+.about-us-img-fil {
     background-color: rgba(0, 0, 0, 0.5);
     position: absolute;
     height: 100%;
@@ -619,8 +582,6 @@ footer {
 
 }
 
-
-
 hr {
     width: 50%;
     border: #9648FF 1px solid;
@@ -633,12 +594,9 @@ hr {
     fill: none;
     z-index: 0;
     text-align: center;
-    position: static;
-    margin: 3rem;
     /*color: #D25F38;*/
     color: #010203;
     font: 3rem "Dancing Script", sans-serif;
-    width: 100%;
 }
 
 .profile-categories p {
@@ -702,15 +660,21 @@ hr {
     background-size: 100% 100%;
 }*/
 
-.index-background {
-    position: absolute;
-    background-image: url("../img/index/brick-background.jpg");
-    width: 100%;
-    z-index: -2;
+.profile-image-size {
+    height:55rem;
+    width:100%;
+    transform: skewY(0deg) skewX(0deg) rotate(0deg)!important;
 }
 
-.spacer {
-    height: 5rem;
-    width: 100%;
-    position: relative;
+.profile-test {
+    font-family: "Lobster", sans-serif;
+}
+
+.profile-test li {
+    list-style-type: none;
+}
+
+.profile-test input {
+    border:none;
+    background-color: transparent;
 }

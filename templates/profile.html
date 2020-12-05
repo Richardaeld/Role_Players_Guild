@@ -4,6 +4,26 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
+{% block title_bar %}
+        <!--Header Bar-->
+        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+
+{% endblock %}
+
 {% block temple_test %}
 <div class="col-12 general-tab form-tab">
     <div class="row no-gutters justify-content-center">
@@ -20,30 +40,39 @@
         <div class="col-12 profile-choices">
             <div class="row no-gutters">
 
-                <div class="col-6">
-                    <ul>
+                <div class="col-6 profile-categories">
+                    <p>What guild hall interests you?</p>
+                    <ul class="profile-test">
                     {% for task in tasks %}
                         <li> 
-                            <form action="{{ url_for('searchSub', username=session['user']) }}" method="POST">
-                                <input type="submit" name="query" id="query" value="{{task.category}}">
+                    
+                            <form action="{{ url_for('searchHalls', username=session['user']) }}" method="POST">
+                                <input type="submit" name="searchRoomsQuery" id="searchRoomsQuery" value="{{task.category}}">
                             </form>
+
+
                         </li>
                     {% endfor %}
                     </ul>
                 
                 </div>
 
-                <div class="col-6 profile-choices-sub">
-                    <ul>
+                <div class="col-6 profile-categories">
+                    <p>what guild room interests you?</p>
+                    <ul class="profile-test">
                     {% for entry in listz %}
-                                <h1>{{entry.title}}</h1>
-                        <li> 
-                            <form action="{{ url_for('searchPage', username=session['user']) }}" method="POST">
-                                <input class="make-invis" name="query2" id="query2" value="{{entry.image}}">
-                                <input class="make-invis" name="query1" id="query1" value="{{entry.headerText}}">
-                                <input class="profile-choices-sub" type="submit" name="query" id="query" value="{{entry.url}}">
+                                <!--<h1>entry.title</h1>--> <!-- left in for future ideas -->
+                        <li>
 
+                            <form action="{{ url_for('openRoom', username=session['user']) }}" method="POST">
+                                <input class="make-invis" name="roomNameQuery" id="roomNameQuery" value="{{entry.dataTitle}}">
+                                <input class="make-invis" name="headerImgQuery" id="headerImgQuery" value="{{entry.image}}">
+                                <input class="make-invis" name="headerTextQuery" id="headerTextQuery" value="{{entry.headerText}}">
+                                <input class="profile-choices-sub" type="submit" name="roomHTMLQuery" id="roomHTMLQuery" value="{{entry.url}}">
                             </form>
+
+                            
+                        
                         </li>
                     {% endfor %}
                     </ul>
@@ -61,4 +90,8 @@
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
     <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
+    <script>
+        document.getElementsByClassName("nav-item")[2].classList.add("active");
+        document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");
+    </script>
 {% endblock %}

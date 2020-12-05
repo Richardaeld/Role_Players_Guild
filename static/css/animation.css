@@ -65,7 +65,7 @@
 /*----------------------modal animations implemented from JS-----------------------*/
 .cardOpen {/*----- used in js -----*/
     transform: scale(1);
-    z-index: 2; /*        -----------------altered-----------------*/
+    z-index: 4; /*        -----------------altered-----------------*/
 }
 
 .modalBack {/*----- used in js -----*/

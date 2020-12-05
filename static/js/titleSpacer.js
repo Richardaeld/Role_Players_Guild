@@ -1,15 +1,18 @@
-//---------------------------space maker for title header and rest of page
-function titleSpace() {
-var spacerWidth = document.getElementById("header_main").offsetWidth
-document.getElementById("header-spacer").style.width = spacerWidth + "px"
-}
 
-titleSpace();
+//amend-- no reason to use JS when css spacer works
+//---------------------------space maker for title header and rest of page
+//function titleSpace() {
+//var spacerWidth = document.getElementById("header_main").offsetWidth
+//document.getElementById("header-spacer").style.width = spacerWidth + "px"
+//}
+
+//titleSpace();
+
 
 //-------------------------set height for title and body background (brickwall) and stops height at footer
 function backgroundHeight() {
     var heightOne = document.getElementById("header_main").scrollHeight
-    var heightTwo = document.getElementById("header-spacer").scrollHeight
+//    var heightTwo = document.getElementById("header-spacer").scrollHeight
     var heightThree = document.getElementById("index-section").scrollHeight
     var heightFour = document.getElementById("navBump").scrollHeight
     var setHeight = document.getElementById("background-img").style.height 
@@ -21,7 +24,7 @@ function backgroundHeight() {
     //setHeight = heightOne + heightTwo + heightThree + "px";
 
 console.log(heightOne)
-console.log(heightTwo)
+//console.log(heightTwo)
 console.log(heightThree)
 console.log(heightFour)
 

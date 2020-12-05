@@ -28,19 +28,38 @@ def index():
     # gets info for guild cards
     guildInfo = mongo.db.guildDetails.find()
 
-    return render_template("index.html", title_header="Role Players Guild", header_img="index-header-img", guildInfo=guildInfo, title_data="Role Players Guild")
+    return render_template(
+        "index.html", 
+        title_header="Role Players Guild", 
+        header_img="index-header-img", 
+        guildInfo=guildInfo, 
+        title_data="Role Players Guild")
 
 @app.route("/about_us")
 def about_us():
     # gets info for guild cards
     guildInfo = mongo.db.guildDetails.find()
 
-    return render_template("about_us.html", title_header="About Our Guild", header_img="index-header-img", guildInfo=guildInfo, title_data="")
+    return render_template(
+        "about_us.html",
+        title_header="About Our Guild",
+        header_img="index-header-img",
+        guildInfo=guildInfo,
+        title_data="")
 
-@app.route("/temple")
+@app.route("/temple", methods=["GET", "POST"])
 def temple():
     tasks = mongo.db.templeOfSteve.find()
-    return render_template("temple.html", title_header="Welcome to the Temple of Steve", header_img="steve-header-img", templeOfSteve=tasks, title_data="")
+    tenets = list(mongo.db.templeOfSteve.find())
+
+    return render_template(
+        "temple.html",
+        title_header="Welcome to the Temple of Steve",
+        header_img="steve-header-img",
+        templeOfSteve=tasks,
+        title_data="Temple of Steve",
+        profile_class="profile-image-size",
+        tenets=tenets)
 
 
 @app.route("/hallow")
@@ -87,7 +106,7 @@ def signIn():
             flash("Incorrect username and/or password")
             return redirect(url_for("signIn"))
 
-    return render_template("signIn.html", header_img="log-img", title_data="")
+    return render_template("signIn.html", header_img="log-img", title_data="", profile_class="profile-image-size")
 
 
 @app.route("/signOut")
@@ -119,7 +138,9 @@ def register():
         session["user"] = request.form.get("username").lower()
         flash("Resistration successful")
         return redirect(url_for("profile", username=session["user"]))
-    return render_template("register.html", header_img="log-img", title_data="")
+
+    return render_template("register.html", header_img="log-img", title_data="", profile_class="profile-image-size")
+
 
 # main search for users
 @app.route("/search", methods=["GET", "POST"])
@@ -127,40 +148,108 @@ def search():
     query = request.form.get("query")
     listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img")
+    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img", profile_class="profile-image-size")
 
-# searchs for the sub categories on the profile page and passes a variable to populate them
-@app.route("/searchSub", methods=["GET", "POST"])
-def searchSub():
-    query = request.form.get("query")
-    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
-    # a successful test for combining template location into a callable variable
-    #query = query + ".html"
+
+# searchs for the sub categories on the profile page and
+# passes a variable to populate them
+@app.route("/searchHalls", methods=["GET", "POST"])
+def searchHalls():
+    searchRoomsQuery = request.form.get("searchRoomsQuery")
+    listz = list(mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
+    # a successful test for combining template
+    # location into a callable variable
+    # query = query + ".html"
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img")
+    return render_template(
+        "profile.html",
+        tasks=tasks,
+        listz=listz,
+        username=session["user"],
+        header_img="log-img",
+        profile_class="profile-image-size")
+
+
+@app.route("/addtask", methods=["GET", "POST"])
+def addtask():
+
+    if request.method == "POST":
+        addtask = {
+            "room": "templeOfSteve",
+            "category": "insults",
+            "idea": request.form.get("addtask"),
+            "submit": "form",
+            "date": ""
+        }
+
+        mongo.db.guildDiscussion.insert_one(addtask)
+        flash("Insult added")
+
+    return render_template(
+        "addtask.html",
+        username=session["user"],
+        profile_class="profile-image-size",
+        header_img="log-img")
+
 
 # sends user to page selected from sub category search
-@app.route("/searchPage", methods=["GET", "POST"])
-def searchPage():
-    query = request.form.get("query")
-    headerImg = request.form.get("query2")
-    headerText = request.form.get("query1")
-    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
-    # a successful test for combining template location into a callable variable
-    query = query + ".html"
-    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template(query, title_header=headerText, tasks=tasks, listz=listz, username=session["user"], header_img=headerImg)
+@app.route("/openRoom", methods=["GET", "POST"])
+def openRoom():
+    # search inputs
+    roomHTMLQuery = request.form.get("roomHTMLQuery")
+    roomNameQuery = request.form.get("roomNameQuery")
+    headerImg = request.form.get("headerImgQuery")
+    headerText = request.form.get("headerTextQuery")
+
+    # combines search with suffix
+    roomHTMLQuery = roomHTMLQuery + ".html"
+
+    # searches for guild halls
+    # (mongo.db.guilds.find({"mainIndex": "true"}))
+    # Doesnt need to have actual search, "" will suffice
+    # hall search
+    tasks = ""
+    # rooms search
+    listz = ""
 
 
+    # searches for guild room DB
+    pageList = mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}})
+
+    return render_template(
+        roomHTMLQuery,
+        title_header=headerText,
+        tasks=tasks,
+        listz=listz,
+        username=session["user"],
+        header_img=headerImg,
+        profile_class="profile-image-size",
+        pageList=pageList)
+
+
+# main category population ie, WOTC
 @app.route("/profile<username>", methods=["GET", "POST"])
 def profile(username):
+
     # populates the main categories: home brew, wotc, campaign
     tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
+
     # empty until passed information from search
     listz = ""
+
     if session["user"]:
-        return render_template("profile.html", listz=listz, tasks=tasks, username=session["user"], header_img="log-img", title_data="")
+        return render_template(
+            "profile.html",
+            listz=listz,
+            tasks=tasks,
+            username=session["user"],
+            header_img="log-img",
+            title_data="",
+            profile_class="profile-image-size")
+
+
     return redirect(url_for("login"))
+
 
 
 if __name__ == "__main__":
