@@ -125,8 +125,22 @@
                             <ul class="list-group">
                                 {% for list in pageList %}
                                     <li class="list-group-item">
-                                        {{ list.idea }}
+                                        <div class="row no-gutters justify-content-between">
+                                        <div class="col-10">
+                                        <span class="form-idea">
+                                            {{ list.idea }}
+                                        </span>
+                                        </div>
                                         
+                                        <div class="col-2">
+                                        <span class="form-edit">
+                                            <a href="{{ url_for('edittask', editme=list._id)}}">Edit Task</a>
+                                        </span>
+                                        </div>
+                                        
+
+
+                                        </div>
                                     </li>
                                 {% endfor %}
                                 <!--<li class="list-group-item">Say mean things in a nice way</li>

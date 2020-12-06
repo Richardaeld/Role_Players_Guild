@@ -698,5 +698,26 @@ hr {
 
 .form-mod input {
     background-color:transparent;
-    text-align: center;
 }
+
+.form-idea {
+    text-align:center;
+    width:60%;
+}
+
+.form-edit {
+    text-align: right;
+    width: 40%;
+}
+
+.form-name {
+    text-align: left;
+    vertical-align: bottom; 
+
+}
+
+.form-test123,
+.form-test132 li {
+    width: 100%;
+}
+

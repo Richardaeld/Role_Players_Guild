@@ -191,6 +191,31 @@ def addtask():
         profile_class="profile-image-size",
         header_img="log-img")
 
+@app.route("/edittask/<editme>", methods=["GET", "POST"])
+def edittask(editme):
+    #editme1 = mongo.db.guildDiscussion.find_one({"$text" : {"$search": editme}})
+#    edit = mongo.db.guildDiscussion.find_one({"submit": "form"})
+
+    if request.method == "POST":
+        edit = {
+            "room": request.form.get("editroom"),
+            "category": request.form.get("editcategory"),
+            "idea": request.form.get("editIdea"),
+            "submit": request.form.get("editsubmit"),
+            "date": request.form.get("editdate")
+        }
+
+        mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
+        flash("Insult updated")
+
+    tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
+    return render_template(
+        "edittask.html",
+        username=session["user"],
+        profile_class="profile-image-size",
+        edit=tasky,
+        header_img="log-img")
+
 
 # sends user to page selected from sub category search
 @app.route("/openRoom", methods=["GET", "POST"])

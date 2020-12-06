@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block modal %}
+
+<!--background test-->
+<div class="row no-gutters">
+<div class="col-12 index-background" id="background-img">
+
+</div></div>
+<!--modal-->
+<div class="row no-gutters justify-content-center">
+    <div class="col-12 modal-cover" id="modal-cover"></div>     <!--Modal Filter-->
+    <div class="col-12 col-md-10 parch parch-test" id="parch">              <!--Modal Body-->
+        <p id="modal-text"></p>                                  <!--Modal Text-->
+
+           <div class="row no-gutters">
+
+                <div class="col-12">
+                    <p>This is what youre editing</p>
+                    <p>{{edit.idea}}</p>
+
+                    <ul class="form-mod">
+                        <li> 
+                    
+                            <form action="{{ url_for('edittask', editme=edit._id) }}" method="POST">
+                                <div class="row no-gutters justify-content-center">
+                                    
+                                    <div class="col-10">
+                                        <input  name="editIdea" id="editIdea">
+                                        <input class="make-invis" name="editroom" id="editroom" value="{{edit.room}}">
+                                        <input class="make-invis" name="editcategory" id="editcategory" value="{{edit.category}}">
+                                        <input class="make-invis" name="editsubmit" id="editsubmit" value="{{edit.submit}}">
+                                        <input class="make-invis" name="editdate" id="editdate" value="{{edit.date}}">
+
+
+                                    </div>
+
+                                    <div class="col-10">
+                                        <input class="profile-choices-sub" type="submit">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </li>
+                    </ul>
+                
+                </div>
+
+            </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
+{% block title_bar %}
+        <!--Header Bar-->
+        <div class="col-12 header-img {{profile_class}} hallow-header-img" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+
+{% endblock %}
+
