@@ -596,11 +596,11 @@ hr {
     text-align: center;
     /*color: #D25F38;*/
     color: #010203;
-    font: 3rem "Dancing Script", sans-serif;
+    font: 1.5rem "Dancing Script", sans-serif;
 }
 
 .profile-categories p {
-    text-shadow: 3px 3px #87BA76;
+    text-shadow: 1px 0px #474747;
 
 }
 
@@ -677,4 +677,26 @@ hr {
 .profile-test input {
     border:none;
     background-color: transparent;
+}
+
+.parch-test {
+    transform:scale(1)!important;
+    top:4.5rem!important;
+    position: absolute!important;
+    text-align:center!important;
+    transition-duration: 0s!important;
+}
+
+.parch-test p
+.parch-test input {
+    font-size: 2rem;
+}
+
+.parch-test ul {
+    list-style-type: none;
+}
+
+.form-mod input {
+    background-color:transparent;
+    text-align: center;
 }

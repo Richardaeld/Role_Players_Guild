@@ -38,3 +38,18 @@ document.getElementById("modal-cover").onclick = function() {
 
 }
 
+//---------------------------------------------ADD TASK-----------------------------------------
+var totalTabs = document.querySelectorAll(".general-tab").length;
+var tabsSearch = document.querySelectorAll(".general-tab");
+
+//tabsSearch.forEach(tabsSearched);
+
+function tabsSearched(item, index) {
+    var search = document.getElementsByClassName("general-tab")[index];
+    if (item.className = "general-display-none"){
+        console.log(true)
+    }else{
+        console.log(false)
+    }
+}
+

@@ -31,6 +31,7 @@ function allocateHeader() {
 var generalHeight = document.getElementById("header-span").offsetHeight;
 var generalTabClick = document.querySelectorAll(".temple-span");
 var generalTab = document.querySelectorAll(".general-tab");
+var generalTabReturn = "";  // NEW!! for add item -----ADD as a THIS item for reference
 
 generalTabClick.forEach(generalTransition);
 generalTab.forEach(generalBack)
@@ -45,6 +46,7 @@ function generalTransition(item, index) {
         setTimeout(function() {
             document.getElementsByClassName("general-cover")[0].style.cssText = "height: 0px"
             document.getElementsByClassName("general-tab")[index].classList.remove("general-display-none");
+            generalTabReturn = document.getElementsByClassName("general-tab")[index]; //-----NEW
             document.getElementById("temple-main").classList.add("general-display-none")
         },1500);
     });

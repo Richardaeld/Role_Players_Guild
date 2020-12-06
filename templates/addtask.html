@@ -1,8 +1,51 @@
 {% extends "base.html" %}
 
+{% block modal %}
+
+<!--background test-->
+<div class="row no-gutters">
+<div class="col-12 index-background" id="background-img">
+
+</div></div>
+<!--modal-->
+<div class="row no-gutters justify-content-center">
+    <div class="col-12 modal-cover" id="modal-cover"></div>     <!--Modal Filter-->
+    <div class="col-12 col-md-10 parch parch-test" id="parch">              <!--Modal Body-->
+        <p id="modal-text"></p>                                  <!--Modal Text-->
+
+           <div class="row no-gutters">
+
+                <div class="col-12">
+                    <p>What insult are you going to add?</p>
+                    <ul class="form-mod">
+                        <li> 
+                    
+                            <form action="{{ url_for('addtask') }}" method="POST">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-10">
+                                        <input  name="addtask" id="addtask">
+                                    </div>
+                                    <div class="col-10">
+                                        <input class="profile-choices-sub" type="submit">
+                                    </div>
+                                </div>
+                            </form>
+
+                        </li>
+                    </ul>
+                
+                </div>
+
+            </div>
+
+    </div>
+</div>
+{% endblock %}
+
+
 {% block title_bar %}
         <!--Header Bar-->
-        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+        <div class="col-12 header-img {{profile_class}} hallow-header-img" id="header_main">       <!--Header Image-->
             <div class="row no-gutters">                                    
                 <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
                     <div class="header-title">                                  <!-- -->
@@ -20,43 +63,3 @@
 
 {% endblock %}
 
-{% block temple_test %}
-
-<div class="col-12 general-tab form-tab">
-    <div class="row no-gutters justify-content-center">
-        <div class="col-10 flash-test">
-            <h1>Welcome {{ username }}</h1>
-        </div>
-        <div class="col-10">
-
-        </div>
-    </div>
-</div>
-
-<section class="profile-background" id="temple-body"> <!-- temple body houses absolute-->
-    <div class="row no-gutters">
-        <div class="col-12 profile-choices">
-            <div class="row no-gutters">
-
-                <div class="col-6">
-                    <p>What insult are you going to add?</p>
-                    <ul class="form-mod">
-                        <li> 
-                    
-                            <form action="{{ url_for('addtask') }}" method="POST">
-                                <input  name="addtask" id="addtask">
-                                <input class="profile-choices-sub" type="submit">
-                            </form>
-
-                            
-                        
-                        </li>
-                    </ul>
-                
-                </div>
-
-            </div>
-        </div>
-    </div>
-</section>
-{% endblock %}
