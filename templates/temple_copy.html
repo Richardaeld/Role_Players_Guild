@@ -1,0 +1,377 @@
+{% extends "base.html" %}
+{% block custom_link %}
+<link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
+{% endblock %}
+
+{% block modal %}
+
+    <div class="row no-gutters justify-content-center">
+        <div class="col-12 modal-cover" id="modal-cover"></div>
+        <div class="col-10 parch" id="parch">
+            <form action="" method="post">
+                <input name="queryadd" id="queryadd" type="text">
+                <input type="submit" value="Submit">
+            </form>
+
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block title_bar %}
+        <!--Header Bar-->
+        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="header-title">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+
+{% endblock %}
+
+{% block temple_test %}
+
+<section class="card-background" id="temple-body">
+    <div class="row no-gutters">
+        <div class="col-12">
+            <div class="row no-gutters">
+            <!--<span class="general-cover"></span>---------------         REMOVE ME          -->
+
+                <div class="col-12" id="temple-main">
+                    <div class="row no-gutters justify-content-between">
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Tenets</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg >
+                                <rect rx="50" ry="50" />
+                            </svg>
+                            <p>Alignment</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Insults</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Propaganda</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Members</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Accomplishments</p>
+                        </div>
+
+                        <div class="col-2 temple-cats">
+                            <div class="temple-span"></div>
+                            <svg>
+                                <rect rx="50" ry="50"/>
+                            </svg>
+                            <p>Submission Form</p>
+                        </div>
+
+                    </div>
+                </div>
+
+{% endblock %}
+{% block main_content %} 
+
+                <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
+
+                <div class="col-12 general-display-none general-tab general-tab-background-1">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Tenets--</h1>
+
+                            <ul class="list-group">
+                                {% for list in pageList %}
+                                    <li class="list-group-item">
+                                        <div class="row no-gutters justify-content-between">
+            
+                                            <div class="col-10">
+                                              <span class="form-idea">
+                                                    {{ list.idea }}
+                                                </span>
+                                            </div>
+                                            
+                                                {% if admin.admin==true or list.submit == admin.username %}
+                                            <div class="col-1">
+                                                <span class="form-edit">
+                                                    <a href="{{ url_for('edittask', editme=list._id)}}">Edit</a>
+                                                </span>
+                                            </div>
+                                            <div class="col-1">
+
+                                                <span class="form-edit">
+                                                    <a href="{{ url_for('edittask', editme=list._id)}}">Remove</a>
+                                                </span>
+                                            </div>
+                                                {% endif %}
+
+
+                                        
+                                        </div>
+                                    </li>
+                                {% endfor %}
+                                <!--<li class="list-group-item">Say mean things in a nice way</li>
+                                <li class="list-group-item">Always heal the wounded and immediately try to convert them</li>
+                                <li class="list-group-item">Be abrasively friendly</li>
+                                <li class="list-group-item">Insist on talking about steve</li>
+                                <li class="list-group-item">All disciples need a number in their name</li>
+                                <li class="list-group-item">Tell uninteresting tales of healing and everyone lives</li>
+                                <li class="list-group-item">Always be the top tier healer</li>-->
+                            </ul>    
+                        </div>
+
+
+                        {% if true %}
+                            <div>
+                                <ul class="col-1 edit-button">
+                                    <li id="add">
+                                        <a href="{{ url_for('addtask')}}"><p>addtask</p></a>
+                                    </li>
+                                </ul>
+                            </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+
+                <div class="col-12 general-display-none general-tab general-tab-background-2">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Alignment</h1>
+
+                            <ul class="list-group">
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                                <li class="list-group-item">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium,</li>
+                            </ul>    
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 general-display-none general-tab general-tab-background-3">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button ">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Insults</h1>
+
+                            <ul class="list-group">
+                                <li class="list-group-item">Of course I talk like an idiot. How else could you understand me?</li>
+                                <li class="list-group-item">Your Mama’s so fat she died. I’m sorry for your loss!</li>
+                                <li class="list-group-item">May the chocolate chips in your cookies turn out to be raisins.</li>
+                                <li class="list-group-item">I see that you’ve set aside this special time to humiliate yourself in public.</li>
+                                <li class="list-group-item">You are as strong as an ox and almost as intelligent.</li>
+                                <li class="list-group-item">If you were twice as smart, you’d still be stupid.</li>
+                                <li class="list-group-item">You’ll never be half the man your mother is.</li>
+                            </ul>    
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 general-display-none general-tab general-tab-background-4">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Propaganda</h1><!--Kossuth-->
+
+                            <ul class="list-group">
+                                <li class="list-group-item">Water is the enemy</li>
+                                <li class="list-group-item">Consumption of water is unacceptable unless under extreme survival situation</li>
+                                <li class="list-group-item">All food must be consumed hot</li>
+                                <li class="list-group-item">All bodies must be cremated or made subservient to the lord of flame</li>
+                                <li class="list-group-item">An actual flame is prefered to any light spell</li>
+                                <li class="list-group-item">Prayers should be made before a brazier or open flame</li>
+                                <li class="list-group-item">No fire should be stopped through intervention but rather should be allowed to run it's course naturally</li>
+                                <li class="list-group-item">Above all else</li>
+                                <li class="list-group-item">Fire is pure and will purge all, rendering it capable to start a new</li>
+                            </ul>    
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 general-display-none general-tab general-tab-background-5">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Members</h1>
+
+                            <ul class="list-group">
+                            {% for task in templeOfSteve %}
+                                <li class="list-group-item">{{ task.idea }}</li>
+                            {% endfor %}
+                            </ul>    
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12 general-display-none general-tab general-tab-background-6">
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+                            <h1>Accomplishments</h1>
+
+                            <ul class="list-group">
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                                <li class="list-group-item">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempo</li>
+                            </ul>    
+                        </div>
+
+                    </div>
+                </div>
+
+
+                <div class="col-12 general-display-none general-tab general-tab-background-7"> 
+                    <div class="row no-gutters justify-content-center">
+                        <div class="col-1 back-button">
+                            <p>Back</p>
+                        </div>
+                        <div class="col-10">
+
+
+                            <fieldset class="form-box">
+                            <h1>Submission Form</h1>
+                                <form class="form-filter">
+                                    <div class="row no-gutters justify-content-center">
+
+                                        <div class="col-10 input-line">
+                                            <label for="username">User Name:</label>
+                                            <input type="text">
+                                        </div>
+
+                                        <div class="col-10 input-line">
+                                            <label for="password">Password:</label>
+                                            <input type="text">
+                                        </div>
+
+                                        <div class="col-10 input-line">
+                                            <label for="tabAddingTo">Select a tab:</label>
+                                            <select>
+                                                <option>tenets</option>
+                                                <option>Alignment</option>
+                                                <option>Insults</option>
+                                                <option>Propaganda</option>
+                                                <option>Members</option>
+                                                <option>Accomplishments</option>
+                                            </select>                                        
+                                            </div>
+
+                                    <!--    <div class="col-10 input-line">
+                                            <label for="">is this a item or line addition?</label>
+                                            <br>
+                                            <input type="radio" name="gender" value="male">
+                                            <label for="additionType">Item</label>
+                                            <input type="radio" name="gender" value="female">
+                                            <label for="additionType">Line</label>
+                                        </div>
+
+
+                                        <div class="col-10 input-line">
+                                            <label for="">select line to add to</label>
+                                            <input type="text">
+                                        </div>
+                                    
+                                        <div class="col-10 input-line">
+                                            <label for="">Name</label>
+                                            <input type="text">
+                                        </div> -->
+
+                                        <div class="col-10 input-line">
+                                            <label for="content">Content to add</label>
+                                            <textarea rows="4">What is the addition you wish to make?</textarea>
+                                        </div>
+                                    
+                                    </div>
+                                    
+
+                                    <input class="submit-button"  type="submit" value="Submit">
+                                </form>
+                            </fieldset>
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+</section>
+{% endblock %}
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/dbMod.js') }}"></script>
+<!--<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>-->
+<script src="{{ url_for('static', filename='js/guildGeneral.js' )}}"></script>
+{% endblock %}

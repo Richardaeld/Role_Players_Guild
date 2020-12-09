@@ -519,7 +519,7 @@ footer {
     /*text-shadow: .2rem .2rem .02rem #010203;*/
     text-align: center;
     color: #d6d1a6;
-    text-shadow: 3px 3px rgba(0,0,0,.75);
+    text-shadow: 2px 2px 4px rgba(0,0,0,.75);
     position: relative;
 }
 
@@ -554,7 +554,7 @@ footer {
 
 .about-us-img p {
     color: #48FF96;
-    text-shadow: 3px 3px #010203;
+    text-shadow: 1px 1px 3px #010203;
     z-index: 3;
 }
 

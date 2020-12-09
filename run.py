@@ -151,42 +151,30 @@ def search():
     return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img", profile_class="profile-image-size")
 
 
-# searchs for the sub categories on the profile page and
-# passes a variable to populate them
-@app.route("/searchHalls", methods=["GET", "POST"])
-def searchHalls():
-    searchRoomsQuery = request.form.get("searchRoomsQuery")
-    listz = list(mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
-    # a successful test for combining template
-    # location into a callable variable
-    # query = query + ".html"
-    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template(
-        "profile.html",
-        tasks=tasks,
-        listz=listz,
-        username=session["user"],
-        header_img="log-img",
-        profile_class="profile-image-size")
-
-
-@app.route("/addtask", methods=["GET", "POST"])
-def addtask():
+@app.route("/addtask/<test0>/'add'+<test1>", methods=["GET", "POST"])
+def addtask(test0, test1):
 
     if request.method == "POST":
-        addtask = {
-            "room": "templeOfSteve",
-            "category": "insults",
+        addme = {
+            "room": request.form.get("room"),
+            "category": request.form.get("category"),
             "idea": request.form.get("addtask"),
-            "submit": "form",
+            "submit": request.form.get("username"),
             "date": ""
         }
+        mongo.db.guildDiscussion.insert_one(addme)
+        flash("Added to " + request.form.get("category"))
+        return redirect(url_for('openRoom', username=session['user'], testh='True'))
 
-        mongo.db.guildDiscussion.insert_one(addtask)
-        flash("Insult added")
-
+    insertInfo=""
+    testy = mongo.db.guildDiscussion.find_one({"room": test0})
+    test0 = test0
     return render_template(
         "addtask.html",
+        test1=test1,
+        test0=test0,
+        test=testy,
+        add=insertInfo,
         username=session["user"],
         profile_class="profile-image-size",
         header_img="log-img")
@@ -207,6 +195,7 @@ def edittask(editme):
 
         mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
         flash("Insult updated")
+        return redirect(url_for('openRoom', username=session['user'], testh='True'))
 
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
     return render_template(
@@ -217,55 +206,108 @@ def edittask(editme):
         header_img="log-img")
 
 
+@app.route("/removetask/<removeme>", methods=["GET", "POST"])
+def removetask(removeme):
+    #editme1 = mongo.db.guildDiscussion.find_one({"$text" : {"$search": editme}})
+#    edit = mongo.db.guildDiscussion.find_one({"submit": "form"})
+
+    if request.method == "POST":
+        mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
+        flash("Insult removed")
+        return redirect(url_for('openRoom', username=session['user'], testh='True'))
+
+    tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
+    return render_template(
+        "removetask.html",
+        username=session["user"],
+        profile_class="profile-image-size",
+        edit=tasky,
+        header_img="log-img")
+
+
+# searchs for the sub categories on the profile page and
+# passes a variable to populate them
+@app.route("/searchHalls", methods=["GET", "POST"])
+def searchHalls():
+
+    testh = False
+
+    # takes user input for guild room search
+    searchRoomsQuery = request.form.get("searchRoomsQuery")
+
+    # searches for rooms associated to guild hall user selected
+    listz = list(
+        mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
+    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
+    return render_template(
+        "profile.html",
+        tasks=tasks,
+        listz=listz,
+        testh=testh,
+        username=session["user"],
+        header_img="log-img",
+        profile_class="profile-image-size",
+        searchroom=True)
+
+
 # sends user to page selected from sub category search
-@app.route("/openRoom", methods=["GET", "POST"])
-def openRoom():
+@app.route("/openRoom/<testh>", methods=["GET", "POST"])
+def openRoom(testh):
     # search inputs
-    roomHTMLQuery = request.form.get("roomHTMLQuery")
-    roomNameQuery = request.form.get("roomNameQuery")
-    headerImg = request.form.get("headerImgQuery")
-    headerText = request.form.get("headerTextQuery")
+    if testh == "False":
+        roomNameQuery = request.form.get("roomNameQuery")
+        roomHTMLQuery = request.form.get("roomHTMLQuery")
+        headerImg = request.form.get("headerImgQuery")
+        headerText = request.form.get("headerTextQuery")
+    if testh == "True":
+        roomNameQuery = session["place"][1]
+        roomHTMLQuery = session["place"][0]
+        headerImg = session["place"][2]
+        headerText = session["place"][3]
 
-    # combines search with suffix
-    roomHTMLQuery = roomHTMLQuery + ".html"
+    # combines search with suffix(.html) if needed
+    if testh == "False":
+        roomHTMLQuery = roomHTMLQuery + ".html"
+    else:
+        roomHTMLQuery=roomHTMLQuery
+    # gets categories to populate room with
+    totalCategories = list(mongo.db.tableCategories.find())
 
-    # searches for guild halls
-    # (mongo.db.guilds.find({"mainIndex": "true"}))
-    # Doesnt need to have actual search, "" will suffice
-    # hall search
-    tasks = ""
-    # rooms search
-    listz = ""
+    # searches if user has admin status
+    admin = mongo.db.users.find_one({"username": session["user"]})
+
+
+    #test session
+    session["place"] = [roomHTMLQuery, roomNameQuery, headerImg, headerText]
 
 
     # searches for guild room DB
-    pageList = mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}})
-
+    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
+    test = pageList[0]
+    addidea = roomNameQuery
     return render_template(
         roomHTMLQuery,
+        testh=testh,
+        test=test,
         title_header=headerText,
-        tasks=tasks,
-        listz=listz,
         username=session["user"],
         header_img=headerImg,
         profile_class="profile-image-size",
-        pageList=pageList)
-
+        pageList=pageList,
+        totalCategories=totalCategories,
+        addidea=addidea,
+        admin=admin)
 
 # main category population ie, WOTC
-@app.route("/profile<username>", methods=["GET", "POST"])
+@app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
 
     # populates the main categories: home brew, wotc, campaign
     tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
 
-    # empty until passed information from search
-    listz = ""
-
     if session["user"]:
         return render_template(
             "profile.html",
-            listz=listz,
             tasks=tasks,
             username=session["user"],
             header_img="log-img",

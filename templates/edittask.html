@@ -19,6 +19,13 @@
                     <p>This is what youre editing</p>
                     <p>{{edit.idea}}</p>
 
+                        <div class="col-1 back-button">
+                        <a href="{{ url_for('openRoom', username=session['user'], testh=True) }}">
+                            <span>Back</span>
+                        </a>
+                        </div>
+
+
                     <ul class="form-mod">
                         <li> 
                     
@@ -31,8 +38,6 @@
                                         <input class="make-invis" name="editcategory" id="editcategory" value="{{edit.category}}">
                                         <input class="make-invis" name="editsubmit" id="editsubmit" value="{{edit.submit}}">
                                         <input class="make-invis" name="editdate" id="editdate" value="{{edit.date}}">
-
-
                                     </div>
 
                                     <div class="col-10">
