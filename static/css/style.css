@@ -385,7 +385,7 @@ footer {
 .general-tab h1 {
     font: 5rem "Dancing Script", sans-serif;
     color: #fff;
-    top:1rem;
+    bottom:2rem;
     position:relative;
     margin-top: 3rem;
     text-shadow: .25rem .25rem .15rem #717067;
