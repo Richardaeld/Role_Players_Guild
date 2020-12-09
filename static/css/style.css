@@ -420,6 +420,10 @@ footer {
     transition-duration: .5s;
 }
 
+.edit-button:visited {
+    color: #fff;
+}
+
 .edit-button {
     margin:0!important; /*  margin in general tab ul problem*/
     position: absolute;

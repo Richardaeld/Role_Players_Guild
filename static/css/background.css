@@ -61,29 +61,29 @@
 background-image: url("../img/steve/tenets.jpg"); 
 }
 
-.general-tab-background-2 {/*alignment*/
+/*.general-tab-background-2 {/*alignment*//*
     background-image: url("../img/steve/alignment.jpg"); 
     background-position: center center;   
 }
-.general-tab-background-3 {/*insults*/
+.general-tab-background-3 {/*insults*//*
     background-image: url("../img/steve/burn.jpg");   
     background-position: center center
 }
-.general-tab-background-4 {/*propaganda*/
+.general-tab-background-4 {/*propaganda*//*
     background-image: url("../img/steve/propaganda.jpg"); 
     background-size: 100% 100%;
 }
-.general-tab-background-5 {/*members*/
+.general-tab-background-5 {/*members*//*
     background-image: url("../img/steve/members.jpg");    
     background-position: center center;
 }
-.general-tab-background-6 {/*accomplishments*/
+.general-tab-background-6 {/*accomplishments*//*
     background-image: url("../img/steve/organ.jpg");
     background-position: top center;
 }
-.general-tab-background-7 {/*submission form*/
+.general-tab-background-7 {/*submission form*//*
         background: url("../img/steve/confession.png") top center/cover no-repeat;
-}
+}*/
 
 /*---------------------about us images------------------------*/
 .about-world-img {
