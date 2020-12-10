@@ -640,6 +640,14 @@ hr {
     display: none;
 }
 
+.header-img {
+
+}
+
+.header-title-profile {
+    
+}
+
 /*----------------------found on animation css page ---------------------*/
 /*----------------------entering testing area---------------------*/
 
@@ -656,29 +664,10 @@ hr {
     background-color: rgba(0,0,0,0);
 }
 
-/*#title-header{
-    text-shadow: .35rem .35rem .15rem #903000;
-    font-weight: 700;
-    font-size: 3.5rem;
-    color: #fff;
-}   
-
-.header-title-div {
-    text-align: center;
-}*/
-
 .header-title-div-fade {
     background-color: rgba(0, 0, 0, 1);
 }
-/*
-.index-img {
-    position:absolute;
-    background-image: url("../img/index1.jpg");
-    height: 100%;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-size: 100% 100%;
-}*/
+
 
 .profile-image-size {
     height:55rem;

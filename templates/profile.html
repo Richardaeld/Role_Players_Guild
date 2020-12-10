@@ -13,7 +13,8 @@
                         <div class="row no-gutters justify-content-center">
                             <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
                                 <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                                <h1 data-text="Welcome {{username}}" id="title-header">Welcome {{ username }}</h1>   <!--Header Title Text-->
+                                <p>Where will your adventure take you today?</p>
                             </div>
                         </div>
                     </div>
@@ -24,18 +25,7 @@
 
 {% endblock %}
 
-{% block temple_test %}
-<div class="col-12 general-tab form-tab">
-    <div class="row no-gutters justify-content-center">
-        <div class="col-10 flash-test">
-            <h1>Welcome {{ username }}</h1>
-            <p>Where will your adventure take you today?</p>
-        </div>
-        <div class="col-10">
-
-        </div>
-    </div>
-</div>
+{% block header_dependent_section_content %}
 <section class="profile-background" id="temple-body"> <!-- temple body houses absolute-->
     <div class="row no-gutters">
         <div class="col-12 profile-choices">
@@ -96,7 +86,6 @@
 
 {% block custom_script %}
     <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
-    <script src="{{ url_for('static', filename='js/profile.js') }}"></script>
     <script>
         document.getElementsByClassName("nav-item")[2].classList.add("active");
         document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");

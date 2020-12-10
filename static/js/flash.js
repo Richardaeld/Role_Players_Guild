@@ -11,10 +11,11 @@ if (flashCheck != null){
 
 
 // set width of temple spans
-var getitemWidth = document.getElementsByClassName("temple-cats")[0].offsetWidth;
 var getSpanCount = document.querySelectorAll(".temple-span");
 getSpanCount.forEach(setSpanWidth);
 
 function setSpanWidth(item, index) {
+    var getitemWidth = document.getElementsByClassName("temple-cats")[0].offsetWidth;
+    
     document.getElementsByClassName("temple-span")[index].style.cssText = "width:" + getitemWidth + "px";
 }
