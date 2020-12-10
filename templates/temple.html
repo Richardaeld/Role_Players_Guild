@@ -50,8 +50,8 @@
                     <div class="row no-gutters justify-content-around">
 
                         {% for category in totalCategories %}
-
-                        <div class="col-2 temple-cats">
+                        
+                        <div class="col-3 temple-cats">
                             <div class="temple-span"></div>
                             <svg>
                                 <rect rx="50" ry="50"/>
@@ -85,9 +85,9 @@
 
                             <ul class="list-group">
                                 {% for list in pageList %}
-                                    <li class="list-group-item">
-                                        <div class="row no-gutters justify-content-between">
-                                            {% if list.category == categoryTitle.category %}
+                                    {% if list.category == categoryTitle.category %}
+                                        <li class="list-group-item">
+                                            <div class="row no-gutters justify-content-between">
                                                 <div class="col-10">
                                                     <span class="form-idea">
                                                         {{ list.idea.title() }}<!--test.room-->
@@ -110,11 +110,11 @@
 
                                                 {% endif %}
 
-                                            {% endif %}
 
 
-                                        </div>
-                                    </li>
+                                            </div>
+                                        </li>
+                                    {% endif %}
                                 {% endfor %}
                             </ul>    
                         </div>

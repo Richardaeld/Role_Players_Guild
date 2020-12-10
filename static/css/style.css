@@ -97,19 +97,30 @@ body {
     text-shadow: 0px 0px rgba(0, 0, 0, 0.25);
 }
 
-@media (min-width: 576px) {  
+.header-title-general h1 { /* replaces original Title header index uses with a color gradient */
+    font-size: 5rem;
+    background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
+    -webkit-text-fill-color: transparent;
+    -webkit-background-clip: text;
+    text-shadow: 0px 0px rgba(0,0,0,0);
+}
+
+@media (min-width: 576px) {
+    .header-title-general h1,
     .header-title h1 {
         font-size: 3rem;
     }
 }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
+    .header-title-general h1, 
     .header-title h1 {
         font-size: 4.75rem;
     }
 }
 
-@media (min-width: 1200px) { 
+@media (min-width: 1200px) {
+    .header-title-general h1, 
     .header-title h1 {
         font-size: 5rem;
     }
@@ -316,13 +327,7 @@ footer {
     display: none;
 }
 /*------------------------------temple general box hover effect--------------------------------*/
-.header-title-general h1 { /* replaces original for index */
-    font-size: 5rem;
-    background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
-    -webkit-text-fill-color: transparent;
-    -webkit-background-clip: text;
-    text-shadow: 0px 0px rgba(0,0,0,0);
-}
+
 
 #temple-main {
     position: relative;
@@ -339,9 +344,12 @@ footer {
     z-index: 2;
 }
 
+.temple-span{
+    width:100%;
+}
+
 .temple-span,
 .temple-cats {
-    width: 15rem;
     height: 5rem;
     border-radius: 25%;
     transition-duration: 1.5s;
@@ -353,7 +361,7 @@ footer {
     background-color: rgba(0, 0, 0, 0.5);
     text-align: center;
     position: static;
-    margin: 3rem;
+    margin: 1rem;
     /*color: #D25F38;*/
     color: #fff;
     font: 1.5rem "comfortaa", sans-serif;
@@ -370,11 +378,14 @@ footer {
     bottom: 3.5rem;
     text-shadow: .1rem .1rem .01rem #010203;
     font-weight: 700;
+
 }
 
 .temple-cats:hover {
     background-color: rgba(0,0,0,.75);
     color: #87BA76;
+    color: #9394E8;
+    color: #BCBCF1;
 }
 /*-------------------------------------temple box hover effects end --------------*/
 .general-tab {

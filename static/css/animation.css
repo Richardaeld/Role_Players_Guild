@@ -1,6 +1,6 @@
 /* svg border for tabs general, origignal temple of steve */
 .actBorder{
-    stroke: #006090;
+    stroke: #93E8E7;
     stroke-dasharray: 1800;
     stroke-linecap: round;
     stroke-linejoin: round;
@@ -15,7 +15,7 @@
 }
 
 .actBorderRev {
-    stroke: #006090;
+    stroke: #93E8E7;
     stroke-dasharray: 1800;
     stroke-linecap: round;
     stroke-linejoin: round;
