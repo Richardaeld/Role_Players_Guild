@@ -1,28 +1,9 @@
 {% extends "base.html" %}
 
 {% block custom_link %}
-<link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
 {% block title_bar %}
-        <!--Header Bar-->
-        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
-            <div class="row no-gutters">                                    
-                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
-                    <div class="header-title">                                  <!-- -->
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
-                                <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="Welcome {{username}}" id="title-header">Welcome {{ username }}</h1>   <!--Header Title Text-->
-                                <p>Where will your adventure take you today?</p>
-                            </div>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-
-
 {% endblock %}
 
 {% block header_dependent_section_content %}
@@ -85,7 +66,6 @@
 
 
 {% block custom_script %}
-    <script src="{{ url_for('static', filename='js/globalObjects.js') }}"></script>   
     <script>
         document.getElementsByClassName("nav-item")[2].classList.add("active");
         document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");

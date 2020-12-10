@@ -1,7 +1,7 @@
 # Import Libraries/Dependencies
 import os
 from flask import (
-    Flask, flash, render_template, 
+    Flask, flash, render_template,
     redirect, request, session, url_for)
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
@@ -10,11 +10,11 @@ if os.path.exists("env.py"):
     import env
 
 
-#Name of the app so Flask can see it
+# Name of the app so Flask can see it
 app = Flask(__name__)
 
 
-#how mongoDB can see and function with flask app
+# how mongoDB can see and function with flask app
 app.config["MONGO_DBNAME"] = os.environ.get("MONGO_DBNAME")
 app.config["MONGO_URI"] = os.environ.get("MONGO_URI")
 app.secret_key = os.environ.get("SECRET_KEY")
@@ -25,58 +25,50 @@ mongo = PyMongo(app)
 
 @app.route("/")
 def index():
-    # gets info for guild cards
-    guildInfo = mongo.db.guildDetails.find()
-
     return render_template(
-        "index.html", 
-        title_header="Role Players Guild", 
-        header_img="index-header-img", 
-        guildInfo=guildInfo, 
-        title_data="Role Players Guild")
+        "index.html",
+        header_img_class="header-img",
+        header_img="index-header-img",
+        header_title_class="header-title",
+        title_header="Role Players Guild",
+        title_header_p="")
+
 
 @app.route("/about_us")
 def about_us():
-    # gets info for guild cards
-    guildInfo = mongo.db.guildDetails.find()
-
     return render_template(
         "about_us.html",
-        title_header="About Our Guild",
-        header_img="index-header-img",
-        guildInfo=guildInfo,
-        title_data="")
-
-@app.route("/temple", methods=["GET", "POST"])
-def temple():
-    tasks = mongo.db.templeOfSteve.find()
-    tenets = list(mongo.db.templeOfSteve.find())
-
-    return render_template(
-        "temple.html",
-        title_header="Welcome to the Temple of Steve",
-        header_img="steve-header-img",
-        templeOfSteve=tasks,
-        title_data="Temple of Steve",
-        profile_class="profile-image-size",
-        tenets=tenets)
+        header_img_class="general-display-none",
+        header_img="",
+        header_title_class="",
+        title_header="",
+        title_header_p="")
 
 
-@app.route("/hallow")
-def hallow():
-    return render_template("hallow.html", title_header="In the Shadow of the Hallow Herd", header_img="hallow-header-img", title_data="")
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
 
+    # populates the main categories: home brew, wotc, campaign
+    tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
 
-@app.route("/tomb")
-def tomb():
-    return render_template("tomb.html", title_header="Tomb of Annihilation", header_img="tomb-header-img", title_data="")
+    if session["user"]:
+        return render_template(
+            "profile.html",
+            tasks=tasks,
+            username=session["user"],
+            header_img_class="profile-image-size header-img",
+            header_img="log-img",
+            header_title_class="header-title",
+            title_header="Welcome " + session['user'],
+            title_header_p="Where will your adventure take you today?")
 
-
+    return redirect(url_for("login"))
 
 
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
-    #try and except a test is a pass and redirects use to profile page if already logged in
+    # try and except a test is a pass and redirects
+    # use to profile page if already logged in
     try:
         if session["user"]:
             flash("Already Signed In")
@@ -106,7 +98,13 @@ def signIn():
             flash("Incorrect username and/or password")
             return redirect(url_for("signIn"))
 
-    return render_template("signIn.html", header_img="log-img", title_data="", profile_class="profile-image-size")
+    return render_template(
+        "signIn.html",
+        header_img_class="profile-img-size header-img",
+        header_img="log-img",
+        header_title_class="header-title",
+        title_header="",
+        title_header_p="")
 
 
 @app.route("/signOut")
@@ -139,7 +137,13 @@ def register():
         flash("Resistration successful")
         return redirect(url_for("profile", username=session["user"]))
 
-    return render_template("register.html", header_img="log-img", title_data="", profile_class="profile-image-size")
+    return render_template(
+        "register.html",
+        header_img_class="profile-img-size header-img",
+        header_img="log-img",
+        header_title_class="header-title",
+        title_header="",
+        title_header_p="")
 
 
 # main search for users
@@ -298,24 +302,7 @@ def openRoom(testh):
         addidea=addidea,
         admin=admin)
 
-# main category population ie, WOTC
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
 
-    # populates the main categories: home brew, wotc, campaign
-    tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
-
-    if session["user"]:
-        return render_template(
-            "profile.html",
-            tasks=tasks,
-            username=session["user"],
-            header_img="log-img",
-            title_data="",
-            profile_class="profile-image-size")
-
-
-    return redirect(url_for("login"))
 
 
 

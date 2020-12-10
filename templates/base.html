@@ -11,7 +11,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" type="text/css">    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/animation.css') }}" type="text/css">    
     <link rel="stylesheet" href="{{ url_for('static', filename='css/background.css') }}" type="text/css">    
-    
+    <!-- custom style sheet(s) for pages -->
     {% block custom_link %}
     {% endblock %}
 
@@ -19,12 +19,12 @@
 
 </head>
 <body>
+    <!-- insert modal here-->
     {% block modal %}
-
     {% endblock %}
 
 
-    <!--header and nav-->
+    <!----------------header, header dependent content, flash message and nav-------------------->
     <header class="row no-gutters justify-content-center" id="baseHeader">
         <div class="col-12 nav-bump" id="navBump">
             <div class="row no-gutters">
@@ -74,8 +74,27 @@
                 </nav>
             </div>
         </div>
-        {% block title_bar %}
 
+        <!--Header Bar-->
+        <div class="col-8 {{header_img_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+            <div class="row no-gutters">                                    
+                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
+                    <div class="{{header_title_class}}">                                  <!-- -->
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
+                                <!--<span id="header-text-box">Role Players Guild</span>  -->
+                                <h1 data-text="{{title_header}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
+                                {% if title_header_p != "" %}
+                                    <p>{{title_header_p}}</p>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </span>
+            </div>
+        </div>
+
+        {% block title_bar %}  <!--  remove me-->
         {% endblock %}
         <!--gradient border for header bar-->
 <!--        <div class="row no-gutters">
@@ -85,8 +104,8 @@
             <span></span>
         </div> -->
 
-        <!-- section for flash messages -->
 
+        <!-- section for flash messages -->
         {% with messages = get_flashed_messages() %}
             {% if messages %}
                 {% for message in messages %}
@@ -102,11 +121,12 @@
     {% block main_content %}        
     {% endblock %}
 
+    <!-- header dependent content -->
     {% block header_dependent_section_content %}
     {% endblock %}
 
     </header>
-
+    <!-- outside header content -->
     {% block independent_section_content %}
     {% endblock %}
 
