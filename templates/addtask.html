@@ -17,12 +17,8 @@
 
                 <div class="col-12">
                     <p>What insult are you going to add?</p>
-                    <p>--{{ test.room }}-- {{test.room}}--</p>
-                    <p>--{{ test.category }}--{{test.category}}--</p>
-                    <p>--{{test1}}--{{test1}}</p>
-
                         <div class="col-1 back-button">
-                        <a href="{{ url_for('openRoom', username=session['user'], testh=True) }}">
+                        <a href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
                             <span>Back</span>
                         </a>
                         </div>
@@ -30,12 +26,12 @@
                     <ul class="form-mod">
                         <li> 
                     
-                            <form action="{{ url_for('addtask', test0=test.room,test1=test1) }}" method="POST">
+                            <form action="{{ url_for('addtask', username=session['user'], room=session['place'][1] ,topic=topic ) }}" method="POST">
                                 <div class="row no-gutters justify-content-center">
                                     <div class="col-10">
                                         <input  name="addtask" id="addtask">
-                                        <input class="make-invis" name="room" id="room" value="{{test.room}}">
-                                        <input class="make-invis" name="category" id="category" value="{{test1}}">
+                                        <input class="make-invis" name="room" id="room" value="{{session['place'][1]}}">
+                                        <input class="make-invis" name="category" id="category" value="{{topic}}">
                                         <input class="make-invis" name="username" id="username" value="{{session['user']}}">
                                         <input class="make-invis" name="date" id="date" value="">
                                     </div>
@@ -57,23 +53,4 @@
 {% endblock %}
 
 
-{% block title_bar %}
-        <!--Header Bar-->
-        <div class="col-12 header-img {{profile_class}} hallow-header-img" id="header_main">       <!--Header Image-->
-            <div class="row no-gutters">                                    
-                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
-                    <div class="header-title">                                  <!-- -->
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
-                                <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
-                            </div>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-
-
-{% endblock %}
 

@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 def index():
     return render_template(
         "index.html",
-        header_img_class="header-img",
+        header_img_class="col-7",
         header_img="index-header-img",
         header_title_class="header-title",
         title_header="Role Players Guild",
@@ -45,24 +45,35 @@ def about_us():
         title_header_p="")
 
 
-@app.route("/profile/<username>", methods=["GET", "POST"])
-def profile(username):
+@app.route("/register", methods=["GET", "POST"])
+def register():
+    if request.method == "POST":
+        # check for existing user name
+        existing_user = mongo.db.users.find_one(
+            {"username": request.form.get("username").lower()})
 
-    # populates the main categories: home brew, wotc, campaign
-    tasks = list(mongo.db.guilds.find({"mainIndex": "true"}))
+        if existing_user:
+            flash("User name already exists")
+            return redirect(url_for("register"))
 
-    if session["user"]:
-        return render_template(
-            "profile.html",
-            tasks=tasks,
-            username=session["user"],
-            header_img_class="profile-image-size header-img",
-            header_img="log-img",
-            header_title_class="header-title",
-            title_header="Welcome " + session['user'],
-            title_header_p="Where will your adventure take you today?")
+        register = {
+            "username": request.form.get("username").lower(),
+            "password": generate_password_hash(request.form.get("password"))
+        }
+        mongo.db.users.insert_one(register)
 
-    return redirect(url_for("login"))
+        # put user into cookie for session
+        session["user"] = request.form.get("username").lower()
+        flash("Resistration successful")
+        return redirect(url_for("profile", username=session["user"]))
+
+    return render_template(
+        "register.html",
+        header_img_class="col-12 profile-header",
+        header_img="log-img",
+        header_title_class="header-title",
+        title_header="",
+        title_header_p="")
 
 
 @app.route("/signIn", methods=["GET", "POST"])
@@ -100,7 +111,7 @@ def signIn():
 
     return render_template(
         "signIn.html",
-        header_img_class="profile-img-size header-img",
+        header_img_class="col-12 profile-header",
         header_img="log-img",
         header_title_class="header-title",
         title_header="",
@@ -111,52 +122,125 @@ def signIn():
 def signOut():
     # remove session signin session
     flash("You have been logged out")
-    session.pop("user")
+    session.pop('user')
     return redirect(url_for("signIn"))
 
 
-@app.route("/register", methods=["GET", "POST"])
-def register():
-    if request.method == "POST":
-        # check for existing user name
-        existing_user = mongo.db.users.find_one(
-            {"username": request.form.get("username").lower()})
+@app.route("/profile/<username>", methods=["GET", "POST"])
+def profile(username):
+    # ------------first hall will not click when
+    # ------------resolution width is greater than 980px
+    # populates the main categories: home brew, wotc, campaign
+    guildHalls = list(mongo.db.guilds.find({"mainIndex": "true"}))
+    if session['user']:
+        return render_template(
+            "profile.html",
+            guildHalls=guildHalls,
+            username=session['user'],
+            header_img_class="col-12 profile-header",
+            header_img="log-img",
+            header_title_class="header-title",
+            title_header="Welcome " + session['user'],
+            title_header_p="What hall will your adventure take you today?")
 
-        if existing_user:
-            flash("User name already exists")
-            return redirect(url_for("register"))
+    return redirect(url_for("login"))
 
-        register = {
-            "username": request.form.get("username").lower(),
-            "password": generate_password_hash(request.form.get("password"))
-        }
-        mongo.db.users.insert_one(register)
 
-        # put user into cookie for session
-        session["user"] = request.form.get("username").lower()
-        flash("Resistration successful")
-        return redirect(url_for("profile", username=session["user"]))
+# searchs for the sub categories on the profile page and
+# passes a variable to populate them
+@app.route("/searchHalls/<username>/<hall>", methods=["GET", "POST"])
+def searchHalls(username, hall):
 
+    # applies a rest to previously visited room
+    if session.get('place') is not None:
+        session.pop('place')
+
+    testh = False
+
+    # takes user input for guild room search
+    searchRoomsQuery = request.form.get("searchRoomsQuery")
+    hall = request.form.get("searchRoomQuery")
+
+    # Makes sure second search is only visible after first search has been used
+    enterHall = True
+
+    
+
+    # searches for rooms associated to guild hall user selected
+    searchForRooms = list(
+        mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
+
+    guildHalls = list(mongo.db.guilds.find({"mainIndex": "true"}))
     return render_template(
-        "register.html",
-        header_img_class="profile-img-size header-img",
+        "profile.html",
+        hall=hall,
+        guildHalls=guildHalls,
+        searchForRooms=searchForRooms,
+        username=session['user'],
+        header_img_class="col-12 profile-header",
         header_img="log-img",
         header_title_class="header-title",
-        title_header="",
-        title_header_p="")
+        title_header="Welcome " + session['user'],
+        title_header_p="What room will your adventure take you today?",
+        enterHall=enterHall)
 
 
-# main search for users
-@app.route("/search", methods=["GET", "POST"])
-def search():
-    query = request.form.get("query")
-    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
-    tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img", profile_class="profile-image-size")
+# sends user to page selected from sub category search
+@app.route("/openRoom/<username>/<room>", methods=["GET", "POST"])
+def openRoom(username, room):
+    # search inputs
+
+    if session.get("place") is not None:
+        roomHTMLQuery = session["place"][0]
+        roomNameQuery = session["place"][1]
+        headerImg = session["place"][2]
+        headerText = session["place"][3]
+    else:
+        roomNameQuery = request.form.get("roomNameQuery")
+        roomHTMLQuery = request.form.get("roomHTMLQuery")
+        headerImg = request.form.get("headerImgQuery")
+        headerText = request.form.get("headerTextQuery")
+
+    print(session)
+    if session.get("place") is not None:
+        print(session)
+        roomHTMLQuery = roomHTMLQuery
+    else:
+        print(session)
+        roomHTMLQuery = roomHTMLQuery + ".html"
+
+    # gets categories to populate room with
+    totalCategories = list(mongo.db.tableCategories.find())
+
+    # searches if user has admin status
+    admin = mongo.db.users.find_one({"username": session['user']})
+
+    # test session
+    session['place'] = [roomHTMLQuery, roomNameQuery, headerImg, headerText]
+    # searches for guild room DB
+    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
+
+    test = pageList[0]
+    addidea = roomNameQuery
+
+    return render_template(
+        roomHTMLQuery,
+        test=test,
+        username=session["user"],
+        header_img_class="col-12 profile-header",
+        header_img=headerImg,
+        header_title_class="header-title",
+        title_header=headerText,
+        title_header_p="",
+        totalCategories=totalCategories,
+        addidea=addidea,
+        pageList=pageList,
+        admin=admin)
 
 
-@app.route("/addtask/<test0>/'add'+<test1>", methods=["GET", "POST"])
-def addtask(test0, test1):
+
+@app.route("/addtask/<username>/<room>/'add '+<topic>", methods=["GET", "POST"])
+def addtask(username, room, topic):
 
     if request.method == "POST":
         addme = {
@@ -168,26 +252,26 @@ def addtask(test0, test1):
         }
         mongo.db.guildDiscussion.insert_one(addme)
         flash("Added to " + request.form.get("category"))
-        return redirect(url_for('openRoom', username=session['user'], testh='True'))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
 
-    insertInfo=""
-    testy = mongo.db.guildDiscussion.find_one({"room": test0})
-    test0 = test0
+    room = session['place'][1]
+    insertInfo = ""
+    testy = mongo.db.guildDiscussion.find_one({"room": room})
     return render_template(
         "addtask.html",
-        test1=test1,
-        test0=test0,
+        room=session['place'][1],
+        topic=topic,
         test=testy,
         add=insertInfo,
-        username=session["user"],
-        profile_class="profile-image-size",
-        header_img="log-img")
+        username=session['user'],
+        header_img_class="col-12 profile-header",
+        header_img="hallow-header-img",
+        header_title_class="header-title",
+        title_header="",
+        title_header_p="")
 
 @app.route("/edittask/<editme>", methods=["GET", "POST"])
 def edittask(editme):
-    #editme1 = mongo.db.guildDiscussion.find_one({"$text" : {"$search": editme}})
-#    edit = mongo.db.guildDiscussion.find_one({"submit": "form"})
-
     if request.method == "POST":
         edit = {
             "room": request.form.get("editroom"),
@@ -229,79 +313,14 @@ def removetask(removeme):
         header_img="log-img")
 
 
-# searchs for the sub categories on the profile page and
-# passes a variable to populate them
-@app.route("/searchHalls", methods=["GET", "POST"])
-def searchHalls():
-
-    testh = False
-
-    # takes user input for guild room search
-    searchRoomsQuery = request.form.get("searchRoomsQuery")
-
-    # searches for rooms associated to guild hall user selected
-    listz = list(
-        mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
+# Search in Nav Bar
+## ---------------------------------BROKEN AFTER PROFILE SEARCH IMPROVEMENT!!!---------------------
+@app.route("/search", methods=["GET", "POST"])
+def search():
+    query = request.form.get("navQuery")
+    listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
-    return render_template(
-        "profile.html",
-        tasks=tasks,
-        listz=listz,
-        testh=testh,
-        username=session["user"],
-        header_img="log-img",
-        profile_class="profile-image-size",
-        searchroom=True)
-
-
-# sends user to page selected from sub category search
-@app.route("/openRoom/<testh>", methods=["GET", "POST"])
-def openRoom(testh):
-    # search inputs
-    if testh == "False":
-        roomNameQuery = request.form.get("roomNameQuery")
-        roomHTMLQuery = request.form.get("roomHTMLQuery")
-        headerImg = request.form.get("headerImgQuery")
-        headerText = request.form.get("headerTextQuery")
-    if testh == "True":
-        roomNameQuery = session["place"][1]
-        roomHTMLQuery = session["place"][0]
-        headerImg = session["place"][2]
-        headerText = session["place"][3]
-
-    # combines search with suffix(.html) if needed
-    if testh == "False":
-        roomHTMLQuery = roomHTMLQuery + ".html"
-    else:
-        roomHTMLQuery=roomHTMLQuery
-    # gets categories to populate room with
-    totalCategories = list(mongo.db.tableCategories.find())
-
-    # searches if user has admin status
-    admin = mongo.db.users.find_one({"username": session["user"]})
-
-
-    #test session
-    session["place"] = [roomHTMLQuery, roomNameQuery, headerImg, headerText]
-
-
-    # searches for guild room DB
-    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
-    test = pageList[0]
-    addidea = roomNameQuery
-    return render_template(
-        roomHTMLQuery,
-        testh=testh,
-        test=test,
-        title_header=headerText,
-        username=session["user"],
-        header_img=headerImg,
-        profile_class="profile-image-size",
-        pageList=pageList,
-        totalCategories=totalCategories,
-        addidea=addidea,
-        admin=admin)
-
+    return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img", profile_class="profile-image-size")
 
 
 

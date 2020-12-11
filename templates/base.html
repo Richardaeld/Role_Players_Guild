@@ -53,7 +53,7 @@
 
                         </li>
                         <form action="{{ url_for('search', username=session['user']) }}" method="POST">
-                            <input class="search-size" type="text" name="query" id="query">
+                            <input class="search-size" type="text" name="navQuery" id="nvaQuery">
                             <label type= "submit" for="query"></label>
                             <button class="search-button">
                                 <input type="submit" value="">
@@ -76,7 +76,7 @@
         </div>
 
         <!--Header Bar-->
-        <div class="col-8 {{header_img_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
+        <div class="{{header_img_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
             <div class="row no-gutters">                                    
                 <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
                     <div class="{{header_title_class}}">                                  <!-- -->
@@ -93,17 +93,6 @@
                 </span>
             </div>
         </div>
-
-        {% block title_bar %}  <!--  remove me-->
-        {% endblock %}
-        <!--gradient border for header bar-->
-<!--        <div class="row no-gutters">
-        <div class="col-12 spacer" id="header-spacer">
-        </div></div>  -->
-      <!--  <div class="col-12 dice-border" id="header-border">
-            <span></span>
-        </div> -->
-
 
         <!-- section for flash messages -->
         {% with messages = get_flashed_messages() %}

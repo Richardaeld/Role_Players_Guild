@@ -1,23 +1,6 @@
 /*------------Header title and images--------------*/
-.header-img {
-    background: top center/cover no-repeat;
-    transform: skewY(4deg) skewX(-4deg) rotate(-2deg);
-}
-
 .index-header-img {
-    background-image: url("../img/header.jpg");
-    /* rest of class is a test*/
-    background-image: url("../img/wood-grain-1.jpg");
-    background-image: url("../img/index/sign.png");
-    /*border-radius: 20%;*/
-    /*border: solid 10px rgba(0,0,0,.60);*/
-    background-size: contain;
-    padding-left: 2rem;
-    width: 80%;
-    /*box-shadow: 4px 4px 2px rgba(0,0,0,.60);*/
-    /*border-image: url("../img/wood-grain-1.jpg") 1% round;*/
-    -webkit-filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, .75));
-
+    background: url("../img/index/sign.png") center/contain no-repeat;
 }
 
 .hallow-header-img {
@@ -25,10 +8,10 @@
 }
 
 .steve-header-img {
-    /*background-image: url("../img/steve/temple_card.jpg");*/
-    background-image: url("../img/steve/enter.jpg");
+    /*background-image: url("../img/steve/enter.jpg");
     background-position: top center;
-    background-size: cover;
+    background-size: cover;*/
+    background: url("../img/steve/enter.jpg") top center/cover no-repeat;
 }
 
 .tomb-header-img {
@@ -86,7 +69,7 @@ background-image: url("../img/steve/tenets.jpg");
 }*/
 
 /*---------------------about us images------------------------*/
-.about-world-img {
+/*.about-world-img {
     background-image: url("../img/paw.png");
 }
 .about-campaign-img {
@@ -96,4 +79,4 @@ background-image: url("../img/steve/tenets.jpg");
 .about-wotc-img {
     background-image: url("../img/about_wotc.jpg");
 
-}
+}*/

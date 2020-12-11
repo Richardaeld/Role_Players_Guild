@@ -4,7 +4,6 @@
 {% endblock %}
 
 {% block modal %}
-
     <div class="row no-gutters justify-content-center">
         <div class="col-12 modal-cover" id="modal-cover"></div>
         <div class="col-10 parch" id="parch">
@@ -15,31 +14,9 @@
 
         </div>
     </div>
-
-{% endblock %}
-
-{% block title_bar %}
-        <!--Header Bar-->
-        <div class="col-12 header-img {{profile_class}} {{ header_img }}" id="header_main">       <!--Header Image-->
-            <div class="row no-gutters">                                    
-                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
-                    <div class="header-title-general">                                  <!-- -->
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
-                                <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="{{ title_header }}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
-                            </div>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-
-
 {% endblock %}
 
 {% block header_dependent_section_content %}
-
 <section class="card-background" id="temple-body">
     <div class="row no-gutters">
         <div class="col-12">
@@ -65,14 +42,10 @@
                 </div>
 
 {% endblock %}
+
 {% block main_content %} 
-
                 <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
-
-
                 {% for categoryTitle in totalCategories %}
-
-
 
                 <div class="col-12 general-display-none general-tab general-tab-background-1">
                     <div class="row no-gutters justify-content-center">
@@ -124,7 +97,7 @@
                             <ul class="col-1 edit-button">
                                 <li id="add">
 
-                                    <a href="{{ url_for('addtask', test0=test.room,test1=categoryTitle.category )}}"><p>addtask</p></a>
+                                    <a href="{{ url_for('addtask',username=session['user'], room=session['place'][1],topic=categoryTitle.category )}}"><p>addtask</p></a>
                                 <!--<h1>--categoryTitle.category--</h1><!--  yields correct tenets, etc...  --><!--
                                 <h1>--addidea--</h1>
                                 <h1>--test.room--</h1>-->

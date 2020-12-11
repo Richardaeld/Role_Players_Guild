@@ -3,11 +3,8 @@
 {% block custom_link %}
 {% endblock %}
 
-{% block title_bar %}
-{% endblock %}
-
 {% block header_dependent_section_content %}
-<section class="profile-background" id="temple-body"> <!-- temple body houses absolute-->
+<section class="profile-background"><!--id="temple-body"--> <!-- temple body houses absolute-->
     <div class="row no-gutters">
         <div class="col-12 profile-choices">
             <div class="row no-gutters">
@@ -16,11 +13,11 @@
                     <p>Select a guild hall interests you</p>
                     <hr>
                     <ul class="profile-test">
-                    {% for task in tasks %}
+                    {% for hall in guildHalls %}
                         <li> 
                     
-                            <form action="{{ url_for('searchHalls', username=session['user']) }}" method="POST">
-                                <input type="submit" name="searchRoomsQuery" id="searchRoomsQuery" value="{{task.category}}">
+                            <form action="{{ url_for('searchHalls', username=session['user'], hall=hall.category ) }}" method="POST">
+                                <input type="submit" name="searchRoomsQuery" id="searchRoomsQuery" value="{{hall.category}}">
                             </form>
 
 
@@ -31,20 +28,20 @@
                 </div>
 
                 <div class="col-6 profile-categories">
-                    {% if searchroom == true %}
+                    {% if enterHall == true %}
                     <p>Select a room that interests you</p>
                     <hr>
                     <ul class="profile-test">
-                    {% for entry in listz %}
+                    {% for room in searchForRooms %}
                                 <!--<h1>entry.title</h1>--> <!-- left in for future ideas -->
                         <li>
 
-                            <form action="{{ url_for('openRoom', username=session['user'], testh=False) }}" method="POST">
-                                <input class="make-invis" name="roomNameQuery" id="roomNameQuery" value="{{entry.dataTitle}}">
-                                <input class="make-invis" name="headerImgQuery" id="headerImgQuery" value="{{entry.image}}">
-                                <input class="make-invis" name="headerTextQuery" id="headerTextQuery" value="{{entry.headerText}}">
-                                <input class="make-invis" name="roomHTMLQuery" id="roomHTMLQuery" value="{{entry.url}}">
-                                <input class="profile-choices-sub" type="submit" value="{{entry.title}}">
+                            <form action="{{ url_for('openRoom', username=session['user'], room=room.dataTitle) }}" method="POST">
+                                <input class="make-invis" name="roomNameQuery" id="roomNameQuery" value="{{room.dataTitle}}">
+                                <input class="make-invis" name="headerImgQuery" id="headerImgQuery" value="{{room.image}}">
+                                <input class="make-invis" name="headerTextQuery" id="headerTextQuery" value="{{room.headerText}}">
+                                <input class="make-invis" name="roomHTMLQuery" id="roomHTMLQuery" value="{{room.url}}">
+                                <input class="profile-choices-sub" type="submit" value="{{room.title}}">
                             </form>
 
                             

@@ -64,6 +64,26 @@ body {
 
 /*------------Header title and images for index--------------*/
 
+.index-header-img {
+    position: relative;
+    height: 20rem;
+    padding-left: 2rem;
+    -webkit-filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, .75));
+    transform: skewY(4deg) skewX(-4deg) rotate(-2deg);
+}
+
+.profile-header h1,
+.profile-header p {
+    position: relative;
+    bottom: 10rem;
+}
+
+.profile-header {
+    height:55rem;
+    width:100%;
+    position: relative;
+}
+
 .header-img {
    /* transition: all .25s;*/
     position: relative;
@@ -484,7 +504,7 @@ footer {
 }
 
 /*--------------------------------------new sign in boxes----------------------------------*/
-.form-tab {
+.form-tab {                             /* sign in and register */
     background-image: none;
 }
 
@@ -612,6 +632,7 @@ hr {
 
 .profile-sub-categories,
 .profile-categories {
+    top: 20rem;
     fill: none;
     z-index: 0;
     text-align: center;
@@ -626,6 +647,7 @@ hr {
 }
 
 .profile-background {
+    position:absolute;
     width: 100%;
     text-align: center;
 }
@@ -671,9 +693,7 @@ hr {
 
 
 .profile-image-size {
-    height:55rem;
-    width:100%;
-    transform: skewY(0deg) skewX(0deg) rotate(0deg)!important;
+
 }
 
 .profile-test {
