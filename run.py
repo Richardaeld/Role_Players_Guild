@@ -231,7 +231,7 @@ def openRoom(username, room):
         username=session["user"],
         header_img_class="col-12 profile-header",
         header_img=headerImg,
-        header_title_class="header-title",
+        header_title_class="header-title-general",
         title_header=headerText,
         title_header_p="",
         totalCategories=totalCategories,

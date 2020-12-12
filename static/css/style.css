@@ -121,6 +121,7 @@ body {
 }
 
 .header-title-general h1 { /* replaces original Title header index uses with a color gradient */
+    top: 0rem;
     font-size: 5rem;        /* for use with tab/topic pages(general) */ 
     background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
     -webkit-text-fill-color: transparent;
