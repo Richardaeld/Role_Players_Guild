@@ -4,18 +4,17 @@
 var flashCheck = document.querySelector(".flash");
 if (flashCheck != null){
     setTimeout(function() {
-        console.log("removing")
         document.getElementsByClassName("flash")[0].style.display = "none";
     },3000);
 }
 
 
-// set width of temple spans
-var getSpanCount = document.querySelectorAll(".temple-span");
+// set width of general tab(general home room)  
+var getSpanCount = document.querySelectorAll(".tab-span");
 getSpanCount.forEach(setSpanWidth);
 
 function setSpanWidth(item, index) {
-    var getitemWidth = document.getElementsByClassName("temple-cats")[0].offsetWidth;
+    var getitemWidth = document.getElementsByClassName("tab")[0].offsetWidth;
     
-    document.getElementsByClassName("temple-span")[index].style.cssText = "width:" + getitemWidth + "px";
+    document.getElementsByClassName("tab-span")[index].style.cssText = "width:" + getitemWidth + "px";
 }

@@ -3,7 +3,8 @@
 body {
     background-color: #010203;
 }
-/*--------------------- Nav bar---------------------*/
+/*-------------------------------------- Nav Bar ------------------------------*/
+
 .nav-bump {/* pushes next element down so it does not start under navbar*/
     height:4rem;
     background-color: #010203;
@@ -27,10 +28,16 @@ body {
     text-align: center;
 }
 
+/* all link base colors here */
+.clean-anchor:visited,
+.clean-anchor:link,
+.clean-anchor:hover,
 .custom-nav a:visited,
 .custom-nav a:link,
+.custom-nav a:hover,
 .search-button i {
     color: #fff;
+    text-decoration: none;
 }
 
 .custom-nav form,
@@ -42,10 +49,6 @@ body {
 
 .custom-nav li:hover {
     transform: scale(1.1);
-}
-
-.custom-nav a:hover {
-    text-decoration: none;
 }
 
 /* nav search bar */
@@ -62,7 +65,7 @@ body {
     padding: 0;
 }
 
-/*------------Header title and images for index--------------*/
+/*-------------------------------------- Header title and images for index ------------------------------*/
 
 .index-header-img {
     position: relative;
@@ -92,8 +95,7 @@ body {
 }
 
 /*header overlay*/ /* used with burn shadow */
-.header-span,
-.dice-border span {
+.header-span {
     position: absolute;
     width: 100%;
     height: 100%;
@@ -119,7 +121,7 @@ body {
 }
 
 .header-title-general h1 { /* replaces original Title header index uses with a color gradient */
-    font-size: 5rem;
+    font-size: 5rem;        /* for use with tab/topic pages(general) */ 
     background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -174,7 +176,7 @@ body {
     position: relative;
 }
 
-/*----------------3d doors----------------*/
+/*-------------------------------------- 3d door animation ------------------------------*/
 @media (max-width: 767.98px) {  /* allows doors to switch from double to single*/
     .door-left-remove {
         display: none;
@@ -300,7 +302,7 @@ body {
     transform: rotateY(90deg) translateX(50%) translateZ(.8rem);
 }
 
-/*footer*/
+/*-------------------------------------- footer  ------------------------------*/
 footer {
     border-top: solid 2px #48FF96;
     text-align: center;
@@ -332,7 +334,7 @@ footer {
 .icons a img {
     max-height: 100px;
 }
-/*-------------------------------------- general tab ------------------------------*/
+/*-------------------------------------- dynamic tab page ------------------------------*/
 /* filter to cover screne between transitions */
 .general-cover { 
     width: 100%;
@@ -347,68 +349,45 @@ footer {
 .general-display-none {
     display: none;
 }
-/*------------------------------temple general box hover effect--------------------------------*/
 
-
-#temple-main {
-    position: relative;
+.tab:hover {
+    background-color: rgba(0,0,0,.75);
+    color: #BCBCF1;
 }
 
-#temple-body { /*  used to replace card-background background color*/
-    top: 20rem;         /*---------positions general tabs----------*/
+.tab {
+    margin: 1rem;
+    background-color: rgba(0, 0, 0, 0.5);
+    font: 100 1.5rem "comfortaa", sans-serif;
+    color: #fff;
+    fill: none;
 }
 
-#temple-body,
-.temple-span {
+.tab-span {
     background-color: transparent;
     position: absolute;
     z-index: 2;
 }
 
-.temple-span{
-    width:100%;
-}
-
-.temple-span,
-.temple-cats {
+.tab-span,
+.tab {
     height: 5rem;
     border-radius: 25%;
     transition-duration: 1.5s;
 }
 
-.temple-cats {
-    fill: none;
-    z-index: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    text-align: center;
-    position: static;
-    margin: 1rem;
-    /*color: #D25F38;*/
-    color: #fff;
-    font: 1.5rem "comfortaa", sans-serif;
-}
-
-.temple-cats rect,
-.temple-cats svg {
-    width:100%;
-    height:100%;
-} 
-
-.temple-cats p {
+.tab p {
     position: relative;
     bottom: 3.5rem;
     text-shadow: .1rem .1rem .01rem #010203;
-    font-weight: 700;
-
 }
 
-.temple-cats:hover {
-    background-color: rgba(0,0,0,.75);
-    color: #87BA76;
-    color: #9394E8;
-    color: #BCBCF1;
+.tab rect,
+.tab svg {
+    width:100%;
+    height:100%;
 }
-/*-------------------------------------temple box hover effects end --------------*/
+
 .general-tab {
     font: 2rem "Amatic SC", sans-serif;
     position: absolute;
@@ -442,55 +421,30 @@ footer {
 }
 
 .back-button {
-    text-align: center;
-    height: 100%;
-}
-
-.back-button {
-    position: absolute;
-    background-color: rgba(0,0,0,.5);
-    height: 3.75rem;
-    color: #fff;
-    width:5%;
-    border: solid 2px #fff;
-    margin: 5.5rem .25rem .25rem .25rem;
-    transition-duration: .5s;
-}
-
-.edit-button:visited {
-    color: #fff;
-}
-
-.edit-button {
-    margin:0!important; /*  margin in general tab ul problem*/
-    position: absolute;
-    color: #fff;
-    width:5%;
-    transition-duration: .5s;
-    list-style-type: none;
-
-}
-
-.edit-button li {
-    background-color: rgba(0,0,0,.5);
-    border: solid 2px #fff;
-    transition-duration: .5s;
-    border-radius: 25%;
-    height: 3.75rem;
-
-
-}
-
-.back-button {
     left: 1rem;
-    border-radius: 25%;
+    color: #fff;
 }
+
+.back-button,
+.edit-button  {
+    margin: 5.5rem .25rem .25rem .25rem;
+    position: absolute;
+    background-color: rgba(0,0,0,.5);
+    height: 3.75rem;
+    transition-duration: .5s;
+    border-radius: 25%;
+    border: solid 2px #fff;
+    width:5%;
+}
+
 .edit-button p,
 .back-button p {
     padding-top: .375rem;
     margin: 0;
 }
-.edit-button li:hover,
+
+.form-button:hover,
+.edit-button:hover,
 .submit-button:hover,
 .back-button:hover {
     color: rgba(254, 130, 2, .85);
@@ -502,10 +456,22 @@ footer {
 .edit-button {
     left:90%;
 }
+.form-idea {
+    text-align:center;
+    width:60%;
+}
 
-/*--------------------------------------new sign in boxes----------------------------------*/
+.form-edit {
+    text-align: right;
+    width: 40%;
+}
+
+/* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
 .form-tab {                             /* sign in and register */
     background-image: none;
+}
+.form-filter {
+    background-color: rgba(0, 0, 0, 0.0);
 }
 
 .form-tab label,
@@ -519,6 +485,9 @@ footer {
     text-align: left;
     text-shadow: 0px 0px rgba(0, 0, 0, 0.0);
 }
+.form-mod input {
+    background-color:transparent;
+}
 
 .form-tab select,
 .form-tab textarea,
@@ -528,17 +497,20 @@ footer {
     border: solid 3px #010203;
 }
 
-.form-filter {
-    background-color: rgba(0, 0, 0, 0.0);
+.form-test123,
+.form-test132 li {
+    width: 100%;
 }
 
+.form-textarea {
+    width:100%;
+}
+.form-height {
+    margin-top: 5rem;
+}
 .submit-button:hover {
     color: #fff;
     border: solid 2px #010203;
-}
-
-.form-height {
-    margin-top: 5rem;
 }
 
 /*----------------------------------for flashed messages-------------------------*/
@@ -553,65 +525,39 @@ footer {
     top:11rem;
 }
 
-/*----------------------------------for flashed messages-------------------------*/
-/*----------------------------------for reworked index and about us page-------------------------*/
-.landing-tab {
+/*---------------------------------- about us page-------------------------*/
+.about-us {
     font: 2rem "Comfortaa", sans-serif;
-    /*text-shadow: .2rem .2rem .02rem #010203;*/
     text-align: center;
-    color: #d6d1a6;
     text-shadow: 2px 2px 4px rgba(0,0,0,.75);
     position: relative;
+    background: url("../img/hallow_herd/hallow_world.jpg") center/100% 100% no-repeat  ;
 }
 
-.landing-tab h1 {
+.about-us h1 {
     font-size: 4rem;
-}
-
-.landing-tab h1,
-.landing-tab h2 {
-    margin: 1rem;
-}
-
-.landing-tab-bump h1 {
     margin-top: 3rem;
 }
 
-.landing-tab p {
+.about-us h1,
+.about-us h2 {
+    color: #FF9648;
+}
+
+.about-us p {
     padding: 0rem 2rem 2rem 2rem;
     color:  #87BA76;
     font-size: 1.5rem;
+    color: #48FF96;
+    text-shadow: 1px 1px 3px #010203;
+    z-index: 3;
 }
 
 .landing-tab-bumb {
     margin-top: 2rem;
 }
 
-.about-us-img {
-    background-image: url("../img/hallow_herd/hallow_world.jpg");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
-}
-
-.about-us-img p {
-    color: #48FF96;
-    text-shadow: 1px 1px 3px #010203;
-    z-index: 3;
-}
-
-.about-us-img h2,
-.about-us-img h1 {
-    color: #FF9648;
-}
-
-.about-us-img-fil {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: absolute;
-    height: 100%;
-    width: 100%;
-}
-
-.about-world-img,
+.about-world-img, /* commited out in about us*/
 .about-campaign-img,
 .about-wotc-img {
     margin-top: 3rem;
@@ -620,7 +566,6 @@ footer {
     background-size: 100% 100%;
     border-radius: 25%;
     box-shadow: 3px 3px 2px rgba(0,0,0,.75);
-
 }
 
 hr {
@@ -632,23 +577,19 @@ hr {
 
 .profile-sub-categories,
 .profile-categories {
-    top: 20rem;
-    fill: none;
     z-index: 0;
-    text-align: center;
-    /*color: #D25F38;*/
     color: #010203;
     font: 1.5rem "Dancing Script", sans-serif;
 }
 
 .profile-categories p {
     text-shadow: 1px 0px #474747;
-
 }
 
-.profile-background {
+.profile-background { /* absolute background */
     position:absolute;
     width: 100%;
+    top: 20rem;
     text-align: center;
 }
 
@@ -656,26 +597,13 @@ hr {
     bottom: 4rem;
 }
 
-.profile-choices-sub {
-}
-
 .make-invis {
     display: none;
 }
 
-.header-img {
-
-}
-
-.header-title-profile {
-    
-}
-
 /*----------------------found on animation css page ---------------------*/
 /*----------------------entering testing area---------------------*/
-
-
-.header-img-book{
+.header-img-book {
     height: 35rem;
 }
 
@@ -687,13 +615,12 @@ hr {
     background-color: rgba(0,0,0,0);
 }
 
-.header-title-div-fade {
-    background-color: rgba(0, 0, 0, 1);
+.general-tab-background-1 {/*tenets*/
+background-image: url("../img/steve/tenets.jpg"); 
 }
 
-
-.profile-image-size {
-
+.header-title-div-fade {
+    background-color: rgba(0, 0, 0, 1);
 }
 
 .profile-test {
@@ -726,31 +653,3 @@ hr {
     list-style-type: none;
 }
 
-.form-mod input {
-    background-color:transparent;
-}
-
-.form-idea {
-    text-align:center;
-    width:60%;
-}
-
-.form-edit {
-    text-align: right;
-    width: 40%;
-}
-
-.form-name {
-    text-align: left;
-    vertical-align: bottom; 
-
-}
-
-.form-test123,
-.form-test132 li {
-    width: 100%;
-}
-
-.form-textarea {
-    width:100%;
-}

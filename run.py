@@ -267,7 +267,7 @@ def addtask(username, room, topic):
         add=insertInfo,
         username=session['user'],
         header_img_class="col-12 profile-header",
-        header_img="hallow-header-img",
+        header_img="add-entry",
         header_title_class="header-title",
         title_header="",
         title_header_p="")

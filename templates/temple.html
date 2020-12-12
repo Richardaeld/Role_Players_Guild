@@ -3,33 +3,20 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
-{% block modal %}
-    <div class="row no-gutters justify-content-center">
-        <div class="col-12 modal-cover" id="modal-cover"></div>
-        <div class="col-10 parch" id="parch">
-            <form action="" method="post">
-                <input name="queryadd" id="queryadd" type="text">
-                <input type="submit" value="Submit">
-            </form>
-
-        </div>
-    </div>
-{% endblock %}
-
-{% block header_dependent_section_content %}
-<section class="card-background" id="temple-body">
+{% block tab_header_content %}
+<section class="profile-background">
     <div class="row no-gutters">
         <div class="col-12">
             <div class="row no-gutters">
             <!--<span class="general-cover"></span>---------------         REMOVE ME          -->
 
-                <div class="col-12" id="temple-main">
+                <div class="col-12">
                     <div class="row no-gutters justify-content-around">
 
                         {% for category in totalCategories %}
                         
-                        <div class="col-3 temple-cats">
-                            <div class="temple-span"></div>
+                        <div class="col-3 tab">
+                            <div class="tab-span"></div>
                             <svg>
                                 <rect rx="50" ry="50"/>
                             </svg>
@@ -40,90 +27,76 @@
 
                     </div>
                 </div>
-
-{% endblock %}
-
-{% block main_content %} 
-                <span class="general-cover"></span>  <!--      covers entire general section with a moving filter -->
-                {% for categoryTitle in totalCategories %}
-
-                <div class="col-12 general-display-none general-tab general-tab-background-1">
-                    <div class="row no-gutters justify-content-center">
-                        <div class="col-1 back-button">
-                            <p>Back</p>
-                        </div>
-                        <div class="col-10">
-
-                            <h1>{{categoryTitle.category.title()}}</h1>
-
-                            <ul class="list-group">
-                                {% for list in pageList %}
-                                    {% if list.category == categoryTitle.category %}
-                                        <li class="list-group-item">
-                                            <div class="row no-gutters justify-content-between">
-                                                <div class="col-10">
-                                                    <span class="form-idea">
-                                                        {{ list.idea.title() }}<!--test.room-->
-                                                    </span>
-                                                </div>
-                                            
-                                                {% if admin.admin==true or list.submit == admin.username %}
-                                                    
-                                                    <div class="col-1">
-                                                        <span class="form-edit">
-                                                            <a href="{{ url_for('edittask', editme=list._id)}}">Edit</a>
-                                                        </span>
-                                                    </div>
-                                                    <div class="col-1">
-
-                                                        <span class="form-edit">
-                                                            <a href="{{ url_for('removetask', removeme=list._id)}}">Remove</a>
-                                                        </span>
-                                                    </div>
-
-                                                {% endif %}
-
-
-
-                                            </div>
-                                        </li>
-                                    {% endif %}
-                                {% endfor %}
-                            </ul>    
-                        </div>
-
-
-                        <div>
-                            <ul class="col-1 edit-button">
-                                <li id="add">
-
-                                    <a href="{{ url_for('addtask',username=session['user'], room=session['place'][1],topic=categoryTitle.category )}}"><p>addtask</p></a>
-                                <!--<h1>--categoryTitle.category--</h1><!--  yields correct tenets, etc...  --><!--
-                                <h1>--addidea--</h1>
-                                <h1>--test.room--</h1>-->
-                                </li>
-                            </ul>
-                        </div>
-
-                    </div>
-                </div>
-
-
-                {% endfor %}
-
-
             </div>
         </div>
     </div>
+</section>        
+{% endblock %}
 
+{% block independent_section_content %} 
+<section>
+
+    <span class="general-cover  topic-section-cover "></span><!-- topic cover JS pick point -->  <!--      covers entire general section with a moving filter -->
+    <span class="header-span  "></span><!--remove-->
+    {% for categoryTitle in totalCategories %}
+
+    <div class="col-12 general-display-none general-tab topic-tab topic-section  general-tab-background-1"> <!--topic tab no css just JS pick point-->
+        <div class="row no-gutters justify-content-center">
+            <div class="col-1 back-button">
+                <p>Back</p>
+            </div>
+            <div class="col-10">
+
+            <h1>{{categoryTitle.category.title()}}</h1>
+
+                <ul class="list-group">
+                    {% for list in pageList %}
+                    {% if list.category == categoryTitle.category %}
+                    <li class="list-group-item">
+                        <div class="row no-gutters justify-content-between">
+                            <div class="col-10">
+                                <span class="form-idea">
+                                    {{ list.idea.title() }}<!--test.room-->
+                                </span>
+                            </div>
+                                            
+                            {% if admin.admin==true or list.submit == admin.username %}
+                                                    
+                            <div class="col-1 form-button">
+                                <span class="form-edit">
+                                    <a class="clean-anchor" href="{{ url_for('edittask', editme=list._id)}}">Edit</a>
+                                </span>
+                            </div>
+                            <div class="col-1 form-button">
+                                <span class="form-edit">
+                                    <a class="clean-anchor" href="{{ url_for('removetask', removeme=list._id)}}">Remove</a>
+                                </span>
+                            </div>
+
+                            {% endif %}
+
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>    
+            </div>
+
+                <div class="col-1 edit-button" id="add">
+                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][1],topic=categoryTitle.category )}}"><p>addtask</p></a>
+                </div>
+
+        </div>
+    </div>
+    {% endfor %}
 </section>
 {% endblock %}
+
 {% block custom_script %}
-<script src="{{ url_for('static', filename='js/dbMod.js') }}"></script>
 <!--<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>-->
-<script src="{{ url_for('static', filename='js/guildGeneral.js' )}}"></script>
     <script>
         document.getElementsByClassName("nav-item")[3].classList.add("active");
         document.getElementsByClassName("nav-item")[3].firstElementChild.classList.add("custom-nav-logo");
     </script>
+<script src="{{ url_for('static', filename='js/generalMin.js') }}"></script>
 {% endblock %}

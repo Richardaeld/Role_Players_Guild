@@ -86,6 +86,10 @@
                                 {% if title_header_p != "" %}
                                     <p>{{title_header_p}}</p>
                                 {% endif %}
+
+                                {% block tab_header_content %}
+                                {% endblock %}
+                                
                             </div>
                         </div>
                     </div>
@@ -105,9 +109,6 @@
                 {% endfor %}
             {% endif %}
         {% endwith %}
-
-    {% block main_content %}        
-    {% endblock %}
 
     <!-- header dependent content -->
     {% block header_dependent_section_content %}

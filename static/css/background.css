@@ -37,12 +37,12 @@
     background-image: url("../img/com-notbook.jpg");
     background-size: 100% 100%;
 }
-
+.add-entry {/*submission form*/
+        background: url("../img/steve/confession.png") top center/cover no-repeat;
+}
 /*---------------------temple of steve images------------------------*/
 
-.general-tab-background-1 {/*tenets*/
-background-image: url("../img/steve/tenets.jpg"); 
-}
+
 
 /*.general-tab-background-2 {/*alignment*//*
     background-image: url("../img/steve/alignment.jpg"); 
