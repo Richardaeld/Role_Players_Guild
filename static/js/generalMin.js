@@ -18,7 +18,7 @@ function generalTransition(item, index) {
         //sets new background once cover(filter) is fully dropped
         setTimeout(function() {
             document.getElementsByClassName("topic-section-cover")[0].style.cssText = "height: 0px"                     //removes filter height
-            document.getElementsByClassName("header-span")[1].classList.remove("header-title-div-fade")                  //adds fade out to background
+        //    document.getElementsByClassName("header-span")[1].classList.remove("header-title-div-fade")                  //adds fade out to background
             document.getElementsByClassName("topic-section")[index].classList.remove("general-display-none");           //enables next screen by removing display none
             //generalTabReturn = document.getElementsByClassName("topic-section")[index]; //-----NEW
         },1500);
@@ -37,7 +37,7 @@ function generalBack(item, index) {
         setTimeout(function() {
             document.getElementsByClassName("topic-section-cover")[0].style.cssText = "height: 0px"                     
             document.getElementsByClassName("topic-section")[index].classList.add("general-display-none");
-            document.getElementById("header-span").classList.remove("header-title-div-fade")
+        //    document.getElementById("header-span").classList.remove("header-title-div-fade")
         },1500);
     });
 }
