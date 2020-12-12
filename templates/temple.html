@@ -122,4 +122,8 @@
 <script src="{{ url_for('static', filename='js/dbMod.js') }}"></script>
 <!--<script src="{{ url_for('static', filename='js/globalObjects.js')}}"></script>-->
 <script src="{{ url_for('static', filename='js/guildGeneral.js' )}}"></script>
+    <script>
+        document.getElementsByClassName("nav-item")[3].classList.add("active");
+        document.getElementsByClassName("nav-item")[3].firstElementChild.classList.add("custom-nav-logo");
+    </script>
 {% endblock %}

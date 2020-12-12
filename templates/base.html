@@ -33,7 +33,6 @@
                     <ul class="nav justify-content-center">
                         <li class="nav-item">
                             <a href="{{ url_for('index') }}" id="home" >RPG</a>
-
                         </li>
                         <li class="nav-item">
                             <a href="{{ url_for('about_us') }}" id="about">About Us</a>
@@ -42,12 +41,12 @@
                         {% if session.user %}
                         <li class="nav-item">
                             <a href="{{ url_for('profile', username=session['user']) }}">Profile</a>
-
                         </li>
+                        {% if session.place %}
                         <li class="nav-item">
-                            <a href="{{ url_for('index') }}" id="">Guild Halls</a>
-
+                            <a href="{{ url_for('openRoom', username=session['user'], room=session['place'][1] )}}" id="">{{session.place[4]}}</a>
                         </li>
+                        {% endif %}
                         <li class="nav-item">
                             <a href="{{ url_for('signOut') }}">Sign Out</a>
 

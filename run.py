@@ -195,11 +195,13 @@ def openRoom(username, room):
         roomNameQuery = session["place"][1]
         headerImg = session["place"][2]
         headerText = session["place"][3]
+        navTitle = session["place"][4]
     else:
         roomNameQuery = request.form.get("roomNameQuery")
         roomHTMLQuery = request.form.get("roomHTMLQuery")
         headerImg = request.form.get("headerImgQuery")
         headerText = request.form.get("headerTextQuery")
+        navTitle = request.form.get("navTitle")
 
     print(session)
     if session.get("place") is not None:
@@ -216,7 +218,7 @@ def openRoom(username, room):
     admin = mongo.db.users.find_one({"username": session['user']})
 
     # test session
-    session['place'] = [roomHTMLQuery, roomNameQuery, headerImg, headerText]
+    session['place'] = [roomHTMLQuery, roomNameQuery, headerImg, headerText, navTitle]
     # searches for guild room DB
     pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
 
