@@ -37,7 +37,7 @@ function generalBack(item, index) {
         setTimeout(function() {
             document.getElementsByClassName("topic-section-cover")[0].style.cssText = "height: 0px"                     
             document.getElementsByClassName("topic-section")[index].classList.add("general-display-none");
-        //    document.getElementById("header-span").classList.remove("header-title-div-fade")
+            document.getElementById("header-span").classList.remove("header-title-div-fade")
         },1500);
     });
 }
