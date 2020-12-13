@@ -29,7 +29,7 @@ def index():
         "index.html",
         header_img_class="col-7",
         header_img="index-header-img",
-        header_title_class="header-title",
+        header_title_class="header-title header-title-bump",
         title_header="Role Players Guild",
         title_header_p="")
 
@@ -139,7 +139,7 @@ def profile(username):
             username=session['user'],
             header_img_class="col-12 profile-header",
             header_img="log-img",
-            header_title_class="header-title",
+            header_title_class="header-title-general",
             title_header="Welcome " + session['user'],
             title_header_p="What hall will your adventure take you today?")
 
@@ -177,9 +177,9 @@ def searchHalls(username, hall):
         guildHalls=guildHalls,
         searchForRooms=searchForRooms,
         username=session['user'],
-        header_img_class="col-12 profile-header",
+        header_img_class="col-12 profile-header ",
         header_img="log-img",
-        header_title_class="header-title",
+        header_title_class="header-title-general",
         title_header="Welcome " + session['user'],
         title_header_p="What room will your adventure take you today?",
         enterHall=enterHall)
@@ -231,7 +231,7 @@ def openRoom(username, room):
         username=session["user"],
         header_img_class="col-12 profile-header",
         header_img=headerImg,
-        header_title_class="header-title-general",
+        header_title_class="header-title-general header-title-bump",
         title_header=headerText,
         title_header_p="",
         totalCategories=totalCategories,

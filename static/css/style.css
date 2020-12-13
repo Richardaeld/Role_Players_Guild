@@ -74,12 +74,12 @@ body {
     -webkit-filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, .75));
     transform: skewY(4deg) skewX(-4deg) rotate(-2deg);
 }
-
+/*
 .profile-header h1,
 .profile-header p {
     position: relative;
     bottom: 10rem;
-}
+}*/
 
 .profile-header {
     height:55rem;
@@ -102,17 +102,19 @@ body {
     background-color: rgba(0,0,0,.5);
 }
 /*header title */
+.header-title-bump {  /* pushes text into wooden sign */
+    top:10rem;
+}
+
 .header-title-general,
 .header-title {  /*---------------------  bad target  refactor to  header-title-div  this is a text item!!---------------------*/
     position: relative;
     text-align: center;
-    top: 10rem;
     font-family: "Lobster", sans-serif;
     z-index: 1;
 }
 
-.header-title-general h1,
-.header-title h1 {
+.header-title h1 {  /* wooden text */
     font-size: 3rem;
     background:  url("../img/index/plank-grain.jpg");
     -webkit-text-fill-color: transparent;
@@ -121,7 +123,6 @@ body {
 }
 
 .header-title-general h1 { /* replaces original Title header index uses with a color gradient */
-    top: 0rem;
     font-size: 5rem;        /* for use with tab/topic pages(general) */ 
     background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
     -webkit-text-fill-color: transparent;
@@ -498,17 +499,14 @@ footer {
     border: solid 3px #010203;
 }
 
-.form-test123,
-.form-test132 li {
-    width: 100%;
-}
-
 .form-textarea {
     width:100%;
 }
+
 .form-height {
     margin-top: 5rem;
 }
+
 .submit-button:hover {
     color: #fff;
     border: solid 2px #010203;
@@ -554,7 +552,7 @@ footer {
     z-index: 3;
 }
 
-.landing-tab-bumb {
+.landing-tab-bump {
     margin-top: 2rem;
 }
 
@@ -586,6 +584,14 @@ hr {
 .profile-categories p {
     text-shadow: 1px 0px #474747;
 }
+.profile-categories li {
+    list-style-type: none;
+}
+
+.profile-categories input {
+    border:none;
+    background-color: transparent;
+}
 
 .profile-background { /* absolute background */
     position:absolute;
@@ -604,15 +610,8 @@ hr {
 
 /*----------------------found on animation css page ---------------------*/
 /*----------------------entering testing area---------------------*/
-.header-img-book {
-    height: 35rem;
-}
-
-#header-span {
-    transition-duration: 1.5s;
-}
-
 .header-span {
+    transition-duration: 1.5s;
     background-color: rgba(0,0,0,0);
 }
 
@@ -624,19 +623,6 @@ background-image: url("../img/steve/tenets.jpg");
     background-color: rgba(0, 0, 0, 1);
 }
 
-.profile-test {
-    font-family: "Lobster", sans-serif;
-}
-
-.profile-test li {
-    list-style-type: none;
-}
-
-.profile-test input {
-    border:none;
-    background-color: transparent;
-}
-
 .parch-test {
     transform:scale(1)!important;
     top:4.5rem!important;
@@ -645,7 +631,7 @@ background-image: url("../img/steve/tenets.jpg");
     transition-duration: 0s!important;
 }
 
-.parch-test p
+.parch-test p,
 .parch-test input {
     font-size: 2rem;
 }
@@ -653,4 +639,3 @@ background-image: url("../img/steve/tenets.jpg");
 .parch-test ul {
     list-style-type: none;
 }
-
