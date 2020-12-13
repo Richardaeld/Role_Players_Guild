@@ -57,7 +57,7 @@
                                                     
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('edittask', editme=list._id)}}">Edit</a>
+                                    <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][1], topic=categoryTitle.category, editme=list._id)}}">Edit</a>
                                 </span>
                             </div>
                             <div class="col-1 form-button">
@@ -76,7 +76,7 @@
             </div>
 
                 <div class="col-1 edit-button" id="add">
-                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][1],topic=categoryTitle.category )}}"><p>addtask</p></a>
+                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][1], topic=categoryTitle.category )}}"><p>addtask</p></a>
                 </div>
 
         </div>

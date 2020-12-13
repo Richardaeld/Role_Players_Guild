@@ -272,8 +272,9 @@ def addtask(username, room, topic):
         title_header="",
         title_header_p="")
 
-@app.route("/edittask/<editme>", methods=["GET", "POST"])
-def edittask(editme):
+@app.route("/edittask/<username>/<room>/<editme>/'edit '+<topic>", methods=["GET", "POST"])
+def edittask(username, room, topic, editme):
+    editme = editme
     if request.method == "POST":
         edit = {
             "room": request.form.get("editroom"),
@@ -285,15 +286,22 @@ def edittask(editme):
 
         mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
         flash("Insult updated")
-        return redirect(url_for('openRoom', username=session['user'], testh='True'))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1] ))
 
+    topic=topic
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
     return render_template(
         "edittask.html",
-        username=session["user"],
-        profile_class="profile-image-size",
+        room=session['place'][1],
+        topic=topic,
+        editme=editme,
         edit=tasky,
-        header_img="log-img")
+        username=session["user"],
+        header_img_class="col-12 profile-header",
+        header_img="add-entry",
+        header_title_class="header-title header-title-form",
+        title_header="",
+        title_header_p="")
 
 
 @app.route("/removetask/<removeme>", methods=["GET", "POST"])
