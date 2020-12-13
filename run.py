@@ -285,7 +285,7 @@ def edittask(username, room, topic, editme):
         }
 
         mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
-        flash("Insult updated")
+        flash(topic.title() + " updated")
         return redirect(url_for('openRoom', username=session['user'], room=session['place'][1] ))
 
     topic=topic
