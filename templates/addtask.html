@@ -1,20 +1,20 @@
 {% extends "base.html" %}
 
-{% block tab_header_content %}
-<section class="row no-gutters " >
+{% block tab_header_content_row %}
     <!--place filter here if needed--><!--<span class="full-size"></span>-->
-    <div class="col-10 topic-tab form-tab">  
-        <div class="row no-gutters justify-content-center">
-            <div class="col-12">
-                
-                <div class="row no-gutters justify-content-center form-box form-filter">
-                    <div class="col-1 back-button">
+                        <div class="col-1 back-button">
                         <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
                             <p>back</p>
                         </a>
                     </div>
+    <section class="col-10 topic-tab form-tab">  
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12">
+                
+                <div class="row no-gutters justify-content-center form-box form-filter">
 
-                    <h1>What {{topic.title()}} are you going to add?</h1>
+
+                    <h1>What {{topic.title()}} commit are you going to add?</h1>
                     
                     <div class="col-10">
                     <ul class="form-user-input">
@@ -40,8 +40,7 @@
             </div>
       
         </div>
-    </div>
-</section>
+    </section>
 {% endblock %}
 
 {% block custom_script %}
