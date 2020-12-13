@@ -1,39 +1,29 @@
 {% extends "base.html" %}
 
-{% block modal %}
+{% block tab_header_content_row %}
+<nav>
+    <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
+        <p>back</p>
+    </a>
+</nav>
+   <section class="col-10 topic-tab form-tab">  
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12">
+                
+                <div class="row no-gutters justify-content-center form-box form-filter">
+                    
+                    <div class="col-10">
+                    <h1>This is what youre removing:</h1>
+                    <h1>{{remove.idea}}</h1>
 
-<!--background test-->
-<div class="row no-gutters">
-<div class="col-12 index-background" id="background-img">
-
-</div></div>
-<!--modal-->
-<div class="row no-gutters justify-content-center">
-    <div class="col-12 modal-cover" id="modal-cover"></div>     <!--Modal Filter-->
-    <div class="col-12 col-md-10 parch parch-test" id="parch">              <!--Modal Body-->
-        <p id="modal-text"></p>                                  <!--Modal Text-->
-
-           <div class="row no-gutters">
-
-                <div class="col-12">
-                    <p>This is what youre removing</p>
-                    <p>--edit.idea--  had to remove jinij templating</p>
-
-                        <div class="col-1 back-button">
-                        <a href="{{ url_for('openRoom', username=session['user'], testh=True) }}">
-                            <span>Back</span>
-                        </a>
-                        </div>
-
-
-                    <ul class="form-mod">
+                    <ul class="form-user-input">
                         <li> 
                     
-                            <form action="{{ url_for('removetask', removeme=edit._id) }}" method="POST">
+                            <form action="{{ url_for('removetask', username=session['user'], room=session['place'][1], topic=topic, removeme=remove._id) }}" method="POST">
                                 <div class="row no-gutters justify-content-center">
 
                                     <div class="col-10">
-                                        <input class="profile-choices-sub" type="submit">
+                                        <input class="profile-choices-sub" type="submit" value="remove me">
                                     </div>
                                 </div>
                             </form>
@@ -49,26 +39,6 @@
 </div>
 {% endblock %}
 
-
-{% block title_bar %}
-        <!--Header Bar-->
-        <div class="col-12 header-img {{profile_class}} hallow-header-img" id="header_main">       <!--Header Image-->
-            <div class="row no-gutters">                                    
-                <span class="header-span" id="header-span">                     <!--Header Image Filter--><!--  currently obsolete-->
-                    <div class="header-title">                                  <!-- -->
-                        <div class="row no-gutters justify-content-center">
-                            <div class="col-10 header-title-div" id="header-text">                <!--Header title Filter-->
-                                <!--<span id="header-text-box">Role Players Guild</span>  -->
-                                <h1 data-text="{{title_data}}" id="title-header">{{ title_header }}</h1>   <!--Header Title Text-->
-                            </div>
-                        </div>
-                    </div>
-                </span>
-            </div>
-        </div>
-
-
-{% endblock %}
 
 {% block custom_script %}
     <script>

@@ -304,23 +304,29 @@ def edittask(username, room, topic, editme):
         title_header_p="")
 
 
-@app.route("/removetask/<removeme>", methods=["GET", "POST"])
-def removetask(removeme):
+@app.route("/removetask/<username>/<room>/<removeme>/'edit '+<topic>", methods=["GET", "POST"])
+def removetask(username, room, topic, removeme):
     #editme1 = mongo.db.guildDiscussion.find_one({"$text" : {"$search": editme}})
 #    edit = mongo.db.guildDiscussion.find_one({"submit": "form"})
-
+    removeme=removeme
     if request.method == "POST":
         mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
-        flash("Insult removed")
-        return redirect(url_for('openRoom', username=session['user'], testh='True'))
-
+        flash(topic.title() + " removed")
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1] ))
+    topic=topic
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
     return render_template(
         "removetask.html",
+        room=session['place'][1],
+        topic=topic,
+        removeme=removeme,
+        remove=tasky,
         username=session["user"],
-        profile_class="profile-image-size",
-        edit=tasky,
-        header_img="log-img")
+        header_img_class="col-12 profile-header",
+        header_img="add-entry",
+        header_title_class="header-title header-title-form",
+        title_header="",
+        title_header_p="")
 
 
 # Search in Nav Bar

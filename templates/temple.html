@@ -62,7 +62,7 @@
                             </div>
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('removetask', removeme=list._id)}}">Remove</a>
+                                    <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'], room=session['place'], topic=categoryTitle.category, removeme=list._id)}}">Remove</a>
                                 </span>
                             </div>
 
