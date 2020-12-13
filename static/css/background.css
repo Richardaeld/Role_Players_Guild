@@ -38,7 +38,7 @@
     background-size: 100% 100%;
 }
 .add-entry {/*submission form*/
-        background: url("../img/steve/confession.png") top center/cover no-repeat;
+        background: url("../img/steve/confession.png") top center/100% 100% no-repeat;
 }
 /*---------------------temple of steve images------------------------*/
 

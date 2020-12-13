@@ -164,6 +164,12 @@ body {
         0px 1px rgba(155, 106, 16, 0.568);
     z-index:-1;
 }
+
+.header-title-form h1,
+.header-title-form h1:after {
+    font-size: 4rem!important; /* topic tab h1 is taking priority */
+}
+
 /*------------index background and spacer*/
 .index-background {
     position: absolute;
@@ -384,6 +390,7 @@ footer {
     text-shadow: .1rem .1rem .01rem #010203;
 }
 
+.full-size,
 .tab rect,
 .tab svg {
     width:100%;
@@ -414,7 +421,6 @@ footer {
     padding: 3rem 0rem;
 }
 
-.form-filter,
 .topic-tab li {
     color: #fff;
     background-color: rgba(0, 0, 0, 0.5);
@@ -458,6 +464,9 @@ footer {
 .edit-button {
     left:90%;
 }
+
+
+
 .form-idea {
     text-align:center;
     width:60%;
@@ -469,11 +478,14 @@ footer {
 }
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
-.form-tab {                             /* sign in and register */
-    background-image: none;
+.form-tab-pose {                             /* sign in and register */
+    position: absolute;
+    z-index: 4;
 }
+
 .form-filter {
-    background-color: rgba(0, 0, 0, 0.0);
+    background-color: rgba(0, 0, 0, 0.5);
+
 }
 
 .form-tab label,
@@ -487,9 +499,7 @@ footer {
     text-align: left;
     text-shadow: 0px 0px rgba(0, 0, 0, 0.0);
 }
-.form-mod input {
-    background-color:transparent;
-}
+
 
 .form-tab select,
 .form-tab textarea,
@@ -501,6 +511,7 @@ footer {
 
 .form-textarea {
     width:100%;
+    color: #fff
 }
 
 .form-height {
@@ -511,6 +522,20 @@ footer {
     color: #fff;
     border: solid 2px #010203;
 }
+
+/*for add/edit/remove*/
+.form-user-input{
+}
+
+.form-user-input input {
+    color: #fff;
+    border: solid 2px #fff;
+}
+.form-user-input li {
+    list-style-type: none;
+    background-color: rgba(0,0,0,0);
+}
+
 
 /*----------------------------------for flashed messages-------------------------*/
 
@@ -623,19 +648,3 @@ background-image: url("../img/steve/tenets.jpg");
     background-color: rgba(0, 0, 0, 1);
 }
 
-.parch-test {
-    transform:scale(1)!important;
-    top:4.5rem!important;
-    position: absolute!important;
-    text-align:center!important;
-    transition-duration: 0s!important;
-}
-
-.parch-test p,
-.parch-test input {
-    font-size: 2rem;
-}
-
-.parch-test ul {
-    list-style-type: none;
-}

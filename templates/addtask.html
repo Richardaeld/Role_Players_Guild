@@ -1,43 +1,44 @@
 {% extends "base.html" %}
 
-{% block independent_section_content %}
-<section>
-    <div class="row no-gutters justify-content-center">
-        <div class="col-10 general-tab form-tab">              
-            <div class="row no-gutters">
-                    <div class="col-12">
-                        <p>What insult are you going to add?</p>
-                            <div class="col-1 back-button">
-                                <a href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
-                                    <span>Back</span>
-                                </a>
-                            </div>
-
-                        <ul class="form-mod">
-                            <li> 
-                        
-                                <form action="{{ url_for('addtask', username=session['user'], room=session['place'][1] ,topic=topic ) }}" method="POST">
-                                    <div class="row no-gutters justify-content-center">
-                                        <div class="col-10">
-                                            <input  name="addtask" id="addtask">
-                                            <input class="make-invis" name="room" id="room" value="{{session['place'][1]}}">
-                                            <input class="make-invis" name="category" id="category" value="{{topic}}">
-                                            <input class="make-invis" name="username" id="username" value="{{session['user']}}">
-                                            <input class="make-invis" name="date" id="date" value="">
-                                        </div>
-                                        <div class="col-10">
-                                            <input class="profile-choices-sub" type="submit">
-                                        </div>
-                                    </div>
-                                </form>
-
-                            </li>
-                        </ul>
-                    
+{% block tab_header_content %}
+<section class="row no-gutters " >
+    <!--place filter here if needed--><!--<span class="full-size"></span>-->
+    <div class="col-10 topic-tab form-tab">  
+        <div class="row no-gutters justify-content-center">
+            <div class="col-12">
+                
+                <div class="row no-gutters justify-content-center form-box form-filter">
+                    <div class="col-1 back-button">
+                        <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
+                            <p>back</p>
+                        </a>
                     </div>
 
-                </div>
-
+                    <h1>What {{topic.title()}} are you going to add?</h1>
+                    
+                    <div class="col-10">
+                    <ul class="form-user-input">
+                        <li>     
+                            <form class="" action="{{ url_for('addtask', username=session['user'], room=session['place'][1] ,topic=topic ) }}" method="POST">
+                                <div class="row no-gutters justify-content-center">
+                                    <div class="col-10">
+                                        <textarea class="form-textarea" name="addtask" id="addtask"></textarea>
+                                        <input class="make-invis" name="room" id="room" value="{{session['place'][1]}}">
+                                        <input class="make-invis" name="category" id="category" value="{{topic}}">
+                                        <input class="make-invis" name="username" id="username" value="{{session['user']}}">
+                                        <input class="make-invis" name="date" id="date" value="">
+                                    </div>
+                                    <div class="col-10">
+                                        <input class="submit-button" type="submit">
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                    </ul>
+                    </div>
+                </div> 
+            </div>
+      
         </div>
     </div>
 </section>

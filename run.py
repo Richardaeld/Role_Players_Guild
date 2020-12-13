@@ -268,7 +268,7 @@ def addtask(username, room, topic):
         username=session['user'],
         header_img_class="col-12 profile-header",
         header_img="add-entry",
-        header_title_class="header-title",
+        header_title_class="header-title header-title-form",
         title_header="",
         title_header_p="")
 
