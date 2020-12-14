@@ -131,7 +131,7 @@ def profile(username):
     # ------------first hall will not click when
     # ------------resolution width is greater than 980px
     # populates the main categories: home brew, wotc, campaign
-    guildHalls = list(mongo.db.guilds.find({"mainIndex": "true"}))
+    guildHalls = list(mongo.db.halls.find())
     if session['user']:
         return render_template(
             "profile.html",
@@ -168,9 +168,9 @@ def searchHalls(username, hall):
 
     # searches for rooms associated to guild hall user selected
     searchForRooms = list(
-        mongo.db.guilds.find({"$text": {"$search": searchRoomsQuery}}))
+        mongo.db.rooms.find({"$text": {"$search": searchRoomsQuery}}))
 
-    guildHalls = list(mongo.db.guilds.find({"mainIndex": "true"}))
+    guildHalls = list(mongo.db.halls.find())
     return render_template(
         "profile.html",
         hall=hall,
@@ -219,6 +219,7 @@ def openRoom(username, room):
 
     # test session
     session['place'] = [roomHTMLQuery, roomNameQuery, headerImg, headerText, navTitle]
+
     # searches for guild room DB
     pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
 
@@ -253,7 +254,7 @@ def addtask(username, room, topic):
             "date": ""
         }
         mongo.db.guildDiscussion.insert_one(addme)
-        flash("Added to " + request.form.get("category"))
+        flash(topic.title() + " confessed")
         return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
 
     room = session['place'][1]
@@ -309,7 +310,7 @@ def removetask(username, room, topic, removeme):
     removeme=removeme
     if request.method == "POST":
         mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
-        flash(topic.title() + " removed")
+        flash(topic.title() + " recinded")
         return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
     return render_template(

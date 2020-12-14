@@ -44,7 +44,7 @@
                         </li>
                         {% if session.place %}
                         <li class="nav-item">
-                            <a href="{{ url_for('openRoom', username=session['user'], room=session['place'][1] )}}" id="">{{session.place[4]}}</a>
+                            <a href="{{ url_for('openRoom', username=session['user'], room=session['place'][1] )}}" id="">{{session.place[1]}}</a>
                         </li>
                         {% endif %}
                         <li class="nav-item">
