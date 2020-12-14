@@ -122,15 +122,15 @@ def signIn():
 def signOut():
     # remove session signin session
     flash("You have been logged out")
+    if session.get('place') is not None:
+        session.pop('place')
     session.pop('user')
     return redirect(url_for("signIn"))
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
-    # ------------first hall will not click when
-    # ------------resolution width is greater than 980px
-    # populates the main categories: home brew, wotc, campaign
+    # populates the halls dynamically
     guildHalls = list(mongo.db.halls.find())
     if session['user']:
         return render_template(
@@ -146,7 +146,7 @@ def profile(username):
     return redirect(url_for("login"))
 
 
-# searchs for the sub categories on the profile page and
+# searchs for the guild halls for rooms from the profile page and
 # passes a variable to populate them
 @app.route("/searchHalls/<username>/<hall>", methods=["GET", "POST"])
 def searchHalls(username, hall):
@@ -155,12 +155,11 @@ def searchHalls(username, hall):
     if session.get('place') is not None:
         session.pop('place')
 
-    testh = False
-
     # takes user input for guild room search
-    searchRoomsQuery = request.form.get("searchRoomsQuery")
-    hall = request.form.get("searchRoomQuery")
-
+ #   searchRoomsQuery = request.form.get("searchRoomsQuery")
+#    hall = request.form.get("searchRoomQuery")
+    hall = hall
+    
     # Makes sure second search is only visible after first search has been used
     enterHall = True
 
@@ -168,7 +167,7 @@ def searchHalls(username, hall):
 
     # searches for rooms associated to guild hall user selected
     searchForRooms = list(
-        mongo.db.rooms.find({"$text": {"$search": searchRoomsQuery}}))
+        mongo.db.rooms.find({"$text": {"$search": hall}}))
 
     guildHalls = list(mongo.db.halls.find())
     return render_template(

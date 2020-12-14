@@ -16,10 +16,7 @@
                     {% for hall in guildHalls %}
                         <li> 
                     
-                            <form action="{{ url_for('searchHalls', username=session['user'], hall=hall.hall ) }}" method="POST">
-                                <input type="submit" name="searchRoomsQuery" id="searchRoomsQuery" value="{{hall.hall}}">
-                            </form>
-
+                            <a href="{{ url_for('searchHalls', username=session['user'], hall=hall.hall) }}">{{hall.hall.title()}}</a>
 
                         </li>
                     {% endfor %}
