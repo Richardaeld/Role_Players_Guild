@@ -286,15 +286,15 @@ def edittask(username, room, topic, editme):
 
         mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
         flash(topic.title() + " updated")
-        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1] ))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
 
     topic=topic
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
     return render_template(
         "edittask.html",
         room=session['place'][1],
-        topic=topic,
         editme=editme,
+        topic=topic,
         edit=tasky,
         username=session["user"],
         header_img_class="col-12 profile-header",
@@ -304,23 +304,20 @@ def edittask(username, room, topic, editme):
         title_header_p="")
 
 
-@app.route("/removetask/<username>/<room>/<removeme>/'edit '+<topic>", methods=["GET", "POST"])
+@app.route("/removetask/<username>/<room>/<removeme>/'remove '+<topic>", methods=["GET", "POST"])
 def removetask(username, room, topic, removeme):
-    #editme1 = mongo.db.guildDiscussion.find_one({"$text" : {"$search": editme}})
-#    edit = mongo.db.guildDiscussion.find_one({"submit": "form"})
     removeme=removeme
     if request.method == "POST":
         mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
         flash(topic.title() + " removed")
-        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1] ))
-    topic=topic
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
     return render_template(
         "removetask.html",
         room=session['place'][1],
+        remove=tasky,
         topic=topic,
         removeme=removeme,
-        remove=tasky,
         username=session["user"],
         header_img_class="col-12 profile-header",
         header_img="add-entry",
