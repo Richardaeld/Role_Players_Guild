@@ -208,10 +208,16 @@ def openRoom(username, roomName):
     # searches for guild room DB
     pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
 
+#    pageList = mongo.db.rooms.find({"$text": {"$search": roomName} })
+
+    #pulls room info into a variable
+    roomInfo = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
+    roomInfo = roomInfo['topic'].split(",")
     addidea = roomName
 
     return render_template(
         "room.html",
+        roomInfo=roomInfo,
         opendoor=opendoor,
         username=session["user"],
         header_img_class="col-12 profile-header",

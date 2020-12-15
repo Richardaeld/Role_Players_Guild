@@ -9,16 +9,14 @@
         <div class="col-12">
             <div class="row no-gutters justify-content-around">
 
-                {% for category in totalCategories %}
-                        
+                {% for topic in roomInfo %}
                 <div class="col-3 tab">
                     <div class="tab-span"></div>
                     <svg>
                         <rect rx="50" ry="50"/>
                     </svg>
-                    <p>{{category.category.title()}}</p>
+                    <p>{{topic.title()}}</p>
                 </div>
-                        
                 {% endfor %}
 
             </div>
@@ -31,7 +29,7 @@
 <section>
 
     <span class="general-cover  topic-section-cover "></span><!-- topic cover JS pick point -->  <!--      covers entire general section with a moving filter -->
-    {% for categoryTitle in totalCategories %}
+    {% for topic in roomInfo %}
 
     <div class="col-12 general-display-none topic-tab topic-section  general-tab-background-1"> <!--topic tab no css just JS pick point-->
         <div class="row no-gutters justify-content-center">
@@ -40,11 +38,11 @@
             </div>
             <div class="col-10">
 
-            <h1>{{categoryTitle.category.title()}}</h1>
+            <h1>{{topic.title()}}</h1>
 
                 <ul class="list-group">
                     {% for list in pageList %}
-                    {% if list.category == categoryTitle.category %}
+                    {% if list.category == topic %}
                     <li class="list-group-item">
                         <div class="row no-gutters justify-content-between">
                             <div class="col-10">
@@ -57,12 +55,12 @@
                                                     
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=categoryTitle.category, editme=list._id)}}">Edit</a>
+                                    <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=list._id)}}">Edit</a>
                                 </span>
                             </div>
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=categoryTitle.category, removeme=list._id)}}">Remove</a>
+                                    <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=list._id)}}">Remove</a>
                                 </span>
                             </div>
 
@@ -76,7 +74,7 @@
             </div>
 
                 <div class="col-1 edit-button" id="add">
-                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=categoryTitle.category )}}"><p>addtask</p></a>
+                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>Commit</p></a>
                 </div>
 
         </div>
