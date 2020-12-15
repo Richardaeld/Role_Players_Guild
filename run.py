@@ -190,22 +190,22 @@ def openRoom(username, roomName):
         roomName = session["place"][0]
         headerImg = session["place"][1]
         headerText = session["place"][2]
-        roomHTMLQuery = session["place"][3]
-        navTitle = session["place"][4]
+#        roomHTMLQuery = session["place"][3]
+#        navTitle = session["place"][4]
     else:
-        roomHTMLQuery = "room"
+#        roomHTMLQuery = "room"
         headerImg = opendoor['img']
         roomName = opendoor['room']
         headerText = opendoor['header']
-        navTitle = opendoor['room']
+#        navTitle = opendoor['room']
 
-    print(session)
-    if session.get("place") is not None:
-        print(session)
-        roomHTMLQuery = roomHTMLQuery
-    else:
-        print(session)
-        roomHTMLQuery = roomHTMLQuery + ".html"
+#    print(session)
+#    if session.get("place") is not None:
+#        print(session)
+#        roomHTMLQuery = roomHTMLQuery
+#    else:
+#        print(session)
+#        roomHTMLQuery = roomHTMLQuery + ".html"
 
     # gets categories to populate room with
     totalCategories = list(mongo.db.tableCategories.find())
@@ -214,7 +214,7 @@ def openRoom(username, roomName):
     admin = mongo.db.users.find_one({"username": session['user']})
 
     # test session
-    session['place'] = [roomName, headerImg, headerText, roomHTMLQuery, navTitle]
+    session['place'] = [roomName, headerImg, headerText]
 
     # searches for guild room DB
     pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
@@ -223,7 +223,7 @@ def openRoom(username, roomName):
     addidea = roomName
 
     return render_template(
-        roomHTMLQuery,
+        "room.html",
         opendoor=opendoor,
         test=test,
         username=session["user"],
@@ -254,12 +254,12 @@ def addtask(username, room, topic):
         flash(topic.title() + " confessed")
         return redirect(url_for('openRoom', username=session['user'], room=session['place'][0]))
 
-    room = session['place'][1]
+    room = session['place'][0]
     insertInfo = ""
     testy = mongo.db.guildDiscussion.find_one({"room": room})
     return render_template(
         "addtask.html",
-        room=session['place'][1],
+        room=session['place'][0],
         topic=topic,
         test=testy,
         add=insertInfo,
