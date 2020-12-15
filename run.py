@@ -165,8 +165,6 @@ def searchHalls(username, hall):
     # searches for rooms associated to guild hall user selected
     searchForRooms = list(
         mongo.db.rooms.find({"$text": {"$search": hall}}))
-    thisid = "5fd7d4f2134b6055941c25d7"
-    print(mongo.db.rooms.find_one({"_id": ObjectId (thisid)}))
 
     return render_template(
         "profile.html",
@@ -182,28 +180,24 @@ def searchHalls(username, hall):
 
 
 # sends user to page selected from sub category search
-@app.route("/openRoom/<username>/<roomName>/<roomid>", methods=["GET", "POST"])
-def openRoom(username, roomName, roomid):
+@app.route("/openRoom/<username>/<roomName>", methods=["GET", "POST"])
+def openRoom(username, roomName):
+    
     # search inputs
-    roomid=roomid
-    opendoor = mongo.db.rooms.find_one({"_id": ObjectId(roomid)})
-
-    print(opendoor)
+    opendoor = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
 
     if session.get("place") is not None:
-        roomHTMLQuery = session["place"][0]
-        roomName = session["place"][1]
-        headerImg = session["place"][2]
-        headerText = session["place"][3]
+        roomName = session["place"][0]
+        headerImg = session["place"][1]
+        headerText = session["place"][2]
+        roomHTMLQuery = session["place"][3]
         navTitle = session["place"][4]
-        roomid = session["place"][5]
     else:
-        roomHTMLQuery = "temple"
+        roomHTMLQuery = "room"
         headerImg = opendoor['img']
         roomName = opendoor['room']
         headerText = opendoor['header']
         navTitle = opendoor['room']
-        roomid = opendoor['_id']
 
     print(session)
     if session.get("place") is not None:
@@ -220,7 +214,7 @@ def openRoom(username, roomName, roomid):
     admin = mongo.db.users.find_one({"username": session['user']})
 
     # test session
-    session['place'] = [roomHTMLQuery, roomName, headerImg, headerText, navTitle]
+    session['place'] = [roomName, headerImg, headerText, roomHTMLQuery, navTitle]
 
     # searches for guild room DB
     pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
@@ -258,7 +252,7 @@ def addtask(username, room, topic):
         }
         mongo.db.guildDiscussion.insert_one(addme)
         flash(topic.title() + " confessed")
-        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][0]))
 
     room = session['place'][1]
     insertInfo = ""
@@ -290,7 +284,7 @@ def edittask(username, room, topic, editme):
 
         mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
         flash(topic.title() + " updated")
-        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][0]))
 
     topic=topic
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
@@ -314,7 +308,7 @@ def removetask(username, room, topic, removeme):
     if request.method == "POST":
         mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
         flash(topic.title() + " recinded")
-        return redirect(url_for('openRoom', username=session['user'], room=session['place'][1]))
+        return redirect(url_for('openRoom', username=session['user'], room=session['place'][0]))
     tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
     return render_template(
         "removetask.html",

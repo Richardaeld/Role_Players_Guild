@@ -15,9 +15,7 @@
                     <ul class="profile-test">
                     {% for hall in guildHalls %}
                         <li> 
-                    
                             <a href="{{ url_for('searchHalls', username=session['user'], hall=hall.hall) }}">{{hall.hall.title()}}</a>
-
                         </li>
                     {% endfor %}
                     </ul>
@@ -30,11 +28,7 @@
                     <ul class="profile-test">
                     {% for room in searchForRooms %}
                         <li>
-
-                            <a href="{{ url_for('openRoom', username=session['user'], roomName=room.room, roomid=room._id) }}">{{room.room}}{{room._id}}</a>
-
-
-
+                            <a href="{{ url_for('openRoom', username=session['user'], roomName=room.room) }}">{{room.room}}</a>
                         </li>
                     {% endfor %}
                     </ul>
