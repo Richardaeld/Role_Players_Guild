@@ -78,14 +78,10 @@ def register():
 
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
-    # try and except a test is a pass and redirects
-    # use to profile page if already logged in
-    try:
-        if session["user"]:
-            flash("Already Signed In")
-            return redirect(url_for("profile", username=session["user"]))
-    except:
-        print("")
+    # redirect to profile page if already logged in
+    if session.get["user"] is not None:
+        flash("Already Signed In")
+        return redirect(url_for("profile", username=session["user"]))
 
     if request.method == "POST":
         # check if user name exists
@@ -120,18 +116,23 @@ def signIn():
 
 @app.route("/signOut")
 def signOut():
-    # remove session signin session
+
+    # remove session place if it exists
     flash("You have been logged out")
     if session.get('place') is not None:
         session.pop('place')
+
+    # remove session user for 'logout'
     session.pop('user')
     return redirect(url_for("signIn"))
 
 
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
+
     # populates the halls dynamically
     guildHalls = list(mongo.db.halls.find())
+
     if session['user']:
         return render_template(
             "profile.html",
@@ -155,24 +156,20 @@ def searchHalls(username, hall):
     if session.get('place') is not None:
         session.pop('place')
 
-    # takes user input for guild room search
- #   searchRoomsQuery = request.form.get("searchRoomsQuery")
-#    hall = request.form.get("searchRoomQuery")
-    hall = hall
+    # populates halls of guildhalls
+    guildHalls = list(mongo.db.halls.find())
     
     # Makes sure second search is only visible after first search has been used
-    enterHall = True
-
-    
+    seeRooms = True
 
     # searches for rooms associated to guild hall user selected
     searchForRooms = list(
         mongo.db.rooms.find({"$text": {"$search": hall}}))
+    thisid = "5fd7d4f2134b6055941c25d7"
+    print(mongo.db.rooms.find_one({"_id": ObjectId (thisid)}))
 
-    guildHalls = list(mongo.db.halls.find())
     return render_template(
         "profile.html",
-        hall=hall,
         guildHalls=guildHalls,
         searchForRooms=searchForRooms,
         username=session['user'],
@@ -181,26 +178,32 @@ def searchHalls(username, hall):
         header_title_class="header-title-general",
         title_header="Welcome " + session['user'],
         title_header_p="What room will your adventure take you today?",
-        enterHall=enterHall)
+        seeRooms=seeRooms)
 
 
 # sends user to page selected from sub category search
-@app.route("/openRoom/<username>/<room>", methods=["GET", "POST"])
-def openRoom(username, room):
+@app.route("/openRoom/<username>/<roomName>/<roomid>", methods=["GET", "POST"])
+def openRoom(username, roomName, roomid):
     # search inputs
+    roomid=roomid
+    opendoor = mongo.db.rooms.find_one({"_id": ObjectId(roomid)})
+
+    print(opendoor)
 
     if session.get("place") is not None:
         roomHTMLQuery = session["place"][0]
-        roomNameQuery = session["place"][1]
+        roomName = session["place"][1]
         headerImg = session["place"][2]
         headerText = session["place"][3]
         navTitle = session["place"][4]
+        roomid = session["place"][5]
     else:
-        roomNameQuery = request.form.get("roomNameQuery")
-        roomHTMLQuery = request.form.get("roomHTMLQuery")
-        headerImg = request.form.get("headerImgQuery")
-        headerText = request.form.get("headerTextQuery")
-        navTitle = request.form.get("navTitle")
+        roomHTMLQuery = "temple"
+        headerImg = opendoor['img']
+        roomName = opendoor['room']
+        headerText = opendoor['header']
+        navTitle = opendoor['room']
+        roomid = opendoor['_id']
 
     print(session)
     if session.get("place") is not None:
@@ -217,16 +220,17 @@ def openRoom(username, room):
     admin = mongo.db.users.find_one({"username": session['user']})
 
     # test session
-    session['place'] = [roomHTMLQuery, roomNameQuery, headerImg, headerText, navTitle]
+    session['place'] = [roomHTMLQuery, roomName, headerImg, headerText, navTitle]
 
     # searches for guild room DB
-    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomNameQuery}}))
+    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
 
     test = pageList[0]
-    addidea = roomNameQuery
+    addidea = roomName
 
     return render_template(
         roomHTMLQuery,
+        opendoor=opendoor,
         test=test,
         username=session["user"],
         header_img_class="col-12 profile-header",
