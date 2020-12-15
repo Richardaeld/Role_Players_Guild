@@ -2,7 +2,7 @@
 
 {% block tab_header_content_row %}
 <nav>
-    <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
+    <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][1]) }}">
         <p>back</p>
     </a>
 </nav>
@@ -19,7 +19,7 @@
                     <ul class="form-user-input">
                         <li> 
                     
-                            <form action="{{ url_for('edittask', username=session['user'], room=session['place'][1], topic=topic, editme=edit._id) }}" method="POST">
+                            <form action="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=edit._id) }}" method="POST">
                                 <div class="row no-gutters justify-content-center">
                                     
                                     <div class="col-10">

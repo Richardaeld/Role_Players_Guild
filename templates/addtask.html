@@ -3,7 +3,7 @@
 {% block tab_header_content_row %}
     <!--place filter here if needed--><!--<span class="full-size"></span>-->
     <nav>
-        <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], room=session['place'][1]) }}">
+        <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">
             <p>back</p>
         </a>
     </nav>
@@ -19,11 +19,11 @@
                     <div class="col-10">
                     <ul class="form-user-input">
                         <li>     
-                            <form class="" action="{{ url_for('addtask', username=session['user'], room=session['place'][1] ,topic=topic ) }}" method="POST">
+                            <form class="" action="{{ url_for('addtask', username=session['user'], room=session['place'][0] ,topic=topic ) }}" method="POST">
                                 <div class="row no-gutters justify-content-center">
                                     <div class="col-10">
                                         <textarea class="form-textarea" name="addtask" id="addtask"></textarea>
-                                        <input class="make-invis" name="room" id="room" value="{{session['place'][1]}}">
+                                        <input class="make-invis" name="room" id="room" value="{{session['place'][0]}}">
                                         <input class="make-invis" name="category" id="category" value="{{topic}}">
                                         <input class="make-invis" name="username" id="username" value="{{session['user']}}">
                                         <input class="make-invis" name="date" id="date" value="">
