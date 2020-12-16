@@ -61,3 +61,13 @@ function generalTabHoverEffect(item, index) {
         },1500)
     });
 }
+
+//----------------------------further extends the body to match topic tab length
+var tabLength = document.getElementsByClassName("header-title-bump")[0].offsetHeight
+
+function setTabHeight() {
+    document.getElementById("header_main").offsetHeight = tabLength
+}
+
+setTabHeight()
+

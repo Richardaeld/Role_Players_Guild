@@ -31,6 +31,8 @@
 
 .tomb-img {
     background-image: url("../img/tomb/toa_card.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 .log-img{

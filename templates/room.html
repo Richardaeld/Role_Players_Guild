@@ -3,14 +3,14 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
-{% block tab_header_content %}
-<section>
+{% block tab_header_content_row %}
+<section id="room-topics">
     <div class="row no-gutters">
         <div class="col-12">
             <div class="row no-gutters justify-content-around">
 
                 {% for topic in roomInfo %}
-                <div class="col-3 tab">
+                <div class="col-6 col-md-4 col-lg-3 tab">
                     <div class="tab-span"></div>
                     <svg>
                         <rect rx="50" ry="50"/>
@@ -41,26 +41,26 @@
             <h1>{{topic.title()}}</h1>
 
                 <ul class="list-group">
-                    {% for list in pageList %}
-                    {% if list.category == topic %}
+                    {% for commit in topicCommits %}
+                    {% if commit.category == topic %}
                     <li class="list-group-item">
                         <div class="row no-gutters justify-content-between">
                             <div class="col-10">
                                 <span class="form-idea">
-                                    {{ list.idea.title() }}
+                                    {{ commit.idea.title() }}
                                 </span>
                             </div>
                                             
-                            {% if admin.admin==true or list.submit == admin.username %}
+                            {% if admin.admin==true or commit.submit == admin.username %}
                                                     
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=list._id)}}">Edit</a>
+                                    <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
                                 </span>
                             </div>
                             <div class="col-1 form-button">
                                 <span class="form-edit">
-                                    <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=list._id)}}">Remove</a>
+                                    <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
                                 </span>
                             </div>
 

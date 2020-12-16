@@ -51,15 +51,16 @@
                             <a href="{{ url_for('signOut') }}">Sign Out</a>
 
                         </li>
-                        <form action="{{ url_for('search', username=session['user']) }}" method="POST">
-                            <input class="search-size" type="text" name="navQuery" id="nvaQuery">
-                            <label type= "submit" for="query"></label>
-                            <button class="search-button">
-                                <input type="submit" value="">
-                                <i class="fas fa-search"></i>
-                            </button>
-                        </form>
-
+                        <li class="nav-item nav-search" id="search-button">
+                            <form  action="{{ url_for('searchHalls', username=session['user'], hall='navSearch' ) }}" method="POST">
+                                <input class="make-invis search-size" type="text" name="navSearch" id="navSearch">
+                                <label type= "submit" for="navSearch"></label>
+                                <button id="search-icon" class="search-button" disabled >
+                                    <input type="submit" value="">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </form>
+                        </li>
                         {% else %}
                         <li class="nav-item">
                             <a href="{{ url_for('signIn') }}">Sign In</a>
@@ -164,6 +165,7 @@
     </footer>
     <!-- custom js for page -->
     <script src="{{ url_for('static', filename='js/flash.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
     {% block custom_script %}
     {% endblock %}
 </body>

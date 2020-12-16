@@ -79,9 +79,9 @@ def register():
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
     # redirect to profile page if already logged in
-    if session.get["user"] is not None:
-        flash("Already Signed In")
-        return redirect(url_for("profile", username=session["user"]))
+    # if session.get["user"] is not None:
+        # flash("Already Signed In")
+        # return redirect(url_for("profile", username=session["user"]))
 
     if request.method == "POST":
         # check if user name exists
@@ -156,6 +156,12 @@ def searchHalls(username, hall):
     if session.get('place') is not None:
         session.pop('place')
 
+    userSearch = request.form.get("navSearch")
+    if userSearch is not None:
+        hall = userSearch
+
+
+
     # populates halls of guildhalls
     guildHalls = list(mongo.db.halls.find())
     
@@ -197,7 +203,7 @@ def openRoom(username, roomName):
         headerText = opendoor['header']
 
     # gets categories to populate room with
-    totalCategories = list(mongo.db.tableCategories.find())
+    #totalCategories = list(mongo.db.tableCategories.find())
 
     # searches if user has admin status
     admin = mongo.db.users.find_one({"username": session['user']})
@@ -205,8 +211,8 @@ def openRoom(username, roomName):
     # test session
     session['place'] = [roomName, headerImg, headerText]
 
-    # searches for guild room DB
-    pageList = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
+    # matches roomName to pull commit list
+    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
 
 #    pageList = mongo.db.rooms.find({"$text": {"$search": roomName} })
 
@@ -225,9 +231,8 @@ def openRoom(username, roomName):
         header_title_class="header-title-general header-title-bump",
         title_header=headerText,
         title_header_p="",
-        totalCategories=totalCategories,
         addidea=addidea,
-        pageList=pageList,
+        topicCommits=topicCommits,
         admin=admin)
 
 
