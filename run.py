@@ -218,7 +218,7 @@ def openRoom(username, roomName):
 
     #pulls room info into a variable
     roomInfo = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
-    roomInfo = roomInfo['topic'].split(",")
+    roomInfo = roomInfo['topic'].split(", ")
     addidea = roomName
 
     return render_template(
