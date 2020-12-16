@@ -11,6 +11,11 @@
 
                 <div class="col-6 profile-categories">
                     <p>Select a guild hall interests you</p>
+                    <p>or</p>
+                    {% if admin.admin == true %}
+                    <a href="{{ url_for('createHall', username=session['user']) }}">Create a Hall</a>
+                    {% endif %}
+                    <a href="">Create a Room</a>
                     <hr>
                     <ul class="">
                     {% for hall in guildHalls %}
@@ -22,13 +27,14 @@
                 </div>
 
                 <div class="col-6 profile-categories">
+
                     {% if seeRooms == true %}
                     <p>Select a room that interests you</p>
                     <hr>
                     <ul class="">
                     {% for room in searchForRooms %}
                         <li>
-                            <a class="clean-anchor-black" href="{{ url_for('openRoom', username=session['user'], roomName=room.room) }}">{{room.room}}</a>
+                            <a class="clean-anchor-black" href="{{ url_for('openRoom', username=session['user'], roomName=room.room) }}">{{room.room.title()}}</a>
                         </li>
                     {% endfor %}
                     </ul>

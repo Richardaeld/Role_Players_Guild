@@ -13,18 +13,18 @@
                 <form method="POST" action="{{ url_for('signIn') }}">
                     <div class="row no-gutters justify-content-between form-height">
 
-                        <div class="col-6 input-line">
+                        <div class="col-6">
                             <label for="username">User Name:</label>
                         </div>
-                        <div class="col-6 input-line">
+                        <div class="col-6">
                             <input type="text" id="username" name="username" 
                                 minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
 
-                        <div class="col-6 input-line">
+                        <div class="col-6">
                             <label for="password">Password:</label>
                         </div>
-                        <div class="col-6 input-line">
+                        <div class="col-6">
                             <input type="password" id="password" name="password" 
                                 minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>

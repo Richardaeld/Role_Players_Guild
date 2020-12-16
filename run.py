@@ -130,6 +130,8 @@ def signOut():
 @app.route("/profile/<username>", methods=["GET", "POST"])
 def profile(username):
 
+    admin = mongo.db.users.find_one({"username": session['user']})
+
     # populates the halls dynamically
     guildHalls = list(mongo.db.halls.find())
 
@@ -137,6 +139,7 @@ def profile(username):
         return render_template(
             "profile.html",
             guildHalls=guildHalls,
+            admin=admin,
             username=session['user'],
             header_img_class="col-12 profile-header",
             header_img="log-img",
@@ -152,6 +155,8 @@ def profile(username):
 @app.route("/searchHalls/<username>/<hall>", methods=["GET", "POST"])
 def searchHalls(username, hall):
 
+    admin = mongo.db.users.find_one({"username": session['user']})
+
     # applies a rest to previously visited room
     if session.get('place') is not None:
         session.pop('place')
@@ -160,11 +165,9 @@ def searchHalls(username, hall):
     if userSearch is not None:
         hall = userSearch
 
-
-
     # populates halls of guildhalls
     guildHalls = list(mongo.db.halls.find())
-    
+
     # Makes sure second search is only visible after first search has been used
     seeRooms = True
 
@@ -174,6 +177,7 @@ def searchHalls(username, hall):
 
     return render_template(
         "profile.html",
+        admin=admin,
         guildHalls=guildHalls,
         searchForRooms=searchForRooms,
         username=session['user'],
@@ -189,7 +193,7 @@ def searchHalls(username, hall):
 @app.route("/openRoom/<username>/<roomName>", methods=["GET", "POST"])
 def openRoom(username, roomName):
 
-    # search inputs
+    # search db for the rooms basic information
     opendoor = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
 
     if session.get("place") is not None:
@@ -202,9 +206,6 @@ def openRoom(username, roomName):
         roomName = opendoor['room']
         headerText = opendoor['header']
 
-    # gets categories to populate room with
-    #totalCategories = list(mongo.db.tableCategories.find())
-
     # searches if user has admin status
     admin = mongo.db.users.find_one({"username": session['user']})
 
@@ -214,12 +215,9 @@ def openRoom(username, roomName):
     # matches roomName to pull commit list
     topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
 
-#    pageList = mongo.db.rooms.find({"$text": {"$search": roomName} })
-
-    #pulls room info into a variable
+    # pulls topic commits info into a variable and turns it into a usable list
     roomInfo = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
     roomInfo = roomInfo['topic'].split(", ")
-    addidea = roomName
 
     return render_template(
         "room.html",
@@ -231,10 +229,8 @@ def openRoom(username, roomName):
         header_title_class="header-title-general header-title-bump",
         title_header=headerText,
         title_header_p="",
-        addidea=addidea,
         topicCommits=topicCommits,
         admin=admin)
-
 
 
 @app.route("/addtask/<username>/<room>/'add '+<topic>", methods=["GET", "POST"])
@@ -298,6 +294,29 @@ def edittask(username, room, topic, editme):
         header_title_class="header-title header-title-form",
         title_header="",
         title_header_p="")
+
+
+@app.route("/createHall/<username>", methods=["GET", "POST"])
+def createHall(username):
+    if request.method == "POST":
+        createHall1 = {
+            "hall": request.form.get("hall"),
+            "description": request.form.get("description"),
+            "submit": session['user'],
+            "date": ""
+        }
+        flash("hall constructed")
+        mongo.db.halls.insert_one(createHall1)
+        return redirect(url_for('profile', username=session['user']))
+
+    return render_template(
+        "createHall.html",
+        username=session['user'],
+        header_img_class="col-12 profile-header",
+        header_img="log-img",
+        header_title_class="header-title header-title-form",
+        title_header="",
+        titleheader_p="")
 
 
 @app.route("/removetask/<username>/<room>/<removeme>/'remove '+<topic>", methods=["GET", "POST"])

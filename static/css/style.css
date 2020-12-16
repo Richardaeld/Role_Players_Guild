@@ -545,6 +545,11 @@ footer {
     color: #fff
 }
 
+.form-textarea-black{
+    width:100%;
+    color: #010203
+}
+
 .form-height {
     margin-top: 5rem;
 }

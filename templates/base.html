@@ -44,7 +44,7 @@
                         </li>
                         {% if session.place %}
                         <li class="nav-item">
-                            <a href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0] )}}" id="">{{session.place[0]}}</a>
+                            <a href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0] )}}" id="">{{session.place[0].title()}}</a>
                         </li>
                         {% endif %}
                         <li class="nav-item">
@@ -165,7 +165,9 @@
     </footer>
     <!-- custom js for page -->
     <script src="{{ url_for('static', filename='js/flash.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    {% if session.user %}
+        <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    {% endif %}
     {% block custom_script %}
     {% endblock %}
 </body>

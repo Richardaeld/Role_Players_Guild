@@ -9,28 +9,28 @@
         <div class="col-10">
 
             <fieldset class="form-box">
-                <h1>Register</h1>
-                <form method="POST" action="{{ url_for('register') }}">
+                <h1>Create Hall</h1>
+                <form method="POST" action="{{ url_for('createHall', username=session['user']) }}">
                     <div class="row no-gutters justify-content-between form-height">
 
                         <div class="col-6">
-                            <label for="username">User Name:</label>
+                            <label for="hall">Hall Name:</label>
                         </div>
                         <div class="col-6">
-                            <input type="text" id="username" name="username" 
+                            <input type="text" id="hall" name="hall" 
                                 minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
                         </div>
 
                         <div class="col-6">
-                            <label for="password">Password:</label>
+                            <label for="description">Hall Description:</label>
                         </div>
                         <div class="col-6">
-                            <input type="password" id="password" name="password" 
-                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                            <textarea class="form-textarea-black" type="text" id="description" name="description" 
+                                minlength="5" maxlength="350" pattern="^[a-zA-Z0-9]{5,15}$" required></textarea>
                         </div>
-
+                                    
                     </div>
-
+                    
                     <div class="row no-gutters justify-content-end">
                         <div class="col-6">
                         <input class="submit-button"  type="submit" value="Submit">
@@ -46,7 +46,7 @@
 
 {% block custom_script %}
     <script>
-        document.getElementsByClassName("nav-item")[3].classList.add("active");
-        document.getElementsByClassName("nav-item")[3].firstElementChild.classList.add("custom-nav-logo");
+        document.getElementsByClassName("nav-item")[2].classList.add("active");
+        document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");
     </script>
 {% endblock %}

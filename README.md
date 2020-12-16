@@ -48,7 +48,8 @@ or reach out and help others.
 #### Current Bugs
 
 ## Scaleability
-
++ Add ability to upload image
+ - this will require GridFS
 # Deployment Information
 
 # Tools, References, Code, and Idea(s) Used
