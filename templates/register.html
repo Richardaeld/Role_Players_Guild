@@ -4,43 +4,39 @@
 {% endblock %}
 
 {% block header_dependent_section_content %}
-<div class="col-12 topic-tab form-tab">
+<fieldset class="col-12 topic-tab form-tab form-box">
     <div class="row no-gutters justify-content-center">
-        <div class="col-10">
-
-            <fieldset class="form-box">
-                <h1>Register</h1>
-                <form method="POST" action="{{ url_for('register') }}">
-                    <div class="row no-gutters justify-content-between form-height">
-
-                        <div class="col-6">
-                            <label for="username">User Name:</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="text" id="username" name="username" 
-                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-                        </div>
-
-                        <div class="col-6">
-                            <label for="password">Password:</label>
-                        </div>
-                        <div class="col-6">
-                            <input type="password" id="password" name="password" 
-                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
-                        </div>
-
-                    </div>
-
-                    <div class="row no-gutters justify-content-end">
-                        <div class="col-6">
-                        <input class="submit-button"  type="submit" value="Submit">
-                        </div>
-                    </div>
-                </form>
-            </fieldset>
+        <div>
+            <h1>Register</h1>
         </div>
     </div>
-</div>
+    <form method="POST" action="{{ url_for('register') }}">
+        <div class="row no-gutters justify-content-center form-height">
+
+            <div class="col-12 col-md-6">
+                <label for="username">User Name:</label>
+            </div>
+            <div class="col-12 col-md-6">
+                <input type="text" id="username" name="username" 
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <label for="password">Password:</label>
+            </div>
+            <div class="col-12 col-md-6">
+                <input type="password" id="password" name="password" 
+                    minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+            </div>
+
+        </div>
+        <div class="row no-gutters justify-content-end">
+            <div class="col-6">
+                <input class="submit-button form-height"  type="submit" value="Submit">
+            </div>
+        </div>
+    </form>
+</fieldset>
 
 {% endblock %}
 
