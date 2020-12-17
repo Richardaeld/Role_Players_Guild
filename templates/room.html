@@ -33,12 +33,15 @@
 
     <div class="col-12 general-display-none topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
         <div class="row no-gutters justify-content-center">
-            <div class="col-1 back-button">
-                <p>Back</p>
-            </div>
-            <div class="col-10">
+            <div class="col-11">
+                <div class="col-4 col-md-2 back-button">
+                    <p>Back</p>
+                </div>
+                <div class="col-4 col-md-2 edit-button" id="add">
+                    <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
+                </div>
 
-            <h1>{{topic.title()}}</h1>
+                <h1>{{topic.title()}}</h1>
 
                 <ul class="list-group">
                     {% for commit in topicCommits %}
@@ -46,20 +49,21 @@
                     {% if commit.category == topic %}
                     <li class="list-group-item">
                         <div class="row no-gutters justify-content-between">
-                            <div class="col-10">
-                                <span class="form-idea">
+                            <div class="col-12">
+                                <span class="form-idea col-12">
                                     {{ commit.idea.title() }}
+                                    <hr>
                                 </span>
                             </div>
                             <!-- checks to be sure only the owner of the commit or admin can alter the commit-->
                             {% if admin.admin==true or commit.submit == admin.username %}
                                                     
-                            <div class="col-1 form-button">
+                            <div class="col-6 form-button">
                                 <span class="form-edit">
                                     <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
                                 </span>
                             </div>
-                            <div class="col-1 form-button">
+                            <div class="col-6 form-button">
                                 <span class="form-edit">
                                     <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
                                 </span>
@@ -74,9 +78,7 @@
                 </ul>    
             </div>
 
-                <div class="col-1 edit-button" id="add">
-                        <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>Commit</p></a>
-                </div>
+
 
         </div>
     </div>
