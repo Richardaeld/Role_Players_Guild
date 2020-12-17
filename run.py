@@ -27,7 +27,7 @@ mongo = PyMongo(app)
 def index():
     return render_template(
         "index.html",
-        header_img_class="col-11 col-md-7",
+        header_img_class="col-10 col-md-7",
         header_img="index-header-img",
         header_title_class="header-title header-title-bump",
         title_header="Role Players Guild",
