@@ -558,7 +558,7 @@ footer {
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0,0,0,.75);
     position: relative;
-    background: url("../img/hallow_herd/hallow_world.jpg") center/100% 100% no-repeat  ;
+    background: url("../img/hallow_herd/hallow_world.jpg") center/cover no-repeat  ;
 }
 
 .about-us h1 {
@@ -678,6 +678,10 @@ background-image: url("../img/steve/tenets.jpg");
     .header-title h1,
     .about-us h1 {
         font-size: 4.5rem;
+    }
+    .about-us{
+        background: url("../img/hallow_herd/hallow_world.jpg") center/100% 100% no-repeat  ;
+
     }
 }
 
