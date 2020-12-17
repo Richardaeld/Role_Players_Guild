@@ -479,6 +479,10 @@ footer {
 }
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
+.rotate-background {
+    background: url("../img/com-notbook.jpg") 15% 0%/cover no-repeat;
+}
+
 .form-tab-pose {                             /* sign in and register */
     position: absolute;
     z-index: 4;
@@ -605,6 +609,10 @@ hr {
 
 /*--------------------------------profile page----------------------------------*/
 
+.log-img{
+    background: url("../img/com-notbook.jpg") center/100% 100% no-repeat;
+}
+
 .profile-sub-categories,
 .profile-categories {
     z-index: 0;
@@ -672,6 +680,12 @@ background-image: url("../img/steve/tenets.jpg");
     .header-title-bump {
         top: 8rem;
     }
+    .topic-tab h1 {
+        font-size: 2.5rem;
+    }
+    .topic-tab{
+        font-size: 1rem;
+    }
 }
 
 @media (min-width: 768px) {
@@ -685,6 +699,12 @@ background-image: url("../img/steve/tenets.jpg");
     }
     .header-title-bump {
         top: 9rem;
+    }
+    .topic-tab h1 {
+        font-size: 3.5rem;
+    }
+    .topic-tab{
+        font-size: 1.5rem;
     }
 }
 
@@ -702,6 +722,15 @@ background-image: url("../img/steve/tenets.jpg");
     }
     .header-title-bump {
         top: 10rem;
+    }
+    .topic-tab h1 {
+        font-size: 4rem;
+    }
+    .topic-tab{
+        font-size: 1.9rem;
+    }
+    .rotate-background {
+        background: url("../img/com-notbook.jpg") center/cover no-repeat;
     }
 }
 
@@ -722,6 +751,12 @@ background-image: url("../img/steve/tenets.jpg");
     .header-title h1,
     .about-us h1 {
         font-size: 5.5rem;
+    }
+    .topic-tab h1 {
+        font-size: 5rem;
+    }
+    .topic-tab{
+        font-size: 2rem;
     }
     
 }
