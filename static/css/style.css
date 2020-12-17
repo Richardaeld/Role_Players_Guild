@@ -131,7 +131,7 @@ body {
 }
 
 .header-title h1 {  /* wooden text */
-    font-size: 2rem;
+    font-size: 2.5rem;
     background:  url("../img/index/plank-grain.jpg");
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -139,7 +139,7 @@ body {
 }
 
 .header-title-general h1 { /* replaces original Title header index uses with a color gradient */
-    font-size: 2rem;        /* for use with tab/topic pages(general) */ 
+    font-size: 2.5rem;        /* for use with tab/topic pages(general) */ 
     background: linear-gradient( #E7F8FD, #9394E8 30%, #E7F8FD 55%, #9394E8 75%, #E7F8FD );
     -webkit-text-fill-color: transparent;
     -webkit-background-clip: text;
@@ -575,7 +575,7 @@ footer {
 }
 
 .about-us h1 {
-    font-size: 2rem;
+    font-size: 2.5rem;
     margin-top: 3rem;
 }
 
