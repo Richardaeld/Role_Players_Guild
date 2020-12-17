@@ -479,7 +479,7 @@ footer {
 }
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
-.rotate-background {
+.sign-reg-background {
     background: url("../img/com-notbook.jpg") 15% 0%/cover no-repeat;
 }
 
@@ -729,7 +729,7 @@ background-image: url("../img/steve/tenets.jpg");
     .topic-tab{
         font-size: 1.9rem;
     }
-    .rotate-background {
+    .sign-reg-background {
         background: url("../img/com-notbook.jpg") center/cover no-repeat;
     }
 }

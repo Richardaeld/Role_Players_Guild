@@ -70,7 +70,7 @@ def register():
     return render_template(
         "register.html",
         header_img_class="col-12 profile-header",
-        header_img="log-img",
+        header_img="sign-reg-background",
         header_title_class="header-title",
         title_header="",
         title_header_p="")
@@ -103,7 +103,7 @@ def signIn():
     return render_template(
         "signIn.html",
         header_img_class="col-12 profile-header",
-        header_img="rotate-background",
+        header_img="sign-reg-background",
         header_title_class="header-title",
         title_header="",
         title_header_p="")
