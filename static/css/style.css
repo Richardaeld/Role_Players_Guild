@@ -150,35 +150,40 @@ body {
 
 @media (min-width: 576px) {
     .header-title-general h1,
-    .header-title h1 {
+    .header-title h1,
+    .about-us h1 {
         font-size: 2.5rem;
     }
 }
 
 @media (min-width: 768px) {
     .header-title-general h1,
-    .header-title h1 {
+    .header-title h1,
+    .about-us h1 {
         font-size: 3.5rem;
     }
 }
 
 @media (min-width: 992px) {
     .header-title-general h1, 
-    .header-title h1 {
+    .header-title h1,
+    .about-us h1 {
         font-size: 4.5rem;
     }
 }
 
 @media (min-width: 1200px) {
     .header-title-general h1, 
-    .header-title h1 {
+    .header-title h1,
+    .about-us h1 {
         font-size: 5rem;
     }
 }
 
 @media (min-width: 1400px) {  
     .header-title-general h1,
-    .header-title h1 {
+    .header-title h1,
+    .about-us h1 {
         font-size: 5.5rem;
     }
 }
