@@ -119,7 +119,7 @@ body {
 }
 /*header title */
 .header-title-bump {  /* pushes text into wooden sign */
-    top:5rem;
+    top:7rem;
 }
 
 .header-title-general,
@@ -670,7 +670,7 @@ background-image: url("../img/steve/tenets.jpg");
         height: 14rem;
     }
     .header-title-bump {
-        top: 6rem;
+        top: 8rem;
     }
 }
 
@@ -684,7 +684,7 @@ background-image: url("../img/steve/tenets.jpg");
         height: 16rem;
     }
     .header-title-bump {
-        top: 8rem;
+        top: 9rem;
     }
 }
 
@@ -701,7 +701,7 @@ background-image: url("../img/steve/tenets.jpg");
         height: 18rem;
     }
     .header-title-bump {
-        top: 9rem;
+        top: 10rem;
     }
 }
 
@@ -714,9 +714,7 @@ background-image: url("../img/steve/tenets.jpg");
     .index-header-img {
         height: 20rem;
     }
-    .header-title-bump {
-        top: 10rem;
-    }
+
 }
 
 @media (min-width: 1400px) {  
