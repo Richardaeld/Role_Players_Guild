@@ -148,45 +148,7 @@ body {
      /* topic tab h1 is taking priority */
 }
 
-@media (min-width: 576px) {
-    .header-title-general h1,
-    .header-title h1,
-    .about-us h1 {
-        font-size: 2.5rem;
-    }
-}
 
-@media (min-width: 768px) {
-    .header-title-general h1,
-    .header-title h1,
-    .about-us h1 {
-        font-size: 3.5rem;
-    }
-}
-
-@media (min-width: 992px) {
-    .header-title-general h1, 
-    .header-title h1,
-    .about-us h1 {
-        font-size: 4.5rem;
-    }
-}
-
-@media (min-width: 1200px) {
-    .header-title-general h1, 
-    .header-title h1,
-    .about-us h1 {
-        font-size: 5rem;
-    }
-}
-
-@media (min-width: 1400px) {  
-    .header-title-general h1,
-    .header-title h1,
-    .about-us h1 {
-        font-size: 5.5rem;
-    }
-}
 
 
 
@@ -693,3 +655,44 @@ background-image: url("../img/steve/tenets.jpg");
     background-color: rgba(0, 0, 0, 1);
 }
 
+/* -------------------------------------  responsiveness section  ---------------------------------*/
+
+@media (min-width: 576px) {
+    .header-title-general h1,
+    .header-title h1,
+    .about-us h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media (min-width: 768px) {
+    .header-title-general h1,
+    .header-title h1,
+    .about-us h1 {
+        font-size: 3.5rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .header-title-general h1, 
+    .header-title h1,
+    .about-us h1 {
+        font-size: 4.5rem;
+    }
+}
+
+@media (min-width: 1200px) {
+    .header-title-general h1, 
+    .header-title h1,
+    .about-us h1 {
+        font-size: 5rem;
+    }
+}
+
+@media (min-width: 1400px) {  
+    .header-title-general h1,
+    .header-title h1,
+    .about-us h1 {
+        font-size: 5.5rem;
+    }
+}
