@@ -9,25 +9,58 @@
         <div class="col-10">
 
             <fieldset class="form-box">
-                <h1>Sign In</h1>
-                <form method="POST" action="{{ url_for('signIn') }}">
+                <h1>Create Room</h1>
+                <form method="POST" action="{{ url_for('createRoom', username=session['user']) }}">
                     <div class="row no-gutters justify-content-between form-height">
 
                         <div class="col-6 input-line">
-                            <label for="username">User Name:</label>
+                            <label for="roomName">hall location:</label>
                         </div>
                         <div class="col-6 input-line">
-                            <input type="text" id="username" name="username" 
-                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                            <select name="hallName" id="hallName">
+                                {% for hall in guildHalls %}
+                                <option value="{{hall.hall}}">{{hall.hall}}</option>
+                                {% endfor %}
+                            </select>
                         </div>
 
                         <div class="col-6 input-line">
-                            <label for="password">Password:</label>
+                            <label for="roomName">Room Name:</label>
                         </div>
                         <div class="col-6 input-line">
-                            <input type="password" id="password" name="password" 
-                                minlength="5" maxlength="15" pattern="^[a-zA-Z0-9]{5,15}$" required>
+                            <input type="text" id="roomName" name="roomName" 
+                                minlength="5" maxlength="50" pattern="^[a-zA-Z0-9 ]{5,50}$" required>
                         </div>
+
+                        <div class="col-6 input-line">
+                            <label for="description">Room Description:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="description" name="description" 
+                                minlength="5" maxlength="150" pattern="^[a-zA-Z0-9 ]{5,150}$" required>
+                        </div>
+
+                        <div class="col-6 input-line">
+                            <label for="header">Room Header:*appears as intro message</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <input type="text" id="header" name="header" 
+                                minlength="5" maxlength="50" pattern="^[a-zA-Z0-9 ]{5,50}$" required>
+                        </div>
+
+                        <div class="col-6 input-line">
+                            <label for="topics">Room topics:</label>
+                        </div>
+                        <div class="col-6 input-line">
+                            <select name="topicCount" id="topicCount">
+                                {% for number in topicMaxCount %}
+                                <option value="{{number}}" id="topic{{number}}">{{number}}</option>
+                                {% endfor %}
+                            </select>
+                            <input class="topicInsert" type="text" id="topic0" name="topic0" 
+                                minlength="3" maxlength="25" pattern="^[a-zA-Z0-9]{3,25}$" required>
+                        </div>
+
                                     
                     </div>
                     
@@ -45,6 +78,7 @@
 {% endblock %}
 
 {% block custom_script %}
+<script src="{{ url_for('static', filename='js/createRoom.js') }}"></script>
     <script>
         document.getElementsByClassName("nav-item")[2].classList.add("active");
         document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");

@@ -15,7 +15,7 @@
                     {% if admin.admin == true %}
                     <a href="{{ url_for('createHall', username=session['user']) }}">Create a Hall</a>
                     {% endif %}
-                    <a href="">Create a Room</a>
+                    <a href="{{ url_for('createRoom', username=session['user']) }}">Create a Room</a>
                     <hr>
                     <ul class="">
                     {% for hall in guildHalls %}

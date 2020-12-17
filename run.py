@@ -78,11 +78,6 @@ def register():
 
 @app.route("/signIn", methods=["GET", "POST"])
 def signIn():
-    # redirect to profile page if already logged in
-    # if session.get["user"] is not None:
-        # flash("Already Signed In")
-        # return redirect(url_for("profile", username=session["user"]))
-
     if request.method == "POST":
         # check if user name exists
         existing_user = mongo.db.users.find_one(
@@ -299,14 +294,14 @@ def edittask(username, room, topic, editme):
 @app.route("/createHall/<username>", methods=["GET", "POST"])
 def createHall(username):
     if request.method == "POST":
-        createHall1 = {
+        createHall = {
             "hall": request.form.get("hall"),
             "description": request.form.get("description"),
             "submit": session['user'],
             "date": ""
         }
         flash("hall constructed")
-        mongo.db.halls.insert_one(createHall1)
+        mongo.db.halls.insert_one(createHall)
         return redirect(url_for('profile', username=session['user']))
 
     return render_template(
@@ -318,6 +313,49 @@ def createHall(username):
         title_header="",
         titleheader_p="")
 
+
+@app.route("/createRoom/<username>", methods=["GET", "POST"])
+def createRoom(username):
+    topicMaxCount = range(1, 11)
+    guildHalls = list(mongo.db.halls.find())
+    if request.method == "POST":
+        topicCombined = ""
+        # iterates over 'topicCount' which is the
+        # user selectable number for total topics
+        topicCount = int(request.form.get("topicCount"))
+        for topic in range(1, topicCount + 1):
+            topicCombined = topicCombined + ", " + request.form.get(
+                "topic" + str(topic))
+
+        topicCombinedLength = len(topicCombined)
+        topicCombinedSlice = slice(2, topicCombinedLength)
+        topicCombined = topicCombined[topicCombinedSlice]
+        createRoom = {
+            "hall": request.form.get("hallName").lower(),
+            "room": request.form.get("roomName").lower(),
+            "description": request.form.get("description"),
+            "header": request.form.get("header").lower(),
+            "img": "tomb-img",
+            "topic": topicCombined.lower(),
+            "submit": session['user'],
+            "date": ""
+        }
+        print(topicCombined)
+        mongo.db.rooms.insert_one(createRoom)
+        flash("room constructed")
+        return redirect(url_for('profile', username=session['user']))
+
+    return render_template(
+        "createRoom.html",
+        guildHalls=guildHalls,
+        topicMaxCount=topicMaxCount,
+        username=session['user'],
+        header_img_class="col-12 profile-header",
+        header_img="log-img",
+        header_title_class="header-title header-title-form",
+        title_header="",
+        title_header_p=""
+        )
 
 @app.route("/removetask/<username>/<room>/<removeme>/'remove '+<topic>", methods=["GET", "POST"])
 def removetask(username, room, topic, removeme):
