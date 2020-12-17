@@ -80,7 +80,7 @@ body {
 
 /*-------------------------------------- Header title and images for index ------------------------------*/
 .index-header-img {
-    background: url("../img/index/sign.png") center/cover no-repeat;
+    background: url("../img/index/sign.png") center/100% 100% no-repeat;
 }
 
 .index-header-img {
@@ -685,9 +685,7 @@ background-image: url("../img/steve/tenets.jpg");
     .about-us{
         background: url("../img/hallow_herd/hallow_world.jpg") center/100% 100% no-repeat  ;
     }
-    .index-header-img {
-        background: url("../img/index/sign.png") center/contain no-repeat;
-    }
+
 }
 
 @media (min-width: 1200px) {
