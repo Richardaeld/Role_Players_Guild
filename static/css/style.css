@@ -85,7 +85,7 @@ body {
 
 .index-header-img {
     position: relative;
-    height: 20rem;
+    height: 12rem;
     padding-left: 2rem;
     -webkit-filter: drop-shadow(10px 10px 3px rgba(0, 0, 0, .75));
     transform: skewY(4deg) skewX(-4deg) rotate(-2deg);
