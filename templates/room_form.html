@@ -17,10 +17,6 @@
             <div class="col-8">
 
 
-
-
-
-
                         <li class="list-group-item commit-box">
                             <div class="row no-gutters justify-content-center">
                                 <div class="col-10">
@@ -30,14 +26,6 @@
                                 </div>
                             </div>
                         </li>
-
-
-
-
-
-
-
-
 
 
 
@@ -54,16 +42,15 @@
                             <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
                         </div>
 
-                        <h1>{{topic.title()}}</h1>
 
                         <ul class="list-group room-form">
                             {% for commit in topicCommits %}
                             <!-- makes sure only the commits that match room and topic are displayed-->
                             {% if commit.category == topic %}
-                            <li class="list-group-item commit-box">
+                            <li class="list-group-item">
                                 <div class="row no-gutters justify-content-center">
                                     <div class="col-10">
-                                        <span class="form-idea col-12">
+                                        <span class="form-idea col-12 commit-box">
                                             {{ commit.idea.title() }}
                                         </span>
                                     </div>
