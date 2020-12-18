@@ -430,7 +430,7 @@ footer {
 }
 
 .back-button {
-    left: 1rem;
+    left: 0%;
     color: #fff;
 }
 
@@ -443,7 +443,7 @@ footer {
     transition-duration: .5s;
     border-radius: 25%;
     border: solid 2px #fff;
-    width:5%;
+    top: 2rem;
 }
 
 .edit-button p,
@@ -466,8 +466,24 @@ footer {
     color: rgba(254, 130, 2, .85);
 }
 
+.inline-form-edit,
+.inline-form-remove {
+    border: solid 2px #fff;
+    
+}
+
+.inline-form-edit {
+    background-color: rgba(168, 170, 15, 0.75);
+}
+
+.inline-form-remove {
+    position: relative;
+    bottom: 0%;
+    background-color: rgba(167, 12, 12, 0.75);
+}
+
 .edit-button {
-    left:94%;
+    right:0%;
 }
 
 .form-idea hr {
@@ -479,9 +495,14 @@ footer {
     width:60%;
 }
 
-.form-edit {
-    text-align: right;
-    width: 40%;
+.room-form {
+    overflow: scroll;
+    height: 45rem;
+}
+
+.room-form li {
+    border:solid 2px #fff;
+    border-radius: 5%!important;
 }
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
