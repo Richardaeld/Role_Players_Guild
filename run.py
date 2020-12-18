@@ -229,6 +229,26 @@ def openRoom(username, roomName):
         admin=admin)
 
 
+@app.route("/room_form/<username>/<roomName>/<topicName>", methods=["GET", "POST"])
+def room_form(username, roomName, topicName):
+    admin = mongo.db.users.find_one({"username": session['user']})
+    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": session['place'][0]}}))
+    roomInfo = mongo.db.rooms.find_one({"$text": {"$search": session['place'][0]}})
+    roomInfo = roomInfo['topic'].split(", ")
+
+    return render_template(
+        "room_form.html",
+        roomInfo=roomInfo,
+        topicName=topicName,
+        username=session['user'],
+        header_img_class="col-12 profile-header",
+        header_img=session['place'][1],
+        header_title_class="header-title-general header-title-bump",
+        title_header=session['place'][2],
+        title_header_p="",
+        topicCommits=topicCommits,
+        admin=admin)
+
 @app.route("/addtask/<username>/<room>/'add '+<topic>", methods=["GET", "POST"])
 def addtask(username, room, topic):
 
@@ -254,7 +274,7 @@ def addtask(username, room, topic):
         test=testy,
         add=insertInfo,
         username=session['user'],
-        header_img_class="col-12 profile-header",
+        header_img_class="col-12 profile-header general-display-none",
         header_img="add-entry",
         header_title_class="header-title header-title-form",
         title_header="",

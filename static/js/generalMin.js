@@ -4,8 +4,8 @@ var generalTabClick = document.querySelectorAll(".tab-span");
 var generalTab = document.querySelectorAll(".topic-section");
 //var generalTabReturn = "";  // NEW!! for add item -----ADD as a THIS item for reference
 
-generalTabClick.forEach(generalTransition); // backdrop transition between general(home room) tab and genreal topic(form) screens
-generalTab.forEach(generalBack)             // backdrop transition between general topic(form) and general(home room) tab screens
+//generalTabClick.forEach(generalTransition); // backdrop transition between general(home room) tab and genreal topic(form) screens
+//generalTab.forEach(generalBack)             // backdrop transition between general topic(form) and general(home room) tab screens
 
 //---------------adds transition from general page to tab page
 function generalTransition(item, index) {
@@ -57,7 +57,7 @@ function generalTabHoverEffect(item, index) {
         item.childNodes[3].classList.remove("actBorder");
         item.childNodes[3].classList.add("actBorderRev");
         setTimeout(function() {
-            item.childNodes[3].classList.remove("actBorderRev");
+            item.childNodes[53].classList.remove("actBorderRev");
         },1500)
     });
 }

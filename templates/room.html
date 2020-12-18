@@ -10,120 +10,19 @@
             <div class="row no-gutters justify-content-around">
 
                 {% for topic in roomInfo %}
-                <div class="col-5 col-md-4 col-lg-3 tab">
+                <a id="testy" class="clean-anchor col-5 col-md-4 col-lg-3 tab" href="{{ url_for('room_form', username=['user'], roomName=session['place'][0], topicName=topic) }}">
                     <div class="tab-span"></div>
                     <svg>
                         <rect rx="50" ry="50"/>
                     </svg>
                     <p>{{topic.title()}}</p>
-                </div>
+                    </a>
                 {% endfor %}
 
             </div>
         </div>
     </div>
 </section>        
-{% endblock %}
-
-{% block independent_section_content %} 
-<section>
-
-    <span class="general-cover  topic-section-cover "></span><!-- topic cover JS pick point -->  <!--      covers entire general section with a moving filter -->
-    {% for topic in roomInfo %}
-
-    <div class="col-12 general-display-none topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
-        <div class="row no-gutters justify-content-center">
-            <div class="col-12">
-            <h1>{{topic.title()}}</h1>
-            </div>
-            <div class="col-8">
-
-
-
-
-
-
-                        <li class="list-group-item commit-box">
-                            <div class="row no-gutters justify-content-center">
-                                <div class="col-10">
-                                    <span class="form-idea col-12">
-                                        <p id="form-expand-to"></p>
-                                    </span>
-                                </div>
-                            </div>
-                        </li>
-
-
-
-
-
-
-
-
-
-
-
-            </div>
-
-            <div class="col-4 ">
-                <div class="row no-gutters justify-content-around">
-
-                    <div class="col-4">
-                        <div class="col-4 col-md-2 back-button">
-                            <p>Back</p>
-                        </div>
-                        <div class="col-4 col-md-2 edit-button" id="add">
-                            <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
-                        </div>
-
-                        <h1>{{topic.title()}}</h1>
-
-                        <ul class="list-group room-form">
-                            {% for commit in topicCommits %}
-                            <!-- makes sure only the commits that match room and topic are displayed-->
-                            {% if commit.category == topic %}
-                            <li class="list-group-item commit-box">
-                                <div class="row no-gutters justify-content-center">
-                                    <div class="col-10">
-                                        <span class="form-idea col-12">
-                                            {{ commit.idea.title() }}
-                                        </span>
-                                    </div>
-                                    <div class="col-2 ">
-                                        <div class="row no-gutters justify-content-center">
-                                            <div class="col-12 inline-form-edit">
-                                                <span>
-                                                <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
-                                                </span>
-                                            </div>
-                                            <div class="col-12 inline-form-remove">
-                                                <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- checks to be sure only the owner of the commit or admin can alter the commit-->
-                                    {% if admin.admin==true or commit.submit == admin.username %}
-                                                    
-
-
-                                    {% endif %}
-
-                                </div>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>    
-                    </div>
-
-                </div>
-            </div>
-
-
-        </div>
-    </div>
-    {% endfor %}
-</section>
 {% endblock %}
 
 {% block custom_script %}

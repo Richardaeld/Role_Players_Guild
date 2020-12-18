@@ -3,38 +3,16 @@
 <link rel="stylesheet" href="{{ url_for('static', filename='/css/animation.css') }}" type="text/css">
 {% endblock %}
 
-{% block tab_header_content_row %}
-<section id="room-topics">
-    <div class="row no-gutters">
-        <div class="col-12">
-            <div class="row no-gutters justify-content-around">
-
-                {% for topic in roomInfo %}
-                <div class="col-5 col-md-4 col-lg-3 tab">
-                    <div class="tab-span"></div>
-                    <svg>
-                        <rect rx="50" ry="50"/>
-                    </svg>
-                    <p>{{topic.title()}}</p>
-                </div>
-                {% endfor %}
-
-            </div>
-        </div>
-    </div>
-</section>        
-{% endblock %}
-
 {% block independent_section_content %} 
 <section>
 
     <span class="general-cover  topic-section-cover "></span><!-- topic cover JS pick point -->  <!--      covers entire general section with a moving filter -->
     {% for topic in roomInfo %}
-
-    <div class="col-12 general-display-none topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
+    {% if topic.title() == topicName.title() %} <!--lsdaflkasjdlkfjas;ljkf;lasjdkljasldjfl;askjdflkahgoahgaldgklasdhjglkdfjklgj-->
+    <div class="col-12  topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
         <div class="row no-gutters justify-content-center">
             <div class="col-12">
-            <h1>{{topic.title()}}</h1>
+                <h1>{{topic.title()}}</h1>
             </div>
             <div class="col-8">
 
@@ -65,12 +43,12 @@
 
             </div>
 
-            <div class="col-4 ">
+            <div class="col-4">
                 <div class="row no-gutters justify-content-around">
 
                     <div class="col-4">
                         <div class="col-4 col-md-2 back-button">
-                            <p>Back</p>
+                            <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
                         </div>
                         <div class="col-4 col-md-2 edit-button" id="add">
                             <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
@@ -122,6 +100,7 @@
 
         </div>
     </div>
+    {% endif %}
     {% endfor %}
 </section>
 {% endblock %}
@@ -133,5 +112,4 @@
         document.getElementsByClassName("nav-item")[3].classList.add("active");
         document.getElementsByClassName("nav-item")[3].firstElementChild.classList.add("custom-nav-logo");
     </script>
-<script src="{{ url_for('static', filename='js/generalMin.js') }}"></script>
 {% endblock %}
