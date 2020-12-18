@@ -417,8 +417,8 @@ footer {
 }
 
 .topic-tab ul {
-    margin-top: 3rem;
-    padding: 3rem 0rem;
+/*    margin-top: 3rem;
+    padding: 3rem 0rem;*/
 }
 
 .topic-tab li {
@@ -491,7 +491,7 @@ footer {
 
 
 .room-form {
-    overflow-x: scroll;
+    /*overflow-x: scroll;*/
 }
 
 .room-form-clean {
@@ -504,7 +504,24 @@ footer {
     border-radius: 5%!important;
 }
 
+.commit-box p {
+    margin-bottom: 0;
+}
 
+.carousel-start {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+}
+
+.carousel-end {
+    position: absolute;
+    right:0;
+    z-index: 1;
+    height: 100%;
+    background-color: rgba(0, 0, 0, .75);
+}
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
 .sign-reg-background {

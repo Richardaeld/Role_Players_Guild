@@ -20,17 +20,21 @@
                 <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
             </div>
 
+            <div class="col-12 landing-tab-bump"></div>
+            <div class="col-12 landing-tab-bump"></div>
+
             <div class="col-10">
                 <ul class="list-group list-group-horizontal room-form ">
+                    <li class="list-group-item col-1 carousel-start"><i class="fas fa-search"></i></li>
                     {% for commit in topicCommits %}
                     <!-- makes sure only the commits that match room and topic are displayed-->
                     {% if commit.category == topic %}
-                    <li class="list-group-item col-4 ">
+                    <li class="list-group-item col-4 make-invis carousel-entry">
                         <div class="row no-gutters justify-content-center">
                             <div class="col-12 commit-box">
                                 <p class=" commit-box-brief">{{ commit.idea.title() }}</p>
                                 <p class=" ">Submitted by: {{ commit.submit.title() }}</p>
-                                <p class=" commit-box-content make-invis">{{ commit.idea.title() }}</p>            
+                                <p class=" commit-box-content make-invis">{{ commit.idea.title() }}</p>
                             </div>
                             <div class="col-12 ">
                                 <div class="row no-gutters justify-content-center">
@@ -51,13 +55,17 @@
                     </li>
                     {% endif %}
                     {% endfor %}
+                    <li class="list-group-item col-1 carousel-end"><i class="fas fa-search"></i></li>
                 </ul>    
             </div>
+
+            <div class="col-12 landing-tab-bump"></div>
+
 
             <div class="col-10 room-form-clean">
 
                     <ul>
-                        <li class="list-group-item commit-box">
+                        <li class="list-group-item">
                             <div class="row no-gutters justify-content-center">
                                 <div class="col-10">
                                     <span class="col-12">
