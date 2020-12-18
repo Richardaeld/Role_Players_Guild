@@ -6,87 +6,73 @@
 {% block independent_section_content %} 
 <section>
 
-    <span class="general-cover  topic-section-cover "></span><!-- topic cover JS pick point -->  <!--      covers entire general section with a moving filter -->
     {% for topic in roomInfo %}
     {% if topic.title() == topicName.title() %} <!--lsdaflkasjdlkfjas;ljkf;lasjdkljasldjfl;askjdflkahgoahgaldgklasdhjglkdfjklgj-->
     <div class="col-12  topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
-        <div class="row no-gutters justify-content-center">
+        <div class="row no-gutters justify-content-around">
             <div class="col-12">
                 <h1>{{topic.title()}}</h1>
             </div>
-            <div class="col-8">
+            <div class="col-4 col-md-2 back-button">
+                <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
+            </div>
+            <div class="col-4 col-md-2 edit-button" id="add">
+                <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
+            </div>
 
+            <div class="col-10">
+                <ul class="list-group list-group-horizontal room-form ">
+                    {% for commit in topicCommits %}
+                    <!-- makes sure only the commits that match room and topic are displayed-->
+                    {% if commit.category == topic %}
+                    <li class="list-group-item col-4 ">
+                        <div class="row no-gutters justify-content-center">
+                            <div class="col-12 commit-box">
+                                <p class=" commit-box-brief">{{ commit.idea.title() }}</p>
+                                <p class=" ">Submitted by: {{ commit.submit.title() }}</p>
+                                <p class=" commit-box-content make-invis">{{ commit.idea.title() }}</p>            
+                            </div>
+                            <div class="col-12 ">
+                                <div class="row no-gutters justify-content-center">
+                                    <!-- checks to be sure only the owner of the commit or admin can alter the commit-->
+                                    {% if admin.admin==true or commit.submit == admin.username %}
+                                    <div class="col-6 inline-form-edit">
+                                        <span>
+                                            <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
+                                        </span>
+                                    </div>
+                                    {% endif %}
+                                    <div class="col-6 inline-form-remove">
+                                        <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                    {% endif %}
+                    {% endfor %}
+                </ul>    
+            </div>
 
+            <div class="col-10 room-form-clean">
+
+                    <ul>
                         <li class="list-group-item commit-box">
                             <div class="row no-gutters justify-content-center">
                                 <div class="col-10">
-                                    <span class="form-idea col-12">
+                                    <span class="col-12">
                                         <p id="form-expand-to"></p>
                                     </span>
                                 </div>
                             </div>
                         </li>
-
-
+                    </ul>
 
             </div>
-
-            <div class="col-4">
-                <div class="row no-gutters justify-content-around">
-
-                    <div class="col-4">
-                        <div class="col-4 col-md-2 back-button">
-                            <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
-                        </div>
-                        <div class="col-4 col-md-2 edit-button" id="add">
-                            <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
-                        </div>
-
-
-                        <ul class="list-group room-form">
-                            {% for commit in topicCommits %}
-                            <!-- makes sure only the commits that match room and topic are displayed-->
-                            {% if commit.category == topic %}
-                            <li class="list-group-item">
-                                <div class="row no-gutters justify-content-center">
-                                    <div class="col-10">
-                                        <span class="form-idea col-12 commit-box">
-                                            {{ commit.idea.title() }}
-                                        </span>
-                                    </div>
-                                    <div class="col-2 ">
-                                        <div class="row no-gutters justify-content-center">
-                                            <div class="col-12 inline-form-edit">
-                                                <span>
-                                                <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
-                                                </span>
-                                            </div>
-                                            <div class="col-12 inline-form-remove">
-                                                <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                    <!-- checks to be sure only the owner of the commit or admin can alter the commit-->
-                                    {% if admin.admin==true or commit.submit == admin.username %}
-                                                    
-
-
-                                    {% endif %}
-
-                                </div>
-                            </li>
-                            {% endif %}
-                            {% endfor %}
-                        </ul>    
-                    </div>
-
-                </div>
-            </div>
-
 
         </div>
     </div>
+
     {% endif %}
     {% endfor %}
 </section>

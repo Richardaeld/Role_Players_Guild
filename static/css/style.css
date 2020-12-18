@@ -489,20 +489,22 @@ footer {
     border: rgb(254, 130, 2) 1px solid;
 }
 
-.form-idea {
-    text-align:center;
-    width:60%;
-}
 
 .room-form {
-    overflow: scroll;
-    height: 45rem;
+    overflow-x: scroll;
+}
+
+.room-form-clean {
+    overflow: visible;
+    margin-right: .5rem;
 }
 
 .room-form li {
     border:solid 2px #fff;
     border-radius: 5%!important;
 }
+
+
 
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
 .sign-reg-background {
