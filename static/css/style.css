@@ -536,6 +536,10 @@ footer {
     right:0;
 }
 
+.full-form-description {
+    height: 20rem;
+}
+
 /* --------------------------------- sign in -- register - add topic - edit topic - remove topic --------------------------*/
 .sign-reg-background {
     background: url("../img/com-notbook.jpg") 15% 0%/cover no-repeat;
