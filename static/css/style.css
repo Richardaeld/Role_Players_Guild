@@ -398,7 +398,7 @@ footer {
 }
 
 .topic-tab {
-    font: .75rem "Amatic SC", sans-serif;
+    font: 1rem "Amatic SC", sans-serif;
     position: absolute;
     z-index: 2;
     text-shadow: .2rem .2rem .02rem #010203;
