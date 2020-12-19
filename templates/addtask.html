@@ -2,18 +2,25 @@
 
 {% block tab_header_content_row %}
     <!--place filter here if needed--><!--<span class="full-size"></span>-->
-    <nav>
-        <a class="clean-anchor col-1 back-button" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">
-            <p>back</p>
-        </a>
-    </nav>
-    <section class="col-10 topic-tab form-tab">  
+    <section class="col-11 topic-tab">
+        <div class="row no-gutters justify-content-center">
+
+        <nav class="col-1 back-button">
+            <a class="clean-anchor col-4 col-md-2 col-lg-1" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">Back</a>
+        </nav>
+        <div class="col-6">
+            <h1>{{topic.title()}}</h1>
+        </div>
+
+        <div class="col-12 landing-tab-bump"></div>
+        </div>
+
         <div class="row no-gutters justify-content-center">
             <div class="col-12">
                 
                 <div class="row no-gutters justify-content-center form-box form-filter">
 
-                    <h1>What {{topic.title()}} commit are you going to privately confess to our forms?</h1>
+                    <h1>What {{topic.title()}} addition are you going to add to our forms?</h1>
                     <h1></h1>
                     
                     <div class="col-10">
@@ -38,7 +45,7 @@
                     </div>
                 </div> 
             </div>
-      
+      </div>
         </div>
     </section>
 {% endblock %}

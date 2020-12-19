@@ -9,34 +9,32 @@
     {% for topic in roomInfo %}
     {% if topic.title() == topicName.title() %} <!--lsdaflkasjdlkfjas;ljkf;lasjdkljasldjfl;askjdflkahgoahgaldgklasdhjglkdfjklgj-->
     <div class="col-12  topic-tab topic-section  {{header_img}}"> <!--topic tab no css just JS pick point-->
-        <div class="row no-gutters justify-content-around">
-            <div class="col-12">
+        <div class="row no-gutters justify-content-center">
+            <div class="col-6">
                 <h1>{{topic.title()}}</h1>
             </div>
-            <div class="col-4 col-md-2 back-button">
-                <a class="clean-anchor" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
-            </div>
-            <div class="col-4 col-md-2 edit-button" id="add">
-                <a class="clean-anchor" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
-            </div>
+        </div>
+        <div class="row no-gutters justify-content-around">
+            <a class="clean-anchor col-4 col-md-2 col-lg-1 back-button" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
+            <a class="clean-anchor col-4 col-md-2 col-lg-1 edit-button" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
 
             <div class="col-12 landing-tab-bump"></div>
             <div class="col-12 landing-tab-bump"></div>
 
-            <div class="col-10">
+            <div class="col-12 col-md-10">
                 <ul class="list-group list-group-horizontal room-form ">
-                    <li class="list-group-item col-1 carousel-start"><i class="fas fa-search"></i></li>
+                    <li class="list-group-item carousel-custom carousel-start"><i class="fas fa-arrow-left"></i></li>
                     {% for commit in topicCommits %}
-                    <!-- makes sure only the commits that match room and topic are displayed-->
                     {% if commit.category == topic %}
+                    <!-- makes sure only the commits that match room and topic are displayed-->
                     <li class="list-group-item col-4 make-invis carousel-entry">
                         <div class="row no-gutters justify-content-center">
                             <div class="col-12 commit-box">
                                 <p class=" commit-box-brief">{{ commit.idea.title() }}</p>
-                                <p class=" ">Submitted by: {{ commit.submit.title() }}</p>
-                                <p class=" commit-box-content make-invis">{{ commit.idea.title() }}</p>
+                                <p class="">Submitted by: {{ commit.submit.title() }}</p>
+                                <p class="commit-box-content make-invis">{{ commit.idea.title() }}</p>
                             </div>
-                            <div class="col-12 ">
+                            <div class="col-12 form-base">
                                 <div class="row no-gutters justify-content-center">
                                     <!-- checks to be sure only the owner of the commit or admin can alter the commit-->
                                     {% if admin.admin==true or commit.submit == admin.username %}
@@ -55,7 +53,7 @@
                     </li>
                     {% endif %}
                     {% endfor %}
-                    <li class="list-group-item col-1 carousel-end"><i class="fas fa-search"></i></li>
+                    <li class="list-group-item col-1 carousel-custom carousel-end"><i class="fas fa-arrow-right"></i></li>
                 </ul>    
             </div>
 
