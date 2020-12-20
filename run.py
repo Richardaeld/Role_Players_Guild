@@ -249,77 +249,12 @@ def room_form(username, roomName, topicName):
         topicCommits=topicCommits,
         admin=admin)
 
-@app.route("/addtask/<username>/<room>/'add '+<topic>", methods=["GET", "POST"])
-def addtask(username, room, topic):
-
-    if request.method == "POST":
-        addme = {
-            "room": request.form.get("room"),
-            "category": request.form.get("category"),
-            "idea": request.form.get("addtask"),
-            "submit": request.form.get("username"),
-            "date": ""
-        }
-        mongo.db.guildDiscussion.insert_one(addme)
-        flash(topic.title() + " confessed")
-        return redirect(url_for('openRoom', username=session['user'], roomName=session['place'][0]))
-
-    room = session['place'][0]
-    insertInfo = ""
-    testy = mongo.db.guildDiscussion.find_one({"room": room})
-    return render_template(
-        "addtask.html",
-        room=session['place'][0],
-        topic=topic,
-        test=testy,
-        add=insertInfo,
-        username=session['user'],
-        header_img_class="col-12 profile-header",
-        header_img="add-entry",
-        header_title_class="",
-        title_header="",
-        title_header_p="")
-
-@app.route("/edittask/<username>/<room>/<editme>/'edit '+<topic>", methods=["GET", "POST"])
-def edittask(username, room, topic, editme):
-    editme = editme
-    if request.method == "POST":
-        edit = {
-            "room": request.form.get("editroom"),
-            "category": request.form.get("editcategory"),
-            "idea": request.form.get("editIdea"),
-            "submit": request.form.get("editsubmit"),
-            "date": request.form.get("editdate")
-        }
-
-        mongo.db.guildDiscussion.update({"_id": ObjectId(editme)}, edit)
-        flash(topic.title() + " updated")
-        return redirect(url_for('openRoom', username=session['user'], roomName=session['place'][0]))
-
-    topic=topic
-    tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(editme)})
-    return render_template(
-        "edittask.html",
-        room=session['place'][1],
-        editme=editme,
-        topic=topic,
-        edit=tasky,
-        username=session["user"],
-        header_img_class="col-12 profile-header",
-        header_img="add-entry",
-        header_title_class="header-title header-title-form",
-        title_header="",
-        title_header_p="")
 
 @app.route("/alter_form/<username>/<room>/<topic>/<topicId>/<type_edit>", methods=["GET", "POST"])
 def alter_form(username, room, topic, type_edit, topicId):
-    # pulls information for topics
-    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": session['place'][0]}}))
     # pulls topic commits info into a variable and turns it into a usable list
     roomInfo = mongo.db.rooms.find_one({"$text": {"$search": session['place'][0]}})
     roomInfo = roomInfo['topic'].split(", ")
-
-
 
     if request.method == "POST":
         change = {
@@ -395,9 +330,6 @@ def createHall(username):
         titleheader_p="")
 
 
-
-
-
 @app.route("/createRoom/<username>", methods=["GET", "POST"])
 def createRoom(username):
     topicMaxCount = range(1, 11)
@@ -442,29 +374,6 @@ def createRoom(username):
         )
 
 
-
-@app.route("/removetask/<username>/<room>/<removeme>/'remove '+<topic>", methods=["GET", "POST"])
-def removetask(username, room, topic, removeme):
-    removeme=removeme
-    if request.method == "POST":
-        mongo.db.guildDiscussion.remove({"_id": ObjectId(removeme)})
-        flash(topic.title() + " recinded")
-        return redirect(url_for('openRoom', username=session['user'], roomName=session['place'][0]))
-    tasky = mongo.db.guildDiscussion.find_one({"_id": ObjectId(removeme)})
-    return render_template(
-        "removetask.html",
-        room=session['place'][1],
-        remove=tasky,
-        topic=topic,
-        removeme=removeme,
-        username=session["user"],
-        header_img_class="col-12 profile-header",
-        header_img="add-entry",
-        header_title_class="header-title header-title-form",
-        title_header="",
-        title_header_p="")
-
-
 # Search in Nav Bar
 ## ---------------------------------BROKEN AFTER PROFILE SEARCH IMPROVEMENT!!!---------------------
 @app.route("/search", methods=["GET", "POST"])
@@ -473,8 +382,6 @@ def search():
     listz = list(mongo.db.guilds.find({"$text": {"$search": query}}))
     tasks = (mongo.db.guilds.find({"mainIndex": "true"}))
     return render_template("profile.html", tasks=tasks, listz=listz, username=session["user"], header_img="log-img", profile_class="profile-image-size")
-
-
 
 
 if __name__ == "__main__":
