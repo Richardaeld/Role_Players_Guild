@@ -16,7 +16,7 @@
         </div>
         <div class="row no-gutters justify-content-around">
             <a class="clean-anchor col-4 col-md-2 col-lg-1 back-button" href="{{ url_for('openRoom', username=session['user'], roomName=session['place'][0]) }}">back</a>
-            <a class="clean-anchor col-4 col-md-2 col-lg-1 edit-button" href="{{ url_for('addtask',username=session['user'], room=session['place'][0], topic=topic )}}"><p>add</p></a>
+            <a class="clean-anchor col-4 col-md-2 col-lg-1 edit-button" href="{{ url_for('alter_form',username=session['user'], room=session['place'][0], topic=topic, type_edit='add', topicId='no' )}}"><p>add</p></a>
 
             <div class="col-12 landing-tab-bump"></div>
             <div class="col-12 landing-tab-bump"></div>
@@ -57,12 +57,12 @@
                                     {% if admin.admin==true or commit.submit == admin.username %}
                                     <div class="col-6 inline-form-edit">
                                         <span>
-                                            <a class="clean-anchor" href="{{ url_for('edittask', username=session['user'], room=session['place'][0], topic=topic, editme=commit._id)}}">Edit</a>
+                                            <a class="clean-anchor" href="{{ url_for('alter_form', username=session['user'], room=session['place'][0], topic=topic, type_edit='edit', topicId=commit._id)}}">Edit</a>
                                         </span>
                                     </div>
                                     {% endif %}
                                     <div class="col-6 inline-form-remove">
-                                        <a class="clean-anchor" href="{{ url_for('removetask', username=session['user'][0], room=session['place'], topic=topic, removeme=commit._id)}}">Remove</a>
+                                        <a class="clean-anchor" href="{{ url_for('alter_form', username=session['user'], room=session['place'][0], topic=topic, type_edit='remove', topicId=commit._id)}}">Remove</a>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block custom_link %}
+{% endblock %}
+
+{% block header_dependent_section_content %}
+<div class="col-12 topic-tab form-tab">
+    <div class="row no-gutters justify-content-center">
+        <div class="col-10">
+
+            <fieldset class="form-box">
+                <h1>{{form_header.title()}} to {{session['place'][0].title()}}</h1>
+                <form method="POST" action="#">
+                    <div class="row no-gutters justify-content-between form-height">
+
+                        <div class="col-6 input-line">
+                            <label for="topic">Which Topic:</label>
+                        </div>
+
+                        <!--Im the add select/option-->
+                        {% if type_edit == 'add' %}
+                        <div class="col-6 input-line">
+                            <select name="topic" id="topic">
+                                {% for topic in roomInfo %}
+                                <option value="{{topic}}">{{topic}}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                        {% else %}  <!-- Im the edit select/option-->
+                        <div class="col-6 input-line">
+                            <select name="topic" id="topic" >
+                                <option value="{{selected_topic}}">{{selected_topic}}</option>                            
+                            </select>
+                        </div>
+                        {% endif %}
+
+                        {% if type_edit == 'add' or type_edit == 'edit' %}
+                        <div class="col-6">
+                            <label for="text_area">{{text_label}}</label>
+                        </div>
+                        <div class="col-6">
+                            <textarea class="form-textarea-black" type="text" id="text_area" name="text_area" 
+                                minlength="5" maxlength="350" pattern="^[a-zA-Z0-9]{5,15}$"
+                                required>{% if type_edit == 'edit' %}{{ findId.idea }}{% endif %}</textarea>
+                        </div>
+                        {% endif %}
+                        
+                    </div>
+                    
+                    <div class="row no-gutters justify-content-end">
+                        <div class="col-6">
+                        <input class="submit-button"  type="submit" value="Submit">
+                        </div>
+                    </div>
+                </form>
+            </fieldset>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block custom_script %}
+<script src="{{ url_for('static', filename='js/createRoom.js') }}"></script>
+    <script>
+        document.getElementsByClassName("nav-item")[2].classList.add("active");
+        document.getElementsByClassName("nav-item")[2].firstElementChild.classList.add("custom-nav-logo");
+    </script>
+{% endblock %}

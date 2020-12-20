@@ -209,7 +209,7 @@ def openRoom(username, roomName):
     session['place'] = [roomName, headerImg, headerText]
 
     # matches roomName to pull commit list
-    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": roomName}}))
+    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": session['place'][0]}}))
 
     # pulls topic commits info into a variable and turns it into a usable list
     roomInfo = mongo.db.rooms.find_one({"$text": {"$search": roomName}})
@@ -311,6 +311,66 @@ def edittask(username, room, topic, editme):
         title_header="",
         title_header_p="")
 
+@app.route("/alter_form/<username>/<room>/<topic>/<topicId>/<type_edit>", methods=["GET", "POST"])
+def alter_form(username, room, topic, type_edit, topicId):
+    # pulls information for topics
+    topicCommits = list(mongo.db.guildDiscussion.find({"$text": {"$search": session['place'][0]}}))
+    # pulls topic commits info into a variable and turns it into a usable list
+    roomInfo = mongo.db.rooms.find_one({"$text": {"$search": session['place'][0]}})
+    roomInfo = roomInfo['topic'].split(", ")
+
+
+
+    if request.method == "POST":
+        change = {
+            "room": session['place'][0],
+            "category": request.form.get("topic"),
+            "idea": request.form.get("text_area"),
+            "submit": session['user'],
+            "date": ""
+        }
+
+        if type_edit == 'add':
+            form = mongo.db.guildDiscussion.insert_one(change)
+        elif type_edit == 'edit':
+            form = mongo.db.guildDiscussion.update({"_id": ObjectId(topicId)}, change)
+        elif type_edit == 'remove':
+            form = mongo.db.guildDiscussion.remove({"_id": ObjectId(topicId)}, change)
+        else:
+            form = ""
+
+        form
+        return redirect(url_for('openRoom', username=session['user'], roomName=session['place'][0]))
+
+    if type_edit == 'add':
+        text_area_description = "Describe your addition:"
+    elif type_edit == 'edit':
+        text_area_description = "Make your changes to this entry:"
+    elif type_edit == 'remove':
+        text_area_description = "This is the entry you will delete:"
+    else:
+        text_area_description = ""
+
+    if topicId != 'no':
+        findId = mongo.db.guildDiscussion.find_one({"_id": ObjectId(topicId)})
+    else:
+        findId = ""
+
+    return render_template(
+        "alter_form.html",
+        selected_topic=topic,
+        findId=findId,
+        type_edit=type_edit,
+        text_label=text_area_description,
+        form_header=type_edit,
+        roomInfo=roomInfo,
+        username=session['user'],
+        header_img_class="col-12 profile-header",
+        header_img="log-img",
+        header_title_class="header-title header-title-form",
+        title_header="",
+        title_header_p="")
+
 
 @app.route("/createHall/<username>", methods=["GET", "POST"])
 def createHall(username):
@@ -333,6 +393,9 @@ def createHall(username):
         header_title_class="header-title header-title-form",
         title_header="",
         titleheader_p="")
+
+
+
 
 
 @app.route("/createRoom/<username>", methods=["GET", "POST"])
@@ -377,6 +440,8 @@ def createRoom(username):
         title_header="",
         title_header_p=""
         )
+
+
 
 @app.route("/removetask/<username>/<room>/<removeme>/'remove '+<topic>", methods=["GET", "POST"])
 def removetask(username, room, topic, removeme):
